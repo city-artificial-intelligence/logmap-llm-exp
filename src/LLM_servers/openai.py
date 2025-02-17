@@ -98,9 +98,7 @@ class OpenAIServer:
             )
             logprobs = response.choices[0].logprobs.model_dump()["content"]
             parsed_output = response.choices[0].message.parsed
-            return LLMCallOutput(
-                message=output_message, usage=usage, logprobs=logprobs, parsed=parsed_output
-            )
+            return LLMCallOutput(message=output_message, usage=usage, logprobs=logprobs, parsed=parsed_output)
 
         except Exception as e:
             raise e

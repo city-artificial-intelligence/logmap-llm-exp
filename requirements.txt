@@ -8,3 +8,4 @@ owlready2
 rdflib
 openai
 pydantic
+python-dotenv

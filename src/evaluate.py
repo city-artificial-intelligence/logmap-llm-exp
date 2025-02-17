@@ -112,4 +112,3 @@ def extend_results_with_labels(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.Data
         axis=1,
     )
     return df
-

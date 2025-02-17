@@ -1,4 +1,4 @@
-# ruff: noqa: N802, ANN201, ANN001
+# ruff: noqa: N802
 
 import contextlib
 import logging
@@ -137,19 +137,19 @@ class OntologyAccess:
     def getOntology(self) -> owlready2.Ontology:
         return self.onto
 
-    def getClassByURI(self, uri: str):
+    def getClassByURI(self, uri: str) -> owlready2.EntityClass:
         for cls in list(self.getOntology().classes()):
             if cls.iri == uri:
                 return cls
         return None
 
-    def getClassByName(self, name: str):
+    def getClassByName(self, name: str) -> owlready2.EntityClass:
         for cls in list(self.getOntology().classes()):
             if cls.name.lower() == name.lower():
                 return cls
         return None
 
-    def getEntityByURI(self, uri: str):
+    def getEntityByURI(self, uri: str) -> owlready2.EntityClass:
         for cls in list(self.getOntology().classes()):
             if cls.iri == uri:
                 return cls
@@ -158,7 +158,7 @@ class OntologyAccess:
                 return prop
         return None
 
-    def getEntityByName(self, name: str):
+    def getEntityByName(self, name: str) -> owlready2.EntityClass:
         for cls in list(self.getOntology().classes()):
             if cls.name.lower() == name.lower():
                 return cls
@@ -167,117 +167,117 @@ class OntologyAccess:
                 return prop
         return None
 
-    def getClassObjectsContainingName(self, name: str):
+    def getClassObjectsContainingName(self, name: str) -> list[owlready2.EntityClass]:
         classes = []
         for cls in list(self.getOntology().classes()):
             if name.lower() in cls.name.lower():
                 classes.append(cls)
         return classes
 
-    def getClassIRIsContainingName(self, name: str):
+    def getClassIRIsContainingName(self, name: str) -> list[str]:
         classes = []
         for cls in list(self.getOntology().classes()):
             if name.lower() in cls.name.lower():
                 classes.append(cls.iri)
         return classes
 
-    def getAncestorsURIsMinusClass(self, cls):
+    def getAncestorsURIsMinusClass(self, cls:owlready2.EntityClass) -> set[str]:
         ancestors_str = self.getAncestorsURIs(cls)
         ancestors_str.remove(cls.iri)
         return ancestors_str
 
-    def getAncestorsURIs(self, cls):
+    def getAncestorsURIs(self, cls:owlready2.EntityClass) -> set[str]:
         ancestors_str = set()
         for anc_cls in cls.ancestors():
             ancestors_str.add(anc_cls.iri)
         return ancestors_str
 
-    def getAncestorsNames(self, cls):
+    def getAncestorsNames(self, cls:owlready2.EntityClass) -> set[str]:
         ancestors_str = set()
         for anc_cls in cls.ancestors():
             ancestors_str.add(anc_cls.name)
         return ancestors_str
 
-    def getAncestors(self, cls):
+    def getAncestors(self, cls:owlready2.EntityClass) -> set[owlready2.ThingClass]:
         ancestors_str = set()
         for anc_cls in cls.ancestors():
             ancestors_str.add(anc_cls)
         return ancestors_str
 
-    def getDescendantURIs(self, cls):
+    def getDescendantURIs(self, cls:owlready2.EntityClass) -> set[str]:
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls.iri)
         return descendants_str
 
-    def getDescendantNames(self, cls):
+    def getDescendantNames(self, cls:owlready2.EntityClass) -> set[str]:
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls.name)
         return descendants_str
 
-    def getDescendants(self, cls):
+    def getDescendants(self, cls:owlready2.EntityClass) -> set[owlready2.ThingClass]:
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls)
         return descendants_str
 
-    def getDescendantNamesForClassName(self, cls_name: str):
+    def getDescendantNamesForClassName(self, cls_name: str) -> set[str]:
         cls = self.getClassByName(cls_name)
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls.name)
         return descendants_str
 
-    def isSubClassOf(self, sub_cls1, sup_cls2):
+    def isSubClassOf(self, sub_cls1:owlready2.EntityClass, sup_cls2:owlready2.EntityClass) -> bool:
         return sup_cls2 in sub_cls1.ancestors()
 
-    def isSuperClassOf(self, sup_cls1, sub_cls2):
+    def isSuperClassOf(self, sup_cls1:owlready2.EntityClass, sub_cls2:owlready2.EntityClass) -> bool:
         return sup_cls1 in sub_cls2.ancestors()
 
-    def getDomainURIs(self, prop):
+    def getDomainURIs(self, prop: owlready2.ObjectPropertyClass) -> set[str]:
         domain_uris = set()
         for cls in prop.domain:
             with contextlib.suppress(AttributeError):
                 domain_uris.add(cls.iri)
         return domain_uris
 
-    def getDatatypeRangeNames(self, prop):
+    def getDatatypeRangeNames(self, prop: owlready2.DataPropertyClass) -> set[str]:
         range_uris = set()
         for cls in prop.range:
             range_uris.add(cls.name)
         return range_uris
 
     # Only for object properties
-    def getRangeURIs(self, prop):
+    def getRangeURIs(self, prop: owlready2.ObjectPropertyClass) -> set[str]:
         range_uris = set()
         for cls in prop.range:
             with contextlib.suppress(AttributeError):
                 range_uris.add(cls.iri)
         return range_uris
 
-    def getInverses(self, prop):
+    def getInverses(self, prop: owlready2.ObjectPropertyClass) -> set[str]:
         inv_uris = set()
         for p in prop.inverse:
             inv_uris.add(p.iri)
         return inv_uris
 
-    def getClasses(self):
+    def getClasses(self) -> set[owlready2.EntityClass]:
         return self.getOntology().classes()
 
-    def getDataProperties(self):
+    def getDataProperties(self) -> set[owlready2.DataPropertyClass]:
         return self.getOntology().data_properties()
 
-    def getObjectProperties(self):
+    def getObjectProperties(self) -> set[owlready2.ObjectPropertyClass]:
         return self.getOntology().object_properties()
 
-    def getIndividuals(self):
+    def getIndividuals(self) -> set[owlready2.NamedIndividual]:
         return self.getOntology().individuals()
 
     def getGraph(self) -> rdflib.Graph:
         return self.graph
 
-    def queryGraph(self, query: str):
+    def queryGraph(self, query: str) -> list:
         results = self.graph.query(query)
         return list(results)
 
@@ -334,17 +334,17 @@ class OntologyAccess:
                     pass
         return
 
-    def getSynonymsNames(self, entity: owlready2.Thing) -> set:
+    def getSynonymsNames(self, entity: owlready2.Thing) -> set[str]:
         if entity.iri not in self.entityToSynonyms:
             return {}
         return self.entityToSynonyms[entity.iri]
 
-    def getAnnotationNames(self, entity: owlready2.Thing) -> set:
+    def getAnnotationNames(self, entity: owlready2.Thing) -> set[str]:
         if entity.iri not in self.allEntityAnnotations:
             return {}
         return self.allEntityAnnotations[entity.iri]
 
-    def getPrefferedLabels(self, entity: owlready2.Thing) -> set:
+    def getPrefferedLabels(self, entity: owlready2.Thing) -> set[str]:
         if entity.iri not in self.preferredLabels:
             return {}
         return self.preferredLabels[entity.iri]
