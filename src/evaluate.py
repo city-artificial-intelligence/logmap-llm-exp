@@ -93,7 +93,7 @@ def get_pred_pairs(pred_results_path: Path | str) -> pd.DataFrame:
     return pred_pairs
 
 
-def extend_results_with_labels(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:
+def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:
     df["Label"] = False
     for _, row in gt_df.iterrows():
         source = row["Source"]
