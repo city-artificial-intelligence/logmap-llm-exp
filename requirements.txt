@@ -1,0 +1,10 @@
+ruff
+matplotlib
+seaborn
+scikit-learn
+numpy
+pandas
+owlready2
+rdflib
+openai
+pydantic
