@@ -7,27 +7,44 @@ from src.onto_access import OntologyAccess
 
 
 class OntologyEntryAttr:
-    def __init__(self, class_uri: str | None, onto: OntologyAccess, class_id: str | None = None) -> None:
-        assert class_uri is not None or class_id is not None
+    def __init__(
+        self, class_uri: str | None, onto: OntologyAccess, onto_entry: owlready2.ThingClass | None = None
+    ) -> None:
+        assert class_uri is not None or onto_entry is not None
         if class_uri is not None:
-            self.class_id = onto.getClassByURI(class_uri)
+            self.thing_class = onto.getClassByURI(class_uri)
         else:
-            self.class_id = class_id
-        assert self.class_id is not None
-        self.annotation: dict[str : set | owlready2.ThingClass] = {"class": self.class_id}
+            self.thing_class = onto_entry
+        assert self.thing_class is not None
+        self.annotation: dict[str : set | owlready2.ThingClass] = {"class": self.thing_class}
         self.onto: OntologyAccess = onto
         self.annotate_entry(onto)
 
     def annotate_entry(self, onto: OntologyAccess) -> None:
-        LOGGER.debug(f"Annotating {self.class_id}")
-        self.annotation["children"] = onto.getDescendants(self.class_id)
-        self.annotation["parents"] = onto.getAncestors(self.class_id)
-        self.annotation["preffered_names"] = onto.getPrefferedLabels(self.class_id)
-        self.annotation["synonyms"] = onto.getSynonymsNames(self.class_id)
-        self.annotation["names"] = onto.getAnnotationNames(self.class_id)
+        LOGGER.debug(f"Annotating {self.thing_class}")
+        self.annotation["uri"] = self.thing_class.iri
+        self.annotation["preffered_names"] = onto.getPrefferedLabels(self.thing_class)
+        self.annotation["synonyms"] = onto.getSynonymsNames(self.thing_class)
+        self.annotation["all_names"] = onto.getAnnotationNames(self.thing_class)
+        self.annotation["parents"] = onto.getAncestors(self.thing_class, include_self=False)
+        self.annotation["children"] = onto.getDescendants(self.thing_class, include_self=False)
 
-    def get_all_entety_names(self) -> set[str]:
-        return self.annotation["names"]
+    def _get_entry_names(self, name_type: str) -> set[str]:
+        """Get the names of the entry.
+
+        Args:
+            name_type (str): The type of name to get, either "preffered", "synonyms", or "all_names".
+            entry (OntologyEntryAttr): The entry to get the names of.
+
+
+        Returns:
+            set[str]: The names of the entry.
+
+        """
+        return self.annotation[name_type]
+
+    def get_all_entity_names(self) -> set[str]:
+        return self.annotation["all_names"]
 
     def get_preffered_names(self) -> set[str]:
         return self.annotation["preffered_names"]
@@ -35,53 +52,37 @@ class OntologyEntryAttr:
     def get_synonyms(self) -> set[str]:
         return self.annotation["synonyms"]
 
-    def get_children(self, skip_itself: bool = True) -> set[owlready2.ThingClass]:
-        result = self.annotation["children"]
-        if skip_itself:
-            result = result.difference({self.class_id})
-        return result
+    def __wrap_owlready2_objects(self, owlready2_class: owlready2.ThingClass) -> OntologyEntryAttr:
+        return OntologyEntryAttr(class_uri=None, onto_entry=owlready2_class, onto=self.onto)
 
-    def get_parents(self, skip_itself: bool = True) -> set[owlready2.ThingClass]:
-        result = self.annotation["parents"]
-        if skip_itself:
-            result = result.difference({self.class_id})
-        return result
+    def __owlready_set2_objects_set(self, owlready2_set: set[owlready2.ThingClass]) -> set[OntologyEntryAttr]:
+        return {self.__wrap_owlready2_objects(owlready2_class) for owlready2_class in owlready2_set}
 
-    def get_direct_parents(self) -> set:
-        raise NotImplementedError
+    def get_children(self) -> set[OntologyEntryAttr]:
+        return self.__owlready_set2_objects_set(self.annotation["children"])
 
-    def get_direct_children(self) -> set:
-        raise NotImplementedError
+    def get_parents(self) -> set[OntologyEntryAttr]:
+        return self.__owlready_set2_objects_set(self.annotation["parents"])
 
-    def _get_entry_names(self, name_type: str, entry: owlready2.Thing) -> set[str]:
-        """Get the names of the entry.
+    def get_direct_relations(self, relation: str, relatives_getter: callable) -> set[OntologyEntryAttr]:
+        related_set: set = self.annotation[relation]
+        indirect_related = {rel for item in related_set for rel in relatives_getter(item, include_self=False)}
 
-        Args:
-            name_type (str): The type of name to get.
-            entry (owlready2.Thing): The entry to get the names of.
+        related_set.difference_update(indirect_related)
+        return {self.__wrap_owlready2_objects(entry_thing) for entry_thing in related_set}
 
+    def get_direct_parents(self) -> set[OntologyEntryAttr]:
+        return self.get_direct_relations("parents", self.onto.getAncestors)
 
-        Returns:
-            set: The names of the entry.
+    def get_direct_children(self) -> set[OntologyEntryAttr]:
+        return self.get_direct_relations("children", self.onto.getDescendants)
 
-        """
-        if name_type == "preffered":
-            names_func = self.onto.getPrefferedLabels
-        elif name_type == "synonyms":
-            names_func = self.onto.getSynonymsNames
-        elif name_type == "names":
-            names_func = self.onto.getAnnotationNames
-        return names_func(entry)
-
-    def get_attribute_relatives_names(
-        self, attribute_name: str, name_type: str, skip_itself: bool = True
-    ) -> list[set[str]]:
+    def get_attribute_relatives_names(self, attribute_name: str, name_type: str) -> list[set[str]]:
         """Get the names of the parents or children of the entry.
 
         Args:
             attribute_name (str): The attribute to get the names of.
             name_type (str): The type of name to get.
-            skip_itself (bool): Whether to skip the entry itself.
 
         Returns:
             list: The names of the parents or children of the entry.
@@ -89,42 +90,40 @@ class OntologyEntryAttr:
         """
         attribute_function = self.get_parents if attribute_name == "parents" else self.get_children
         return [
-            entry_names if (entry_names := self._get_entry_names(name_type, entry)) else {entry}
-            for entry in attribute_function(skip_itself=skip_itself)
+            entry_names if (entry_names := entry._get_entry_names(name_type)) else {entry}
+            for entry in attribute_function()
         ]
 
-    def get_parents_preferred_names(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("parents", "preffered", skip_itself=skip_itself)
+    def get_parents_preferred_names(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("parents", "preffered_names")
 
-    def get_childred_preferred_names(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("children", "preffered", skip_itself=skip_itself)
+    def get_children_preferred_names(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("children", "preffered_names")
 
-    def get_parents_synonyms(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("parents", "synonyms", skip_itself=skip_itself)
+    def get_parents_synonyms(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("parents", "synonyms")
 
-    def get_children_synonyms(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("children", "synonyms", skip_itself=skip_itself)
+    def get_children_synonyms(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("children", "synonyms")
 
-    def get_parents_names(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("parents", "names", skip_itself=skip_itself)
+    def get_parents_names(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("parents", "all_names")
 
-    def get_children_names(self, skip_itself: bool = True) -> list[set[str]]:
-        return self.get_attribute_relatives_names("children", "names", skip_itself=skip_itself)
+    def get_children_names(self) -> list[set[str]]:
+        return self.get_attribute_relatives_names("children", "all_names")
 
     def __repr__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: The string representation of the object's annotation.
-
-        """
-        return str(self.annotation)
+        """Return a string representation of the object."""
+        return str(self.thing_class)
 
     def __str__(self) -> str:
-        """Return a string representation of the object.
-
-        Returns:
-            str: The string representation of the object's annotation.
-
-        """
+        """Return a string representation of the object."""
         return str(self.annotation)
+
+    def __eq__(self, other: OntologyEntryAttr) -> bool:
+        """Check if this OntologyEntryAttr is equal to another OntologyEntryAttr."""
+        return self.thing_class == other.thing_class
+
+    def __hash__(self) -> int:
+        """Return the hash value of the object."""
+        return hash(self.thing_class)

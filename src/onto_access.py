@@ -181,44 +181,44 @@ class OntologyAccess:
                 classes.append(cls.iri)
         return classes
 
-    def getAncestorsURIsMinusClass(self, cls:owlready2.EntityClass) -> set[str]:
+    def getAncestorsURIsMinusClass(self, cls: owlready2.EntityClass) -> set[str]:
         ancestors_str = self.getAncestorsURIs(cls)
         ancestors_str.remove(cls.iri)
         return ancestors_str
 
-    def getAncestorsURIs(self, cls:owlready2.EntityClass) -> set[str]:
+    def getAncestorsURIs(self, cls: owlready2.EntityClass) -> set[str]:
         ancestors_str = set()
         for anc_cls in cls.ancestors():
             ancestors_str.add(anc_cls.iri)
         return ancestors_str
 
-    def getAncestorsNames(self, cls:owlready2.EntityClass) -> set[str]:
+    def getAncestorsNames(self, cls: owlready2.EntityClass) -> set[str]:
         ancestors_str = set()
         for anc_cls in cls.ancestors():
             ancestors_str.add(anc_cls.name)
         return ancestors_str
 
-    def getAncestors(self, cls:owlready2.EntityClass) -> set[owlready2.ThingClass]:
+    def getAncestors(self, cls: owlready2.EntityClass, include_self: bool = True) -> set[owlready2.ThingClass]:
         ancestors_str = set()
-        for anc_cls in cls.ancestors():
+        for anc_cls in cls.ancestors(include_self=include_self):
             ancestors_str.add(anc_cls)
         return ancestors_str
 
-    def getDescendantURIs(self, cls:owlready2.EntityClass) -> set[str]:
+    def getDescendantURIs(self, cls: owlready2.EntityClass) -> set[str]:
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls.iri)
         return descendants_str
 
-    def getDescendantNames(self, cls:owlready2.EntityClass) -> set[str]:
+    def getDescendantNames(self, cls: owlready2.EntityClass) -> set[str]:
         descendants_str = set()
         for desc_cls in cls.descendants():
             descendants_str.add(desc_cls.name)
         return descendants_str
 
-    def getDescendants(self, cls:owlready2.EntityClass) -> set[owlready2.ThingClass]:
+    def getDescendants(self, cls: owlready2.EntityClass, include_self: bool = True) -> set[owlready2.ThingClass]:
         descendants_str = set()
-        for desc_cls in cls.descendants():
+        for desc_cls in cls.descendants(include_self=include_self):
             descendants_str.add(desc_cls)
         return descendants_str
 
@@ -229,10 +229,10 @@ class OntologyAccess:
             descendants_str.add(desc_cls.name)
         return descendants_str
 
-    def isSubClassOf(self, sub_cls1:owlready2.EntityClass, sup_cls2:owlready2.EntityClass) -> bool:
+    def isSubClassOf(self, sub_cls1: owlready2.EntityClass, sup_cls2: owlready2.EntityClass) -> bool:
         return sup_cls2 in sub_cls1.ancestors()
 
-    def isSuperClassOf(self, sup_cls1:owlready2.EntityClass, sub_cls2:owlready2.EntityClass) -> bool:
+    def isSuperClassOf(self, sup_cls1: owlready2.EntityClass, sub_cls2: owlready2.EntityClass) -> bool:
         return sup_cls1 in sub_cls2.ancestors()
 
     def getDomainURIs(self, prop: owlready2.ObjectPropertyClass) -> set[str]:
