@@ -2,20 +2,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Callable
 
 import numpy as np
-import pandas as pd
 from tqdm import tqdm
 
-from src.constants import PRED_COL_DIVIDER, BinaryOutputFormat, LLMCallOutput
-from src.evaluate import (
-    extend_preds_with_labels_info,
-    get_gt_pairs,
-    get_pred_pairs,
-)
+from src.constants import LOGGER, BinaryOutputFormat, LLMCallOutput
 from src.LLM_servers.openai import OpenAIServer
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
-from src.utils import calculate_logpropgs_confidence
-
+from src.utils import calculate_logpropgs_confidence, retry
 
 
 def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
@@ -24,20 +17,29 @@ def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
         return response.parsed.answer
     raise NotImplementedError()
 
+
+@retry(max_retries=1)
 def process_sample(
-    candidate_pairs_line: str,
+    candidates_pair: tuple[str],
     llm_oracle: OpenAIServer,
     onto_src: OntologyAccess,
     onto_tgt: OntologyAccess,
     model: str,
     prompt_function: Callable,
-    one_more_time: bool = True,
-) -> tuple[str, tuple[int, int], float]:
-    """Process a single line: generate a prompt, send it to the LLM, and extract the response."""
-    try:
-        source = candidate_pairs_line.split(PRED_COL_DIVIDER)[0]
-        target = candidate_pairs_line.split(PRED_COL_DIVIDER)[1]
+) -> tuple[list, tuple[int, int], float]:
+    """Process a single line: generate a prompt, send it to the LLM, and extract the response.
 
+    If an exception occurs, the function is retried once.
+
+    Returns:
+        tuple[list, tuple[int, int], float]: The results, token usage, and confidence.
+        - results: list of source, target, answer, confidence
+        - token_usage: tuple of input tokens, output tokens
+        - confidence: float
+
+    """
+    source, target = candidates_pair
+    try:
         try:
             prompt = prompt_function(OntologyEntryAttr(source, onto_src), OntologyEntryAttr(target, onto_tgt))
         except AssertionError:
@@ -51,30 +53,27 @@ def process_sample(
         confidence = calculate_logpropgs_confidence(response.logprobs)
 
         token_usage = (input_tokens, output_tokens)
-        result = f"{source},{target},{answer},{confidence}"
-        return result, token_usage, confidence
+        return [source, target, answer, confidence], token_usage, confidence
 
-    except Exception:
-        if one_more_time:
-            return process_sample(
-                candidate_pairs_line, llm_oracle, onto_src, onto_tgt, model, prompt_function, one_more_time=False
-            )
-        return f"{source}|{target}|ERROR|{np.nan}", (np.nan, np.nan), np.nan
+    except Exception as e:  # noqa: BLE001
+        LOGGER.error(f"Error processing line: {candidates_pair}: {e}", exc_info=True)
+        return [source, target, "error", str(np.nan)], (np.nan, np.nan), np.nan
+
 
 def samples_process(
-    candidate_pairs_lines: list[str],
+    candidate_pairs: list[tuple[str]],
     llm_oracle: OpenAIServer,
     onto_src: OntologyAccess,
     onto_tgt: OntologyAccess,
     model: str,
     prompt_function: Callable,
-) -> tuple[list[str], list[tuple[int, int]], list[float]]:
+) -> tuple[list[tuple], list[tuple[int, int]], list[float]]:
     """Process lines sequentially."""
     results = []
     tokens_usage = []
     confidences = []
 
-    for line in tqdm(candidate_pairs_lines, desc=f"Processing Lines {prompt_function.__name__}"):
+    for line in tqdm(candidate_pairs, desc=f"Processing Lines {prompt_function.__name__}"):
         result, token_usage, confidence = process_sample(line, llm_oracle, onto_src, onto_tgt, model, prompt_function)
         results.append(result)
         tokens_usage.append(token_usage)
@@ -82,24 +81,43 @@ def samples_process(
 
     return results, tokens_usage, confidences
 
+
 def parallel_samples_process(
-    candidate_pairs_lines: list[str],
+    candidate_pairs: list[tuple[str]],
     llm_oracle: OpenAIServer,
     onto_src: OntologyAccess,
     onto_tgt: OntologyAccess,
     model: str,
     max_workers: int,
     prompt_function: Callable,
-) -> tuple[list[str], list[tuple[int, int]], list[float]]:
-    """Process lines in parallel, with progress tracking using tqdm."""
+) -> tuple[list[tuple], list[tuple[int, int]], list[float]]:
+    """Process lines in parallel, with progress tracking using tqdm.
+
+    Args:
+        candidate_pairs (list[tuple[str]]): The list of candidate pairs to process.
+        llm_oracle: The LLM oracle server.
+        onto_src: The source ontology.
+        onto_tgt The target ontology.
+        model: The model to use.
+        max_workers: The number of workers to use.
+        prompt_function: The prompt function to use to generate the prompt, having the signature:
+            prompt_function(src: OntologyEntryAttr, tgt: OntologyEntryAttr) -> str.
+
+    Returns:
+        tuple[list[tuple], list[tuple[int, int]], list[float]]:
+            - results: list of tuples, each with source, target, answer, confidence
+            - tokens_usage: list of tuples, each with input tokens, output tokens,
+            - confidences: list of floats
+
+    """
     results = []
     tokens_usage = []
     confidences = []
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_line = {
-            executor.submit(process_sample, line, llm_oracle, onto_src, onto_tgt, model, prompt_function): line
-            for line in candidate_pairs_lines
+            executor.submit(process_sample, pair, llm_oracle, onto_src, onto_tgt, model, prompt_function): pair
+            for pair in candidate_pairs
         }
 
         for future in tqdm(

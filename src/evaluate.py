@@ -104,7 +104,7 @@ def get_gt_pairs(gt_positive_pairs_path: Path | str, sep: str = GT_COL_DIVIDER) 
 
 
 def get_pred_pairs(pred_results_path: Path | str, sep: str = RESULTS_SEPARATOR) -> pd.DataFrame:
-    return pd.read_csv(pred_results_path, sep)
+    return pd.read_csv(pred_results_path, sep=sep)
 
 
 def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:
