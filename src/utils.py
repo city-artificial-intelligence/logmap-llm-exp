@@ -23,6 +23,7 @@ def write_lines(results: list[str], path: Path) -> None:
     if not path.parent.exists():
         path.parent.mkdir(parents=True)
     with path.open("w") as file:
+        file.write("Source,Target,Prediction,Confidence\n")
         for line in results:
             file.write(line + "\n")
     return

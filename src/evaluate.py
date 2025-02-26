@@ -8,6 +8,17 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
+from src.formatting import format_gt_pairs_filepath, format_oracle_predictions_filepath, format_from_run_path
+
+def get_predictions_with_gt(
+    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
+    pred_results_path, _, _ = format_from_run_path(run_path, set_name, model, exp_name)
+    gt_df = get_gt_pairs(gt_positive_pairs_path)
+    pred_df = get_pred_pairs(pred_results_path)
+
+    return extend_preds_with_labels_info(pred_df, gt_df)
 
 
 def plot_usage_histograms(
@@ -39,6 +50,7 @@ def analyze_results(
     plot_confusion_matrix: bool = True,
     subtitle: str = "",
     cm_save_path: Path | None = None,
+    stats_path: Path | None = None,
 ) -> dict:
     accuracy = accuracy_score(df["Label"], df["Prediction"])
     precision = precision_score(df["Label"], df["Prediction"])
@@ -51,6 +63,13 @@ def analyze_results(
         print(f"Precision: {precision:.2f}")
         print(f"Recall: {recall:.2f}")
         print(f"F1 Score: {f1:.2f}")
+    
+    if stats_path:
+        with open(stats_path, "w") as file:
+            file.write(f"Accuracy: {accuracy:.2f}\n")
+            file.write(f"Precision: {precision:.2f}\n")
+            file.write(f"Recall: {recall:.2f}\n")
+            file.write(f"F1 Score: {f1:.2f}\n")
 
     if plot_confusion_matrix:
         plt.figure(figsize=(4, 4))
@@ -85,7 +104,7 @@ def get_gt_pairs(gt_positive_pairs_path: Path | str) -> pd.DataFrame:
 
 
 def get_pred_pairs(pred_results_path: Path | str) -> pd.DataFrame:
-    pred_pairs = pd.read_csv(pred_results_path, sep="|", header=None)
+    pred_pairs = pd.read_csv(pred_results_path, sep=",", header=None, skiprows=1)
     if len(pred_pairs.columns) == 3:
         pred_pairs.columns = ["Source", "Target", "Prediction"]
     else:
