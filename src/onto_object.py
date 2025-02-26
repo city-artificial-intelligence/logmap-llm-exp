@@ -29,6 +29,10 @@ class OntologyEntryAttr:
         self.annotation["parents"] = onto.getAncestors(self.thing_class, include_self=False)
         self.annotation["children"] = onto.getDescendants(self.thing_class, include_self=False)
 
+        for key in ["preffered_names", "synonyms", "all_names"]:
+            if not self.annotation[key]:
+                self.annotation[key] = {str(self.thing_class.name)}
+
     def _get_entry_names(self, name_type: str) -> set[str]:
         """Get the names of the entry.
 
@@ -64,31 +68,61 @@ class OntologyEntryAttr:
     def get_parents(self) -> set[OntologyEntryAttr]:
         return self.__owlready_set2_objects_set(self.annotation["parents"])
 
-    def get_direct_relations(self, relation: str, relatives_getter: callable) -> set[OntologyEntryAttr]:
-        related_set: set = self.annotation[relation]
-        indirect_related = {rel for item in related_set for rel in relatives_getter(item, include_self=False)}
+    def __get_relatives_by_levels(self, max_level: int, relatives_func: callable) -> dict[int, OntologyEntryAttr]:
+        """Get the relatives of the entry by all levels up to max_level."""
+        current_level = 0
+        current_level_entries: set[owlready2.ThingClass] = {self.thing_class}
+        relatives_by_levels = {}
 
-        related_set.difference_update(indirect_related)
-        return {self.__wrap_owlready2_objects(entry_thing) for entry_thing in related_set}
+        while current_level_entries and current_level <= max_level:
+            relatives_by_levels[current_level] = {
+                self.__wrap_owlready2_objects(entry) for entry in current_level_entries
+            }
+            current_level_relatives = set()
+            current_entries_indirect_relatives = set()
+
+            for entry in current_level_entries:
+                entity_relatives = relatives_func(entry, include_self=False)
+                current_level_relatives.update(entity_relatives)
+
+                for relative in entity_relatives:
+                    current_entries_indirect_relatives.update(relatives_func(relative, include_self=False))
+
+            current_level_entries = current_level_relatives.difference(current_entries_indirect_relatives)
+            current_level += 1
+
+        return relatives_by_levels
+
+    def get_parents_by_levels(self, max_level: int = 3) -> dict[int, OntologyEntryAttr]:
+        """Obtain the parents of the entry by all levels up to max_level."""
+        return self.__get_relatives_by_levels(max_level, self.onto.getAncestors)
+
+    def get_children_by_levels(self, max_level: int = 3) -> dict[int, OntologyEntryAttr]:
+        """Obtain the children of the entry by all levels up to max_level."""
+        return self.__get_relatives_by_levels(max_level, self.onto.getDescendants)
 
     def get_direct_parents(self) -> set[OntologyEntryAttr]:
-        return self.get_direct_relations("parents", self.onto.getAncestors)
+        """Return set of direct parents of the entry."""
+        parents_by_levels = self.__get_relatives_by_levels(1, self.onto.getAncestors)
+        return parents_by_levels[1] if len(parents_by_levels) > 1 else set()
 
     def get_direct_children(self) -> set[OntologyEntryAttr]:
-        return self.get_direct_relations("children", self.onto.getDescendants)
+        """Return set of direct children of the entry."""
+        children_by_levels = self.__get_relatives_by_levels(1, self.onto.getDescendants)
+        return children_by_levels[1] if len(children_by_levels) > 1 else set()
 
-    def get_attribute_relatives_names(self, attribute_name: str, name_type: str) -> list[set[str]]:
+    def get_attribute_relatives_names(self, relatives_name: str, name_type: str) -> list[set[str]]:
         """Get the names of the parents or children of the entry.
 
         Args:
-            attribute_name (str): The attribute to get the names of.
+            relatives_name (str): The relative type to get the names of.
             name_type (str): The type of name to get.
 
         Returns:
             list: The names of the parents or children of the entry.
 
         """
-        attribute_function = self.get_parents if attribute_name == "parents" else self.get_children
+        attribute_function = self.get_parents if relatives_name == "parents" else self.get_children
         return [
             entry_names if (entry_names := entry._get_entry_names(name_type)) else {entry}
             for entry in attribute_function()
