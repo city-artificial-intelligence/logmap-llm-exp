@@ -8,13 +8,17 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
-from src.formatting import format_gt_pairs_filepath, format_oracle_predictions_filepath, format_from_run_path
+
+from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
+from src.formatting import format_gt_pairs_filepath, format_storing_pathes_from_run_path
+from src.utils import save_run_results
+
 
 def get_predictions_with_gt(
     run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
-    pred_results_path, _, _ = format_from_run_path(run_path, set_name, model, exp_name)
+    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
     gt_df = get_gt_pairs(gt_positive_pairs_path)
     pred_df = get_pred_pairs(pred_results_path)
 
@@ -58,18 +62,14 @@ def analyze_results(
     f1 = f1_score(df["Label"], df["Prediction"])
     conf_matrix = confusion_matrix(df["Label"], df["Prediction"])
 
+    metrics = {"Accuracy": accuracy, "Precision": precision, "Recall": recall, "F1 Score": f1}
+
     if print_results:
-        print(f"Accuracy: {accuracy:.2f}")
-        print(f"Precision: {precision:.2f}")
-        print(f"Recall: {recall:.2f}")
-        print(f"F1 Score: {f1:.2f}")
-    
+        for metric, value in metrics.items():
+            print(f"{metric}: {value:.3f}")
+
     if stats_path:
-        with open(stats_path, "w") as file:
-            file.write(f"Accuracy: {accuracy:.2f}\n")
-            file.write(f"Precision: {precision:.2f}\n")
-            file.write(f"Recall: {recall:.2f}\n")
-            file.write(f"F1 Score: {f1:.2f}\n")
+        save_run_results(list(metrics.items()), stats_path, RESULTS_SEPARATOR, columns=["Metric", "Value"])
 
     if plot_confusion_matrix:
         plt.figure(figsize=(4, 4))
@@ -94,8 +94,8 @@ def analyze_results(
     return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1, "conf_matrix": conf_matrix}
 
 
-def get_gt_pairs(gt_positive_pairs_path: Path | str) -> pd.DataFrame:
-    gt_positive_pairs = pd.read_csv(gt_positive_pairs_path, sep="\t", header=None)
+def get_gt_pairs(gt_positive_pairs_path: Path | str, sep: str = GT_COL_DIVIDER) -> pd.DataFrame:
+    gt_positive_pairs = pd.read_csv(gt_positive_pairs_path, sep=sep, header=None)
     if len(gt_positive_pairs.columns) == 3:
         gt_positive_pairs.columns = ["Source", "Target", "Label"]
     else:
@@ -103,13 +103,8 @@ def get_gt_pairs(gt_positive_pairs_path: Path | str) -> pd.DataFrame:
     return gt_positive_pairs
 
 
-def get_pred_pairs(pred_results_path: Path | str) -> pd.DataFrame:
-    pred_pairs = pd.read_csv(pred_results_path, sep=",", header=None, skiprows=1)
-    if len(pred_pairs.columns) == 3:
-        pred_pairs.columns = ["Source", "Target", "Prediction"]
-    else:
-        pred_pairs.columns = ["Source", "Target", "Prediction", "Confidence"]
-    return pred_pairs
+def get_pred_pairs(pred_results_path: Path | str, sep: str = RESULTS_SEPARATOR) -> pd.DataFrame:
+    return pd.read_csv(pred_results_path, sep)
 
 
 def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:

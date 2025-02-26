@@ -1,9 +1,15 @@
-import pandas as pd
+# ruff: noqa: T201, T203
 from pprint import pprint
+
+import pandas as pd
+
+from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
 
 
-def print_results_entry(res_df:pd.DataFrame, onto_tgt, onto_src, pair_type:str="FP", idx:int=0) -> None:
+def print_results_entry(
+    res_df: pd.DataFrame, onto_tgt: OntologyAccess, onto_src: OntologyAccess, pair_type: str = "FP", idx: int = 0
+) -> None:
     source_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Source"]
     target_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Target"]
 

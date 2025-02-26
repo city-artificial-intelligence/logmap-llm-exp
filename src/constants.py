@@ -29,5 +29,6 @@ class LLMCallOutput(BaseModel):
     parsed: BaseModel | None
 
 
-PRED_COL_DIVIDER = "|"
+PAIRS_SEPARATOR = "|"
 GT_COL_DIVIDER = "\t"
+RESULTS_SEPARATOR = ","
