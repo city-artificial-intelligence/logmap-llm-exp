@@ -1,17 +1,7 @@
 import time
 from pathlib import Path
 
-from config.config import DATA_DIR, METRICS_DIR, OUTPUTS_DIR, RUN_DIR
-
-
-def format_oracle_predictions_filepath(set_name: str, model: str, exp_name: str) -> Path:
-    return OUTPUTS_DIR / "llm_oracle_results" / f"{set_name}_{model}_{exp_name}.txt"
-
-
-def format_confusion_matrix_filepath(set_name: str, model: str, exp_name: str, suffix: str = "") -> Path:
-    if suffix:
-        return METRICS_DIR / "confusion_matrices" / f"{set_name}_{model}_{exp_name}_{suffix}.png"
-    return METRICS_DIR / "confusion_matrices" / f"{set_name}_{model}_{exp_name}.png"
+from config.config import DATA_DIR, RUN_DIR
 
 
 def format_gt_pairs_filepath(dataset_path: str, set_name: str) -> Path:
