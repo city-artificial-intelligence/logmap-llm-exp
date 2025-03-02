@@ -91,7 +91,7 @@ def analyze_results(
             plt.savefig(cm_save_path)
         plt.show()
 
-    return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1, "conf_matrix": conf_matrix}
+    return {**metrics, "confusion matrix": conf_matrix}
 
 
 def get_gt_pairs(gt_positive_pairs_path: Path | str, sep: str = GT_COL_DIVIDER) -> pd.DataFrame:
