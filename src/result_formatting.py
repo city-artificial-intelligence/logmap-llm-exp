@@ -16,7 +16,7 @@ def print_results_entry(
     try:
         source_entry = OntologyEntryAttr(source_uri, onto_src)
         target_entry = OntologyEntryAttr(target_uri, onto_tgt)
-    except Exception:
+    except AssertionError:
         source_entry = OntologyEntryAttr(source_uri, onto_tgt)
         target_entry = OntologyEntryAttr(target_uri, onto_src)
 

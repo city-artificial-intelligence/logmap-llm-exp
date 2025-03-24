@@ -18,7 +18,9 @@ def format_run_path(suffix: str = "") -> Path:
     return RUN_DIR / (f"{date}_{time_now}" if not suffix else f"{date}_{time_now}_{suffix}")
 
 
-def format_storing_pathes_from_run_path(run_path: str, set_name: str, model: str, exp_name: str) -> Path:
+def format_storing_pathes_from_run_path(
+    run_path: str, set_name: str, model: str, exp_name: str
+) -> tuple[Path, Path, Path]:
     path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results.csv"
     path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats.txt"
     path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}.png"

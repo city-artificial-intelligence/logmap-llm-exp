@@ -4,3 +4,5 @@ __pycache__/
 .vscode/
 .ruff_cache/
 fma.body.owl
+playground_files/
+venv/
