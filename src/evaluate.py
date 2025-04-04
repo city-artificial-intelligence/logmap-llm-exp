@@ -10,6 +10,7 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 
 from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
+from config.config import RUN_DIR
 from src.formatting import format_gt_pairs_filepath, format_storing_pathes_from_run_path
 from src.utils import save_run_results
 
@@ -126,3 +127,26 @@ def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.D
         axis=1,
     )
     return df
+
+
+def store_run_metrics_df(exp_names: list, run_path: Path, dataset_name: str, set_name: str, model: str) -> pd.DataFrame:
+    results_data = []
+    for exp_name in exp_names:
+        _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
+        stats = pd.read_csv(stats_path, index_col=0).T
+        results_data.append(
+            {
+                "Experiment": exp_name,
+                **{key: stats[key].to_numpy()[0] for key in stats.columns},
+                "Dataset": dataset_name,
+                "Set": set_name,
+                "Model": model,
+            }
+        )
+    results_df = pd.DataFrame(results_data).round(4)
+    results_df.to_csv(run_path / "results.csv", index=False)
+    return results_df
+
+
+def read_run_metrics_df(run_subdir: str) -> pd.DataFrame:
+    return pd.read_csv(RUN_DIR / run_subdir / "results.csv")
