@@ -8,6 +8,15 @@ SUBSET_TO_DATASET_MAP = {
     set_name: dataset_name for dataset_name, set_names in DATASET_SUBSETS_MAP.items() for set_name in set_names
 }
 
+PROMPT_EXPERIMENTS = [
+    "direct_entity",
+    "direct_entity_ontological",
+    "sequential_hierarchy",
+    "sequential_hierarchy_ontological",
+    "direct_entity_with_synonyms",
+    "sequential_hierarchy_with_synonyms",
+]
+
 RUNS_METADATA = [
     ("2025-04-04_19-41-28", "gemini-2.0-flash", "human-mouse", "anatomy"),
     ("2025-04-04_19-23-47", "gemini-2.0-flash-lite", "human-mouse", "anatomy"),

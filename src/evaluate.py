@@ -139,7 +139,7 @@ def store_run_metrics_df(exp_names: list, run_path: Path, dataset_name: str, set
                 "Experiment": exp_name,
                 **{key: stats[key].to_numpy()[0] for key in stats.columns},
                 "Dataset": dataset_name,
-                "Set": set_name,
+                "SubSet": set_name,
                 "Model": model,
             }
         )
