@@ -18,6 +18,8 @@ PROMPT_EXPERIMENTS = [
 ]
 
 RUNS_METADATA = [
+    ("2025-04-10_22-11-36", "gemini-2.0-flash", "ncit-doid", "bioml-2024"),
+    ("2025-04-10_00-33-19", "gemini-2.0-flash-lite", "ncit-doid", "bioml-2024"),
     ("2025-04-06_22-05-02", "gemini-2.0-flash-lite", "omim-ordo", "bioml-2024"),
     ("2025-04-06_19-27-41", "gemini-2.0-flash", "omim-ordo", "bioml-2024"),
     ("2025-04-06_14-51-00", "gemini-2.0-flash-lite", "fma-nci", "largebio"),
