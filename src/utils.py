@@ -31,7 +31,7 @@ def retry(max_retries: int = 1) -> Callable[[Callable[..., Any]], Callable[..., 
     return decorator
 
 
-def calculate_logpropgs_confidence(log_probs: dict) -> float:
+def calculate_logpropgs_confidence(log_probs: list) -> float:
     for pred_tocken_info in log_probs:
         if pred_tocken_info["token"].strip() not in ["true", "false"]:
             continue
@@ -40,8 +40,8 @@ def calculate_logpropgs_confidence(log_probs: dict) -> float:
         negative_logprob = max([e["logprob"] for e in top_logprobs if e["token"].strip() == "false"], default=np.nan)
         break
     else:
-        positive_logprob = np.nan
-        negative_logprob = np.nan
+        positive_logprob = 0.0
+        negative_logprob = 0.0
     return np.nanmax([np.exp(positive_logprob), np.exp(negative_logprob)])
 
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Callable
 
@@ -38,13 +40,16 @@ def process_sample(
         - confidence: float
 
     """
-    source, target = candidates_pair
-    try:
+    if len(candidates_pair) == 2:
+        source, target = candidates_pair
         try:
             prompt = prompt_function(OntologyEntryAttr(source, onto_src), OntologyEntryAttr(target, onto_tgt))
         except AssertionError:
             prompt = prompt_function(OntologyEntryAttr(target, onto_src), OntologyEntryAttr(source, onto_tgt))
+    else:
+        source, target, prompt = candidates_pair
 
+    try:
         response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
         answer = extract_llm_compeletion_answer(response)
 
@@ -85,8 +90,8 @@ def samples_process(
 def parallel_samples_process(
     candidate_pairs: list[tuple[str]],
     llm_oracle: OpenAIServer,
-    onto_src: OntologyAccess,
-    onto_tgt: OntologyAccess,
+    onto_src: OntologyAccess | None,
+    onto_tgt: OntologyAccess | None,
     model: str,
     max_workers: int,
     prompt_function: Callable,
