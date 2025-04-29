@@ -153,10 +153,10 @@ def prompt_sequential_hierarchy(src_entity: OntologyEntryAttr, tgt_entity: Ontol
 
 # Natural language prompts with synonyms
 
-def prompt_direct_entity_with_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, onto_src, onto_tgt) -> str:
+def prompt_direct_entity_with_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr) -> str:
     """Natural language prompt that includes synonyms for a more intuitive comparison."""
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = (
-        select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity, onto_src, onto_tgt)
+        select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
     )
 
     src_synonyms_text = (
@@ -178,9 +178,7 @@ def prompt_direct_entity_with_synonyms(src_entity: OntologyEntryAttr, tgt_entity
 
 
 def prompt_sequential_hierarchy_with_synonyms(src_entity: OntologyEntryAttr,
-                                               tgt_entity: OntologyEntryAttr,
-                                               onto_src,
-                                               onto_tgt) -> str:
+                                               tgt_entity: OntologyEntryAttr) -> str:
     """
     Generates a natural language prompt asking whether two ontology entities (with synonyms and hierarchy)
     represent the same concept (True/False).
@@ -191,8 +189,8 @@ def prompt_sequential_hierarchy_with_synonyms(src_entity: OntologyEntryAttr,
     best_sequential_hierarchy_with_synonyms = select_best_sequential_hierarchy_with_synonyms(
                                                     src_entity.get_parents_by_levels(max_level=2),
                                                     tgt_entity.get_parents_by_levels(max_level=2),
-                                                    onto_src,
-                                                    onto_tgt
+                                                    src_entity,
+                                                    tgt_entity
                                                 )
     
     (src_syns, src_p1_syns, src_p2_syns,

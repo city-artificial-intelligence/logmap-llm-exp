@@ -40,7 +40,7 @@ def format_hierarchy(hierarchy_dict: dict[int, set[OntologyEntryAttr]], no_level
         return formatted
     return "\n".join(formatted)
 
-def select_best_direct_entity_names_with_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, onto_src, onto_tgt, add_thing: bool = True) -> list:
+def select_best_direct_entity_names_with_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, add_thing: bool = True) -> list:
     """Selects preferred names and synonyms for source and target entities and their direct parents."""
 
     def get_parent_name(entity):
@@ -53,9 +53,9 @@ def select_best_direct_entity_names_with_synonyms(src_entity: OntologyEntryAttr,
     def get_clean_synonyms(entity, is_src):
         synonyms = list(entity.get_synonyms())
         if is_src:
-            entity_class = str(onto_src.getClassByURI(entity.annotation["uri"])).split('.')[-1]
+            entity_class = str(src_entity.onto.getClassByURI(entity.annotation["uri"])).split('.')[-1]
         else:
-            entity_class = str(onto_tgt.getClassByURI(entity.annotation["uri"])).split('.')[-1]
+            entity_class = str(tgt_entity.onto.getClassByURI(entity.annotation["uri"])).split('.')[-1]
         return [] if len(synonyms) == 1 and synonyms[0] == entity_class else synonyms
 
     src_parent_name = get_parent_name(src_entity)
@@ -77,7 +77,7 @@ def select_best_direct_entity_names_with_synonyms(src_entity: OntologyEntryAttr,
     ]
 
 
-def select_best_sequential_hierarchy_with_synonyms(src_parents_by_levels, tgt_parents_by_levels, onto_src, onto_tgt):
+def select_best_sequential_hierarchy_with_synonyms(src_parents_by_levels, tgt_parents_by_levels, src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr):
     """Selects the best synonyms for an entity and its hierarchical parents."""
     def get_synonyms_and_class(parents_by_levels, idx, is_src):
         if len(parents_by_levels) > idx:
@@ -85,9 +85,9 @@ def select_best_sequential_hierarchy_with_synonyms(src_parents_by_levels, tgt_pa
             syns = entry.get_synonyms() if hasattr(entry, "get_synonyms") else []
 
             if is_src:
-                cls = str(onto_src.getClassByURI(entry.annotation["uri"])).split('.')[-1]
+                cls = str(src_entity.onto.getClassByURI(entry.annotation["uri"])).split('.')[-1]
             else:
-                cls = str(onto_tgt.getClassByURI(entry.annotation["uri"])).split('.')[-1]
+                cls = str(tgt_entity.onto.getClassByURI(entry.annotation["uri"])).split('.')[-1]
 
             return syns, cls
         return [], ""
