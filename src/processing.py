@@ -1,16 +1,58 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 from typing import Callable
 
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
 
 from src.constants import LOGGER, BinaryOutputFormat, LLMCallOutput
+from src.formatting import format_oracle_pairs_with_prompts_path
 from src.LLM_servers.openai import OpenAIServer
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
 from src.utils import calculate_logpropgs_confidence, retry
+
+
+def save_oracle_pairs_with_prompts(
+    oracle_candidate_pairs_path: Path,
+    src_onto_path: OntologyAccess,
+    tgt_onto_path: OntologyAccess,
+    prompt_functions: list[callable],
+    save_dir: Path,
+    sep: str,
+    max_workers: int = 1,
+) -> None:
+    base_pairs_df = pd.read_csv(oracle_candidate_pairs_path, sep=sep, header=None)
+
+    for row in tqdm(base_pairs_df.iterrows(), total=base_pairs_df.shape[0], desc="Adding prompts"):
+        src_uri, tgt_uri = row[1][0], row[1][1]
+        try:
+            src_entity = OntologyEntryAttr(src_uri, src_onto_path)
+            tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
+        except AssertionError:
+            src_entity = OntologyEntryAttr(tgt_uri, src_onto_path)
+            tgt_entity = OntologyEntryAttr(src_uri, tgt_onto_path)
+
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {
+                executor.submit(prompt_function, src_entity, tgt_entity): prompt_function
+                for prompt_function in prompt_functions
+            }
+            for future in futures:
+                prompt_function = futures[future]
+                prompt = future.result()
+                base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
+
+    save_dir.mkdir(parents=True, exist_ok=True)
+    for prompt_function in [*prompt_functions, None]:
+        new_file_path = format_oracle_pairs_with_prompts_path(prompt_function, save_dir)
+        columns = base_pairs_df.columns.tolist()[:2] + ([prompt_function.__name__] if prompt_function else [])
+        base_pairs_df[columns].to_csv(new_file_path, sep=sep, index=False, header=False)
+
+    return base_pairs_df
 
 
 def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:

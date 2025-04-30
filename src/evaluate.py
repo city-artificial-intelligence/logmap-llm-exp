@@ -1,7 +1,8 @@
-# ruff: noqa: T201
+# ruff: noqa: T201, T201, T203
 from __future__ import annotations
 
 from pathlib import Path
+from pprint import pprint
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,17 +10,19 @@ import pandas as pd
 import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 
-from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
 from config.config import RUN_DIR
+from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
 from src.formatting import format_gt_pairs_filepath, format_storing_pathes_from_run_path
+from src.onto_access import OntologyAccess
+from src.onto_object import OntologyEntryAttr
 from src.utils import save_run_results
 
 
 def get_predictions_with_gt(
-    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str
+    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str, suffix: str = ""
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
-    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
+    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
     gt_df = get_gt_pairs(gt_positive_pairs_path)
     pred_df = get_pred_pairs(pred_results_path)
 
@@ -150,3 +153,26 @@ def store_run_metrics_df(exp_names: list, run_path: Path, dataset_name: str, set
 
 def read_run_metrics_df(run_subdir: str) -> pd.DataFrame:
     return pd.read_csv(RUN_DIR / run_subdir / "results.csv")
+
+
+def print_results_entry(
+    res_df: pd.DataFrame, onto_tgt: OntologyAccess, onto_src: OntologyAccess, pair_type: str = "FP", idx: int = 0
+) -> None:
+    source_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Source"]
+    target_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Target"]
+
+    try:
+        source_entry = OntologyEntryAttr(source_uri, onto_src)
+        target_entry = OntologyEntryAttr(target_uri, onto_tgt)
+    except AssertionError:
+        source_entry = OntologyEntryAttr(source_uri, onto_tgt)
+        target_entry = OntologyEntryAttr(target_uri, onto_src)
+
+    print(f"Processing pair {idx} of type {pair_type}")
+    pprint("Source Entry:\n")
+    pprint(source_entry.annotation)
+    pprint("Target Entry:\n")
+    pprint(target_entry.annotation)
+
+    print(f"Parent of Source Concept: {source_entry.get_parents_preferred_names()}")
+    print(f"Parent of Target Concept: {target_entry.get_parents_preferred_names()}")

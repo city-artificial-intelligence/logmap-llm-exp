@@ -68,7 +68,7 @@ class OntologyEntryAttr:
     def get_parents(self) -> set[OntologyEntryAttr]:
         return self.__owlready_set2_objects_set(self.annotation["parents"])
 
-    def __get_relatives_by_levels(self, max_level: int, relatives_func: callable) -> dict[int, OntologyEntryAttr]:
+    def __get_relatives_by_levels(self, max_level: int, relatives_func: callable) -> dict[int, set[OntologyEntryAttr]]:
         """Get the relatives of the entry by all levels up to max_level."""
         current_level = 0
         current_level_entries: set[owlready2.ThingClass] = {self.thing_class}
@@ -93,11 +93,11 @@ class OntologyEntryAttr:
 
         return relatives_by_levels
 
-    def get_parents_by_levels(self, max_level: int = 3) -> dict[int, OntologyEntryAttr]:
+    def get_parents_by_levels(self, max_level: int = 3) -> dict[int, set[OntologyEntryAttr]]:
         """Obtain the parents of the entry by all levels up to max_level."""
         return self.__get_relatives_by_levels(max_level, self.onto.getAncestors)
 
-    def get_children_by_levels(self, max_level: int = 3) -> dict[int, OntologyEntryAttr]:
+    def get_children_by_levels(self, max_level: int = 3) -> dict[int, set[OntologyEntryAttr]]:
         """Obtain the children of the entry by all levels up to max_level."""
         return self.__get_relatives_by_levels(max_level, self.onto.getDescendants)
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import time
 from pathlib import Path
 
@@ -19,9 +21,34 @@ def format_run_path(suffix: str = "") -> Path:
 
 
 def format_storing_pathes_from_run_path(
-    run_path: str, set_name: str, model: str, exp_name: str
+    run_path: str, set_name: str, model: str, exp_name: str, suffix: str = ""
 ) -> tuple[Path, Path, Path]:
-    path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results.csv"
-    path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats.txt"
-    path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}.png"
+    path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results{suffix}.csv"
+    path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats{suffix}.txt"
+    path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}{suffix}.png"
     return path_to_results, path_to_stats, path_to_diagrams
+
+
+def format_oracle_pairs_with_prompts_path(prompt_function: callable | None, oracle_pairs_dir: Path) -> Path:
+    if prompt_function is None:
+        return oracle_pairs_dir / "logmap_mappings.csv"
+    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}.csv"
+
+
+def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str) -> Path:
+    return DATA_DIR / dataset_name / set_name / "oracle_pairs"
+
+
+def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[Path]:
+    onto_data_dir = DATA_DIR / dataset_name / set_name
+    source_ontology, target_ontology = set_name.split("-")
+
+    if dataset_name == "bioml-2024" or dataset_name == "anatomy":
+        source_path = onto_data_dir / f"{source_ontology}.owl"
+        target_path = onto_data_dir / f"{target_ontology}.owl"
+
+    if dataset_name == "largebio":
+        source_path = onto_data_dir / f"oaei_{source_ontology.upper()}_small_overlapping_{target_ontology}.owl"
+        target_path = onto_data_dir / f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
+
+    return source_path, target_path
