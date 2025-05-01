@@ -1,7 +1,7 @@
 DATASET_SUBSETS_MAP = {
-    "bioml-2024": {"ncit-doid", "omim-ordo", "snomed-fma.body", "snomed-ncit.neoplas", "snomed-ncit.pharm"},
-    "largebio": {"fma-nci", "fma-snomed", "snomed-nci"},
-    "anatomy": {"human-mouse", "mouse-human"},
+    "bioml-2024": ["ncit-doid", "omim-ordo", "snomed-fma.body", "snomed-ncit.neoplas", "snomed-ncit.pharm"],
+    "largebio": ["fma-nci", "fma-snomed", "snomed-nci"],
+    "anatomy": ["human-mouse"],
 }
 
 SUBSET_TO_DATASET_MAP = {

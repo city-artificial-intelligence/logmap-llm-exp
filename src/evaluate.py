@@ -141,7 +141,7 @@ def store_run_metrics_df(
     results_data = []
     for exp_name in exp_names:
         try:
-            _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
+            _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
             stats = pd.read_csv(stats_path, index_col=0).T
             results_data.append(
                 {
@@ -171,12 +171,8 @@ def print_results_entry(
     source_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Source"]
     target_uri = res_df[res_df["Type"] == pair_type].iloc[idx]["Target"]
 
-    try:
-        source_entry = OntologyEntryAttr(source_uri, onto_src)
-        target_entry = OntologyEntryAttr(target_uri, onto_tgt)
-    except AssertionError:
-        source_entry = OntologyEntryAttr(source_uri, onto_tgt)
-        target_entry = OntologyEntryAttr(target_uri, onto_src)
+    source_entry = OntologyEntryAttr(source_uri, onto_src)
+    target_entry = OntologyEntryAttr(target_uri, onto_tgt)
 
     print(f"Processing pair {idx} of type {pair_type}")
     pprint("Source Entry:\n")

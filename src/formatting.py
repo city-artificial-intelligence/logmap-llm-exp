@@ -39,20 +39,24 @@ def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str) -> Pat
     return DATA_DIR / dataset_name / set_name / "oracle_pairs"
 
 
-def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[Path]:
+def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[Path, Path]:
     onto_data_dir = DATA_DIR / dataset_name / set_name
     source_ontology, target_ontology = set_name.split("-")
 
-    if dataset_name == "bioml-2024" or dataset_name == "anatomy":
-        if '.' in target_ontology:
-            suffix = target_ontology.split('.')[-1]
+    if dataset_name == "anatomy":
+        target_filename = f"{source_ontology}.owl"
+        source_filename = f"{target_ontology}.owl"
+
+    if dataset_name == "bioml-2024":
+        if "." in target_ontology:
+            suffix = target_ontology.split(".")[-1]
             source_ontology = f"{source_ontology}.{suffix}"
-            
-        source_path = onto_data_dir / f"{source_ontology}.owl"
-        target_path = onto_data_dir / f"{target_ontology}.owl"
+
+        source_filename = f"{source_ontology}.owl"
+        target_filename = f"{target_ontology}.owl"
 
     if dataset_name == "largebio":
-        source_path = onto_data_dir / f"oaei_{source_ontology.upper()}_small_overlapping_{target_ontology}.owl"
-        target_path = onto_data_dir / f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
+        source_filename = f"oaei_{source_ontology.upper()}_small_overlapping_{target_ontology}.owl"
+        target_filename = f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
 
-    return source_path, target_path
+    return onto_data_dir / source_filename, onto_data_dir / target_filename

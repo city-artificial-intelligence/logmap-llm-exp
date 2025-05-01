@@ -29,12 +29,8 @@ def save_oracle_pairs_with_prompts(
 
     for row in tqdm(base_pairs_df.iterrows(), total=base_pairs_df.shape[0], desc="Adding prompts"):
         src_uri, tgt_uri = row[1][0], row[1][1]
-        try:
-            src_entity = OntologyEntryAttr(src_uri, src_onto_path)
-            tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
-        except AssertionError:
-            src_entity = OntologyEntryAttr(tgt_uri, src_onto_path)
-            tgt_entity = OntologyEntryAttr(src_uri, tgt_onto_path)
+        src_entity = OntologyEntryAttr(src_uri, src_onto_path)
+        tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
 
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
@@ -84,12 +80,9 @@ def process_sample(
     """
     if len(candidates_pair) == 2:
         source, target = candidates_pair
-        try:
-            prompt = prompt_function(OntologyEntryAttr(source, onto_src), OntologyEntryAttr(target, onto_tgt))
-        except AssertionError:
-            prompt = prompt_function(OntologyEntryAttr(target, onto_src), OntologyEntryAttr(source, onto_tgt))
+        prompt = prompt_function(OntologyEntryAttr(source, onto_src), OntologyEntryAttr(target, onto_tgt))
     else:
-        source, target, prompt = candidates_pair
+        source, target, prompt = candidates_pair[:3]
 
     try:
         response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
