@@ -8,8 +8,12 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from src.constants import LOGGER, BinaryOutputFormat, LLMCallOutput
-from src.formatting import format_oracle_pairs_with_prompts_path
+from src.constants import LOGGER, PAIRS_SEPARATOR, BinaryOutputFormat, LLMCallOutput
+from src.formatting import (
+    format_oracle_pairs_filepath,
+    format_oracle_pairs_precomputed_dir,
+    format_oracle_pairs_with_prompts_path,
+)
 from src.LLM_servers.openai import OpenAIServer
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
@@ -51,6 +55,31 @@ def save_oracle_pairs_with_prompts(
     return base_pairs_df
 
 
+def try_load_precomputed_oracle_pairs(
+    dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR
+) -> list[tuple[str]]:
+    oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name)
+
+    # Try path with prompts
+    if prompt_function is not None:
+        pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir)
+        if pairs_path.exists():
+            pairs_df = pd.read_csv(pairs_path, sep=sep, header=None)
+            return list(zip(pairs_df[0], pairs_df[1], pairs_df[2]))
+
+    # Try path without prompts
+    pairs_path = format_oracle_pairs_with_prompts_path(prompt_function=None, oracle_pairs_dir=oracle_pairs_dir)
+    if not pairs_path.exists():
+        # Fall back to legacy format
+        pairs_path = format_oracle_pairs_filepath(dataset_name, set_name)
+        if not pairs_path.exists():
+            msg = f"Oracle pairs file not found: {pairs_path}"
+            raise FileNotFoundError(msg)
+
+    pairs_df = pd.read_csv(pairs_path, sep=sep, header=None)
+    return list(zip(pairs_df[0], pairs_df[1]))
+
+
 def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
     """Extract the completion answer from the LLM response."""
     if isinstance(response.parsed, BinaryOutputFormat):
@@ -78,11 +107,12 @@ def process_sample(
         - confidence: float
 
     """
+    source, target = candidates_pair[:2]
+
     if len(candidates_pair) == 2:
-        source, target = candidates_pair
         prompt = prompt_function(OntologyEntryAttr(source, onto_src), OntologyEntryAttr(target, onto_tgt))
     else:
-        source, target, prompt = candidates_pair[:3]
+        prompt = candidates_pair[2]
 
     try:
         response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
@@ -98,28 +128,6 @@ def process_sample(
     except Exception as e:  # noqa: BLE001
         LOGGER.error(f"Error processing line: {candidates_pair}: {e}", exc_info=True)
         return [source, target, "error", str(np.nan)], (np.nan, np.nan), np.nan
-
-
-def samples_process(
-    candidate_pairs: list[tuple[str]],
-    llm_oracle: OpenAIServer,
-    onto_src: OntologyAccess,
-    onto_tgt: OntologyAccess,
-    model: str,
-    prompt_function: Callable,
-) -> tuple[list[tuple], list[tuple[int, int]], list[float]]:
-    """Process lines sequentially."""
-    results = []
-    tokens_usage = []
-    confidences = []
-
-    for line in tqdm(candidate_pairs, desc=f"Processing Lines {prompt_function.__name__}"):
-        result, token_usage, confidence = process_sample(line, llm_oracle, onto_src, onto_tgt, model, prompt_function)
-        results.append(result)
-        tokens_usage.append(token_usage)
-        confidences.append(confidence)
-
-    return results, tokens_usage, confidences
 
 
 def parallel_samples_process(

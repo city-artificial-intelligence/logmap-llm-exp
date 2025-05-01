@@ -6,39 +6,6 @@ from pathlib import Path
 from config.config import DATA_DIR, RUN_DIR
 
 
-def format_gt_pairs_filepath(dataset_path: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_path / set_name / "refs_equiv/full.tsv"
-
-
-def format_oracle_pairs_filepath(dataset_name: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_name / set_name / f"{dataset_name}-{set_name}-logmap_mappings_to_ask_oracle_user_llm.txt"
-
-
-def format_run_path(suffix: str = "") -> Path:
-    date = time.strftime("%Y-%m-%d")
-    time_now = time.strftime("%H-%M-%S")
-    return RUN_DIR / (f"{date}_{time_now}" if not suffix else f"{date}_{time_now}_{suffix}")
-
-
-def format_storing_pathes_from_run_path(
-    run_path: str, set_name: str, model: str, exp_name: str, suffix: str = ""
-) -> tuple[Path, Path, Path]:
-    path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results{suffix}.csv"
-    path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats{suffix}.txt"
-    path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}{suffix}.png"
-    return path_to_results, path_to_stats, path_to_diagrams
-
-
-def format_oracle_pairs_with_prompts_path(prompt_function: callable | None, oracle_pairs_dir: Path) -> Path:
-    if prompt_function is None:
-        return oracle_pairs_dir / "logmap_mappings.csv"
-    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}.csv"
-
-
-def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_name / set_name / "oracle_pairs"
-
-
 def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[Path, Path]:
     onto_data_dir = DATA_DIR / dataset_name / set_name
     source_ontology, target_ontology = set_name.split("-")
@@ -60,3 +27,44 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
         target_filename = f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
 
     return onto_data_dir / source_filename, onto_data_dir / target_filename
+
+
+def format_oracle_pairs_filepath(dataset_name: str, set_name: str) -> Path:
+    return DATA_DIR / dataset_name / set_name / f"{dataset_name}-{set_name}-logmap_mappings_to_ask_oracle_user_llm.txt"
+
+
+def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str, suffix: str = "") -> Path:
+    return DATA_DIR / dataset_name / set_name / f"oracle_pairs{suffix}"
+
+
+def format_oracle_pairs_with_prompts_path(prompt_function: callable | None, oracle_pairs_dir: Path) -> Path:
+    if prompt_function is None:
+        return oracle_pairs_dir / "logmap_mappings.csv"
+    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}.csv"
+
+
+def format_run_path(suffix: str = "") -> Path:
+    date = time.strftime("%Y-%m-%d")
+    time_now = time.strftime("%H-%M-%S")
+    return RUN_DIR / (f"{date}_{time_now}" if not suffix else f"{date}_{time_now}{suffix}")
+
+
+def format_storing_pathes_from_run_path(
+    run_path: str, set_name: str, model: str, exp_name: str, suffix: str = ""
+) -> tuple[Path, Path, Path]:
+    path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results{suffix}.csv"
+    path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats{suffix}.txt"
+    path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}{suffix}.png"
+    return path_to_results, path_to_stats, path_to_diagrams
+
+
+def format_gt_pairs_filepath(dataset_path: str, set_name: str) -> Path:
+    return DATA_DIR / dataset_path / set_name / "refs_equiv/full.tsv"
+
+
+def format_run_metrics_path(save_dir: Path, suffix: str = "") -> Path:
+    return save_dir / f"results{suffix}.csv"
+
+
+def format_combined_metrics_path(suffix: str = "") -> Path:
+    return RUN_DIR / f"all_runs_metrics{suffix}.csv"

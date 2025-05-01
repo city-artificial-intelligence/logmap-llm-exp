@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 
 from src.constants import PAIRS_SEPARATOR, RESULTS_SEPARATOR
-from src.formatting import format_oracle_pairs_precomputed_dir, format_oracle_pairs_with_prompts_path
 
 
 def retry(max_retries: int = 1) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
@@ -78,25 +77,11 @@ def save_run_results(
         columns: columns names for entries in the results.
 
     """
+    path.parent.mkdir(parents=True, exist_ok=True)
+
     if not columns:
         columns = ["Source", "Target", "Answer", "Confidence"]
-    if not path.parent.exists():
-        path.parent.mkdir(parents=True)
 
     results_df = pd.DataFrame(results, columns=columns)
     results_df.to_csv(path, sep=sep, index=False)
     return
-
-
-def load_precomputed_oracle_pairs(
-    dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR
-) -> list[tuple[str]]:
-    oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name)
-    pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir)
-
-    if not pairs_path.exists():
-        msg = f"Oracle pairs file not found: {pairs_path}"
-        raise FileNotFoundError(msg)
-
-    pairs_df = pd.read_csv(pairs_path, sep=sep, header=None)
-    return list(zip(pairs_df[0], pairs_df[1], pairs_df[2]))

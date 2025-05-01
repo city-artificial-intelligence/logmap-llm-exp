@@ -12,21 +12,10 @@ from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precisio
 
 from config.config import RUN_DIR
 from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
-from src.formatting import format_gt_pairs_filepath, format_storing_pathes_from_run_path
+from src.formatting import format_gt_pairs_filepath, format_run_metrics_path, format_storing_pathes_from_run_path
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
 from src.utils import save_run_results
-
-
-def get_predictions_with_gt(
-    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str, suffix: str = ""
-) -> tuple[pd.DataFrame, pd.DataFrame]:
-    gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
-    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
-    gt_df = get_gt_pairs(gt_positive_pairs_path)
-    pred_df = get_pred_pairs(pred_results_path)
-
-    return extend_preds_with_labels_info(pred_df, gt_df)
 
 
 def plot_usage_histograms(
@@ -135,6 +124,17 @@ def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.D
     return df
 
 
+def get_predictions_with_gt(
+    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str, suffix: str = ""
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
+    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
+    gt_df = get_gt_pairs(gt_positive_pairs_path)
+    pred_df = get_pred_pairs(pred_results_path)
+
+    return extend_preds_with_labels_info(pred_df, gt_df)
+
+
 def store_run_metrics_df(
     exp_names: list, run_path: Path, dataset_name: str, set_name: str, model: str, suffix: str = ""
 ) -> pd.DataFrame:
@@ -157,12 +157,14 @@ def store_run_metrics_df(
             continue
 
     results_df = pd.DataFrame(results_data).round(4)
-    results_df.to_csv(run_path / f"results{suffix}.csv", index=False)
+
+    results_df.to_csv(format_run_metrics_path(run_path, suffix), index=False)
     return results_df
 
 
 def read_run_metrics_df(run_subdir: str, suffix: str = "") -> pd.DataFrame:
-    return pd.read_csv(RUN_DIR / run_subdir / f"results{suffix}.csv")
+    run_metrics_path = format_run_metrics_path(RUN_DIR / run_subdir, suffix)
+    return pd.read_csv(run_metrics_path)
 
 
 def print_results_entry(
