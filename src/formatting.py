@@ -44,6 +44,10 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
     source_ontology, target_ontology = set_name.split("-")
 
     if dataset_name == "bioml-2024" or dataset_name == "anatomy":
+        if '.' in target_ontology:
+            suffix = target_ontology.split('.')[-1]
+            source_ontology = f"{source_ontology}.{suffix}"
+            
         source_path = onto_data_dir / f"{source_ontology}.owl"
         target_path = onto_data_dir / f"{target_ontology}.owl"
 

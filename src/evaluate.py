@@ -75,7 +75,7 @@ def analyze_results(
     if stats_path:
         save_run_results(list(metrics.items()), stats_path, RESULTS_SEPARATOR, columns=["Metric", "Value"])
 
-    if plot_confusion_matrix:
+    if plot_confusion_matrix or cm_save_path:
         plt.figure(figsize=(4, 4))
         sns.heatmap(
             conf_matrix,
@@ -89,11 +89,15 @@ def analyze_results(
         plt.xlabel("Predicted Label")
         plt.ylabel("True Label")
         plt.title(f"{subtitle}")
+
         if cm_save_path:
             if not cm_save_path.parent.exists():
                 cm_save_path.parent.mkdir(parents=True)
             plt.savefig(cm_save_path)
-        plt.show()
+
+        if plot_confusion_matrix:
+            plt.show()
+        plt.close()
 
     return {**metrics, "confusion matrix": conf_matrix}
 
