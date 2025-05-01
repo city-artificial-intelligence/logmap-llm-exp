@@ -60,13 +60,16 @@ def analyze_results(
     cm_save_path: Path | None = None,
     stats_path: Path | None = None,
 ) -> dict:
-    accuracy = accuracy_score(df["Label"], df["Prediction"])
-    precision = precision_score(df["Label"], df["Prediction"])
-    recall = recall_score(df["Label"], df["Prediction"])
-    f1 = f1_score(df["Label"], df["Prediction"])
     conf_matrix = confusion_matrix(df["Label"], df["Prediction"])
 
-    metrics = {"Accuracy": accuracy, "Precision": precision, "Recall": recall, "F1 Score": f1}
+    metrics = {
+        "Accuracy": accuracy_score(df["Label"], df["Prediction"]),
+        "Precision": precision_score(df["Label"], df["Prediction"]),
+        "Recall": recall_score(df["Label"], df["Prediction"]),
+        "F1 Score": f1_score(df["Label"], df["Prediction"]),
+        "Specificity": conf_matrix[0][0] / (conf_matrix[0][0] + conf_matrix[0][1]),
+        "Sensitivity": conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1]),
+    }
 
     if print_results:
         for metric, value in metrics.items():
@@ -116,12 +119,8 @@ def get_pred_pairs(pred_results_path: Path | str, sep: str = RESULTS_SEPARATOR) 
 
 
 def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:
-    df["Label"] = False
-    for _, row in gt_df.iterrows():
-        source = row["Source"]
-        target = row["Target"]
-        mask = (df["Source"] == source) & (df["Target"] == target) | (df["Source"] == target) & (df["Target"] == source)
-        df.loc[mask, "Label"] = True
+    gt_pairs = {frozenset((row["Source"], row["Target"])) for _, row in gt_df.iterrows()}
+    df["Label"] = df.apply(lambda row: frozenset((row["Source"], row["Target"])) in gt_pairs, axis=1)
 
     df["Type"] = df.apply(
         lambda x: "TP"
@@ -136,27 +135,34 @@ def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.D
     return df
 
 
-def store_run_metrics_df(exp_names: list, run_path: Path, dataset_name: str, set_name: str, model: str) -> pd.DataFrame:
+def store_run_metrics_df(
+    exp_names: list, run_path: Path, dataset_name: str, set_name: str, model: str, suffix: str = ""
+) -> pd.DataFrame:
     results_data = []
     for exp_name in exp_names:
-        _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
-        stats = pd.read_csv(stats_path, index_col=0).T
-        results_data.append(
-            {
-                "Experiment": exp_name,
-                **{key: stats[key].to_numpy()[0] for key in stats.columns},
-                "Dataset": dataset_name,
-                "SubSet": set_name,
-                "Model": model,
-            }
-        )
+        try:
+            _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name)
+            stats = pd.read_csv(stats_path, index_col=0).T
+            results_data.append(
+                {
+                    "Experiment": exp_name,
+                    **{key: stats[key].to_numpy()[0] for key in stats.columns},
+                    "Dataset": dataset_name,
+                    "SubSet": set_name,
+                    "Model": model,
+                }
+            )
+        except FileNotFoundError:
+            print(f"File not found for {exp_name} in {run_path}")
+            continue
+
     results_df = pd.DataFrame(results_data).round(4)
-    results_df.to_csv(run_path / "results.csv", index=False)
+    results_df.to_csv(run_path / f"results{suffix}.csv", index=False)
     return results_df
 
 
-def read_run_metrics_df(run_subdir: str) -> pd.DataFrame:
-    return pd.read_csv(RUN_DIR / run_subdir / "results.csv")
+def read_run_metrics_df(run_subdir: str, suffix: str = "") -> pd.DataFrame:
+    return pd.read_csv(RUN_DIR / run_subdir / f"results{suffix}.csv")
 
 
 def print_results_entry(
