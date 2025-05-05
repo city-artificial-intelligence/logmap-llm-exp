@@ -23,8 +23,8 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
         target_filename = f"{target_ontology}.owl"
 
     if dataset_name == "largebio":
-        source_filename = f"oaei_{source_ontology.upper()}_small_overlapping_{target_ontology}.owl"
-        target_filename = f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
+        source_filename = f"oaei_{source_ontology.upper()}_whole_ontology.owl"
+        target_filename = f"oaei_{target_ontology.upper()}_whole_ontology.owl"
 
     return onto_data_dir / source_filename, onto_data_dir / target_filename
 
