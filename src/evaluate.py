@@ -125,10 +125,10 @@ def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.D
 
 
 def get_predictions_with_gt(
-    run_path: str, dataset_name: str, set_name: str, model: str, exp_name: str, suffix: str = ""
+    run_path: str, dataset_name: str, set_name: str, model: str, prompt_name: str, suffix: str = ""
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     gt_positive_pairs_path = format_gt_pairs_filepath(dataset_name, set_name)
-    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
+    pred_results_path, _, _ = format_storing_pathes_from_run_path(run_path, set_name, model, prompt_name, suffix)
     gt_df = get_gt_pairs(gt_positive_pairs_path)
     pred_df = get_pred_pairs(pred_results_path)
 
@@ -136,16 +136,16 @@ def get_predictions_with_gt(
 
 
 def store_run_metrics_df(
-    exp_names: list, run_path: Path, dataset_name: str, set_name: str, model: str, suffix: str = ""
+    prompt_functions: list, run_path: Path, dataset_name: str, set_name: str, model: str, suffix: str = ""
 ) -> pd.DataFrame:
     results_data = []
-    for exp_name in exp_names:
+    for prompt_function in prompt_functions:
         try:
-            _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, exp_name, suffix)
+            _, stats_path, _ = format_storing_pathes_from_run_path(run_path, set_name, model, prompt_function, suffix)
             stats = pd.read_csv(stats_path, index_col=0).T
             results_data.append(
                 {
-                    "Experiment": exp_name,
+                    "Prompt": prompt_function,
                     **{key: stats[key].to_numpy()[0] for key in stats.columns},
                     "Dataset": dataset_name,
                     "SubSet": set_name,
@@ -153,7 +153,7 @@ def store_run_metrics_df(
                 }
             )
         except FileNotFoundError:
-            print(f"File not found for {exp_name} in {run_path}")
+            print(f"File not found for {prompt_function} in {run_path}")
             continue
 
     results_df = pd.DataFrame(results_data).round(4)

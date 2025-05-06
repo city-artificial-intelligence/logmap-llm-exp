@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from pathlib import Path
 
-from config.config import DATA_DIR, RUN_DIR
+from config.config import DATA_DIR, OUTPUTS_DIR, RUN_DIR
 
 
 def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[Path, Path]:
@@ -48,13 +48,16 @@ def format_run_path(suffix: str = "") -> Path:
     time_now = time.strftime("%H-%M-%S")
     return RUN_DIR / (f"{date}_{time_now}" if not suffix else f"{date}_{time_now}{suffix}")
 
+def format_predictions_run_path(dataset:str, set_name: str, model: str, exp_type: str, exp_spec: str = "") -> Path:
+    return OUTPUTS_DIR / dataset / set_name / model / exp_type / exp_spec
+
 
 def format_storing_pathes_from_run_path(
-    run_path: str, set_name: str, model: str, exp_name: str, suffix: str = ""
+    run_path: str, set_name: str, model: str, prompt_name: str, suffix: str = ""
 ) -> tuple[Path, Path, Path]:
-    path_to_results = run_path / f"{set_name}_{model}_{exp_name}_results{suffix}.csv"
-    path_to_stats = run_path / f"{set_name}_{model}_{exp_name}_stats{suffix}.txt"
-    path_to_diagrams = run_path / f"{set_name}_{model}_{exp_name}{suffix}.png"
+    path_to_results = run_path / f"{set_name}_{model}_{prompt_name}_results{suffix}.csv"
+    path_to_stats = run_path / f"{set_name}_{model}_{prompt_name}_stats{suffix}.txt"
+    path_to_diagrams = run_path / f"{set_name}_{model}_{prompt_name}{suffix}.png"
     return path_to_results, path_to_stats, path_to_diagrams
 
 
