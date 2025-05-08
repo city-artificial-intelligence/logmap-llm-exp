@@ -52,18 +52,15 @@ def select_best_direct_entity_names_with_synonyms(
     """Select preferred names and synonyms for source and target entities and their direct parents."""
 
     def get_parent_name(entity: OntologyEntryAttr) -> str | None:
-        parent = next(iter(entity.get_direct_parents()), None)
+        parent = entity.get_direct_parent()
         parent_name = get_name_string(parent.get_preffered_names()) if parent else None
         if parent_name == "Thing" and not add_thing:
             return None
         return parent_name
 
-    def get_clean_synonyms(entity: OntologyEntryAttr, is_src: bool) -> list[str]:
+    def get_clean_synonyms(entity: OntologyEntryAttr) -> list[str]:
         synonyms = list(entity.get_synonyms())
-        if is_src:
-            entity_class = str(src_entity.onto.getClassByURI(entity.annotation["uri"])).split(".")[-1]
-        else:
-            entity_class = str(tgt_entity.onto.getClassByURI(entity.annotation["uri"])).split(".")[-1]
+        entity_class = entity.thing_class
         return [] if len(synonyms) == 1 and synonyms[0] == entity_class else synonyms
 
     src_parent_name = get_parent_name(src_entity)
@@ -71,9 +68,8 @@ def select_best_direct_entity_names_with_synonyms(
 
     src_entity_name = get_name_string(src_entity.get_preffered_names())
     tgt_entity_name = get_name_string(tgt_entity.get_preffered_names())
-
-    src_synonyms = get_clean_synonyms(src_entity, True)
-    tgt_synonyms = get_clean_synonyms(tgt_entity, False)
+    src_synonyms = get_clean_synonyms(src_entity)
+    tgt_synonyms = get_clean_synonyms(tgt_entity)
 
     return [
         src_parent_name,  # string | None

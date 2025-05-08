@@ -36,15 +36,23 @@ def save_oracle_pairs_with_prompts(
         src_entity = OntologyEntryAttr(src_uri, src_onto_path)
         tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
 
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {
-                executor.submit(prompt_function, src_entity, tgt_entity): prompt_function
-                for prompt_function in prompt_functions
-            }
-            for future in futures:
-                prompt_function = futures[future]
-                prompt = future.result()
-                base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
+        # with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        #     futures = {
+        #         executor.submit(prompt_function, src_entity, tgt_entity): prompt_function
+        #         for prompt_function in prompt_functions
+        #     }
+        #     for future in futures:
+        #         prompt_function = futures[future]
+        #         prompt = future.result()
+        #         base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
+        
+        for prompt_function in prompt_functions:
+            try:
+                prompt = prompt_function(src_entity, tgt_entity)
+            except Exception as e:
+                LOGGER.error(f"Error generating prompt for {src_uri} and {tgt_uri}: {e}", exc_info=True)
+                prompt = "ErRor"
+            base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
 
     save_dir.mkdir(parents=True, exist_ok=True)
     for prompt_function in [*prompt_functions, None]:
