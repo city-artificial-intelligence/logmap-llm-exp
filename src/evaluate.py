@@ -60,6 +60,8 @@ def analyze_results(
         "Sensitivity": conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1]),
     }
 
+    metrics["Youden's index"] = metrics["Sensitivity"] + metrics["Specificity"] - 1
+
     if print_results:
         for metric, value in metrics.items():
             print(f"{metric}: {value:.3f}")
