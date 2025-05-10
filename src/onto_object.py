@@ -15,7 +15,7 @@ class OntologyEntryAttr:
             self.thing_class = onto.getClassByURI(class_uri)
         else:
             self.thing_class = onto_entry
-        assert self.thing_class is not None
+        assert self.thing_class is not None, f"Class {class_uri} not found in ontology {onto.get_ontology_iri()}"
 
         self.annotation: dict[str : set | owlready2.ThingClass] = {"class": self.thing_class}
         self.onto: OntologyAccess = onto
@@ -28,7 +28,7 @@ class OntologyEntryAttr:
         self.annotation["synonyms"] = onto.getSynonymsNames(self.thing_class)
         self.annotation["all_names"] = onto.getAnnotationNames(self.thing_class)
         self.annotation["parents"] = onto.getAncestors(self.thing_class, include_self=False)
-        # self.annotation["children"] = onto.getDescendants(self.thing_class, include_self=False)
+        self.annotation["children"] = onto.getDescendants(self.thing_class, include_self=False)
 
         for key in ["preffered_names", "synonyms", "all_names"]:
             if not self.annotation[key]:
@@ -106,7 +106,7 @@ class OntologyEntryAttr:
         """Return set of direct parents of the entry."""
         parents_by_levels = self.__get_relatives_by_levels(1, self.onto.getAncestors)
         return parents_by_levels[1] if len(parents_by_levels) > 1 else set()
-    
+
     def get_direct_parent(self) -> OntologyEntryAttr | None:
         parent = next(iter(self.annotation["parents"])) if self.annotation["parents"] else None
         return self.__wrap_owlready2_objects(parent) if parent else None

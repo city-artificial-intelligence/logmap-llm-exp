@@ -23,8 +23,13 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
         target_filename = f"{target_ontology}.owl"
 
     if dataset_name == "largebio":
+        onto_data_dir = DATA_DIR / dataset_name
         source_filename = f"oaei_{source_ontology.upper()}_whole_ontology.owl"
         target_filename = f"oaei_{target_ontology.upper()}_whole_ontology.owl"
+
+    if dataset_name == "largebio_small":
+        source_filename = f"oaei_{source_ontology.upper()}_small_overlapping_{target_ontology}.owl"
+        target_filename = f"oaei_{target_ontology.upper()}_small_overlapping_{source_ontology}.owl"
 
     return onto_data_dir / source_filename, onto_data_dir / target_filename
 
@@ -37,10 +42,12 @@ def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str, suffix
     return DATA_DIR / dataset_name / set_name / f"oracle_pairs{suffix}"
 
 
-def format_oracle_pairs_with_prompts_path(prompt_function: callable | None, oracle_pairs_dir: Path) -> Path:
+def format_oracle_pairs_with_prompts_path(
+    prompt_function: callable | None, oracle_pairs_dir: Path, suffix: str = ""
+) -> Path:
     if prompt_function is None:
-        return oracle_pairs_dir / "logmap_mappings.csv"
-    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}.csv"
+        return oracle_pairs_dir / f"logmap_mappings{suffix}.csv"
+    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}{suffix}.csv"
 
 
 def format_run_path(suffix: str = "") -> Path:
@@ -48,7 +55,8 @@ def format_run_path(suffix: str = "") -> Path:
     time_now = time.strftime("%H-%M-%S")
     return RUN_DIR / (f"{date}_{time_now}" if not suffix else f"{date}_{time_now}{suffix}")
 
-def format_predictions_run_path(dataset:str, set_name: str, model: str, exp_type: str, exp_spec: str = "") -> Path:
+
+def format_predictions_run_path(dataset: str, set_name: str, model: str, exp_type: str, exp_spec: str = "") -> Path:
     return OUTPUTS_DIR / dataset / set_name / model / exp_type / exp_spec
 
 

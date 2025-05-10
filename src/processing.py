@@ -36,23 +36,15 @@ def save_oracle_pairs_with_prompts(
         src_entity = OntologyEntryAttr(src_uri, src_onto_path)
         tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
 
-        # with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        #     futures = {
-        #         executor.submit(prompt_function, src_entity, tgt_entity): prompt_function
-        #         for prompt_function in prompt_functions
-        #     }
-        #     for future in futures:
-        #         prompt_function = futures[future]
-        #         prompt = future.result()
-        #         base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
-        
-        for prompt_function in prompt_functions:
-            try:
-                prompt = prompt_function(src_entity, tgt_entity)
-            except Exception as e:
-                LOGGER.error(f"Error generating prompt for {src_uri} and {tgt_uri}: {e}", exc_info=True)
-                prompt = "ErRor"
-            base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {
+                executor.submit(prompt_function, src_entity, tgt_entity): prompt_function
+                for prompt_function in prompt_functions
+            }
+            for future in futures:
+                prompt_function = futures[future]
+                prompt = future.result()
+                base_pairs_df.loc[row[0], prompt_function.__name__] = prompt
 
     save_dir.mkdir(parents=True, exist_ok=True)
     for prompt_function in [*prompt_functions, None]:
@@ -64,19 +56,21 @@ def save_oracle_pairs_with_prompts(
 
 
 def try_load_precomputed_oracle_pairs(
-    dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR
+    dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR, suffix: str = ""
 ) -> list[tuple[str]]:
     oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name)
 
     # Try path with prompts
     if prompt_function is not None:
-        pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir)
+        pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir, suffix=suffix)
         if pairs_path.exists():
             pairs_df = pd.read_csv(pairs_path, sep=sep, header=None)
             return list(zip(pairs_df[0], pairs_df[1], pairs_df[2]))
 
     # Try path without prompts
-    pairs_path = format_oracle_pairs_with_prompts_path(prompt_function=None, oracle_pairs_dir=oracle_pairs_dir)
+    pairs_path = format_oracle_pairs_with_prompts_path(
+        prompt_function=None, oracle_pairs_dir=oracle_pairs_dir, suffix=suffix
+    )
     if not pairs_path.exists():
         # Fall back to legacy format
         pairs_path = format_oracle_pairs_filepath(dataset_name, set_name)

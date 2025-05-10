@@ -3,7 +3,7 @@ from __future__ import annotations
 from src.onto_object import OntologyEntryAttr
 
 
-def get_name_string(name_set) -> str:
+def get_name_string(name_set: set | list | OntologyEntryAttr) -> str:
     """Get a string representation of the name set."""
     # If the name_set is a set or list, join the elements with a comma
     if isinstance(name_set, (set, list)):
@@ -11,7 +11,7 @@ def get_name_string(name_set) -> str:
     return str(name_set)
 
 
-def get_single_name(name_set):
+def get_single_name(name_set: set | list | str | OntologyEntryAttr) -> str | None:
     """Get a single name from the name set."""
     return next(iter(name_set), None) if isinstance(name_set, (set, list)) else name_set
 
@@ -52,7 +52,7 @@ def select_best_direct_entity_names_with_synonyms(
     """Select preferred names and synonyms for source and target entities and their direct parents."""
 
     def get_parent_name(entity: OntologyEntryAttr) -> str | None:
-        parent = entity.get_direct_parent()
+        parent = next(iter(entity.get_direct_parents()), None)
         parent_name = get_name_string(parent.get_preffered_names()) if parent else None
         if parent_name == "Thing" and not add_thing:
             return None
