@@ -93,12 +93,12 @@ class OpenAIServer:
             inference_kwargs = {
                 "model": model,
                 "messages": messages,
-                "max_tokens": self.max_tokens,
                 "temperature": self.temperature,
                 "top_p": self.top_p,
                 "response_format": self.response_format,
             }
             if self.base_url is None:
+                inference_kwargs["max_tokens"] = self.max_tokens
                 inference_kwargs["logprobs"] = self.logprobs
                 inference_kwargs["top_logprsobs"] = self.top_logprobs
 

@@ -23,18 +23,18 @@ def plot_usage_histograms(
 ) -> None:
     tokens_usage = np.array(tokens_usage)
     if do_print:
-        print(f"Mean input tockens: {tokens_usage[:,0].mean():.1f}")
-        print(f"Mean output tockens: {tokens_usage[:,1].mean():.1f}")
-        print(f"Total input tockens: {tokens_usage[:,0].sum()}")
-        print(f"Total output tockens: {tokens_usage[:,1].sum()}")
+        print(f"Mean input tokens: {tokens_usage[:,0].mean():.1f}")
+        print(f"Mean output tokens: {tokens_usage[:,1].mean():.1f}")
+        print(f"Total input tokens: {tokens_usage[:,0].sum()}")
+        print(f"Total output tokens: {tokens_usage[:,1].sum()}")
 
     if do_plot:
         fig, axes = plt.subplots(1, 3, figsize=(12, 4))
         fig.suptitle(suptitle)
         axes[0].hist(tokens_usage[:, 0], bins=20)
-        axes[0].set_title("Input tockens usage")
+        axes[0].set_title("Input tokens usage")
         axes[1].hist(tokens_usage[:, 1], bins=20)
-        axes[1].set_title("Output tockens usage")
+        axes[1].set_title("Output tokens usage")
         axes[2].hist(confidences, bins=50)
         axes[2].set_title("Confidence distribution")
         plt.show()
