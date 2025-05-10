@@ -41,7 +41,7 @@ def plot_usage_histograms(
     return
 
 
-def analyze_results(
+def save_analysis_results(
     df: pd.DataFrame,
     print_results: bool = True,
     plot_confusion_matrix: bool = True,
