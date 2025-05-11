@@ -12,6 +12,25 @@ from src.prompts.prompt_utils import (
 # -------------------------------
 
 
+def prompt_all_data_dummy(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAttr) -> str:
+    return f"""
+    **Task Description:**
+    Given two entities from different ontologies with their names, parent relationships, and child relationships, determine if these concepts are the same:
+
+    1. **Source Entity:**
+    **All Entity names:** {src_entety.get_preffered_names()}
+    **Parent Entity Namings:** {src_entety.get_parents_preferred_names()}
+    **Child Entity Namings:** {src_entety.get_children_preferred_names()}
+
+    2. **Target Entity:**
+    **All Entity names:** {tgt_entety.get_preffered_names()}
+    **Parent Entity Namings:** {tgt_entety.get_parents_preferred_names()}
+    **Child Entity Namings:** {tgt_entety.get_children_preferred_names()}
+
+    Write "Yes" if the entities refer to the same concepts, and "No" otherwise.
+    """.strip()
+
+
 def prompt_only_names(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAttr) -> str:
     return f"""
     Given two entities from different ontologies with their names, determine if these concepts are the same:
@@ -23,7 +42,7 @@ def prompt_only_names(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAt
     All Entity names: {tgt_entety.get_all_entity_names()}
 
     Response with True or False
-    """
+    """.strip()
 
 
 def prompt_with_hierarchy(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAttr) -> str:
@@ -41,7 +60,7 @@ def prompt_with_hierarchy(src_entety: OntologyEntryAttr, tgt_entety: OntologyEnt
     Child Entity Namings: {tgt_entety.get_children_preferred_names()}
 
     Response with True or False
-    """
+    """.strip()
 
 
 def prompt_only_with_parents(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAttr) -> str:
@@ -57,7 +76,7 @@ def prompt_only_with_parents(src_entety: OntologyEntryAttr, tgt_entety: Ontology
     Parent Entity Namings: {tgt_entety.get_parents_preferred_names()}
 
     Response with True or False
-    """
+    """.strip()
 
 
 def prompt_only_with_children(src_entety: OntologyEntryAttr, tgt_entety: OntologyEntryAttr) -> str:
@@ -73,7 +92,7 @@ def prompt_only_with_children(src_entety: OntologyEntryAttr, tgt_entety: Ontolog
     Child Entity Namings: {tgt_entety.get_children_preferred_names()}
 
     Response with True or False
-    """
+    """.strip()
 
 
 # -------------------------------
