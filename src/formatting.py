@@ -35,7 +35,7 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
 
 
 def format_oracle_pairs_filepath(dataset_name: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_name / set_name / f"{dataset_name}-{set_name}-logmap_mappings_to_ask_oracle_user_llm.txt"
+    return DATA_DIR / dataset_name / set_name / f"{dataset_name}-{set_name}-oasystem_mappings_to_ask_oracle_user_llm.txt"
 
 
 def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str, suffix: str = "") -> Path:
@@ -46,8 +46,8 @@ def format_oracle_pairs_with_prompts_path(
     prompt_function: callable | None, oracle_pairs_dir: Path, suffix: str = ""
 ) -> Path:
     if prompt_function is None:
-        return oracle_pairs_dir / f"logmap_mappings{suffix}.csv"
-    return oracle_pairs_dir / f"logmap_mappings-{prompt_function.__name__}{suffix}.csv"
+        return oracle_pairs_dir / f"oasystem_mappings{suffix}.csv"
+    return oracle_pairs_dir / f"oasystem_mappings-{prompt_function.__name__}{suffix}.csv"
 
 
 def format_run_path(suffix: str = "") -> Path:
