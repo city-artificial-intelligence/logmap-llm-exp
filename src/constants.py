@@ -13,8 +13,8 @@ class BinaryOutputFormat(BaseModel):
 
 
 class BinaryOutputFormatWithReasoning(BaseModel):
-    answer: bool
     reasoning: str
+    answer: bool
 
 
 class TokensUsage(BaseModel):

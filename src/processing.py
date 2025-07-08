@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from src.constants import LOGGER, PAIRS_SEPARATOR, BinaryOutputFormat, LLMCallOutput
+from src.constants import LOGGER, PAIRS_SEPARATOR, BinaryOutputFormat, BinaryOutputFormatWithReasoning, LLMCallOutput
 from src.formatting import (
     format_oracle_pairs_filepath,
     format_oracle_pairs_precomputed_dir,
@@ -84,7 +84,7 @@ def try_load_precomputed_oracle_pairs(
 
 def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
     """Extract the completion answer from the LLM response."""
-    if isinstance(response.parsed, BinaryOutputFormat):
+    if isinstance(response.parsed, (BinaryOutputFormat, BinaryOutputFormatWithReasoning)):
         return response.parsed.answer
     raise NotImplementedError()
 

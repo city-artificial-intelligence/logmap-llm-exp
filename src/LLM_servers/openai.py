@@ -41,10 +41,11 @@ class OpenAIServer:
         self.client = openai.OpenAI(api_key=api_key, base_url=base_url)
         self.chat_context = []
 
-        self.response_format = BinaryOutputFormat
+        self.response_format = kwargs.get("response_format", BinaryOutputFormat)
+
         self.top_p = 0.3
         self.temperature = 0
-        self.max_tokens = 100
+        self.max_tokens = kwargs.get("max_tokens", 100)
         self.logprobs = True
         self.top_logprobs = 3
 
@@ -100,7 +101,7 @@ class OpenAIServer:
             if self.base_url is None:
                 inference_kwargs["max_tokens"] = self.max_tokens
                 inference_kwargs["logprobs"] = self.logprobs
-                inference_kwargs["top_logprsobs"] = self.top_logprobs
+                # inference_kwargs["top_logprsobs"] = self.top_logprobs
 
             response = self.client.beta.chat.completions.parse(**inference_kwargs)
 

@@ -2,6 +2,11 @@
 line-length = 120
 indent-width = 4
 
+[project]
+name = "KG-LLM-Matching"
+version = "0.1.0"
+
+
 [tool.ruff.lint]
 select = [
     "F", # Pyflakes
