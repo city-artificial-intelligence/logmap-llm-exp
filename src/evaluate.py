@@ -58,6 +58,10 @@ def save_analysis_results(
         "F1 Score": f1_score(df["Label"], df["Prediction"]),
         "Specificity": conf_matrix[0][0] / (conf_matrix[0][0] + conf_matrix[0][1]),
         "Sensitivity": conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1]),
+        "TP": conf_matrix[1][1],
+        "TN": conf_matrix[0][0],
+        "FP": conf_matrix[0][1],
+        "FN": conf_matrix[1][0],
     }
 
     metrics["Youden's index"] = metrics["Sensitivity"] + metrics["Specificity"] - 1

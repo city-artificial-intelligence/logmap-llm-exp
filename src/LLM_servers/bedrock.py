@@ -6,7 +6,7 @@ from botocore.config import Config
 from constants import BinaryOutputFormat, LLMCallOutput, TokensUsage
 
 
-#TODO: move config to some constatnts file and add hyperparameters for the model
+# TODO: move config to some constatnts file and add hyperparameters for the model
 class BedrockServer:
     def __init__(
         self,
