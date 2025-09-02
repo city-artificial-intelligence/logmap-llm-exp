@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Callable
@@ -58,11 +59,11 @@ def save_oracle_pairs_with_prompts(
 def try_load_precomputed_oracle_pairs(
     dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR, suffix: str = ""
 ) -> list[tuple[str]]:
-    oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name)
+    oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name, suffix=suffix)
 
     # Try path with prompts
     if prompt_function is not None:
-        pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir, suffix=suffix)
+        pairs_path = format_oracle_pairs_with_prompts_path(prompt_function, oracle_pairs_dir, suffix="")
         if pairs_path.exists():
             pairs_df = pd.read_csv(pairs_path, sep=sep, header=None)
             return list(zip(pairs_df[0], pairs_df[1], pairs_df[2]))
@@ -97,6 +98,7 @@ def process_sample(
     onto_tgt: OntologyAccess,
     model: str,
     prompt_function: Callable,
+    sleep_time: float,
 ) -> tuple[list, tuple[int, int], float]:
     """Process a single line: generate a prompt, send it to the LLM, and extract the response.
 
@@ -117,6 +119,7 @@ def process_sample(
         prompt = candidates_pair[2]
 
     try:
+        time.sleep(sleep_time)
         response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
         answer = extract_llm_compeletion_answer(response)
 
@@ -140,6 +143,7 @@ def parallel_samples_process(
     model: str,
     max_workers: int,
     prompt_function: Callable,
+    sleep_time: float = 0.08,
 ) -> tuple[list[tuple], list[tuple[int, int]], list[float]]:
     """Process lines in parallel, with progress tracking using tqdm.
 
@@ -166,7 +170,9 @@ def parallel_samples_process(
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_line = {
-            executor.submit(process_sample, pair, llm_oracle, onto_src, onto_tgt, model, prompt_function): pair
+            executor.submit(
+                process_sample, pair, llm_oracle, onto_src, onto_tgt, model, prompt_function, sleep_time
+            ): pair
             for pair in candidate_pairs
         }
 

@@ -1,9 +1,36 @@
+from __future__ import annotations
+
 from typing import Any
 
 import boto3
 from botocore.config import Config
 
-from constants import BinaryOutputFormat, LLMCallOutput, TokensUsage
+from src.constants import BinaryOutputFormat, LLMCallOutput, TokensUsage
+
+OUTPUT_FORMAT = {
+    "tools": [
+        {
+            "toolSpec": {
+                "name": "AnswerFormatter",
+                "description": "Wraps the answer in a specific format.",
+                "inputSchema": {
+                    "json": {
+                        "type": "object",
+                        "properties": {
+                            "answer": {
+                                "type": "boolean",
+                                "description": "The answer to the question, either 'True' or 'False'. Do not output any other text.",
+                            },
+                        },
+                        "required": ["answer"],
+                        "description": "Output format for the tool.",
+                    }
+                },
+            }
+        }
+    ],
+    # "toolChoice": {"tool": {"name": "AnswerFormatter"}},
+}
 
 
 # TODO: move config to some constatnts file and add hyperparameters for the model
@@ -14,7 +41,7 @@ class BedrockServer:
         region: str = "us-east-1",
         temperature: float = 0,
         top_p: float = 0.3,
-        max_tokens: int = 100,
+        max_tokens: int = 5,
         **kwargs: dict[str, Any],
     ) -> None:
         """Initialize Bedrock-based LLM wrapper compatible with OpenAIServer's interface."""
@@ -24,8 +51,9 @@ class BedrockServer:
         self.temperature = temperature
         self.top_p = top_p
         self.max_tokens = max_tokens
-        self.response_format = BinaryOutputFormat
+        self.response_format = OUTPUT_FORMAT
         self.chat_context = []
+        self.system_message = ""
 
         self.client = boto3.client(
             "bedrock-runtime",
@@ -37,10 +65,7 @@ class BedrockServer:
             setattr(self, key, value)
 
     def add_system_context(self, message: str) -> None:
-        if len(self.chat_context) == 0 or self.chat_context[0]["role"] != "system":
-            self.chat_context.insert(0, self.wrap_text_message(message, "system"))
-        else:
-            self.chat_context[0] = self.wrap_text_message(message, "system")
+        self.system_message = message
 
     def add_context(self, message: str, role: str) -> None:
         self.chat_context.append(self.wrap_text_message(message, role))
@@ -49,42 +74,45 @@ class BedrockServer:
         self.response_format = response_format
 
     def wrap_text_message(self, message: str, role: str) -> dict:
-        return {"role": role, "content": message}
+        return {"role": role, "content": [{"text": message}]}
 
     def _format_bedrock_messages(self, message: str) -> list:
         """Format OpenAI-style message list into Bedrock-compatible message list."""
-        formatted_messages = []
-        for m in [*self.chat_context, self.wrap_text_message(message, "user")]:
-            formatted_messages.append({"role": m["role"], "content": [{"text": m["content"]}]})
-        return formatted_messages
+        return [*self.chat_context, self.wrap_text_message(message, "user")]
 
     def _format_system_prompt(self, prompt: str) -> list:
         return [{"text": prompt}]
 
-    def ask_sync_question(self, message: str) -> LLMCallOutput:
+    def ask_sync_question(self, message: str, model: str | None = None) -> LLMCallOutput:
         try:
             bedrock_messages = self._format_bedrock_messages(message)
-            system_prompt = (
-                self.chat_context[0]["content"]
-                if self.chat_context and self.chat_context[0]["role"] == "system"
-                else ""
-            )
 
             # to be utilized in future start_time = time()
             response = self.client.converse(
-                modelId=self.model_id,
+                modelId=model or self.model_id,
                 messages=bedrock_messages,
-                system=self._format_system_prompt(system_prompt),
-                inferenceConfig={"temperature": self.temperature, "topP": self.top_p, "maxTokens": self.max_tokens},
+                system=self._format_system_prompt(self.system_message),
+                inferenceConfig={
+                    "temperature": self.temperature,
+                    "topP": self.top_p,
+                    "maxTokens": self.max_tokens,
+                },
+                # toolConfig=self.response_format,
             )
 
-            completion = response["output"]["message"]["content"][0]["text"]
+            response_content = response["output"]["message"]["content"][0]
+            if "toolUse" in response_content:
+                completion = response_content["toolUse"]["input"]
+                answer = completion["answer"] in ["True", "true", True]
+            else:
+                completion = response_content["text"]
+                answer = "true" in completion.lower()
 
             usage = TokensUsage(
                 input_tokens=response["usage"]["inputTokens"], output_tokens=response["usage"]["outputTokens"]
             )
 
-            return LLMCallOutput(message=completion, usage=usage, logprobs={"content": []}, parsed=None)
+            return LLMCallOutput(message=completion, usage=usage, logprobs=[], parsed=BinaryOutputFormat(answer=answer))
 
         except Exception as e:
             msg = f"Bedrock request failed: {e}"

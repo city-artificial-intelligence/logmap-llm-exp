@@ -23,7 +23,7 @@ class TokensUsage(BaseModel):
 
 
 class LLMCallOutput(BaseModel):
-    message: str
+    message: str | bool
     usage: TokensUsage
     logprobs: list | None
     parsed: BaseModel | None
