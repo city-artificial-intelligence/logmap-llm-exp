@@ -38,7 +38,7 @@ class OpenAIServer:
 
         self.base_url = base_url
 
-        self.client = openai.OpenAI(api_key=api_key, base_url=base_url)
+        self.client = openai.OpenAI(api_key=api_key, base_url=base_url, max_retries=2)
         self.chat_context = []
 
         self.response_format = kwargs.get("response_format", BinaryOutputFormat)
@@ -96,6 +96,7 @@ class OpenAIServer:
                 "messages": messages,
                 "temperature": self.temperature,
                 "top_p": self.top_p,
+                # "reasoning_effort": None,
                 "response_format": self.response_format,
             }
             if self.base_url is None:

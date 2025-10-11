@@ -179,7 +179,8 @@ def parallel_samples_process(
         for future in tqdm(
             as_completed(future_to_line), total=len(future_to_line), desc=f"Processing Lines {prompt_function.__name__}"
         ):
-            result, token_usage, confidence = future.result()
+            output = future.result()
+            result, token_usage, confidence = output
             results.append(result)
             tokens_usage.append(token_usage)
             confidences.append(confidence)
