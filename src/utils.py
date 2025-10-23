@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import functools
+from itertools import product
 from pathlib import Path
 from typing import Any, Callable
 
@@ -85,3 +86,27 @@ def save_run_results(
     results_df = pd.DataFrame(results, columns=columns)
     results_df.to_csv(path, sep=sep, index=False)
     return
+
+
+def expand_setups(setups: list[dict], base_setup: dict | None, exclude_keys: list[str] | None = None) -> list[dict]:
+    base_setup = base_setup or {}
+    exclude_keys = exclude_keys or []
+
+    expanded = []
+    for setup in setups:
+        constant_part = {}
+        keys, values = [], []
+        setup = {**base_setup, **setup}
+
+        for k, v in setup.items():
+            if isinstance(v, list) and k not in exclude_keys:
+                keys.append(k)
+                values.append(v)
+            else:
+                constant_part[k] = v
+
+        for combo in product(*values):
+            new_setup = constant_part.copy()
+            new_setup.update(dict(zip(keys, combo)))
+            expanded.append(new_setup)
+    return expanded

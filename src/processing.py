@@ -9,7 +9,14 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from src.constants import LOGGER, PAIRS_SEPARATOR, BinaryOutputFormat, BinaryOutputFormatWithReasoning, LLMCallOutput
+from src.constants import (
+    LOGGER,
+    PAIRS_SEPARATOR,
+    RESULTS_SEPARATOR,
+    BinaryOutputFormat,
+    BinaryOutputFormatWithReasoning,
+    LLMCallOutput,
+)
 from src.formatting import (
     format_oracle_pairs_filepath,
     format_oracle_pairs_precomputed_dir,
@@ -58,7 +65,7 @@ def save_oracle_pairs_with_prompts(
 
 def try_load_precomputed_oracle_pairs(
     dataset_name: str, set_name: str, prompt_function: callable | None, sep: str = PAIRS_SEPARATOR, suffix: str = ""
-) -> list[tuple[str]]:
+) -> list[tuple[str, str]]:
     oracle_pairs_dir = format_oracle_pairs_precomputed_dir(dataset_name, set_name, suffix=suffix)
 
     # Try path with prompts
@@ -83,6 +90,12 @@ def try_load_precomputed_oracle_pairs(
     return list(zip(pairs_df[0], pairs_df[1]))
 
 
+def try_load_partial_results(predictions_path: Path, sep: str = RESULTS_SEPARATOR) -> pd.DataFrame | None:
+    if predictions_path.exists():
+        return pd.read_csv(predictions_path, sep=sep)
+    return None
+
+
 def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
     """Extract the completion answer from the LLM response."""
     if isinstance(response.parsed, (BinaryOutputFormat, BinaryOutputFormatWithReasoning)):
@@ -92,14 +105,14 @@ def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
 
 @retry(max_retries=1)
 def process_sample(
-    candidates_pair: tuple[str],
+    candidates_pair: tuple[str, str],
     llm_oracle: OpenAIServer,
     onto_src: OntologyAccess,
     onto_tgt: OntologyAccess,
     model: str,
     prompt_function: Callable,
     sleep_time: float,
-) -> tuple[list, tuple[int, int], float]:
+) -> tuple[list, tuple[int, int]]:
     """Process a single line: generate a prompt, send it to the LLM, and extract the response.
 
     If an exception occurs, the function is retried once.
@@ -108,7 +121,6 @@ def process_sample(
         tuple[list, tuple[int, int], float]: The results, token usage, and confidence.
         - results: list of source, target, answer, confidence
         - token_usage: tuple of input tokens, output tokens
-        - confidence: float
 
     """
     source, target = candidates_pair[:2]
@@ -128,27 +140,28 @@ def process_sample(
         confidence = calculate_logpropgs_confidence(response.logprobs)
 
         token_usage = (input_tokens, output_tokens)
-        return [source, target, answer, confidence], token_usage, confidence
+        return [source, target, answer, confidence], token_usage
 
     except Exception as e:  # noqa: BLE001
         LOGGER.error(f"Error processing line: {candidates_pair}: {e}", exc_info=True)
-        return [source, target, "error", str(np.nan)], (np.nan, np.nan), np.nan
+        return [source, target, "error", str(np.nan)], (np.nan, np.nan)
 
 
 def parallel_samples_process(
-    candidate_pairs: list[tuple[str]],
+    candidate_pairs: list[tuple[str, str]],
     llm_oracle: OpenAIServer,
     onto_src: OntologyAccess | None,
     onto_tgt: OntologyAccess | None,
     model: str,
     max_workers: int,
     prompt_function: Callable,
-    sleep_time: float = 0.08,
+    partial_results: pd.DataFrame | None = None,
+    sleep_time: float = 0.0,
 ) -> tuple[list[tuple], list[tuple[int, int]], list[float]]:
     """Process lines in parallel, with progress tracking using tqdm.
 
     Args:
-        candidate_pairs (list[tuple[str]]): The list of candidate pairs to process.
+        candidate_pairs (list[tuple[str, str]]): The list of candidate pairs to process.
         llm_oracle: The LLM oracle server.
         onto_src: The source ontology.
         onto_tgt The target ontology.
@@ -166,23 +179,44 @@ def parallel_samples_process(
     """
     results = []
     tokens_usage = []
-    confidences = []
+
+    precomputed_results = {}
+    if partial_results is not None:
+        for _, row in partial_results.iterrows():
+            if "error" not in row.to_numpy():
+                key = (row[0], row[1])
+                precomputed_results[key] = row.tolist()
+
+    print(len(precomputed_results), "precomputed results found.", "from", len(candidate_pairs))
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        future_to_line = {
-            executor.submit(
-                process_sample, pair, llm_oracle, onto_src, onto_tgt, model, prompt_function, sleep_time
-            ): pair
-            for pair in candidate_pairs
-        }
+        future_to_line = {}
+        for pair in candidate_pairs:
+            if (pair[0], pair[1]) in precomputed_results:
+                results.append(precomputed_results[(pair[0], pair[1])])
+                tokens_usage.append((np.nan, np.nan))  # Placeholder for token usage
+            else:
+                future_to_line[
+                    executor.submit(
+                        process_sample, pair, llm_oracle, onto_src, onto_tgt, model, prompt_function, sleep_time
+                    )
+                ] = pair
 
         for future in tqdm(
             as_completed(future_to_line), total=len(future_to_line), desc=f"Processing Lines {prompt_function.__name__}"
         ):
-            output = future.result()
-            result, token_usage, confidence = output
+            result, token_usage = future.result()
             results.append(result)
             tokens_usage.append(token_usage)
-            confidences.append(confidence)
 
-    return results, tokens_usage, confidences
+    # order results according to input candidate_pairs
+    ordered_results = []
+    ordered_tokens_usage = []
+    pair_to_idx = {(res[0], res[1]): idx for idx, res in enumerate(results)}
+
+    for pair in candidate_pairs:
+        ordered_results.append(results[pair_to_idx[(pair[0], pair[1])]])
+        ordered_tokens_usage.append(tokens_usage[pair_to_idx[(pair[0], pair[1])]])
+
+    confidences = [res[-1] for res in ordered_results]
+    return ordered_results, ordered_tokens_usage, confidences

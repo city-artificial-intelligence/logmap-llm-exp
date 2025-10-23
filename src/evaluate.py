@@ -1,4 +1,4 @@
-# ruff: noqa: T201, T201, T203
+# ruff: noqa: T201, T201, T203, ERA001, BLE001
 from __future__ import annotations
 
 from pathlib import Path
@@ -11,8 +11,14 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 
 from config.config import RUN_DIR
+from config.runs_vars import SUBSET_TO_DATASET_MAP
 from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
-from src.formatting import format_gt_pairs_filepath, format_run_metrics_path, format_storing_pathes_from_run_path
+from src.formatting import (
+    format_gt_pairs_filepath,
+    format_predictions_run_path,
+    format_run_metrics_path,
+    format_storing_pathes_from_run_path,
+)
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
 from src.utils import save_run_results
@@ -142,8 +148,14 @@ def get_predictions_with_gt(
 
 
 def store_run_metrics_df(
-    prompt_functions: list, run_path: Path, dataset_name: str, set_name: str, model: str, suffix: str = ""
-) -> pd.DataFrame:
+    prompt_functions: list,
+    run_path: Path,
+    dataset_name: str,
+    set_name: str,
+    model: str,
+    suffix: str = "",
+    log_all_errors: bool = True,
+) -> pd.DataFrame | None:
     results_data = []
     for prompt_function in prompt_functions:
         try:
@@ -159,8 +171,14 @@ def store_run_metrics_df(
                 }
             )
         except FileNotFoundError:
-            print(f"File not found for {prompt_function} in {run_path}")
+            if log_all_errors:
+                print(f"File not found for {prompt_function} in {run_path}")
             continue
+
+    if not results_data:
+        if log_all_errors:
+            print(f"No results data found for run: {run_path}")
+        return None
 
     results_df = pd.DataFrame(results_data).round(4)
 
@@ -190,3 +208,41 @@ def print_results_entry(
 
     print(f"Parent of Source Concept: {source_entry.get_parents_preferred_names()}")
     print(f"Parent of Target Concept: {target_entry.get_parents_preferred_names()}")
+
+
+def reevaluate_setup(setup: dict, save_diagrams: bool = False) -> dict:
+    subset = setup["subset"]
+    dataset = SUBSET_TO_DATASET_MAP[subset]
+    model = setup["model"]
+    exp_name = setup["experiment_name"]
+    suffix = setup["suffix"]
+    experiment_type = setup["experiment_type"]
+    prompt_functions = setup["prompt_functions"]
+
+    run_path = format_predictions_run_path(dataset, subset, model, experiment_type, exp_spec=exp_name)
+    results = {"subset": subset, "model": model, "exp_name": exp_name, "success": True, "errors": []}
+
+    for prompt_name in prompt_functions:
+        try:
+            prediction_path, stats_path, diagram_path = format_storing_pathes_from_run_path(
+                run_path, subset, model, prompt_name, suffix=suffix
+            )
+            predictions = get_predictions_with_gt(run_path, dataset, subset, model, prompt_name, suffix=suffix)
+            save_analysis_results(
+                predictions,
+                print_results=False,
+                plot_confusion_matrix=False,
+                subtitle=f"{subset}: {model} {prompt_name} | ",
+                cm_save_path=diagram_path if save_diagrams else None,
+                stats_path=stats_path,
+            )
+        except Exception as e:
+            results["errors"].append(f"Prompt {prompt_name}: {e}")
+
+    try:
+        store_run_metrics_df(prompt_functions, run_path, dataset, subset, model, suffix=suffix, log_all_errors=False)
+    except Exception as e:
+        results["success"] = False
+        results["errors"].append(str(e))
+
+    return results
