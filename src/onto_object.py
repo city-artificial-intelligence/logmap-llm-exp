@@ -8,9 +8,19 @@ from src.onto_access import OntologyAccess
 
 class OntologyEntryAttr:
     def __init__(
-        self, class_uri: str | None, onto: OntologyAccess, onto_entry: owlready2.ThingClass | None = None
+        self,
+        class_uri: str | None,
+        onto: OntologyAccess,
+        onto_entry: owlready2.ThingClass | None = None,
+        skip_annotation: bool = False,
     ) -> None:
         assert class_uri is not None or onto_entry is not None
+
+        self.class_uri = class_uri
+
+        if skip_annotation:
+            return
+
         if class_uri is not None:
             self.thing_class = onto.getClassByURI(class_uri)
         else:
@@ -33,6 +43,9 @@ class OntologyEntryAttr:
         for key in ["preffered_names", "synonyms", "all_names"]:
             if not self.annotation[key]:
                 self.annotation[key] = {str(self.thing_class.name)}
+
+    def get_class_uri(self) -> str | None:
+        return self.class_uri
 
     def _get_entry_names(self, name_type: str) -> set[str]:
         """Get the names of the entry.

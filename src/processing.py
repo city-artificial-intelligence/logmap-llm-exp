@@ -30,19 +30,20 @@ from src.utils import calculate_logpropgs_confidence, retry
 
 def save_oracle_pairs_with_prompts(
     oracle_candidate_pairs_path: Path,
-    src_onto_path: OntologyAccess,
-    tgt_onto_path: OntologyAccess,
+    src_onto: OntologyAccess,
+    tgt_onto: OntologyAccess,
     prompt_functions: list[callable],
     save_dir: Path,
     sep: str,
     max_workers: int = 1,
+    skipp_annotation: bool = False,
 ) -> None:
     base_pairs_df = pd.read_csv(oracle_candidate_pairs_path, sep=sep, header=None)
 
     for row in tqdm(base_pairs_df.iterrows(), total=base_pairs_df.shape[0], desc="Adding prompts"):
         src_uri, tgt_uri = row[1][0], row[1][1]
-        src_entity = OntologyEntryAttr(src_uri, src_onto_path)
-        tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto_path)
+        src_entity = OntologyEntryAttr(src_uri, src_onto, skip_annotation=skipp_annotation)
+        tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto, skip_annotation=skipp_annotation)
 
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {

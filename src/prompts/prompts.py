@@ -99,6 +99,19 @@ def prompt_only_with_children(src_entety: OntologyEntryAttr, tgt_entety: Ontolog
 #        New Prompts Section
 # -------------------------------
 
+
+# simple prompts
+
+
+def prompt_uri(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr) -> str:
+    prompt_lines = [
+        "We have two entities from different biomedical ontologies.",
+        f'The first one is "{src_entity.get_class_uri()}". The second one is "{tgt_entity.get_class_uri()}."',
+        'Do they mean the same thing? Respond with "True" or "False".',
+    ]
+    return "\n".join(prompt_lines)
+
+
 # Ontological prompts
 
 

@@ -34,8 +34,13 @@ def format_subsets_ontologies_paths(dataset_name: str, set_name: str) -> tuple[P
     return onto_data_dir / source_filename, onto_data_dir / target_filename
 
 
-def format_oracle_pairs_filepath(dataset_name: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_name / set_name / f"{dataset_name}-{set_name}-oasystem_mappings_to_ask_oracle_user_llm.txt"
+def format_oracle_pairs_filepath(dataset_name: str, set_name: str, suffix: str = "") -> Path:
+    return (
+        DATA_DIR
+        / dataset_name
+        / set_name
+        / f"{dataset_name}-{set_name}-oasystem_mappings_to_ask_oracle_user_llm{suffix}.txt"
+    )
 
 
 def format_oracle_pairs_precomputed_dir(dataset_name: str, set_name: str, suffix: str = "") -> Path:
@@ -69,8 +74,8 @@ def format_storing_pathes_from_run_path(
     return path_to_results, path_to_stats, path_to_diagrams
 
 
-def format_gt_pairs_filepath(dataset_path: str, set_name: str) -> Path:
-    return DATA_DIR / dataset_path / set_name / "refs_equiv/full.tsv"
+def format_gt_pairs_filepath(dataset_name: str, set_name: str) -> Path:
+    return DATA_DIR / dataset_name / set_name / "refs_equiv/full.tsv"
 
 
 def format_run_metrics_path(save_dir: Path, suffix: str = "") -> Path:
