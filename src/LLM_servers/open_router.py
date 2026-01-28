@@ -44,6 +44,9 @@ class OpenRouterServer:
             "openai/gpt-oss-120b": "deepinfra",
             "x-ai/grok-4.1-fast": "xai",
             "qwen/qwen3-235b-a22b-2507": "deepinfra",
+            "openai/gpt-4o-mini": "openai",
+            # "mistralai/mistral-small-3.2-24b-instruct": "mistral",
+            # "meta-llama/llama-3.1-70b-instruct": "parasail",
         }
 
         for key, value in kwargs.items():
@@ -119,9 +122,9 @@ class OpenRouterServer:
                 try:
                     parsed_output = self.response_format(**json.loads(output_message))
                 except Exception as e:
-                    if "true" in output_message.lower()[:10]:
+                    if "true" in output_message.lower()[:20]:
                         answer = True
-                    elif "false" in output_message.lower()[:10]:
+                    elif "false" in output_message.lower()[:20]:
                         answer = False
                     else:
                         raise RuntimeError(f"Failed to parse the output message: {output_message}") from e
