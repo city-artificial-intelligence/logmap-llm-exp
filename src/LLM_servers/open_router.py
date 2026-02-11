@@ -44,6 +44,11 @@ class OpenRouterServer:
             "openai/gpt-oss-120b": "deepinfra",
             "x-ai/grok-4.1-fast": "xai",
             "qwen/qwen3-235b-a22b-2507": "deepinfra",
+            "openai/gpt-4o-mini": "openai",
+            # "google/gemini-3-flash-preview": "google-ai-studio",
+            # "google/gemini-2.5-pro": "google-vertex/global",
+            # "mistralai/mistral-small-3.2-24b-instruct": "mistral",
+            # "meta-llama/llama-3.1-70b-instruct": "parasail",
         }
 
         for key, value in kwargs.items():
@@ -88,8 +93,6 @@ class OpenRouterServer:
         try:
             messages = [*self.chat_context, self.wrap_text_message(message, "user")]
             model = model.replace("|", "/")
-            if "gemini" in model:
-                model = "google/" + model
 
             extra_body = {}
 
@@ -112,6 +115,11 @@ class OpenRouterServer:
             if self.params.get("reasoning_effort"):
                 inference_kwargs["reasoning_effort"] = self.params.get("reasoning_effort")
 
+            if self.params.get("thinking_budget"):
+                inference_kwargs.setdefault("extra_body", {})
+                inference_kwargs["extra_body"].setdefault("reasoning", {})
+                inference_kwargs["extra_body"]["reasoning"]["max_tokens"] = int(self.params.get("thinking_budget"))
+
             if self.params.get("custom_parsing"):
                 inference_kwargs.pop("response_format", None)
                 response = self.client.beta.chat.completions.parse(**inference_kwargs)
@@ -119,9 +127,9 @@ class OpenRouterServer:
                 try:
                     parsed_output = self.response_format(**json.loads(output_message))
                 except Exception as e:
-                    if "true" in output_message.lower()[:10]:
+                    if "true" in output_message.lower()[:20]:
                         answer = True
-                    elif "false" in output_message.lower()[:10]:
+                    elif "false" in output_message.lower()[:20]:
                         answer = False
                     else:
                         raise RuntimeError(f"Failed to parse the output message: {output_message}") from e

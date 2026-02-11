@@ -36,14 +36,14 @@ def save_oracle_pairs_with_prompts(
     save_dir: Path,
     sep: str,
     max_workers: int = 1,
-    skipp_annotation: bool = False,
-) -> None:
+    skip_annotation: bool = False,
+) -> pd.DataFrame:
     base_pairs_df = pd.read_csv(oracle_candidate_pairs_path, sep=sep, header=None)
 
     for row in tqdm(base_pairs_df.iterrows(), total=base_pairs_df.shape[0], desc="Adding prompts"):
         src_uri, tgt_uri = row[1][0], row[1][1]
-        src_entity = OntologyEntryAttr(src_uri, src_onto, skip_annotation=skipp_annotation)
-        tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto, skip_annotation=skipp_annotation)
+        src_entity = OntologyEntryAttr(src_uri, src_onto, skip_annotation=skip_annotation)
+        tgt_entity = OntologyEntryAttr(tgt_uri, tgt_onto, skip_annotation=skip_annotation)
 
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {
@@ -133,7 +133,19 @@ def process_sample(
 
     try:
         time.sleep(sleep_time)
+        start = time.time()
+
         response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
+        input_tokens = response.usage.input_tokens
+        output_tokens = response.usage.output_tokens
+
+        _ = time.time() - start
+
+        # save_path = Path("llm_responses_debug.txt")
+        # with save_path.open("a") as f:
+        # string = f"prompt={prompt_function.__name__}, {model=} {source=}, {target=}, {input_tokens=}, {output_tokens=}, {proc_time=}\n"
+        # f.write(string)
+
         answer = extract_llm_compeletion_answer(response)
 
         input_tokens = response.usage.input_tokens
@@ -188,7 +200,7 @@ def parallel_samples_process(
                 key = (row[0], row[1])
                 precomputed_results[key] = row.tolist()
 
-    print(len(precomputed_results), "precomputed results found.", "from", len(candidate_pairs))
+    LOGGER.info(f"{len(precomputed_results)} precomputed results found from {len(candidate_pairs)}")
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_line = {}
