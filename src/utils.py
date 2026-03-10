@@ -110,3 +110,55 @@ def expand_setups(setups: list[dict], base_setup: dict | None, exclude_keys: lis
             new_setup.update(dict(zip(keys, combo)))
             expanded.append(new_setup)
     return expanded
+
+
+def calculate_mean_token_usage(tokens_usage: list[tuple[int, int]]) -> dict[str, float]:
+    """Calculate mean token usage from a list of (input_tokens, output_tokens) tuples.
+
+    Args:
+        tokens_usage: list of tuples, each with (input_tokens, output_tokens).
+
+    Returns:
+        dict with mean_input_tokens, mean_output_tokens, total_input_tokens, total_output_tokens.
+
+    """
+    if not tokens_usage:
+        return {
+            "mean_input_tokens": 0.0,
+            "mean_output_tokens": 0.0,
+            "total_input_tokens": 0,
+            "total_output_tokens": 0,
+        }
+
+    input_tokens = [t[0] for t in tokens_usage if t and len(t) >= 2]
+    output_tokens = [t[1] for t in tokens_usage if t and len(t) >= 2]
+
+    return {
+        "mean_input_tokens": np.mean(input_tokens) if input_tokens else 0.0,
+        "mean_output_tokens": np.mean(output_tokens) if output_tokens else 0.0,
+        "total_input_tokens": sum(input_tokens),
+        "total_output_tokens": sum(output_tokens),
+    }
+
+
+def save_token_usage_stats(
+    tokens_usage: list[tuple[int, int]], path: Path, sep: str = RESULTS_SEPARATOR
+) -> dict[str, float]:
+    """Calculate and save mean token usage stats to a file.
+
+    Args:
+        tokens_usage: list of tuples, each with (input_tokens, output_tokens).
+        path: path to save the token usage stats.
+        sep: separator to use in the file.
+
+    Returns:
+        dict with token usage statistics.
+
+    """
+    stats = calculate_mean_token_usage(tokens_usage)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    stats_df = pd.DataFrame(list(stats.items()), columns=["Metric", "Value"])
+    stats_df.to_csv(path, sep=sep, index=False)
+
+    return stats
