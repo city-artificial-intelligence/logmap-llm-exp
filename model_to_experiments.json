@@ -1,0 +1,807 @@
+{
+    "mistral.mistral-large-2402-v1:0": {
+        "n_few_shots": [
+            "v1",
+            "v0"
+        ]
+    },
+    "nvidia|nemotron-3-nano-omni-30b-a3b-reasoning": {
+        "models-estimation": [
+            "nvidia|nemotron-3-nano-omni-30b-a3b-reasoning"
+        ]
+    },
+    "deepseek|deepseek-chat-v3-0324": {
+        "open-weight-models": [
+            "deepseek|deepseek-chat-v3-0324"
+        ],
+        "models-estimation": [
+            "deepseek|deepseek-chat-v3-0324"
+        ]
+    },
+    "mistral.mistral-small-2402-v1:0": {
+        "open-weight-models": [
+            "bedrock",
+            "mistral.mistral-small-2402-v1:0"
+        ]
+    },
+    "qwen|qwen3-next-80b-a3b-instruct": {
+        "open-weight-models": [
+            "qwen|qwen3-next-80b-a3b-instruct"
+        ],
+        "models-estimation": [
+            "qwen|qwen3-next-80b-a3b-instruct"
+        ]
+    },
+    "moonshotai|kimi-k2.6": {
+        "models-estimation": [
+            "moonshotai|kimi-k2.6"
+        ]
+    },
+    "meta-llama|llama-3.1-70b-instruct": {
+        "leack_check": [
+            "0"
+        ],
+        "benchmark-usage": [
+            "0"
+        ]
+    },
+    "meta.llama3-70b-instruct-v1:0": {
+        "open-weight-models": [
+            "meta.llama3-70b-instruct-v1:0"
+        ]
+    },
+    "google|gemma-4-26b-a4b-it": {
+        "models-estimation": [
+            "google|gemma-4-26b-a4b-it"
+        ]
+    },
+    "google|gemini-2.5-flash": {
+        "thinking": [
+            "google|gemini-2.5-flash&thinking_budget=1024",
+            "google|gemini-2.5-flash&thinking_budget=128",
+            "google|gemini-2.5-flash&thinking_budget=0",
+            "google|gemini-2.5-flash&thinking_budget=512"
+        ],
+        "models-estimation": [
+            "google|gemini-2.5-flash&thinking_budget=1024",
+            "google|gemini-2.5-flash&thinking_budget=128",
+            "google|gemini-2.5-flash&thinking_budget=0",
+            "google|gemini-2.5-flash&thinking_budget=512"
+        ]
+    },
+    "minimax|minimax-m2.5": {
+        "open-weight-models": [
+            "minimax|minimax-m2.5"
+        ],
+        "models-estimation": [
+            "minimax|minimax-m2.5"
+        ]
+    },
+    "mistralai|mistral-nemo": {
+        "open-weight-models": [
+            "mistralai|mistral-nemo"
+        ],
+        "models-estimation": [
+            "mistralai|mistral-nemo"
+        ]
+    },
+    "qwen|qwen3.5-flash-02-23": {
+        "open-weight-models": [
+            "qwen|qwen3.5-flash-02-23"
+        ],
+        "thinking": [
+            "qwen|qwen3.5-flash-02-23&thinking_budget=512",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=0",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=1024",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=128"
+        ],
+        "models-estimation": [
+            "qwen|qwen3.5-flash-02-23",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=512",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=0",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=1024",
+            "qwen|qwen3.5-flash-02-23&thinking_budget=128"
+        ]
+    },
+    "deepseek|deepseek-v4-pro": {
+        "models-estimation": [
+            "deepseek|deepseek-v4-pro&thinking_budget=128",
+            "deepseek|deepseek-v4-pro",
+            "deepseek|deepseek-v4-pro&thinking_budget=512",
+            "deepseek|deepseek-v4-pro&thinking_budget=1024",
+            "deepseek|deepseek-v4-pro&thinking_budget=0"
+        ]
+    },
+    "bytedance-seed|seed-2.0-lite": {
+        "models-estimation": [
+            "bytedance-seed|seed-2.0-lite&thinking_budget=512",
+            "bytedance-seed|seed-2.0-lite&thinking_budget=0",
+            "bytedance-seed|seed-2.0-lite",
+            "bytedance-seed|seed-2.0-lite&thinking_budget=128",
+            "bytedance-seed|seed-2.0-lite&thinking_budget=1024"
+        ]
+    },
+    "google|gemma-3-12b-it": {
+        "open-weight-models": [
+            "google|gemma-3-12b-it"
+        ],
+        "models-estimation": [
+            "google|gemma-3-12b-it"
+        ]
+    },
+    "gpt-4.1-nano": {
+        "reasoning": [
+            "present",
+            "absent"
+        ],
+        "few-shot": [
+            "v1",
+            "absent"
+        ],
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ]
+    },
+    "meta-llama|llama-4-scout": {
+        "open-weight-models": [
+            "meta-llama|llama-4-scout"
+        ],
+        "models-estimation": [
+            "meta-llama|llama-4-scout"
+        ],
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "meta-llama|llama-4-maverick": {
+        "models-estimation": [
+            "meta-llama|llama-4-maverick"
+        ]
+    },
+    "anthropic.claude-3-sonnet-20240229-v1:0": {
+        "open-weight-models": [
+            "claude-3-sonnet"
+        ]
+    },
+    "google|gemini-2.5-pro": {
+        "thinking": [
+            "google|gemini-2.5-pro&thinking_budget=512",
+            "google|gemini-2.5-pro&thinking_budget=128",
+            "thinking_budget=512",
+            "google|gemini-2.5-pro&thinking_budget=0",
+            "thinking_budget=128",
+            "google|gemini-2.5-pro&thinking_budget=1024"
+        ],
+        "models-estimation": [
+            "google|gemini-2.5-pro&thinking_budget=512",
+            "google|gemini-2.5-pro&thinking_budget=128",
+            "google|gemini-2.5-pro&thinking_budget=0",
+            "google|gemini-2.5-pro&thinking_budget=1024"
+        ]
+    },
+    "openai|gpt-5-nano": {
+        "thinking": [
+            "reasoning_effort=minimal",
+            "reasoning_effort=low",
+            "reasoning_effort=medium",
+            "reasoning_effort=high"
+        ]
+    },
+    "gemini-2.5-flash": {
+        "benchmark-usage": [
+            "0"
+        ],
+        "thinking": [
+            "thinking_budget=512"
+        ],
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ],
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "openai|gpt-4o-mini": {
+        "benchmark-usage": [
+            "0"
+        ]
+    },
+    "meta-llama|llama-3.3-70b-instruct": {
+        "open-weight-models": [
+            "meta-llama|llama-3.3-70b-instruct"
+        ],
+        "models-estimation": [
+            "meta-llama|llama-3.3-70b-instruct"
+        ]
+    },
+    "mistralai|ministral-14b-2512": {
+        "open-weight-models": [
+            "mistralai|ministral-14b-2512"
+        ],
+        "models-estimation": [
+            "mistralai|ministral-14b-2512"
+        ]
+    },
+    "openai|gpt-5.5": {
+        "models-estimation": [
+            "openai|gpt-5.5&reasoning_effort=medium",
+            "openai|gpt-5.5&reasoning_effort=low",
+            "openai|gpt-5.5",
+            "openai|gpt-5.5&reasoning_effort=high"
+        ]
+    },
+    "qwen|qwen3.5-122b-a10b": {
+        "open-weight-models": [
+            "qwen|qwen3.5-122b-a10b"
+        ],
+        "thinking": [
+            "qwen|qwen3.5-122b-a10b&thinking_budget=512",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=128",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=0",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=1024"
+        ],
+        "models-estimation": [
+            "qwen|qwen3.5-122b-a10b&thinking_budget=512",
+            "qwen|qwen3.5-122b-a10b",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=128",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=0",
+            "qwen|qwen3.5-122b-a10b&thinking_budget=1024"
+        ]
+    },
+    "x-ai|grok-4.20": {
+        "models-estimation": [
+            "x-ai|grok-4.20&reasoning_effort=high",
+            "x-ai|grok-4.20",
+            "x-ai|grok-4.20&reasoning_effort=low",
+            "x-ai|grok-4.20&reasoning_effort=medium"
+        ]
+    },
+    "gemini-2.0-flash": {
+        "determinism": [
+            "1",
+            "2",
+            "0",
+            "3"
+        ],
+        "syspromts": [
+            "natural_language",
+            "ontology_aware",
+            "base",
+            "none",
+            "synonym_aware"
+        ],
+        "benchmark-usage": [
+            "0"
+        ],
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ],
+        "n_few_shots": [
+            "v0"
+        ]
+    },
+    "mistralai|mistral-small-3.2-24b-instruct": {
+        "leack_check": [
+            "0"
+        ],
+        "benchmark-usage": [
+            "0"
+        ],
+        "models-estimation": [
+            "mistralai|mistral-small-3.2-24b-instruct"
+        ]
+    },
+    "gpt-5-nano": {
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "qwen|qwen3.5-35b-a3b": {
+        "open-weight-models": [
+            "qwen|qwen3.5-35b-a3b"
+        ],
+        "models-estimation": [
+            "qwen|qwen3.5-35b-a3b"
+        ]
+    },
+    "x-ai|grok-4.3": {
+        "models-estimation": [
+            "x-ai|grok-4.3&reasoning_effort=high",
+            "x-ai|grok-4.3&reasoning_effort=low",
+            "x-ai|grok-4.3",
+            "x-ai|grok-4.3&reasoning_effort=medium"
+        ]
+    },
+    "gemini-3-pro-preview": {
+        "n_few_shots": [
+            "v0"
+        ]
+    },
+    "qwen|qwen3.6-35b-a3b": {
+        "models-estimation": [
+            "qwen|qwen3.6-35b-a3b&thinking_budget=128",
+            "qwen|qwen3.6-35b-a3b&thinking_budget=0",
+            "qwen|qwen3.6-35b-a3b&thinking_budget=512",
+            "qwen|qwen3.6-35b-a3b",
+            "qwen|qwen3.6-35b-a3b&thinking_budget=1024"
+        ]
+    },
+    "gemini-1.5-flash": {
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ]
+    },
+    "qwen|qwen3.6-max-preview": {
+        "models-estimation": [
+            "qwen|qwen3.6-max-preview"
+        ]
+    },
+    "mistralai|mistral-small-2603": {
+        "models-estimation": [
+            "mistralai|mistral-small-2603"
+        ]
+    },
+    "x-ai|grok-4.1-fast": {
+        "open-weight-models": [
+            "x-ai|grok-4.1-fast"
+        ],
+        "models-estimation": [
+            "x-ai|grok-4.1-fast"
+        ]
+    },
+    "gemini-2.5-pro": {
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "anthropic|claude-sonnet-4.6": {
+        "open-weight-models": [
+            "anthropic|claude-sonnet-4.6"
+        ],
+        "api-models": [
+            "anthropic|claude-sonnet-4.6"
+        ],
+        "thinking": [
+            "anthropic|claude-sonnet-4.6&reasoning_effort=low",
+            "anthropic|claude-sonnet-4.6&reasoning_effort=medium",
+            "anthropic|claude-sonnet-4.6&reasoning_effort=high"
+        ],
+        "models-estimation": [
+            "anthropic|claude-sonnet-4.6&reasoning_effort=low",
+            "anthropic|claude-sonnet-4.6&reasoning_effort=medium",
+            "anthropic|claude-sonnet-4.6",
+            "anthropic|claude-sonnet-4.6&reasoning_effort=high"
+        ]
+    },
+    "openai|gpt-oss-20b": {
+        "open-weight-models": [
+            "openai|gpt-oss-20b"
+        ],
+        "models-estimation": [
+            "openai|gpt-oss-20b"
+        ]
+    },
+    "z-ai|glm-5": {
+        "open-weight-models": [
+            "z-ai|glm-5"
+        ],
+        "models-estimation": [
+            "z-ai|glm-5"
+        ]
+    },
+    "qwen|qwen3-32b": {
+        "open-weight-models": [
+            "qwen|qwen3-32b"
+        ],
+        "models-estimation": [
+            "qwen|qwen3-32b"
+        ]
+    },
+    "qwen|qwen3.5-9b": {
+        "models-estimation": [
+            "qwen|qwen3.5-9b"
+        ]
+    },
+    "meta-llama|llama-3-70b-instruct": {
+        "benchmark-usage": [
+            "0"
+        ]
+    },
+    "anthropic|claude-opus-4.6": {
+        "open-weight-models": [
+            "anthropic|claude-opus-4.6"
+        ],
+        "api-models": [
+            "anthropic|claude-opus-4.6"
+        ],
+        "models-estimation": [
+            "anthropic|claude-opus-4.6"
+        ]
+    },
+    "qwen|qwen3-8b": {
+        "n_few_shots": [
+            "v0"
+        ]
+    },
+    "us.meta.llama3-2-3b-instruct-v1:0": {
+        "open-weight-models": [
+            "bedrock"
+        ]
+    },
+    "z-ai|glm-5.1": {
+        "models-estimation": [
+            "z-ai|glm-5.1"
+        ]
+    },
+    "google|gemini-3.1-flash-lite-preview": {
+        "open-weight-models": [
+            "google|gemini-3.1-flash-lite-preview"
+        ],
+        "thinking": [
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=medium",
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=high",
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=low"
+        ],
+        "models-estimation": [
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=medium",
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=high",
+            "google|gemini-3.1-flash-lite-preview&reasoning_effort=low"
+        ]
+    },
+    "mistralai": {
+        "mistral-small-3.2-24b-instruct": [
+            "n_few_shots"
+        ]
+    },
+    "anthropic|claude-opus-4.7": {
+        "models-estimation": [
+            "anthropic|claude-opus-4.7"
+        ]
+    },
+    "mistralai|ministral-3b-2512": {
+        "open-weight-models": [
+            "mistralai|ministral-3b-2512"
+        ],
+        "benchmark-usage": [
+            "0"
+        ],
+        "models-estimation": [
+            "mistralai|ministral-3b-2512"
+        ],
+        "n_few_shots": [
+            "v0"
+        ]
+    },
+    "mistralai|mistral-large-2512meta-llama|llama-4-scout": {
+        "open-weight-models": [
+            "mistralai|mistral-large-2512meta-llama|llama-4-scout"
+        ]
+    },
+    "openai|gpt-5.4-mini": {
+        "models-estimation": [
+            "openai|gpt-5.4-mini"
+        ]
+    },
+    "anthropic|claude-haiku-4.5": {
+        "open-weight-models": [
+            "anthropic|claude-haiku-4.5"
+        ],
+        "api-models": [
+            "anthropic|claude-haiku-4.5"
+        ],
+        "models-estimation": [
+            "anthropic|claude-haiku-4.5"
+        ]
+    },
+    "amazon|nova-micro-v1": {
+        "open-weight-models": [
+            "amazon|nova-micro-v1"
+        ],
+        "models-estimation": [
+            "amazon|nova-micro-v1"
+        ]
+    },
+    "google|gemma-3-4b-it": {
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ],
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "gemini-2.5-flash-lite": {
+        "benchmark-usage": [
+            "0"
+        ],
+        "thinking": [
+            "thinking_budget=1024",
+            "thinking_budget=512",
+            "thinking_budget=32",
+            "thinking_budget=16",
+            "thinking_budget=0"
+        ],
+        "leak_check": [
+            "uri_0",
+            "uri_1",
+            "uri_2"
+        ],
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0",
+            "v3",
+            "v4"
+        ]
+    },
+    "qwen3-8B": {
+        "prompts": [
+            "present"
+        ]
+    },
+    "nvidia|nemotron-3-super-120b-a12b": {
+        "models-estimation": [
+            "nvidia|nemotron-3-super-120b-a12b"
+        ]
+    },
+    "google|gemma-4-31b-it": {
+        "models-estimation": [
+            "google|gemma-4-31b-it"
+        ]
+    },
+    "google|gemini-2.5-flash-lite": {
+        "thinking": [
+            "google|gemini-2.5-flash-lite&thinking_budget=1024",
+            "google|gemini-2.5-flash-lite&thinking_budget=512",
+            "google|gemini-2.5-flash-lite&thinking_budget=128",
+            "google|gemini-2.5-flash-lite&thinking_budget=0"
+        ],
+        "models-estimation": [
+            "google|gemini-2.5-flash-lite&thinking_budget=1024",
+            "google|gemini-2.5-flash-lite&thinking_budget=512",
+            "google|gemini-2.5-flash-lite&thinking_budget=128",
+            "google|gemini-2.5-flash-lite&thinking_budget=0"
+        ]
+    },
+    "openai|gpt-oss-120b": {
+        "open-weight-models": [
+            "openai|gpt-oss-120b"
+        ],
+        "thinking": [
+            "openai|gpt-oss-120b&reasoning_effort=medium",
+            "openai|gpt-oss-120b&reasoning_effort=low",
+            "openai|gpt-oss-120b&reasoning_effort=high"
+        ],
+        "models-estimation": [
+            "openai|gpt-oss-120b&reasoning_effort=medium",
+            "openai|gpt-oss-120b&reasoning_effort=low",
+            "openai|gpt-oss-120b&reasoning_effort=high",
+            "openai|gpt-oss-120b"
+        ]
+    },
+    "gemini-1.5-flash-lite": {
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ]
+    },
+    "us.anthropic.claude-3-7-sonnet-20250219-v1:0": {
+        "open-weight-models": [
+            "claude-3-sonnet"
+        ]
+    },
+    "qwen|qwen3-vl-8b-instruct": {
+        "n_few_shots": [
+            "v2",
+            "v1",
+            "v0"
+        ]
+    },
+    "qwen|qwen3-14b": {
+        "models-estimation": [
+            "qwen|qwen3-14b"
+        ]
+    },
+    "bytedance-seed|seed-2.0-mini": {
+        "open-weight-models": [
+            "bytedance-seed|seed-2.0-mini"
+        ],
+        "thinking": [
+            "bytedance-seed|seed-2.0-mini&thinking_budget=0",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=128",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=1024",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=512"
+        ],
+        "models-estimation": [
+            "bytedance-seed|seed-2.0-mini&thinking_budget=0",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=128",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=1024",
+            "bytedance-seed|seed-2.0-mini",
+            "bytedance-seed|seed-2.0-mini&thinking_budget=512"
+        ]
+    },
+    "google": {
+        "gemma-3-27b-it": [
+            "n_few_shots"
+        ],
+        "gemma-3-4b-it": [
+            "n_few_shots"
+        ],
+        "gemma-3-12b-it": [
+            "n_few_shots"
+        ]
+    },
+    "openai|gpt-5.4": {
+        "open-weight-models": [
+            "openai|gpt-5.4"
+        ],
+        "api-models": [
+            "openai|gpt-5.4"
+        ],
+        "models-estimation": [
+            "openai|gpt-5.4"
+        ]
+    },
+    "anthropic.claude-instant-v1": {
+        "open-weight-models": [
+            "bedrock"
+        ]
+    },
+    "mistralai|mistral-large-2512": {
+        "open-weight-models": [
+            "mistralai|mistral-large-2512"
+        ],
+        "models-estimation": [
+            "mistralai|mistral-large-2512"
+        ]
+    },
+    "ibm-granite|granite-4.1-8b": {
+        "models-estimation": [
+            "ibm-granite|granite-4.1-8b"
+        ]
+    },
+    "google|gemma-3-27b-it": {
+        "open-weight-models": [
+            "google|gemma-3-27b-it"
+        ],
+        "models-estimation": [
+            "google|gemma-3-27b-it"
+        ]
+    },
+    "qwen|qwen3.6-flash": {
+        "models-estimation": [
+            "qwen|qwen3.6-flash&thinking_budget=512",
+            "qwen|qwen3.6-flash&thinking_budget=128",
+            "qwen|qwen3.6-flash&thinking_budget=0",
+            "qwen|qwen3.6-flash&thinking_budget=1024",
+            "qwen|qwen3.6-flash"
+        ]
+    },
+    "qwen3-1.7B": {
+        "prompts": [
+            "present"
+        ]
+    },
+    "qwen|qwen3-235b-a22b-2507": {
+        "open-weight-models": [
+            "qwen|qwen3-235b-a22b-2507"
+        ],
+        "models-estimation": [
+            "qwen|qwen3-235b-a22b-2507"
+        ]
+    },
+    "gemini-2.0-flash-lite": {
+        "determinism": [
+            "1",
+            "2",
+            "0",
+            "3"
+        ],
+        "reasoning": [
+            "no-reasoning",
+            "with-reasoning"
+        ],
+        "syspromts": [
+            "natural_language",
+            "ontology_aware",
+            "base",
+            "none",
+            "synonym_aware"
+        ],
+        "benchmark-usage": [
+            "0"
+        ],
+        "leak_check": [
+            "uri_0",
+            "uri_1"
+        ],
+        "n_few_shots": [
+            "v9",
+            "v2",
+            "v5",
+            "1",
+            "8",
+            "v1",
+            "10",
+            "v6",
+            "v0",
+            "v7",
+            "2",
+            "0",
+            "30",
+            "6",
+            "25",
+            "35",
+            "20",
+            "50",
+            "14",
+            "v3",
+            "40",
+            "v4",
+            "17",
+            "v8",
+            "4",
+            "3",
+            "12"
+        ]
+    },
+    "qwen|qwen3.5-397b-a17b": {
+        "models-estimation": [
+            "qwen|qwen3.5-397b-a17b"
+        ]
+    },
+    "minimax|minimax-m2.7": {
+        "models-estimation": [
+            "minimax|minimax-m2.7"
+        ]
+    },
+    "deepseek|deepseek-v3.2": {
+        "open-weight-models": [
+            "deepseek|deepseek-v3.2"
+        ],
+        "thinking": [
+            "deepseek|deepseek-v3.2&thinking_budget=0",
+            "deepseek|deepseek-v3.2&thinking_budget=1024",
+            "deepseek|deepseek-v3.2&thinking_budget=512",
+            "deepseek|deepseek-v3.2&thinking_budget=128"
+        ],
+        "models-estimation": [
+            "deepseek|deepseek-v3.2&thinking_budget=0",
+            "deepseek|deepseek-v3.2&thinking_budget=1024",
+            "deepseek|deepseek-v3.2&thinking_budget=512",
+            "deepseek|deepseek-v3.2&thinking_budget=128",
+            "deepseek|deepseek-v3.2"
+        ]
+    },
+    "mistralai|mistral-medium-3-5": {
+        "models-estimation": [
+            "mistralai|mistral-medium-3-5&reasoning_effort=high",
+            "mistralai|mistral-medium-3-5&reasoning_effort=low",
+            "mistralai|mistral-medium-3-5&reasoning_effort=medium",
+            "mistralai|mistral-medium-3-5"
+        ]
+    },
+    "deepseek|deepseek-v4-flash": {
+        "models-estimation": [
+            "deepseek|deepseek-v4-flash&thinking_budget=128",
+            "deepseek|deepseek-v4-flash&thinking_budget=0",
+            "deepseek|deepseek-v4-flash&thinking_budget=1024",
+            "deepseek|deepseek-v4-flash&thinking_budget=512",
+            "deepseek|deepseek-v4-flash"
+        ]
+    }
+}

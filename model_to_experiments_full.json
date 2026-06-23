@@ -1,0 +1,2633 @@
+[
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 10,
+    "error_rate": 0.0058
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-pro",
+    "experiment_type": "leak_check",
+    "experiment_name": "prompts_0",
+    "prompts": [
+      "direct_entity"
+    ],
+    "num_prompts": 1,
+    "num_samples": 856,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-pro",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity"
+    ],
+    "num_prompts": 1,
+    "num_samples": 856,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gemini-2.5-pro",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity"
+    ],
+    "num_prompts": 1,
+    "num_samples": 856,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 856,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "google|gemma-3-4b-it",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "google|gemma-3-4b-it",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gpt-4.1-nano",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "gpt-4.1-nano",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "ncit-doid",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1712,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 26,
+    "error_rate": 0.0326
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 399,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 2,
+    "error_rate": 0.0025
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "omim-ordo",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 798,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 980,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-fma.body",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1960,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 1305,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.neoplas",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2610,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 29,
+    "error_rate": 0.026
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "deepseek|deepseek-chat-v3-0324",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "deepseek|deepseek-chat-v3-0324",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 98,
+    "error_rate": 0.088
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=0",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=1024",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 557,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "google|gemma-3-12b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-12b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "google|gemma-3-27b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-27b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 1035,
+    "error_rate": 0.9291
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "mistralai|ministral-14b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-14b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "mistralai|ministral-3b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-3b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 1114,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "mistralai|mistral-nemo",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-nemo",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=high",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=low",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=medium",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=minimal",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "qwen|qwen3-next-80b-a3b-instruct",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3-next-80b-a3b-instruct",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "bioml-2024",
+    "subset": "snomed-ncit.pharm",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1114,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 1,
+    "error_rate": 0.0006
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "deepseek|deepseek-chat-v3-0324",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "deepseek|deepseek-chat-v3-0324",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 200,
+    "error_rate": 0.113
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 885,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "google|gemma-3-12b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-12b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 340,
+    "error_rate": 0.1921
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "google|gemma-3-27b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-27b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 1692,
+    "error_rate": 0.9559
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "mistralai|ministral-14b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-14b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "mistralai|ministral-3b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-3b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 1770,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "mistralai|mistral-nemo",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-nemo",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "qwen|qwen3-next-80b-a3b-instruct",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3-next-80b-a3b-instruct",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-nci",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 1770,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 1,
+    "error_rate": 0.0003
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 1452,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "fma-snomed",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 2904,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 28,
+    "error_rate": 0.0054
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 2572,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "largebio",
+    "subset": "snomed-nci",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 5144,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "amazon|nova-micro-v1",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "amazon|nova-micro-v1",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 61,
+    "error_rate": 0.1201
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-haiku-4.5",
+    "experiment_type": "api-models",
+    "experiment_name": "anthropic|claude-haiku-4.5",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-haiku-4.5",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "anthropic|claude-haiku-4.5",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-opus-4.6",
+    "experiment_type": "api-models",
+    "experiment_name": "anthropic|claude-opus-4.6",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-opus-4.6",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "anthropic|claude-opus-4.6",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-sonnet-4.6",
+    "experiment_type": "api-models",
+    "experiment_name": "anthropic|claude-sonnet-4.6",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "anthropic|claude-sonnet-4.6",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "anthropic|claude-sonnet-4.6",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "bytedance-seed|seed-2.0-mini",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bytedance-seed|seed-2.0-mini",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "deepseek|deepseek-chat-v3-0324",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "deepseek|deepseek-chat-v3-0324",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "deepseek|deepseek-v3.2",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "deepseek|deepseek-v3.2",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-1.5-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-1.5-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-1.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-1.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash-lite",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.0-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_2",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=0",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=1024",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=16",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=32",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gemini-2.5-flash-lite",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=128",
+    "prompts": [
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 1,
+    "num_samples": 254,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemini-2.5-pro",
+    "experiment_type": "thinking",
+    "experiment_name": "thinking_budget=512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemini-3.1-flash-lite-preview",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemini-3.1-flash-lite-preview",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemma-3-12b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-12b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemma-3-27b-it",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "google|gemma-3-27b-it",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 348,
+    "error_rate": 0.685
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemma-3-4b-it",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "google|gemma-3-4b-it",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gpt-4.1-nano",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_0",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "gpt-4.1-nano",
+    "experiment_type": "leak_check",
+    "experiment_name": "uri_1",
+    "prompts": [
+      "direct_entity",
+      "uri"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "meta-llama|llama-3-70b-instruct",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "meta-llama|llama-3.1-70b-instruct",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 160,
+    "error_rate": 0.105
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "meta-llama|llama-3.1-70b-instruct",
+    "experiment_type": "leack_check",
+    "experiment_name": "0",
+    "prompts": [
+      "uri"
+    ],
+    "num_prompts": 1,
+    "num_samples": 254,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "meta-llama|llama-3.3-70b-instruct",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "meta-llama|llama-3.3-70b-instruct",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "minimax|minimax-m2.5",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "minimax|minimax-m2.5",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistral.mistral-small-2402-v1:0",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "bedrock",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|ministral-14b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-14b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|ministral-3b-2512",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity"
+    ],
+    "num_prompts": 1,
+    "num_samples": 254,
+    "num_errors": 254,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|ministral-3b-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|ministral-3b-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|mistral-large-2512",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-large-2512meta-llama|llama-4-scout",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 508,
+    "error_rate": 1.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|mistral-nemo",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "mistralai|mistral-nemo",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|mistral-small-3.2-24b-instruct",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "mistralai|mistral-small-3.2-24b-instruct",
+    "experiment_type": "leack_check",
+    "experiment_name": "0",
+    "prompts": [
+      "uri"
+    ],
+    "num_prompts": 1,
+    "num_samples": 254,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-4o-mini",
+    "experiment_type": "benchmark-usage",
+    "experiment_name": "0",
+    "prompts": [
+      "direct_entity_ontological",
+      "direct_entity",
+      "direct_entity_with_synonyms",
+      "sequential_hierarchy_ontological",
+      "sequential_hierarchy",
+      "sequential_hierarchy_with_synonyms"
+    ],
+    "num_prompts": 6,
+    "num_samples": 1524,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=high",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=low",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=medium",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5-nano",
+    "experiment_type": "thinking",
+    "experiment_name": "reasoning_effort=minimal",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5.4",
+    "experiment_type": "api-models",
+    "experiment_name": "openai|gpt-5.4",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-5.4",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-5.4",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-oss-120b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-120b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "openai|gpt-oss-20b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "openai|gpt-oss-20b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3-235b-a22b-2507",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3-235b-a22b-2507",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 3,
+    "error_rate": 0.0059
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3-32b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3-32b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3-next-80b-a3b-instruct",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3-next-80b-a3b-instruct",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3.5-122b-a10b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-122b-a10b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3.5-35b-a3b",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-35b-a3b",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "qwen|qwen3.5-flash-02-23",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "qwen|qwen3.5-flash-02-23",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "x-ai|grok-4.1-fast",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "x-ai|grok-4.1-fast",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  },
+  {
+    "dataset": "anatomy",
+    "subset": "human-mouse",
+    "model": "z-ai|glm-5",
+    "experiment_type": "open-weight-models",
+    "experiment_name": "z-ai|glm-5",
+    "prompts": [
+      "direct_entity",
+      "direct_entity_with_synonyms"
+    ],
+    "num_prompts": 2,
+    "num_samples": 508,
+    "num_errors": 0,
+    "error_rate": 0.0
+  }
+]
