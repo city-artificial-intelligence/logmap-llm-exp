@@ -10,9 +10,11 @@ import pandas as pd
 import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
 
-from config.config import RUN_DIR
-from config.runs_vars import SUBSET_TO_DATASET_MAP
-from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR
+from config.config import OUTPUTS_DIR, RUN_DIR
+from config.runs_vars import DATASET_SUBSETS_MAP, SUBSET_TO_DATASET_MAP
+from src.analysis import discover_all_experiments
+from src.constants import GT_COL_DIVIDER, RESULTS_SEPARATOR, USAGE_COLUMNS
+from src.error_taxonomy import ERROR_COLUMNS, RETRY_COUNT_COLUMNS, ErrorCategory, ErrorType
 from src.formatting import (
     format_gt_pairs_filepath,
     format_predictions_run_path,
@@ -27,22 +29,28 @@ from src.utils import save_run_results
 def plot_usage_histograms(
     tokens_usage: np.array, confidences: np.array, do_plot: bool = True, do_print: bool = True, suptitle: str = ""
 ) -> None:
-    tokens_usage = np.array(tokens_usage)
+    tokens_usage = np.array(tokens_usage, dtype=float)
     if do_print:
-        print(f"Mean input tokens: {tokens_usage[:,0].mean():.1f}")
-        print(f"Mean output tokens: {tokens_usage[:,1].mean():.1f}")
-        print(f"Total input tokens: {tokens_usage[:,0].sum()}")
-        print(f"Total output tokens: {tokens_usage[:,1].sum()}")
+        print(f"Mean input tokens: {np.nanmean(tokens_usage[:,0]):.1f}")
+        print(f"Mean output tokens: {np.nanmean(tokens_usage[:,1]):.1f}")
+        print(f"Total input tokens: {np.nansum(tokens_usage[:,0]):.0f}")
+        print(f"Total output tokens: {np.nansum(tokens_usage[:,1]):.0f}")
+        if tokens_usage.shape[1] > 2:
+            print(f"Mean cached input tokens: {np.nanmean(tokens_usage[:,2]):.1f}")
+            print(f"Mean reasoning output tokens: {np.nanmean(tokens_usage[:,3]):.1f}")
+            print(f"Mean proc time: {np.nanmean(tokens_usage[:,4]):.3f}s")
 
     if do_plot:
-        fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+        n_cols = min(3, 2 + (tokens_usage.shape[1] > 2))
+        fig, axes = plt.subplots(1, n_cols, figsize=(4 * n_cols, 4))
         fig.suptitle(suptitle)
         axes[0].hist(tokens_usage[:, 0], bins=20)
         axes[0].set_title("Input tokens usage")
         axes[1].hist(tokens_usage[:, 1], bins=20)
         axes[1].set_title("Output tokens usage")
-        axes[2].hist(confidences, bins=50)
-        axes[2].set_title("Confidence distribution")
+        if n_cols > 2:
+            axes[2].hist(confidences, bins=50)
+            axes[2].set_title("Confidence distribution")
         plt.show()
     return
 
@@ -55,13 +63,25 @@ def save_analysis_results(
     cm_save_path: Path | None = None,
     stats_path: Path | None = None,
 ) -> dict:
-    conf_matrix = confusion_matrix(df["Label"], df["Prediction"])
+    total_count = len(df)
+    if "is_error" in df.columns:
+        error_mask = df["is_error"]
+    else:
+        pred_str = df["Prediction"].astype(str).str.strip().str.lower()
+        error_mask = ~pred_str.isin({"true", "false"})
+
+    num_errors = int(error_mask.sum())
+    valid_df = df[~error_mask].copy()
+    pred_mapped = valid_df["Prediction"].astype(str).str.strip().str.lower().map({"true": True, "false": False})
+    valid_df["Prediction"] = pred_mapped
+
+    conf_matrix = confusion_matrix(valid_df["Label"], valid_df["Prediction"])
 
     metrics = {
-        "Accuracy": accuracy_score(df["Label"], df["Prediction"]),
-        "Precision": precision_score(df["Label"], df["Prediction"]),
-        "Recall": recall_score(df["Label"], df["Prediction"]),
-        "F1 Score": f1_score(df["Label"], df["Prediction"]),
+        "Accuracy": accuracy_score(valid_df["Label"], valid_df["Prediction"]),
+        "Precision": precision_score(valid_df["Label"], valid_df["Prediction"]),
+        "Recall": recall_score(valid_df["Label"], valid_df["Prediction"]),
+        "F1 Score": f1_score(valid_df["Label"], valid_df["Prediction"]),
         "Specificity": conf_matrix[0][0] / (conf_matrix[0][0] + conf_matrix[0][1]),
         "Sensitivity": conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1]),
         "TP": conf_matrix[1][1],
@@ -71,6 +91,51 @@ def save_analysis_results(
     }
 
     metrics["Youden's index"] = metrics["Sensitivity"] + metrics["Specificity"] - 1
+    metrics["num_errors"] = num_errors
+    metrics["error_rate"] = num_errors / total_count if total_count > 0 else 0.0
+
+    # Detailed error breakdown by type and category
+    if "error_type" in df.columns:
+        error_rows = df[error_mask]
+        error_types = error_rows["error_type"].dropna().astype(str)
+        error_types = error_types[error_types != ""]
+        for et in ErrorType:
+            count = int((error_types == et.value).sum())
+            if count > 0:
+                metrics[f"errors_{et.value}"] = count
+        # Category-level aggregates
+        if "error_category" in df.columns:
+            error_cats = error_rows["error_category"].dropna().astype(str)
+            error_cats = error_cats[error_cats != ""]
+            for ec in ErrorCategory:
+                count = int((error_cats == ec.value).sum())
+                if count > 0:
+                    metrics[f"errors_cat_{ec.value}"] = count
+
+    if "num_retries" in df.columns:
+        retries = pd.to_numeric(df["num_retries"], errors="coerce").dropna()
+        if not retries.empty:
+            metrics["mean_num_retries"] = retries.mean()
+            metrics["total_num_retries"] = int(retries.sum())
+
+    # Per-error-type retry counts
+    for col in RETRY_COUNT_COLUMNS:
+        if col in df.columns:
+            values = pd.to_numeric(df[col], errors="coerce").dropna()
+            if not values.empty:
+                total = int(values.sum())
+                if total > 0:
+                    metrics[f"total_{col}"] = total
+
+    for col in USAGE_COLUMNS:
+        if col in df.columns:
+            valid = pd.to_numeric(df[col], errors="coerce").dropna()
+            if not valid.empty:
+                metrics[f"mean_{col}"] = valid.mean()
+                if col == "proc_time":
+                    metrics[f"total_{col}"] = valid.sum()
+                else:
+                    metrics[f"total_{col}"] = int(valid.sum())
 
     if print_results:
         for metric, value in metrics.items():
@@ -116,23 +181,39 @@ def get_gt_pairs(gt_positive_pairs_path: Path | str, sep: str = GT_COL_DIVIDER) 
 
 
 def get_pred_pairs(pred_results_path: Path | str, sep: str = RESULTS_SEPARATOR) -> pd.DataFrame:
-    return pd.read_csv(pred_results_path, sep=sep)
+    pred_df = pd.read_csv(pred_results_path, sep=sep)
+    for col in [*USAGE_COLUMNS, "num_retries", *ERROR_COLUMNS, *RETRY_COUNT_COLUMNS]:
+        if col not in pred_df.columns:
+            pred_df[col] = np.nan
+
+    pred_str = pred_df["Prediction"].astype(str).str.strip().str.lower()
+    is_error = ~pred_str.isin({"true", "false"})
+    pred_df["is_error"] = is_error
+    return pred_df
 
 
 def extend_preds_with_labels_info(df: pd.DataFrame, gt_df: pd.DataFrame) -> pd.DataFrame:
     gt_pairs = {frozenset((row["Source"], row["Target"])) for _, row in gt_df.iterrows()}
     df["Label"] = df.apply(lambda row: frozenset((row["Source"], row["Target"])) in gt_pairs, axis=1)
 
-    df["Type"] = df.apply(
-        lambda x: "TP"
-        if x["Label"] and x["Prediction"]
-        else "TN"
-        if not x["Label"] and not x["Prediction"]
-        else "FP"
-        if not x["Label"] and x["Prediction"]
-        else "FN",
-        axis=1,
-    )
+    pred_str = df["Prediction"].astype(str).str.strip().str.lower()
+    if "is_error" not in df.columns:
+        df["is_error"] = ~pred_str.isin({"true", "false"})
+    pred_bool = pred_str.map({"true": True, "false": False})
+
+    def classify_type(row: pd.Series) -> str:
+        if row["is_error"]:
+            return "Error"
+        pred = pred_bool[row.name]
+        if row["Label"] and pred:
+            return "TP"
+        if not row["Label"] and not pred:
+            return "TN"
+        if not row["Label"] and pred:
+            return "FP"
+        return "FN"
+
+    df["Type"] = df.apply(classify_type, axis=1)
     return df
 
 
@@ -246,3 +327,39 @@ def reevaluate_setup(setup: dict, save_diagrams: bool = False) -> dict:
         results["errors"].append(str(e))
 
     return results
+
+
+def reevaluate_all_experiments(
+    outputs_dir: Path | None = None,
+    datasets_map: dict[str, list[str]] | None = None,
+    suffix: str = "_reduced",
+    save_diagrams: bool = False,
+    log_progress: bool = True,
+) -> list[dict]:
+    if outputs_dir is None:
+        outputs_dir = Path(OUTPUTS_DIR)
+    if datasets_map is None:
+        datasets_map = DATASET_SUBSETS_MAP
+
+    experiments = discover_all_experiments(outputs_dir, datasets_map, suffix)
+    all_results = []
+    for i, exp in enumerate(experiments):
+        setup = {
+            "subset": exp["subset"],
+            "model": exp["model"],
+            "experiment_name": exp["experiment_name"],
+            "suffix": suffix,
+            "experiment_type": exp["experiment_type"],
+            "prompt_functions": exp["prompts"],
+        }
+        result = reevaluate_setup(setup, save_diagrams=save_diagrams)
+        all_results.append(result)
+        if log_progress and (i + 1) % 50 == 0:
+            print(f"Re-evaluated {i + 1}/{len(experiments)} experiments")
+
+    if log_progress:
+        n_ok = sum(1 for r in all_results if r["success"])
+        n_err = sum(1 for r in all_results if not r["success"])
+        print(f"Done: {n_ok} succeeded, {n_err} failed out of {len(all_results)} experiments")
+
+    return all_results

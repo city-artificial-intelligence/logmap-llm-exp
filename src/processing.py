@@ -13,9 +13,18 @@ from src.constants import (
     LOGGER,
     PAIRS_SEPARATOR,
     RESULTS_SEPARATOR,
+    USAGE_COLUMNS,
     BinaryOutputFormat,
     BinaryOutputFormatWithReasoning,
     LLMCallOutput,
+)
+from src.error_taxonomy import (
+    ERROR_COLUMNS,
+    RETRY_COUNT_COLUMNS,
+    RETRYABLE_ERROR_TYPES,
+    ErrorCategory,
+    ErrorType,
+    classify_error,
 )
 from src.formatting import (
     format_oracle_pairs_filepath,
@@ -25,7 +34,7 @@ from src.formatting import (
 from src.LLM_servers.openai import OpenAIServer
 from src.onto_access import OntologyAccess
 from src.onto_object import OntologyEntryAttr
-from src.utils import calculate_logpropgs_confidence, retry
+from src.utils import calculate_logpropgs_confidence
 
 
 def save_oracle_pairs_with_prompts(
@@ -104,7 +113,6 @@ def extract_llm_compeletion_answer(response: LLMCallOutput) -> bool:
     raise NotImplementedError()
 
 
-@retry(max_retries=1)
 def process_sample(
     candidates_pair: tuple[str, str],
     llm_oracle: OpenAIServer,
@@ -113,17 +121,8 @@ def process_sample(
     model: str,
     prompt_function: Callable,
     sleep_time: float,
-) -> tuple[list, tuple[int, int]]:
-    """Process a single line: generate a prompt, send it to the LLM, and extract the response.
-
-    If an exception occurs, the function is retried once.
-
-    Returns:
-        tuple[list, tuple[int, int], float]: The results, token usage, and confidence.
-        - results: list of source, target, answer, confidence
-        - token_usage: tuple of input tokens, output tokens
-
-    """
+    max_retries: int = 1,
+) -> tuple[list, tuple, int]:
     source, target = candidates_pair[:2]
 
     if len(candidates_pair) == 2:
@@ -131,33 +130,67 @@ def process_sample(
     else:
         prompt = candidates_pair[2]
 
-    try:
-        time.sleep(sleep_time)
-        start = time.time()
+    last_error_type = ErrorType.UNKNOWN
+    last_error_category = ErrorCategory.UNKNOWN
 
-        response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
-        input_tokens = response.usage.input_tokens
-        output_tokens = response.usage.output_tokens
+    # Track retry counts per error type
+    retry_counts: dict[ErrorType, int] = {et: 0 for et in ErrorType}
 
-        _ = time.time() - start
+    def _build_retry_values() -> list[int]:
+        """Build flat list of retry counts in RETRY_COUNT_COLUMNS order."""
+        values = [retry_counts[et] for et in ErrorType]
+        values.append(sum(retry_counts.values()))  # retries_total
+        return values
 
-        # save_path = Path("llm_responses_debug.txt")
-        # with save_path.open("a") as f:
-        # string = f"prompt={prompt_function.__name__}, {model=} {source=}, {target=}, {input_tokens=}, {output_tokens=}, {proc_time=}\n"
-        # f.write(string)
+    for attempt in range(max_retries + 1):
+        try:
+            time.sleep(sleep_time)
+            response: LLMCallOutput = llm_oracle.ask_sync_question(prompt, model)
+            answer = extract_llm_compeletion_answer(response)
+            confidence = calculate_logpropgs_confidence(response.logprobs)
+            usage = response.usage
+            token_usage = usage.to_tuple()
+            # No error on success
+            result = [source, target, answer, confidence, *token_usage, attempt, "", "", *_build_retry_values()]
+            return result, token_usage, attempt
+        except Exception as e:  # noqa: BLE001
+            error_type, error_category = classify_error(e)
+            last_error_type = error_type
+            last_error_category = error_category
+            retry_counts[error_type] += 1
 
-        answer = extract_llm_compeletion_answer(response)
+            # Only retry if the error is retryable
+            if error_type not in RETRYABLE_ERROR_TYPES and attempt < max_retries:
+                # Non-retryable error: fail immediately
+                LOGGER.error(
+                    f"Non-retryable error ({error_type.value}) for {candidates_pair}: {e}",
+                    exc_info=True,
+                )
+                nan_usage = (np.nan,) * len(USAGE_COLUMNS)
+                return (
+                    [source, target, "error", str(np.nan), *nan_usage, attempt,
+                     error_type.value, error_category.value, *_build_retry_values()],
+                    nan_usage, attempt,
+                )
 
-        input_tokens = response.usage.input_tokens
-        output_tokens = response.usage.output_tokens
-        confidence = calculate_logpropgs_confidence(response.logprobs)
+            if attempt == max_retries:
+                LOGGER.error(
+                    f"Error ({error_type.value}) processing line: {candidates_pair}: {e}",
+                    exc_info=True,
+                )
+                nan_usage = (np.nan,) * len(USAGE_COLUMNS)
+                return (
+                    [source, target, "error", str(np.nan), *nan_usage, attempt,
+                     last_error_type.value, last_error_category.value, *_build_retry_values()],
+                    nan_usage, attempt,
+                )
 
-        token_usage = (input_tokens, output_tokens)
-        return [source, target, answer, confidence], token_usage
-
-    except Exception as e:  # noqa: BLE001
-        LOGGER.error(f"Error processing line: {candidates_pair}: {e}", exc_info=True)
-        return [source, target, "error", str(np.nan)], (np.nan, np.nan)
+    nan_usage = (np.nan,) * len(USAGE_COLUMNS)
+    return (
+        [source, target, "error", str(np.nan), *nan_usage, max_retries,
+         last_error_type.value, last_error_category.value, *_build_retry_values()],
+        nan_usage, max_retries,
+    )
 
 
 def parallel_samples_process(
@@ -194,20 +227,36 @@ def parallel_samples_process(
     tokens_usage = []
 
     precomputed_results = {}
+    prior_retries_map = {}
     if partial_results is not None:
+        has_retries_col = "num_retries" in partial_results.columns
+        has_error_cols = "error_type" in partial_results.columns
+        has_retry_count_cols = "retries_total" in partial_results.columns
         for _, row in partial_results.iterrows():
-            if "error" not in row.to_numpy():
-                key = (row[0], row[1])
-                precomputed_results[key] = row.tolist()
+            key = (row["Source"], row["Target"])
+            row_values = row.to_numpy()
+            if "error" not in row_values:
+                row_list = row.tolist()
+                # Pad old-format results missing error_type/error_category columns
+                if not has_error_cols:
+                    row_list.extend(["", ""])
+                # Pad old-format results missing retry count columns
+                if not has_retry_count_cols:
+                    row_list.extend([0] * len(RETRY_COUNT_COLUMNS))
+                precomputed_results[key] = row_list
+            else:
+                prior = int(row["num_retries"]) if has_retries_col and pd.notna(row.get("num_retries")) else 0
+                prior_retries_map[key] = prior
 
     LOGGER.info(f"{len(precomputed_results)} precomputed results found from {len(candidate_pairs)}")
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_line = {}
         for pair in candidate_pairs:
-            if (pair[0], pair[1]) in precomputed_results:
-                results.append(precomputed_results[(pair[0], pair[1])])
-                tokens_usage.append((np.nan, np.nan))  # Placeholder for token usage
+            key = (pair[0], pair[1])
+            if key in precomputed_results:
+                results.append(precomputed_results[key])
+                tokens_usage.append((np.nan,) * len(USAGE_COLUMNS))
             else:
                 future_to_line[
                     executor.submit(
@@ -218,11 +267,16 @@ def parallel_samples_process(
         for future in tqdm(
             as_completed(future_to_line), total=len(future_to_line), desc=f"Processing Lines {prompt_function.__name__}"
         ):
-            result, token_usage = future.result()
+            result, token_usage, current_retries = future.result()
+            key = (result[0], result[1])
+            prior = prior_retries_map.get(key, 0)
+            total_retries = prior + current_retries + (1 if prior > 0 else 0)
+            # num_retries is at index 9 (after: source, target, answer, confidence, 5 usage cols)
+            num_retries_idx = 4 + len(USAGE_COLUMNS)  # = 9
+            result[num_retries_idx] = total_retries
             results.append(result)
             tokens_usage.append(token_usage)
 
-    # order results according to input candidate_pairs
     ordered_results = []
     ordered_tokens_usage = []
     pair_to_idx = {(res[0], res[1]): idx for idx, res in enumerate(results)}
@@ -231,5 +285,5 @@ def parallel_samples_process(
         ordered_results.append(results[pair_to_idx[(pair[0], pair[1])]])
         ordered_tokens_usage.append(tokens_usage[pair_to_idx[(pair[0], pair[1])]])
 
-    confidences = [res[-1] for res in ordered_results]
+    confidences = [res[3] for res in ordered_results]
     return ordered_results, ordered_tokens_usage, confidences
