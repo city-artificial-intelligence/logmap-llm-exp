@@ -35,12 +35,15 @@ class QwenServer:
                 "temperature": self.temperature,
             }
 
+            import time as _time
+            _start = _time.time()
             response = requests.post(
                 f"{self.base_url}/chat",
                 json=payload,
                 headers={"Content-Type": "application/json"},
                 timeout=120,
             )
+            _proc_time = _time.time() - _start
             response.raise_for_status()
             text_response = response.json().get("response", "").strip()
 
@@ -58,7 +61,7 @@ class QwenServer:
                     answer=ans_text.strip().lower() in ["true", "yes", "1"],
                 )
 
-            usage = TokensUsage(input_tokens=None, output_tokens=None)
+            usage = TokensUsage(input_tokens=None, output_tokens=None, proc_time=_proc_time)
             logprobs = []
 
             return LLMCallOutput(

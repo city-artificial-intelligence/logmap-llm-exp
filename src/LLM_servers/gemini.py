@@ -77,6 +77,8 @@ class GeminiApiServer:
                 "response_format": self.response_format,
             }
 
+            import time as _time
+            _start = _time.time()
             response = self.client.beta.chat.completions.parse(
                 **inference_kwargs,
                 extra_body={
@@ -87,11 +89,15 @@ class GeminiApiServer:
                     }
                 },
             )
+            _proc_time = _time.time() - _start
 
             output_message = response.choices[0].message.content
             usage = TokensUsage(
                 input_tokens=response.usage.prompt_tokens,
                 output_tokens=response.usage.completion_tokens,
+                input_cached_tokens=getattr(response.usage, 'prompt_tokens_details', None) and getattr(response.usage.prompt_tokens_details, 'cached_tokens', None),
+                output_reasoning_tokens=getattr(response.usage, 'completion_tokens_details', None) and getattr(response.usage.completion_tokens_details, 'reasoning_tokens', None),
+                proc_time=_proc_time,
             )
             logprobs = []
             parsed_output = response.choices[0].message.parsed

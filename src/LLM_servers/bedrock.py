@@ -87,7 +87,8 @@ class BedrockServer:
         try:
             bedrock_messages = self._format_bedrock_messages(message)
 
-            # to be utilized in future start_time = time()
+            import time as _time
+            _start = _time.time()
             response = self.client.converse(
                 modelId=model or self.model_id,
                 messages=bedrock_messages,
@@ -99,6 +100,7 @@ class BedrockServer:
                 },
                 # toolConfig=self.response_format,
             )
+            _proc_time = _time.time() - _start
 
             response_content = response["output"]["message"]["content"][0]
             if "toolUse" in response_content:
@@ -109,7 +111,11 @@ class BedrockServer:
                 answer = "true" in completion.lower()
 
             usage = TokensUsage(
-                input_tokens=response["usage"]["inputTokens"], output_tokens=response["usage"]["outputTokens"]
+                input_tokens=response["usage"]["inputTokens"],
+                output_tokens=response["usage"]["outputTokens"],
+                input_cached_tokens=response.get("usage", {}).get("cacheReadInputTokenCount"),
+                output_reasoning_tokens=None,
+                proc_time=_proc_time,
             )
 
             return LLMCallOutput(message=completion, usage=usage, logprobs=[], parsed=BinaryOutputFormat(answer=answer))

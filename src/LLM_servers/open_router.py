@@ -34,21 +34,58 @@ class OpenRouterServer:
         self.routes_registry = {
             "qwen/qwen3-vl-8b-instruct": "novita",
             "deepseek/deepseek-chat-v3-0324": "deepinfra",
+            "deepseek/deepseek-v4-pro": "deepinfra",
+            "deepseek/deepseek-v4-flash": "deepinfra",
             "mistralai/ministral-14b-2512": "mistral",
             "mistralai/ministral-3b-2512": "mistral",
             "mistralai/mistral-nemo": "deepinfra",
+            "mistralai/mistral-medium-3-5": "mistral",
+            "mistralai/mistral-small-2603": "mistral",
             "google/gemma-3-27b-it": "deepinfra",
             "google/gemma-3-12b-it": "deepinfra",
+            "google/gemma-4-31b-it": "deepinfra",
+            "google/gemma-4-26b-a4b-it": "deepinfra",
             "meta-llama/llama-4-scout": "deepinfra",
             "meta-llama/llama-4-maverick": "deepinfra",
             "openai/gpt-oss-120b": "deepinfra",
+            "openai/gpt-5.5": "openai",
+            "openai/gpt-5.4-mini": "openai",
+            "anthropic/claude-opus-4.7": "anthropic",
             "x-ai/grok-4.1-fast": "xai",
+            "x-ai/grok-4.3": "xai",
+            "x-ai/grok-4.20": "xai",
+            "ibm-granite/granite-4.1-8b": "ibm",
             "qwen/qwen3-235b-a22b-2507": "deepinfra",
+            "qwen/qwen3.6-flash": "deepinfra",
+            "qwen/qwen3.6-35b-a3b": "deepinfra",
+            "qwen/qwen3.6-max-preview": "deepinfra",
+            "qwen/qwen3.5-397b-a17b": "deepinfra",
+            "qwen/qwen3.5-9b": "deepinfra",
+            "minimax/minimax-m2.7": "minimax",
+            "moonshotai/kimi-k2.6": "moonshot",
+            "nvidia/nemotron-3-super-120b-a12b": "nvidia",
+            "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": "nvidia",
+            "z-ai/glm-5.1": "z-ai",
+            "bytedance-seed/seed-2.0-lite": "bytedance-seed",
             "openai/gpt-4o-mini": "openai",
+            "openai/gpt-5.4": "openai",
+            "openai/gpt-oss-20b": "deepinfra",
+            "anthropic/claude-haiku-4.5": "anthropic",
+            "deepseek/deepseek-v3.2": "deepinfra",
+            "bytedance-seed/seed-2.0-mini": "bytedance-seed",
+            "minimax/minimax-m2.5": "minimax",
+            "qwen/qwen3-14b": "deepinfra",
+            "qwen/qwen3-32b": "deepinfra",
+            "qwen/qwen3.5-35b-a3b": "deepinfra",
+            "qwen/qwen3.5-122b-a10b": "deepinfra",
+            "z-ai/glm-5": "z-ai",
+            "google/gemini-2.5-flash": "google-ai-studio",
+            "google/gemini-2.5-flash-lite": "google-ai-studio",
+            "google/gemini-2.5-pro": "google-ai-studio",
+            "google/gemini-3.1-flash-lite-preview": "google-ai-studio",
+            "meta-llama/llama-3.1-70b-instruct": "parasail",
+            "mistralai/mistral-small-3.2-24b-instruct": "mistral",
             # "google/gemini-3-flash-preview": "google-ai-studio",
-            # "google/gemini-2.5-pro": "google-vertex/global",
-            # "mistralai/mistral-small-3.2-24b-instruct": "mistral",
-            # "meta-llama/llama-3.1-70b-instruct": "parasail",
         }
 
         for key, value in kwargs.items():
@@ -122,7 +159,10 @@ class OpenRouterServer:
 
             if self.params.get("custom_parsing"):
                 inference_kwargs.pop("response_format", None)
+                import time as _time
+                _start = _time.time()
                 response = self.client.beta.chat.completions.parse(**inference_kwargs)
+                _proc_time = _time.time() - _start
                 output_message = response.choices[0].message.content
                 try:
                     parsed_output = self.response_format(**json.loads(output_message))
@@ -137,13 +177,19 @@ class OpenRouterServer:
                     parsed_output = self.response_format(answer=answer)
 
             else:
+                import time as _time
+                _start = _time.time()
                 response = self.client.beta.chat.completions.parse(**inference_kwargs)
+                _proc_time = _time.time() - _start
                 parsed_output = response.choices[0].message.parsed
                 output_message = response.choices[0].message.content
 
             usage = TokensUsage(
                 input_tokens=response.usage.prompt_tokens,
                 output_tokens=response.usage.completion_tokens,
+                input_cached_tokens=getattr(response.usage, 'prompt_tokens_details', None) and getattr(response.usage.prompt_tokens_details, 'cached_tokens', None),
+                output_reasoning_tokens=getattr(response.usage, 'completion_tokens_details', None) and getattr(response.usage.completion_tokens_details, 'reasoning_tokens', None),
+                proc_time=_proc_time,
             )
             try:
                 logprobs = response.choices[0].logprobs.model_dump()["content"]
