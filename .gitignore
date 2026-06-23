@@ -7,3 +7,13 @@ fma.body.owl
 playground_files/
 venv/
 oaei_SNOMED_whole_ontology.owl
+
+# large run logs and scratch artifacts
+notebook_logs.log
+*.log
+# duplicated working copies of notebooks
+* copy.ipynb
+*copy.ipynb
+# redundant zipped exports (keep the unzipped dir instead)
+plots/*.zip
+.DS_Store
