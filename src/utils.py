@@ -8,7 +8,8 @@ from typing import Any, Callable
 import numpy as np
 import pandas as pd
 
-from src.constants import PAIRS_SEPARATOR, RESULTS_SEPARATOR
+from src.constants import PAIRS_SEPARATOR, RESULTS_SEPARATOR, USAGE_COLUMNS
+from src.error_taxonomy import ERROR_COLUMNS, RETRY_COUNT_COLUMNS
 
 
 def retry(max_retries: int = 1) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
@@ -69,21 +70,21 @@ def read_oracle_pairs(file_path: Path, sep: str = PAIRS_SEPARATOR) -> list[tuple
 def save_run_results(
     results: list[tuple], path: Path, sep: str = RESULTS_SEPARATOR, columns: list[str] | None = None
 ) -> None:
-    """Save the results of the run to a file.
-
-    Args:
-        results: list of tuples with the results.
-        path: path to the file to save the results.
-        sep: separator to use in the file.
-        columns: columns names for entries in the results.
-
-    """
     path.parent.mkdir(parents=True, exist_ok=True)
 
     if not columns:
-        columns = ["Source", "Target", "Answer", "Confidence"]
+        columns = ["Source", "Target", "Prediction", "Confidence", *USAGE_COLUMNS, "num_retries", *ERROR_COLUMNS, *RETRY_COUNT_COLUMNS]
 
-    results_df = pd.DataFrame(results, columns=columns)
+    # Pad rows that are shorter than expected columns (backward compat with old results)
+    expected_len = len(columns)
+    padded_results = []
+    for row in results:
+        row_list = list(row) if not isinstance(row, list) else row
+        if len(row_list) < expected_len:
+            row_list.extend([""] * (expected_len - len(row_list)))
+        padded_results.append(row_list)
+
+    results_df = pd.DataFrame(padded_results, columns=columns)
     results_df.to_csv(path, sep=sep, index=False)
     return
 
@@ -112,53 +113,83 @@ def expand_setups(setups: list[dict], base_setup: dict | None, exclude_keys: lis
     return expanded
 
 
-def calculate_mean_token_usage(tokens_usage: list[tuple[int, int]]) -> dict[str, float]:
-    """Calculate mean token usage from a list of (input_tokens, output_tokens) tuples.
-
-    Args:
-        tokens_usage: list of tuples, each with (input_tokens, output_tokens).
-
-    Returns:
-        dict with mean_input_tokens, mean_output_tokens, total_input_tokens, total_output_tokens.
-
-    """
+def calculate_mean_token_usage(tokens_usage: list[tuple]) -> dict[str, float]:
     if not tokens_usage:
-        return {
-            "mean_input_tokens": 0.0,
-            "mean_output_tokens": 0.0,
-            "total_input_tokens": 0,
-            "total_output_tokens": 0,
-        }
+        return {f"mean_{col}": 0.0 for col in USAGE_COLUMNS} | {f"total_{col}": 0 for col in USAGE_COLUMNS}
 
-    input_tokens = [t[0] for t in tokens_usage if t and len(t) >= 2]
-    output_tokens = [t[1] for t in tokens_usage if t and len(t) >= 2]
+    full_len = len(USAGE_COLUMNS)
+    normalized = []
+    for t in tokens_usage:
+        if t is None:
+            continue
+        t = tuple(t) if not isinstance(t, tuple) else t
+        padded = t + (None,) * (full_len - len(t)) if len(t) < full_len else t[:full_len]
+        normalized.append(padded)
 
-    return {
-        "mean_input_tokens": np.mean(input_tokens) if input_tokens else 0.0,
-        "mean_output_tokens": np.mean(output_tokens) if output_tokens else 0.0,
-        "total_input_tokens": sum(input_tokens),
-        "total_output_tokens": sum(output_tokens),
-    }
+    result = {}
+    for i, col in enumerate(USAGE_COLUMNS):
+        values = [t[i] for t in normalized if t[i] is not None and not (isinstance(t[i], float) and np.isnan(t[i]))]
+        result[f"mean_{col}"] = float(np.mean(values)) if values else 0.0
+        if col == "proc_time":
+            result[f"total_{col}"] = float(np.sum(values)) if values else 0.0
+        else:
+            result[f"total_{col}"] = int(np.sum(values)) if values else 0
+
+    return result
 
 
 def save_token_usage_stats(
-    tokens_usage: list[tuple[int, int]], path: Path, sep: str = RESULTS_SEPARATOR
+    tokens_usage: list[tuple],
+    path: Path,
+    sep: str = RESULTS_SEPARATOR,
+    predictions_path: Path | None = None,
 ) -> dict[str, float]:
-    """Calculate and save mean token usage stats to a file.
-
-    Args:
-        tokens_usage: list of tuples, each with (input_tokens, output_tokens).
-        path: path to save the token usage stats.
-        sep: separator to use in the file.
-
-    Returns:
-        dict with token usage statistics.
-
-    """
     stats = calculate_mean_token_usage(tokens_usage)
-    path.parent.mkdir(parents=True, exist_ok=True)
 
+    has_data = any(v != 0 and v != 0.0 for v in stats.values())
+    if not has_data and predictions_path is not None:
+        derived = derive_token_usage_from_predictions(predictions_path, path, sep)
+        if derived is not None:
+            return derived
+
+    path.parent.mkdir(parents=True, exist_ok=True)
     stats_df = pd.DataFrame(list(stats.items()), columns=["Metric", "Value"])
     stats_df.to_csv(path, sep=sep, index=False)
 
     return stats
+
+
+def derive_token_usage_from_predictions(
+    predictions_path: Path, usage_path: Path, sep: str = RESULTS_SEPARATOR
+) -> dict[str, float] | None:
+    if not predictions_path.exists():
+        return None
+
+    pred_df = pd.read_csv(predictions_path, sep=sep)
+
+    present_cols = [c for c in USAGE_COLUMNS if c in pred_df.columns]
+    if not present_cols:
+        return None
+
+    numeric_df = pred_df[present_cols].apply(pd.to_numeric, errors="coerce")
+    if numeric_df.dropna(how="all").empty:
+        return None
+
+    result: dict[str, float] = {}
+    for col in USAGE_COLUMNS:
+        if col in numeric_df.columns:
+            valid = numeric_df[col].dropna()
+            result[f"mean_{col}"] = float(valid.mean()) if len(valid) > 0 else 0.0
+            if col == "proc_time":
+                result[f"total_{col}"] = float(valid.sum()) if len(valid) > 0 else 0.0
+            else:
+                result[f"total_{col}"] = int(valid.sum()) if len(valid) > 0 else 0
+        else:
+            result[f"mean_{col}"] = 0.0
+            result[f"total_{col}"] = 0
+
+    usage_path.parent.mkdir(parents=True, exist_ok=True)
+    stats_df = pd.DataFrame(list(result.items()), columns=["Metric", "Value"])
+    stats_df.to_csv(usage_path, sep=sep, index=False)
+
+    return result
