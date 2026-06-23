@@ -64,6 +64,12 @@ _LOCAL_TO_OPENROUTER: dict[str, str | None] = {
     "anthropic.claude-3-sonnet-20240229-v1:0": "anthropic/claude-3-sonnet",
     "anthropic.claude-instant-v1": "anthropic/claude-instant-1.2",
     "us.anthropic.claude-3-7-sonnet-20250219-v1:0": "anthropic/claude-3.7-sonnet",
+    # New candidates surfaced from OpenRouter (2026-06)
+    "anthropic|claude-fable-5": "anthropic/claude-fable-5",
+    "google|gemini-3.5-flash": "google/gemini-3.5-flash",
+    "qwen|qwen3.7-plus": "qwen/qwen3.7-plus",
+    "xiaomi|mimo-v2.5": "xiaomi/mimo-v2.5",
+    "openai|gpt-5.5-pro": "openai/gpt-5.5-pro",
     "qwen3-8B": None,
     "qwen3-1.7B": None,
 }

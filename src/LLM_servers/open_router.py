@@ -86,6 +86,12 @@ class OpenRouterServer:
             "meta-llama/llama-3.1-70b-instruct": "parasail",
             "mistralai/mistral-small-3.2-24b-instruct": "mistral",
             # "google/gemini-3-flash-preview": "google-ai-studio",
+            # New candidates surfaced from OpenRouter (2026-06)
+            "anthropic/claude-fable-5": "anthropic",
+            "google/gemini-3.5-flash": "google-ai-studio",
+            "qwen/qwen3.7-plus": "deepinfra",
+            "openai/gpt-5.5-pro": "openai",
+            # "xiaomi/mimo-v2.5": "<provider>",  # set provider slug before pinning; unpinned = OpenRouter auto-route
         }
 
         for key, value in kwargs.items():
