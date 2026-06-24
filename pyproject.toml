@@ -6,6 +6,10 @@ indent-width = 4
 name = "KG-LLM-Matching"
 version = "0.1.0"
 
+# Resolve top-level `config` / `src` imports from the repo root in notebooks (Pylance/Pyright).
+[tool.pyright]
+extraPaths = ["."]
+
 
 [tool.ruff.lint]
 select = [
