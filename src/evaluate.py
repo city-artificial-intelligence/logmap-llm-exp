@@ -55,14 +55,14 @@ def plot_usage_histograms(
     return
 
 
-def save_analysis_results(
-    df: pd.DataFrame,
-    print_results: bool = True,
-    plot_confusion_matrix: bool = True,
-    subtitle: str = "",
-    cm_save_path: Path | None = None,
-    stats_path: Path | None = None,
-) -> dict:
+def compute_run_metrics(df: pd.DataFrame) -> dict:
+    """Compute binary-matching metrics plus error/retry/token aggregates for one run.
+
+    ``df`` must hold a boolean ``Label`` column and a ``Prediction`` column; optional
+    ``is_error``, ``error_type``, ``error_category``, ``num_retries``, retry-count and
+    token-usage columns enrich the result. The returned dict mirrors what is persisted in
+    the ``*_stats.txt`` files, so it can be reused both at run time and by the leaderboard.
+    """
     total_count = len(df)
     if "is_error" in df.columns:
         error_mask = df["is_error"]
@@ -75,20 +75,26 @@ def save_analysis_results(
     pred_mapped = valid_df["Prediction"].astype(str).str.strip().str.lower().map({"true": True, "false": False})
     valid_df["Prediction"] = pred_mapped
 
-    conf_matrix = confusion_matrix(valid_df["Label"], valid_df["Prediction"])
-
-    metrics = {
-        "Accuracy": accuracy_score(valid_df["Label"], valid_df["Prediction"]),
-        "Precision": precision_score(valid_df["Label"], valid_df["Prediction"]),
-        "Recall": recall_score(valid_df["Label"], valid_df["Prediction"]),
-        "F1 Score": f1_score(valid_df["Label"], valid_df["Prediction"]),
-        "Specificity": conf_matrix[0][0] / (conf_matrix[0][0] + conf_matrix[0][1]),
-        "Sensitivity": conf_matrix[1][1] / (conf_matrix[1][0] + conf_matrix[1][1]),
-        "TP": conf_matrix[1][1],
-        "TN": conf_matrix[0][0],
-        "FP": conf_matrix[0][1],
-        "FN": conf_matrix[1][0],
-    }
+    if valid_df.empty:
+        # Every call errored: report a fully-failed run instead of crashing on an empty matrix.
+        nan = float("nan")
+        metrics = {
+            "Accuracy": nan, "Precision": nan, "Recall": nan, "F1 Score": nan,
+            "Specificity": nan, "Sensitivity": nan, "TP": 0, "TN": 0, "FP": 0, "FN": 0,
+        }
+    else:
+        # labels=[False, True] forces a 2x2 matrix even when predictions are single-class.
+        conf_matrix = confusion_matrix(valid_df["Label"], valid_df["Prediction"], labels=[False, True])
+        tn, fp, fn, tp = conf_matrix.ravel()
+        metrics = {
+            "Accuracy": accuracy_score(valid_df["Label"], valid_df["Prediction"]),
+            "Precision": precision_score(valid_df["Label"], valid_df["Prediction"], zero_division=0),
+            "Recall": recall_score(valid_df["Label"], valid_df["Prediction"], zero_division=0),
+            "F1 Score": f1_score(valid_df["Label"], valid_df["Prediction"], zero_division=0),
+            "Specificity": tn / (tn + fp) if (tn + fp) else float("nan"),
+            "Sensitivity": tp / (tp + fn) if (tp + fn) else float("nan"),
+            "TP": int(tp), "TN": int(tn), "FP": int(fp), "FN": int(fn),
+        }
 
     metrics["Youden's index"] = metrics["Sensitivity"] + metrics["Specificity"] - 1
     metrics["num_errors"] = num_errors
@@ -136,6 +142,20 @@ def save_analysis_results(
                     metrics[f"total_{col}"] = valid.sum()
                 else:
                     metrics[f"total_{col}"] = int(valid.sum())
+
+    return metrics
+
+
+def save_analysis_results(
+    df: pd.DataFrame,
+    print_results: bool = True,
+    plot_confusion_matrix: bool = True,
+    subtitle: str = "",
+    cm_save_path: Path | None = None,
+    stats_path: Path | None = None,
+) -> dict:
+    metrics = compute_run_metrics(df)
+    conf_matrix = np.array([[metrics["TN"], metrics["FP"]], [metrics["FN"], metrics["TP"]]])
 
     if print_results:
         for metric, value in metrics.items():
