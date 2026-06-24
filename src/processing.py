@@ -19,7 +19,6 @@ from src.constants import (
     LLMCallOutput,
 )
 from src.error_taxonomy import (
-    ERROR_COLUMNS,
     RETRY_COUNT_COLUMNS,
     RETRYABLE_ERROR_TYPES,
     ErrorCategory,

@@ -38,6 +38,15 @@ class TokensUsage(BaseModel):
 USAGE_COLUMNS = ["input_tokens", "output_tokens", "input_cached_tokens", "output_reasoning_tokens", "proc_time"]
 
 
+def extract_cached_reasoning_tokens(usage: object) -> tuple[int | None, int | None]:
+    """Pull (cached_input, reasoning_output) token counts from an OpenAI-style usage object."""
+    prompt_details = getattr(usage, "prompt_tokens_details", None)
+    completion_details = getattr(usage, "completion_tokens_details", None)
+    cached = getattr(prompt_details, "cached_tokens", None) if prompt_details else None
+    reasoning = getattr(completion_details, "reasoning_tokens", None) if completion_details else None
+    return cached, reasoning
+
+
 class LLMCallOutput(BaseModel):
     message: str | bool
     usage: TokensUsage

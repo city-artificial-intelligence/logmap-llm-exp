@@ -1,10 +1,9 @@
+# ruff: noqa: T201
+import torch
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
-import requests
-from typing import Any
-import uvicorn
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 app = FastAPI(title="Qwen Model Server")
 
@@ -28,21 +27,21 @@ class ChatRequest(BaseModel):
     temperature: float = 0.7
 
 @app.post("/chat")
-def chat(req: ChatRequest):
+def chat(req: ChatRequest) -> dict:
     text = tokenizer.apply_chat_template(
         req.messages,
         tokenize=False,
         add_generation_prompt=True,
         enable_thinking=False
     )
-    
+
     inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
     # Get token IDs for "True" and "False"
     true_id = tokenizer.convert_tokens_to_ids("True")
     false_id = tokenizer.convert_tokens_to_ids("False")
 
-    def allowed_tokens(batch_id, input_ids):
+    def allowed_tokens(batch_id: int, input_ids: list[int]) -> list[int]:  # noqa: ARG001
         # First generated token: only allow "True" or "False"
         if len(input_ids) == inputs.input_ids.shape[1]:
             return [true_id, false_id]

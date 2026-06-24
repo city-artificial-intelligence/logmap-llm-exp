@@ -1,12 +1,12 @@
 from __future__ import annotations
-from typing import Any, Optional
-from pydantic import BaseModel
+
 import requests
+
 from src.constants import BinaryOutputFormat, BinaryOutputFormatWithReasoning, LLMCallOutput, TokensUsage
 
 
-class QwenServer:    
-    def __init__(self, base_url: str = "http://localhost:8000", **kwargs: Any) -> None:
+class QwenServer:
+    def __init__(self, base_url: str = "http://localhost:8000", **kwargs: object) -> None:
         self.base_url = base_url.rstrip("/")
         self.chat_context: list[dict[str, str]] = []
         self.max_new_tokens = kwargs.get("max_new_tokens", 50)
@@ -26,7 +26,7 @@ class QwenServer:
     def clear_context(self) -> None:
         self.chat_context = []
 
-    def ask_sync_question(self, message: str, model: str = "Qwen/Qwen3-1.7B") -> LLMCallOutput:
+    def ask_sync_question(self, message: str, model: str = "Qwen/Qwen3-1.7B") -> LLMCallOutput:  # noqa: ARG002
         try:
             messages = [*self.chat_context, {"role": "user", "content": message}]
             payload = {
@@ -72,4 +72,5 @@ class QwenServer:
             )
 
         except Exception as e:
-            raise RuntimeError(f"Request to Qwen server failed: {e}")
+            msg = f"Request to Qwen server failed: {e}"
+            raise RuntimeError(msg) from e

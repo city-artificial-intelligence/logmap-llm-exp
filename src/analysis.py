@@ -14,7 +14,7 @@ import seaborn as sns
 
 from config.config import METRICS_DIR, OUTPUTS_DIR, RUN_DIR
 from config.runs_vars import DATASET_SUBSETS_MAP, SUBSET_TO_DATASET_MAP
-from src.error_taxonomy import ERROR_COLUMNS, ErrorCategory, ErrorType
+from src.error_taxonomy import ErrorCategory, ErrorType
 
 DEFAULT_PROMPT_NAMES_MAP: dict[str, str] = {
     "direct_entity_ontological": "P",

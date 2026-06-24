@@ -73,7 +73,10 @@ def save_run_results(
     path.parent.mkdir(parents=True, exist_ok=True)
 
     if not columns:
-        columns = ["Source", "Target", "Prediction", "Confidence", *USAGE_COLUMNS, "num_retries", *ERROR_COLUMNS, *RETRY_COUNT_COLUMNS]
+        columns = [
+            "Source", "Target", "Prediction", "Confidence",
+            *USAGE_COLUMNS, "num_retries", *ERROR_COLUMNS, *RETRY_COUNT_COLUMNS,
+        ]
 
     # Pad rows that are shorter than expected columns (backward compat with old results)
     expected_len = len(columns)

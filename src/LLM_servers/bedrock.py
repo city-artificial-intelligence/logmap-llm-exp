@@ -19,7 +19,10 @@ OUTPUT_FORMAT = {
                         "properties": {
                             "answer": {
                                 "type": "boolean",
-                                "description": "The answer to the question, either 'True' or 'False'. Do not output any other text.",
+                                "description": (
+                                    "The answer to the question, either 'True' or 'False'. "
+                                    "Do not output any other text."
+                                ),
                             },
                         },
                         "required": ["answer"],
@@ -33,7 +36,7 @@ OUTPUT_FORMAT = {
 }
 
 
-# TODO: move config to some constatnts file and add hyperparameters for the model
+# Note: config could be moved to a constants file with per-model hyperparameters.
 class BedrockServer:
     def __init__(
         self,

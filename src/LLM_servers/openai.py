@@ -6,7 +6,7 @@ from typing import Any
 import openai
 from pydantic import BaseModel
 
-from src.constants import BinaryOutputFormat, LLMCallOutput, TokensUsage
+from src.constants import BinaryOutputFormat, LLMCallOutput, TokensUsage, extract_cached_reasoning_tokens
 
 
 class OpenAIServer:
@@ -110,11 +110,12 @@ class OpenAIServer:
             _proc_time = _time.time() - _start
 
             output_message = response.choices[0].message.content
+            cached_tokens, reasoning_tokens = extract_cached_reasoning_tokens(response.usage)
             usage = TokensUsage(
                 input_tokens=response.usage.prompt_tokens,
                 output_tokens=response.usage.completion_tokens,
-                input_cached_tokens=getattr(response.usage, 'prompt_tokens_details', None) and getattr(response.usage.prompt_tokens_details, 'cached_tokens', None),
-                output_reasoning_tokens=getattr(response.usage, 'completion_tokens_details', None) and getattr(response.usage.completion_tokens_details, 'reasoning_tokens', None),
+                input_cached_tokens=cached_tokens,
+                output_reasoning_tokens=reasoning_tokens,
                 proc_time=_proc_time,
             )
             try:

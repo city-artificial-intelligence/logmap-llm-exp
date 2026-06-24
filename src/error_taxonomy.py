@@ -132,9 +132,9 @@ def classify_error(exception: Exception) -> tuple[ErrorType, ErrorCategory]:
 
     if isinstance(exception, openai.BadRequestError):
         msg = str(exception).lower()
-        if "context" in msg or "token" in msg and "max" in msg or "too long" in msg:
+        if "context" in msg or ("token" in msg and "max" in msg) or "too long" in msg:
             return ErrorType.CONTEXT_LENGTH, ErrorCategory.PROVIDER_LIMIT
-        if "content" in msg and "filter" in msg or "safety" in msg:
+        if ("content" in msg and "filter" in msg) or "safety" in msg:
             return ErrorType.CONTENT_FILTER, ErrorCategory.MODEL_OUTPUT
         if "reasoning" in msg and ("mandatory" in msg or "cannot be disabled" in msg):
             return ErrorType.INVALID_REQUEST_PARAMS, ErrorCategory.PROVIDER_CONFIG
