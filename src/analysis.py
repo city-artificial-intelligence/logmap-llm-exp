@@ -74,7 +74,10 @@ def plot_box(
     ax: plt.Axes | None = None,
     rotation: int = 34,
     consistent_prefix_color: bool = False,
+    plot_kwargs: dict | None = None,
 ) -> None:
+    """Box + strip plot. ``plot_kwargs``: strip_color, strip_alpha, strip_size, box_linewidth."""
+    pk = plot_kwargs or {}
     if ax is None:
         _, ax = plt.subplots()
 
@@ -84,13 +87,20 @@ def plot_box(
         palette_colors = sns.color_palette(palette, n_colors=len(unique_prefixes))
         color_dict = dict(zip(unique_prefixes, palette_colors))
 
-        box_plot = sns.boxplot(ax=ax, data=data, x=x_col, y=y_col, color="white", fliersize=0, linewidth=1.5)
+        box_plot = sns.boxplot(
+            ax=ax, data=data, x=x_col, y=y_col, color="white", fliersize=0,
+            linewidth=pk.get("box_linewidth", 1.5),
+        )
         for patch, label in zip(box_plot.patches, data[x_col].unique()):
             patch.set_facecolor(color_dict[label.split("-")[0]])
     else:
         sns.boxplot(ax=ax, data=data, x=x_col, y=y_col, palette=palette, hue=x_col, legend=False)
 
-    sns.stripplot(ax=ax, data=data, x=x_col, y=y_col, color="black", alpha=0.5, jitter=True, size=4)
+    sns.stripplot(
+        ax=ax, data=data, x=x_col, y=y_col,
+        color=pk.get("strip_color", "black"), alpha=pk.get("strip_alpha", 0.5),
+        jitter=True, size=pk.get("strip_size", 4),
+    )
     ax.set_xlabel(wrap_to_latex(x_col))
     ax.set_ylabel(y_col)
     ax.set_xticks(ax.get_xticks())
@@ -105,7 +115,10 @@ def plot_heatmap(
     precision: int = 2,
     ax: plt.Axes | None = None,
     fontsize: int = 12,
+    plot_kwargs: dict | None = None,
 ) -> None:
+    """Annotated heatmap. ``plot_kwargs``: cmap, linewidths, rotation."""
+    pk = plot_kwargs or {}
     if ax is None:
         _, ax = plt.subplots()
 
@@ -114,17 +127,19 @@ def plot_heatmap(
     sns.heatmap(
         ax=ax,
         data=pivot,
-        cmap="coolwarm",
+        cmap=pk.get("cmap", "coolwarm"),
         annot=True,
         fmt=f".{precision}f",
-        linewidths=0.5,
+        linewidths=pk.get("linewidths", 0.5),
         annot_kws={"fontsize": fontsize},
     )
     ax.set_xlabel(wrap_to_latex(col_col), fontsize=fontsize)
     ax.set_ylabel(wrap_to_latex(row_col), fontsize=fontsize)
     ax.set_xticks(ax.get_xticks())
     ax.set_xticklabels(
-        [wrap_to_latex(t.get_text()) for t in ax.get_xticklabels()], rotation=34, fontdict={"fontsize": fontsize}
+        [wrap_to_latex(t.get_text()) for t in ax.get_xticklabels()],
+        rotation=pk.get("rotation", 34),
+        fontdict={"fontsize": fontsize},
     )
     ax.set_yticklabels([wrap_to_latex(t.get_text()) for t in ax.get_yticklabels()], fontdict={"fontsize": fontsize})
 
@@ -152,10 +167,16 @@ def plot_combined_heatmap(
     ax.set_yticklabels([wrap_to_latex(t.get_text()) for t in ax.get_yticklabels()])
 
 
-def plot_histogram(data: pd.DataFrame, metric: str, ax: plt.Axes | None = None) -> None:
+def plot_histogram(
+    data: pd.DataFrame, metric: str, ax: plt.Axes | None = None, plot_kwargs: dict | None = None
+) -> None:
+    """Histogram with KDE. ``plot_kwargs``: bins, color, kde."""
+    pk = plot_kwargs or {}
     if ax is None:
         _, ax = plt.subplots()
-    sns.histplot(ax=ax, data=data[metric], bins=20, kde=True, color="purple")
+    sns.histplot(
+        ax=ax, data=data[metric], bins=pk.get("bins", 20), kde=pk.get("kde", True), color=pk.get("color", "purple")
+    )
     ax.set_xlabel(metric)
     ax.set_ylabel("Frequency")
 
@@ -178,7 +199,11 @@ def plot_detailed_analysis(
     save_plots: bool = False,
     figsize: tuple[int, int] = (13, 8),
     save_dir_base: Path | None = None,
+    plot_kwargs: dict | None = None,
 ) -> None:
+    """Render the multi-panel metric analysis. ``plot_kwargs``: figsize, grid_figsize, suptitle_fontsize."""
+    pk = plot_kwargs or {}
+    figsize = pk.get("figsize", figsize)
     metrics_df[run_col_name] = metrics_df[left_col].str.cat(metrics_df[right_col], sep=run_separator)
     metrics_df[left_col_name] = metrics_df[run_col_name].str.split(run_separator).str[0]
     metrics_df[right_col_name] = metrics_df[run_col_name].str.split(run_separator).str[1]
@@ -237,8 +262,11 @@ def plot_detailed_analysis(
             save_plot(fig, save_dir, f"{idx}_{name}{filename_suffix}")
         return
 
-    fig, axes = plt.subplots(4, 2, figsize=(28, 34))
-    fig.suptitle(f"{metric} Metric Analysis Across Models, Experiments, and Experiment Splits", fontsize=16)
+    fig, axes = plt.subplots(4, 2, figsize=pk.get("grid_figsize", (28, 34)))
+    fig.suptitle(
+        f"{metric} Metric Analysis Across Models, Experiments, and Experiment Splits",
+        fontsize=pk.get("suptitle_fontsize", 16),
+    )
     axes = axes.flatten()
     for ax, (_, plot_fn) in zip(axes, plot_defs):
         plot_fn(ax)

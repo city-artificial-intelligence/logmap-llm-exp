@@ -569,3 +569,143 @@ def summarize_model_pricing(models: dict[str, ModelMetadata]) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(rows).set_index("Model")
+
+
+def build_real_usage_cost_table(
+    usage_stats_df: pd.DataFrame,
+    model_metadata: dict[str, ModelMetadata],
+    tasks: list[str] | None = None,
+    size: str = "reduced",
+    n_prompts: int = 2,
+) -> pd.DataFrame:
+    """Estimate per-task cost for each (model, experiment) from collected usage stats.
+
+    Real per-subset usage is used where available; subsets without data fall back to the
+    experiment's average profile. Returns one row per (model, experiment) with a column per task,
+    a ``{task}_source`` marker (``real``/``scaled``), ``Total`` and real/scaled task counts.
+    """
+    tasks = tasks or get_all_tasks()
+    experiment_usage: dict[tuple[str, str, str], UsageProfile] = {}
+    experiment_fallback: dict[tuple[str, str], UsageProfile] = {}
+
+    for (model, exp_name), group in usage_stats_df.groupby(["model", "exp_name"]):
+        subset_profiles: dict[str, UsageProfile] = {}
+        for subset, sub_group in group.groupby("subset"):
+            cached = sub_group.get("mean_input_cached_tokens", pd.Series([0])).mean()
+            reasoning = sub_group.get("mean_output_reasoning_tokens", pd.Series([0])).mean()
+            profile = UsageProfile.from_usage_stats(
+                {
+                    "mean_input_tokens": sub_group["mean_input_tokens"].mean(),
+                    "mean_output_tokens": sub_group["mean_output_tokens"].mean(),
+                    "mean_input_cached_tokens": cached,
+                    "mean_output_reasoning_tokens": reasoning,
+                    "mean_proc_time": sub_group.get("mean_proc_time", pd.Series([0])).mean(),
+                }
+            )
+            experiment_usage[(model, exp_name, str(subset))] = profile
+            subset_profiles[str(subset)] = profile
+
+        if subset_profiles:
+            experiment_fallback[(model, exp_name)] = UsageProfile(
+                mean_input_tokens=float(np.mean([p.mean_input_tokens for p in subset_profiles.values()])),
+                mean_output_tokens=float(np.mean([p.mean_output_tokens for p in subset_profiles.values()])),
+                mean_cached_tokens=float(np.mean([p.mean_cached_tokens for p in subset_profiles.values()])),
+                mean_reasoning_tokens=float(np.mean([p.mean_reasoning_tokens for p in subset_profiles.values()])),
+                mean_proc_time=float(np.mean([p.mean_proc_time for p in subset_profiles.values()])),
+            )
+
+    rows: list[dict[str, Any]] = []
+    for (model, exp_name), fallback in experiment_fallback.items():
+        model_meta = model_metadata.get(model)
+        if model_meta is None:
+            continue
+        row: dict[str, Any] = {"Model": model, "Experiment": exp_name}
+        total, real_count, scaled_count = 0.0, 0, 0
+        for subset in tasks:
+            profile = experiment_usage.get((model, exp_name, subset), fallback)
+            is_real = (model, exp_name, subset) in experiment_usage
+            cost = estimate_task_cost(model_meta, subset, profile, size=size, n_versions=1) * n_prompts
+            row[subset] = cost
+            row[f"{subset}_source"] = "real" if is_real else "scaled"
+            total += cost
+            real_count += int(is_real)
+            scaled_count += int(not is_real)
+        row["Total"] = total
+        row["real_tasks"] = real_count
+        row["scaled_tasks"] = scaled_count
+        rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+def add_experiment_costs(
+    stats_df: pd.DataFrame,
+    model_metadata: dict[str, ModelMetadata],
+    subset: str = "human-mouse",
+    size: str = "reduced",
+) -> pd.DataFrame:
+    """Add ``cost_per_pair`` and ``total_cost`` columns from per-row mean token usage."""
+    result = stats_df.copy()
+    n_pairs = get_num_pairs(subset, size)
+
+    def _per_pair(row: pd.Series) -> float:
+        model_meta = model_metadata.get(row["model"])
+        if model_meta is None:
+            return float("nan")
+        return model_meta.cost_for_tokens(
+            input_tokens=float(row.get("mean_input_tokens") or 0),
+            output_tokens=float(row.get("mean_output_tokens") or 0),
+            cached_tokens=float(row.get("mean_input_cached_tokens") or 0),
+            reasoning_tokens=float(row.get("mean_output_reasoning_tokens") or 0),
+        )
+
+    result["cost_per_pair"] = result.apply(_per_pair, axis=1)
+    result["total_cost"] = result["cost_per_pair"] * n_pairs
+    return result
+
+
+def compute_cost_components(
+    token_agg_df: pd.DataFrame,
+    model_metadata: dict[str, ModelMetadata],
+    label_col: str = "exp_name",
+) -> pd.DataFrame:
+    """Split per-pair cost into Input / Cached Input / Output / Reasoning components per experiment."""
+    rows: list[dict[str, Any]] = []
+    for _, row in token_agg_df.iterrows():
+        model_meta = model_metadata.get(row["model"])
+        if model_meta is None:
+            continue
+        input_tokens = float(row.get("mean_input_tokens") or 0)
+        output_tokens = float(row.get("mean_output_tokens") or 0)
+        cached_tokens = float(row.get("mean_input_cached_tokens") or 0)
+        reasoning_tokens = float(row.get("mean_output_reasoning_tokens") or 0)
+        rows.append(
+            {
+                "label": row.get(label_col, row.get("exp_name")),
+                "model": row["model"],
+                "exp_name": row["exp_name"],
+                "Input Cost": max(input_tokens - cached_tokens, 0) * model_meta.prompt_rate,
+                "Cached Input Cost": cached_tokens * (model_meta.cache_read_rate or model_meta.prompt_rate),
+                "Output Cost": max(output_tokens - reasoning_tokens, 0) * model_meta.completion_rate,
+                "Reasoning Cost": reasoning_tokens * (model_meta.reasoning_rate or model_meta.completion_rate),
+            }
+        )
+    components = pd.DataFrame(rows)
+    if not components.empty:
+        components["Total Cost"] = components[
+            ["Input Cost", "Cached Input Cost", "Output Cost", "Reasoning Cost"]
+        ].sum(axis=1)
+    return components
+
+
+def add_token_breakdown_pct(token_agg_df: pd.DataFrame) -> pd.DataFrame:
+    """Add total tokens plus input/output/cache-hit/reasoning percentage columns."""
+    bd = token_agg_df.copy()
+    bd["total_tokens"] = bd["mean_input_tokens"] + bd["mean_output_tokens"]
+    bd["input_pct"] = (bd["mean_input_tokens"] / bd["total_tokens"] * 100).round(1)
+    bd["output_pct"] = (bd["mean_output_tokens"] / bd["total_tokens"] * 100).round(1)
+    cached = bd.get("mean_input_cached_tokens", pd.Series(0, index=bd.index))
+    reasoning = bd.get("mean_output_reasoning_tokens", pd.Series(0, index=bd.index))
+    bd["cache_hit_pct"] = (cached / bd["mean_input_tokens"].replace(0, np.nan) * 100).round(1).fillna(0)
+    bd["reasoning_pct"] = (reasoning / bd["mean_output_tokens"].replace(0, np.nan) * 100).round(1).fillna(0)
+    return bd
