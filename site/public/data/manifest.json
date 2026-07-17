@@ -1,0 +1,137 @@
+{
+  "about": "Plot data for the OM-workshop cost/benefit figures. One CSV per figure; values are exactly those plotted (derived columns such as capture_frac / spectrum_t / *_outlier are precomputed so the plots can be regenerated with no recomputation).",
+  "provenance": "Extracted from Sviatoslav's 2026-06-24 HTML notebook exports (no raw CSVs existed) into analysis/sviatoslav_cost_benefit/data/, then reduced to the plotted series here. cost_usd_per_run = hosted API price per run on human-mouse (254 candidate mappings); yi = Youden's J = sensitivity+specificity-1; f1 = oracle F1.",
+  "regenerate": "cd paper_om_workshop/data && python regenerate.py   (reads these CSVs + this manifest, writes ../figures/*.pdf). Upstream single source of truth: analysis/sviatoslav_cost_benefit/scripts/03_export_paper_assets.py",
+  "figures": {
+    "fig_oracle_value": {
+      "pdf": "../figures/fig_oracle_value.pdf",
+      "data": "fig_oracle_value.csv",
+      "plot": "two panels: (a) grouped bar of F1 per task; (b) horizontal bar of capture_frac*100",
+      "columns": {
+        "task": "OAEI task",
+        "logmap_f1": "F1, no oracle",
+        "llm_gf25_f1": "F1 with real Gemini-Flash-2.5 oracle",
+        "perfect_f1": "F1 with perfect oracle (ceiling)",
+        "sim_err20_f1": "F1, simulated 20%-error oracle",
+        "sim_err30_f1": "F1, simulated 30%-error oracle",
+        "delta_llm": "llm_gf25_f1 - logmap_f1",
+        "ceiling": "perfect_f1 - logmap_f1",
+        "capture_frac": "delta_llm / ceiling"
+      }
+    },
+    "fig_generational": {
+      "pdf": "../figures/fig_generational.pdf",
+      "data": "fig_generational.csv",
+      "plot": "line: mean_yi vs generation",
+      "columns": {
+        "generation": "Gemini Flash generation label",
+        "mean_yi": "mean oracle YI over 9 tasks"
+      }
+    },
+    "fig_pareto": {
+      "pdf": "../figures/fig_pareto.pdf",
+      "data": "fig_pareto.csv",
+      "plot": "scatter f1 vs cost_usd_per_run (log x); frontier line over on_pareto_frontier==True",
+      "columns": {
+        "model": "model id",
+        "f1": "oracle F1 (human-mouse)",
+        "yi": "oracle YI",
+        "cost_usd_per_run": "hosted $/run",
+        "reasoning_share": "reasoning tokens as fraction of cost",
+        "fail_rate": "run failure rate",
+        "on_pareto_frontier": "bool: cost-vs-F1 Pareto-optimal"
+      }
+    },
+    "fig_cost_drivers": {
+      "pdf": "../figures/fig_cost_drivers.pdf",
+      "data": "fig_cost_drivers.csv",
+      "plot": "horizontal bar: reasoning_share*100 per model (10 highest-cost)",
+      "columns": {
+        "model": "model id",
+        "cost_usd_per_run": "hosted $/run",
+        "reasoning_share": "reasoning fraction of cost"
+      }
+    },
+    "fig_landscape": {
+      "pdf": "../figures/fig_landscape.pdf",
+      "data": "fig_landscape.csv",
+      "plot": "scatter yi vs cost_usd_per_run (log x); grey where is_highlighted==False; else colour=spectrum_t (coolwarm 0..1); rings where is_selected_panel; star where efficiency_outlier; X where poor_value_outlier; frontier line over on_pareto_frontier",
+      "columns": {
+        "model": "model id",
+        "yi": "oracle YI (human-mouse)",
+        "cost_usd_per_run": "hosted $/run",
+        "spectrum_t": "cost-performance scalar 0(cheap+low-YI)..1(costly+high-YI)",
+        "is_selected_panel": "bool: our cloud panel",
+        "on_pareto_frontier": "bool: YI-vs-cost Pareto-optimal",
+        "efficiency_outlier": "bool: high YI + low cost",
+        "poor_value_outlier": "bool: low YI + high cost",
+        "is_highlighted": "bool: labelled (else grey)"
+      }
+    },
+    "table_shortlist": {
+      "data": "table_shortlist.csv",
+      "plot": "n/a (Table: the selected 9-model panel)",
+      "columns": {
+        "tier": "Cloud/Local",
+        "model": "model id",
+        "lab": "developer",
+        "role": "role in the panel",
+        "justification": "analysis-grounded reason"
+      }
+    },
+    "fig_tradeoffs": {
+      "data": "fig_tradeoffs.csv",
+      "plot": "Trade-offs view: (7) yi vs proc_time_s scatter, bubble=cost; (8) cost/yi & cost/f1 dot plot; feeds reliability chips. One row per model at its best-scoring human-mouse config.",
+      "source": "tradeoffs.html cost/speed/reliability charts joined to the human-mouse cost rows of model_explorer.html (join key: model + cost + yi, which recovers f1).",
+      "columns": {
+        "model": "model id",
+        "lab": "developer",
+        "yi": "oracle Youden's J",
+        "f1": "oracle F1",
+        "cost_usd_per_run": "hosted API $/run on human-mouse",
+        "proc_time_s": "mean wall-clock processing time per run (s)",
+        "fail_rate": "run failure rate",
+        "config": "winning configuration (base / thinking_budget=… / reasoning_effort=…)",
+        "on_cost_pareto": "bool: cost-vs-YI Pareto-optimal",
+        "on_speed_pareto": "bool: speed-vs-YI Pareto-optimal"
+      }
+    },
+    "fig_reliability": {
+      "data": "fig_reliability.csv",
+      "plot": "Trade-offs Figure 9: horizontal bars of fail_rate or retries for the non-zero configs.",
+      "source": "tradeoffs.html 'Failure rate per model' + 'Average retries per call' charts (one row per model+config).",
+      "columns": {
+        "model": "model id",
+        "lab": "developer",
+        "config": "configuration label",
+        "fail_rate": "fraction of calls that fail",
+        "retries": "mean retries per call (blank where not charted)",
+        "cls": "unreliable | reliable | pareto (best/Pareto-optimal)"
+      }
+    },
+    "cfg_reasoning": {
+      "data": "cfg_reasoning.csv",
+      "plot": "Configuration Figure 10 heatmap: reasoning-effort level -> YI.",
+      "source": "report.html 'Reasoning effort -> Youden's index' heatmap.",
+      "columns": { "model": "model id", "lab": "developer", "effort": "minimal|low|medium|high", "yi": "oracle YI" }
+    },
+    "cfg_thinking": {
+      "data": "cfg_thinking.csv",
+      "plot": "Configuration Figure 11 heatmap (toggle YI / fail): thinking-token budget -> YI and fail_rate.",
+      "source": "report.html 'Thinking budget -> Youden's index' and '-> fail_rate' heatmaps (unioned).",
+      "columns": { "model": "model id", "lab": "developer", "budget": "thinking-token budget", "yi": "oracle YI (blank if not measured)", "fail": "failure rate (blank if not measured)" }
+    },
+    "cfg_prompt": {
+      "data": "cfg_prompt.csv",
+      "plot": "Configuration Figure 12 heatmap: prompt template -> YI (baseline models).",
+      "source": "report.html 'Prompt -> Youden's index' heatmap.",
+      "columns": { "model": "model id", "lab": "developer", "prompt": "prompt template id", "yi": "oracle YI" }
+    },
+    "cfg_fewshot": {
+      "data": "cfg_fewshot.csv",
+      "plot": "Configuration Figure 13 lines: #few-shot examples -> mean YI.",
+      "source": "report.html 'Few-shot count -> mean Youden's index' heatmap.",
+      "columns": { "model": "model id", "lab": "developer", "n": "# few-shot examples", "yi": "mean oracle YI" }
+    }
+  }
+}

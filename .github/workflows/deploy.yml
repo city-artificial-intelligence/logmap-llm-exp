@@ -1,0 +1,58 @@
+# Build the explorer and publish dist/ to GitHub Pages.
+#
+# Requires (one-time, in the repo's settings): Settings → Pages → Source =
+# "GitHub Actions". The site builds with `base: './'`, so it works both at a
+# user/org root (city-artificial-intelligence.github.io) and under a project
+# path (…/logmap-llm-exp/) with no config change.
+#
+# NOTE: this file assumes the site folder is the repository root. If the site
+# is pushed as a subdirectory of a larger repo, move .github/ to that repo's
+# root and add `working-directory` (and artifact `path`) pointing at the site.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# one deploy at a time; let an in-flight deploy finish rather than cancelling
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        env:
+          # puppeteer is only used by the local smoke test; skip its ~150 MB
+          # Chrome download in CI
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - name: Build (typecheck + bundle)
+        run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
