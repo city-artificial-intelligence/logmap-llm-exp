@@ -5,9 +5,10 @@
 # user/org root (city-artificial-intelligence.github.io) and under a project
 # path (…/logmap-llm-exp/) with no config change.
 #
-# NOTE: this file assumes the site folder is the repository root. If the site
-# is pushed as a subdirectory of a larger repo, move .github/ to that repo's
-# root and add `working-directory` (and artifact `path`) pointing at the site.
+# NOTE: the site lives in the site/ subdirectory of this repo. The build job
+# sets `working-directory: site` for its npm steps, `cache-dependency-path`
+# points setup-node at site/package-lock.json, and the artifact `path` is
+# site/dist. If the site ever becomes the repo root, drop the site/ prefixes.
 name: Deploy to GitHub Pages
 
 on:
@@ -28,12 +29,19 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # the site lives in the site/ subdirectory, so run npm steps there
+    defaults:
+      run:
+        working-directory: site
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          # working-directory does not affect the cache lookup; point it at the
+          # lock file explicitly
+          cache-dependency-path: site/package-lock.json
       - name: Install dependencies
         run: npm ci
         env:
