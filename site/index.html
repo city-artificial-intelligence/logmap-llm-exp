@@ -1,54 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LogMapLLM Oracle — Cost/Benefit Explorer</title>
-    <meta
-      name="description"
-      content="Interactive explorer for the LogMapLLM LLM-oracle cost/benefit analysis: cost-quality Pareto frontier, oracle value, and model leaderboard."
-    />
-    <!-- social cards; og:url / og:image / canonical need an absolute URL, so add
-         them once the deploy host is fixed (the site builds host-agnostic, base: './') -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="LogMapLLM Oracle" />
-    <meta property="og:title" content="LogMapLLM Oracle — Cost/Benefit Explorer" />
-    <meta
-      property="og:description"
-      content="Interactive explorer for the LogMapLLM LLM-oracle cost/benefit analysis: cost-quality Pareto frontier, oracle value, and model leaderboard."
-    />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="LogMapLLM Oracle — Cost/Benefit Explorer" />
-    <meta
-      name="twitter:description"
-      content="Interactive explorer for the LogMapLLM LLM-oracle cost/benefit analysis: cost-quality Pareto frontier, oracle value, and model leaderboard."
-    />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235e6ad2'/%3E%3Ccircle cx='12' cy='20' r='4' fill='%23fff'/%3E%3Ccircle cx='21' cy='11' r='3' fill='%23fff' fill-opacity='.75'/%3E%3C/svg%3E"
-    />
-    <!-- Safari ignores SVG favicons; it (and home-screen pins) use this PNG -->
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-    <meta name="theme-color" content="#fafafa" />
-    <script>
-      // stamp the persisted (or OS) theme before first paint so dark-mode users
-      // never see a light flash; App keeps it in sync afterwards
-      (function () {
-        var dark = false;
-        try {
-          var saved = localStorage.getItem('theme');
-          dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-        } catch (e) {
-          try { dark = matchMedia('(prefers-color-scheme: dark)').matches; } catch (e2) { /* light */ }
-        }
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-        var m = document.querySelector('meta[name="theme-color"]');
-        if (m) m.setAttribute('content', dark ? '#0e0e11' : '#fafafa');
-      })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogMapLLM Oracle — Reports</title>
+<meta name="description" content="LogMapLLM LLM-oracle benchmark reports: results, model configuration explorer, and cost/speed/reliability trade-offs.">
+<link
+  rel="icon"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235e6ad2'/%3E%3Ccircle cx='12' cy='20' r='4' fill='%23fff'/%3E%3Ccircle cx='21' cy='11' r='3' fill='%23fff' fill-opacity='.75'/%3E%3C/svg%3E"
+/>
+<!-- Landing page: a thin nav bar over the three standalone report pages (under
+     classic/). The reports load unchanged inside the frame, so their own look is
+     preserved. The interactive explorer lives at app.html. -->
+<style>
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #1a1a1a;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 7px 14px;
+    border-bottom: 1px solid #dddddd;
+    background: #f7f7f8;
+    font-size: 14px;
+  }
+  .bar .brand { font-weight: 600; margin-right: 14px; white-space: nowrap; }
+  a.nav {
+    color: #333333;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  a.nav:hover { background: #ececee; }
+  a.nav.on { background: #ffffff; border-color: #cccccc; font-weight: 600; }
+  .bar .spacer { margin-left: auto; }
+  a.back { color: #555555; text-decoration: none; font-size: 13px; white-space: nowrap; }
+  a.back:hover { text-decoration: underline; }
+  #stage { flex: 1 1 auto; width: 100%; border: 0; min-height: 0; background: #ffffff; }
+</style>
+</head>
+<body>
+  <nav class="bar" aria-label="Reports">
+    <span class="brand">LogMapLLM Oracle</span>
+    <a class="nav" data-id="report"    target="stage" href="classic/report.html">Benchmark report</a>
+    <a class="nav" data-id="explorer"  target="stage" href="classic/model_explorer.html">Model explorer</a>
+    <a class="nav" data-id="tradeoffs" target="stage" href="classic/tradeoffs.html">Cost &amp; speed trade-offs</a>
+    <span class="spacer"></span>
+    <a class="back" href="app.html">alternative view &rarr;</a>
+  </nav>
+
+  <iframe id="stage" name="stage" title="Report" src="classic/report.html"></iframe>
+
+<script>
+  (function () {
+    var PAGES = [
+      { id: 'report',    file: 'classic/report.html' },
+      { id: 'explorer',  file: 'classic/model_explorer.html' },
+      { id: 'tradeoffs', file: 'classic/tradeoffs.html' }
+    ];
+    var byFile = {};
+    PAGES.forEach(function (p) { byFile[p.file.split('/').pop()] = p.id; });
+    var stage = document.getElementById('stage');
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.nav'));
+
+    function idFromHref(href) {
+      return byFile[(href || '').split('/').pop()] || 'report';
+    }
+    // Highlight the current page and reflect it in the address bar (?p=...).
+    function markActive(id) {
+      buttons.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-id') === id); });
+      try {
+        var url = new URL(window.location.href);
+        url.searchParams.set('p', id);
+        window.history.replaceState(null, '', url);
+      } catch (e) { /* older browsers: nav still works, address bar stays put */ }
+    }
+
+    // The <a target="stage"> links load the frame with no JS; this only adds the
+    // active-state highlight and keeps it in sync when the frame navigates.
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { markActive(idFromHref(b.getAttribute('href'))); });
+    });
+    stage.addEventListener('load', function () {
+      try { markActive(idFromHref(stage.contentWindow.location.href)); } catch (e) { /* same-origin only */ }
+    });
+
+    // Honour a deep link like ?p=explorer on first load.
+    var start = 'report';
+    try {
+      var p = new URL(window.location.href).searchParams.get('p');
+      if (p && PAGES.some(function (x) { return x.id === p; })) start = p;
+    } catch (e) { /* default */ }
+    var startFile = PAGES.filter(function (x) { return x.id === start; })[0].file;
+    if (startFile !== stage.getAttribute('src')) stage.src = startFile;
+    markActive(start);
+  })();
+</script>
+</body>
 </html>

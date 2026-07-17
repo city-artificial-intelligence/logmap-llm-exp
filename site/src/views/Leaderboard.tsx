@@ -164,7 +164,7 @@ export function Leaderboard({ data }: { data: Data }) {
         </div>
       </section>
       <p className="footnote">
-        YI/cost from Sviatoslav&apos;s <code>human-mouse</code> board (18 models with a measured
+        YI/cost from <code>human-mouse</code> board (18 models with a measured
         oracle score). F1 / reasoning / fail-rate are available for the subset with a full cost
         breakdown. Highlighted rows are our selected panel models; <b>#</b> is the fixed YI rank
         and the <b>Pareto</b> badge marks the YI–cost frontier. A <b>0%</b> reasoning share is a

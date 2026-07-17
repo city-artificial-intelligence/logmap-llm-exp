@@ -144,6 +144,12 @@ export function App() {
       >
         Skip to content
       </a>
+      {/* the classic report view is the site's landing page (root index.html);
+          a plain static page outside the SPA, so a real anchor, not hash routing */}
+      <a className="classic-banner" href="./">
+        <span className="classic-banner-text">Open in the classical view</span>
+        <span className="classic-banner-arrow" aria-hidden="true">→</span>
+      </a>
       <header className="header">
         <div className="header-inner">
           <div className="brand">

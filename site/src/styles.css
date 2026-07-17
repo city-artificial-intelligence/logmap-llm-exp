@@ -200,6 +200,28 @@ code {
 /* the skip-link target takes programmatic focus; no ring around the whole page */
 .main:focus { outline: none; }
 
+/* ---------- classical-view banner ---------- */
+/* a slim strip above the header linking to the standalone report pages */
+.classic-banner {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 7px 16px;
+  background: var(--accent); color: #ffffff;
+  font-size: 13px; text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 70%, #000);
+  transition: background var(--dur) var(--ease);
+}
+.classic-banner:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
+.classic-banner:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+.classic-banner-text { color: #fff; }
+.classic-banner-arrow { transition: transform var(--dur) var(--ease); }
+.classic-banner:hover .classic-banner-arrow { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .classic-banner:hover .classic-banner-arrow { transform: none; }
+}
+@media (max-width: 560px) {
+  .classic-banner { font-size: 12px; padding: 6px 12px; }
+}
+
 /* ---------- layout primitives ---------- */
 .stack > * + * { margin-top: 24px; }
 .grid { display: grid; gap: 16px; }

@@ -32,7 +32,7 @@ driven by the CSVs extracted under `../analysis/sviatoslav_cost_benefit/data/`.
 ## Stack & standards
 Vite + React 18 + TypeScript (strict) + ECharts. No UI framework or CSS library — an "Iris Console"
 design-token stylesheet (zinc neutrals, hairline borders, one iris accent) with light/dark theming
-(pre-paint theme stamp in `index.html` + `prefers-color-scheme` fallback + a persisted toggle),
+(pre-paint theme stamp in `app.html` + `prefers-color-scheme` fallback + a persisted toggle),
 self-hosted fonts (`@fontsource-variable/inter`, `@fontsource-variable/jetbrains-mono` — no CDN),
 numbered FIGURE/TABLE kickers with captions, skeleton loading, responsive grid, semantic landmarks,
 keyboard-operable tabs/controls, `aria-*` labels, a skip link, focusable scroll regions,

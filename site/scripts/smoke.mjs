@@ -57,7 +57,8 @@ const TABS = ['Overview', 'Leaderboard', 'Trade-offs', 'Configuration', 'Value',
 const slug = (label) => label.toLowerCase().replace(/ /g, '-');
 
 try {
-  await page.goto(base, { waitUntil: 'networkidle0', timeout: 30000 });
+  // the interactive explorer now lives at app.html (index.html is the classic view)
+  await page.goto(base + 'app.html', { waitUntil: 'networkidle0', timeout: 30000 });
   await page.waitForSelector('table.data', { timeout: 20000 }); // data loaded
   await page.waitForSelector('canvas', { timeout: 20000 }); // a chart rendered
   await wait(700);

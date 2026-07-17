@@ -47,6 +47,15 @@ for (const f of rawFiles) {
   const s = join(raw, f);
   if (existsSync(s)) cpSync(s, join(rawOut, f));
 }
+
+// Classical view: the three standalone report pages live at the repo root and
+// are refreshed into public/classic/ so a rebuild picks up regenerated exports.
+// The committed copies already under public/classic/ keep CI builds working when
+// those root exports aren't part of the checkout (same source-or-kept rule).
+const classicOut = join(here, '..', 'public', 'classic');
+mkdirSync(classicOut, { recursive: true });
+const classicFiles = ['report.html', 'model_explorer.html', 'tradeoffs.html'];
+for (const f of classicFiles) take(join(root, f), join(classicOut, f), 'classic');
 console.log(
   `copy-data: ${copied} refreshed from source, ${kept} kept from public/data/ ` +
     `(${miss} missing with no local copy), raw extracts -> public/data/raw/`,
