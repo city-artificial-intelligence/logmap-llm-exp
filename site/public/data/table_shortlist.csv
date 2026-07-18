@@ -1,0 +1,10 @@
+tier,model,lab,role,justification
+Cloud,gemini-2.5-pro,Google,frontier (reasoning),Top F1 0.932 / YI 0.772; Pareto
+Cloud,gemini-2.5-flash,Google,reliable,F1 0.916 @ $0.223; 0% fail
+Cloud,deepseek-v4-flash,DeepSeek,cheap champion,F1 0.920 @ $0.008; Pareto
+Cloud,claude-sonnet-4.6,Anthropic,diversity / non-reasoning,F1 0.921 @ $0.242; 0 retries
+Local,Qwen3.5-122B-A10B,Alibaba,large MoE (10B act.),High performing open-weight YI 0.742
+Local,Qwen3-8B,Alibaba,small dense,Cheap; small-model floor; easily self-hosted
+Local,Gemma-3-27B,Google,large dense,low latency; easily self-hosted
+Local,Mistral-Small-3.2-24B,Mistral,medium dense,Prior baseline
+Local,Llama-3.1-70B-Instruct,Meta,large dense,Prior baseline

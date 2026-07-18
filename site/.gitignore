@@ -1,0 +1,9 @@
+node_modules/
+dist/
+# The tidy per-figure CSVs + manifest are committed so the app builds standalone
+# (copy-data.mjs refreshes them from source when present, keeps them otherwise).
+# Only the bulky raw extracts stay untracked.
+public/data/raw/
+screenshots/
+*.local
+.DS_Store

@@ -165,7 +165,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+#site
 
 # mypy
 .mypy_cache/
@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+node_modules/
+dist/
+# The tidy per-figure CSVs + manifest are committed so the app builds standalone
+# (copy-data.mjs refreshes them from source when present, keeps them otherwise).
+# Only the bulky raw extracts stay untracked.
+public/data/raw/
+screenshots/
+*.local
+.DS_Store

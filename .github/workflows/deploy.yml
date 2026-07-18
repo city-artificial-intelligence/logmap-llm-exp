@@ -1,0 +1,66 @@
+# Build the explorer and publish dist/ to GitHub Pages.
+#
+# Requires (one-time, in the repo's settings): Settings → Pages → Source =
+# "GitHub Actions". The site builds with `base: './'`, so it works both at a
+# user/org root (city-artificial-intelligence.github.io) and under a project
+# path (…/logmap-llm-exp/) with no config change.
+#
+# NOTE: the site lives in the site/ subdirectory of this repo. The build job
+# sets `working-directory: site` for its npm steps, `cache-dependency-path`
+# points setup-node at site/package-lock.json, and the artifact `path` is
+# site/dist. If the site ever becomes the repo root, drop the site/ prefixes.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# one deploy at a time; let an in-flight deploy finish rather than cancelling
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # the site lives in the site/ subdirectory, so run npm steps there
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          # working-directory does not affect the cache lookup; point it at the
+          # lock file explicitly
+          cache-dependency-path: site/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+        env:
+          # puppeteer is only used by the local smoke test; skip its ~150 MB
+          # Chrome download in CI
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - name: Build (typecheck + bundle)
+        run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
