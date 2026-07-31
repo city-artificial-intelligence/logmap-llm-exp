@@ -50,6 +50,10 @@ jobs:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
       - name: Build (typecheck + bundle)
         run: npm run build
+      # the PDFs live at the repo root (outside the Vite project), so copy them
+      # into dist/ after the build — they are then served at <site>/pdf/<file>.pdf
+      - name: Copy pdf/ into the site
+        run: cp -R ../pdf dist/pdf
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
