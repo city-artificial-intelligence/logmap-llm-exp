@@ -2,11 +2,9 @@
 logmap_llm.oracle.rag.pipeline_adapter
 
 Glue between the LogMapLLM pipeline (initial alignment + M_ask DataFrames, owlready2 ontology
-access, the prompt-template registry) and the owlready2-free RagRetriever. The functions here that
-touch only DataFrames are unit-testable on CPU; the ontology-dependent embed_text/render callables
-are INJECTED by stage_two (production), keeping this module import-light.
-
-Wiring points into the live pipeline are documented in framework/RAG_INTEGRATION.md.
+access, the prompt-template registry) and the owlready2-free RagRetriever. The functions here
+that touch only DataFrames are unit-testable on CPU; the ontology-dependent embed_text/render
+callables are injected by stage_two (production), keeping this module import-light.
 """
 from __future__ import annotations
 
@@ -20,7 +18,7 @@ from .corpus import TypedCorpus
 from .retriever import RagRetriever
 
 
-# legacy few_shot_negative_strategy -> RAG Mode (CR-1 validated the allowed set upstream)
+# legacy few_shot_negative_strategy -> RAG Mode (the allowed set is validated upstream)
 _STRATEGY_TO_MODE = {
     "hard": Mode.STATIC_HARD,
     "random": Mode.STATIC_RANDOM,
@@ -57,9 +55,10 @@ def build_typed_corpus_from_anchors(
     train_kind: EntityKind = EntityKind.CLS,
 ) -> TypedCorpus:
     """
-    Build a typed corpus of POSITIVE few-shot examples from:
-      - LogMap high-confidence anchors = initial-alignment rows NOT in M_ask (Source.ANCHOR, pseudo-label),
-        typed by the alignment's entityType column into distinct CLS/OPROP/DPROP/INST pools;
+    Build a typed corpus of positive few-shot examples from:
+      - LogMap high-confidence anchors = initial-alignment rows not in M_ask (Source.ANCHOR,
+        pseudo-label), typed by the alignment's entityType column into distinct
+        CLS/OPROP/DPROP/INST pools;
       - an optional authorised training alignment train.tsv (Source.GOLD) added to `train_kind`.
     The M_ask candidates themselves are never added (leakage). Only authorised sources are used.
     """
@@ -93,10 +92,8 @@ def build_typed_corpus_from_anchors(
         )
 
     if train_tsv_path:
-        # BUGFIX (TRAIN-TSV): a supplied-but-missing path used to be skipped silently,
-        # yielding a corpus WITHOUT the requested gold examples under a condition that
-        # claimed them. rag_dataset_fingerprint already raises for the same situation;
-        # the corpus builder must match.
+        # A supplied-but-missing path raises rather than silently yielding a corpus
+        # without the requested gold examples (matches rag_dataset_fingerprint).
         if not os.path.isfile(str(train_tsv_path)):
             raise FileNotFoundError(
                 f"few-shot training alignment does not exist: {train_tsv_path}"
@@ -126,11 +123,9 @@ def query_mappings_from_m_ask(
         try:
             kind = EntityKind.coerce(etype)
         except ValueError as exc:
-            # BUGFIX (QK-COERCE): this used to default to EntityKind.CLS — exactly the
-            # silent mistyping EntityKind.coerce exists to refuse. An UNKNO row would
-            # retrieve from the CLS pool and its trace would record entity_type=CLS as if
-            # authoritative. The strict prebuilt path already raises for such rows
-            # (rag_fewshot.load_prebuilt_few_shot_bundle); the live path must match.
+            # An unmappable entity type raises rather than silently retrieving from the
+            # CLS pool, matching the strict prebuilt path
+            # (rag_fewshot.load_prebuilt_few_shot_bundle).
             raise ValueError(
                 f"M_ask row ({src}, {tgt}) has entity type {etype!r}, which maps to no "
                 "typed retrieval pool; refusing to silently retrieve CLS examples for it"
@@ -170,9 +165,9 @@ def build_retriever_from_pipeline(
 ) -> RagRetriever:
     """Build the retriever for one pipeline run.
 
-    ``negative_layout`` is keyword-only and has NO default: a caller that forgets it gets a
-    TypeError rather than a silently frozen v1 condition. That is the pipeline half of
-    decision D-c; the campaign half is enforced by ``plan._validate_native``.
+    ``negative_layout`` is keyword-only with no default: a caller that forgets it gets a
+    TypeError rather than a silent default (``plan._validate_native`` enforces the
+    campaign side).
     """
     corpus = build_typed_corpus_from_anchors(
         initial_alignment_df, m_ask_df, embed_text_fn, payload_fn=payload_fn,

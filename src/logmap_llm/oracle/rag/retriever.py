@@ -1,30 +1,24 @@
 """
 logmap_llm.oracle.rag.retriever
 
-RagRetriever.retrieve(query_mapping, entity_type, relation, prompt_template, k, corpus_id)
--> RetrievalResult   (spec §6)
-
 Query-conditioned, per-candidate, immutable few-shot retrieval. Concurrent calls share only
-read-only state (corpus, encoder, cached indexes) and each returns a fresh RetrievalResult, so
-there is no cross-contamination (the concurrency fix for the old shared frozen history).
+read-only state (corpus, encoder, cached indexes) and each returns a fresh RetrievalResult.
 
 Modes:
   ZERO_SHOT      -> no examples.
   STATIC_RANDOM  -> legacy: query-agnostic order, random (column-swap) negatives.
   STATIC_HARD    -> legacy: query-agnostic order, near-miss (recombination) negatives.
-  QUERY_RAG      -> new: examples ranked by similarity to the query; hard-similar negatives.
+  QUERY_RAG      -> examples ranked by similarity to the query; hard-similar negatives.
 
 Negative construction is selected by `RagConfig.negative_layout` (see types.py):
 
   paired-sibling-v2  Ni = (Pi.src, highest-ranked eligible ontology sibling of Pi.tgt)
   paired-donor-v2    Ni = (Pi.src, target of the next eligible ranked donor after Pi)
-  donor-cross-v1     FROZEN. Every negative takes the TOP-ranked donor's source and a
-                     successive donor's target, so at k=4 three of four demonstrations hang
-                     off P1 and P2 is never contrasted. Reproduces the completed campaigns
-                     byte-for-byte; not for new science.
+  donor-cross-v1     Frozen legacy layout; kept only to reproduce completed campaigns
+                     byte-for-byte.
 
 Both v2 layouts guarantee `Ni.src == Pi.src` by construction, making the rendered block k/2
-independent minimal pairs. Random negatives are reachable ONLY via STATIC_RANDOM or an
+independent minimal pairs. Random negatives are reachable only via STATIC_RANDOM or an
 explicitly configured fallback, and are always recorded.
 """
 from __future__ import annotations
@@ -55,15 +49,14 @@ RenderFn = Callable[[str, str, object], str]
 
 # sibling_fn(target_iri, kind, max_count) -> (ranked [candidate dict], reason_when_empty)
 #
-# Each candidate is {"iri", "score", "type_specificity", "rule"}. A dict rather than a tuple
-# because the provenance grew: `rule` records WHICH sibling notion produced the candidate,
-# which is decided by how the target resolves rather than by the query's LogMap lane.
+# Each candidate is {"iri", "score", "type_specificity", "rule"}; `rule` records which
+# sibling notion produced the candidate (decided by how the target resolves, not by the
+# query's LogMap lane).
 #
-# INJECTED, never imported: this module is deliberately owlready2-free (see the module
-# docstring), which is why render_fn / embed_text_fn / payload_fn are injected too. The
-# production implementation lives in pipeline/rag_fewshot.py and is backed by SiblingSelector.
-# It must be deterministic, must never raise, and must return a reason string whenever the
-# candidate list is empty so the fallback is recorded rather than silent.
+# Injected, never imported: this module is deliberately owlready2-free. The production
+# implementation (pipeline/rag_fewshot.py, backed by SiblingSelector) must be deterministic,
+# must never raise, and must return a reason string whenever the candidate list is empty so
+# the fallback is recorded rather than silent.
 SiblingFn = Callable[[str, EntityKind, int], "tuple[list[dict], Optional[str]]"]
 
 
@@ -205,10 +198,7 @@ class RagRetriever:
 
         # (4) how many of each label
         n_pairs = _num_pairs(k, cfg.bidirectional)
-        # FIX-5a: round-half-UP, not banker's round(). round(1*0.5)=0 made k=1 ALWAYS a single
-        # negative example (never a positive), biasing the k=1 point of the §6 k-ablation toward
-        # rejection vs the balanced k in {2,4,8}. int(x+0.5) rounds the exact-0.5 tie toward a
-        # positive while leaving even-k and non-0.5 fractions unchanged.
+        # int(x + 0.5) rounds half up, so the exact-0.5 tie (e.g. k=1) goes to a positive.
         n_pos = max(0, int(n_pairs * cfg.positive_fraction + 0.5))
         n_neg = n_pairs - n_pos
         if cfg.positive_fraction >= 1.0:
@@ -222,9 +212,8 @@ class RagRetriever:
 
         # (6) build negatives
         if paired:
-            # The pairing rule is undefined unless every positive gets exactly one negative.
-            # A silently asymmetric block is precisely the v1 defect being removed (D-d), so
-            # this is a hard error rather than a degradation.
+            # The pairing rule requires exactly one negative per positive; an asymmetric
+            # block is a hard error rather than a degradation.
             if n_pos != n_neg:
                 raise RagRetrievalError(
                     f"negative_layout={cfg.negative_layout!r} requires one negative per positive, "
@@ -245,14 +234,9 @@ class RagRetriever:
         negative_fallback_reason = neg_fallback if paired else None
         pairs: list = []  # (Example, label_bool, similarity)
         if paired:
-            # Emit only COMPLETE minimal pairs, in (Pi, Ni) order. A positive whose negative
-            # could not be built is dropped together with it, so `Ni.src == Pi.src` holds for
-            # every i in the rendered block by construction rather than by expectation.
-            # BUGFIX (PAIR-DROP): this used to `break` on the first None, discarding every
-            # LATER complete pair as well — a query whose top positive had no eligible
-            # negative emitted zero examples (and spuriously aborted under
-            # on_undersized='error') even when lower-ranked pairs were valid. Per the
-            # documented semantics only THAT pair is dropped.
+            # Emit only complete minimal pairs, in (Pi, Ni) order. A positive whose negative
+            # could not be built is dropped together with it (only that pair), so
+            # `Ni.src == Pi.src` holds for every i in the rendered block by construction.
             for positive, negative in zip(chosen_pos, neg_selected):
                 if negative is None:
                     continue
@@ -289,9 +273,6 @@ class RagRetriever:
         # (8) render + token budget
         refs, tokens_used, budget_reason = self._render_with_budget(pairs, cfg, paired=paired)
         if budget_reason:
-            # BUGFIX (BUDGET-POLICY): on_budget_overflow was validated in FallbackPolicy but
-            # read NOWHERE — 'error' (the strict() promise) and 'zero_shot' both silently
-            # behaved as reduce_k. Enforce the declared policy.
             overflow_policy = cfg.fallback.on_budget_overflow
             if overflow_policy == "error":
                 raise RagRetrievalError(
@@ -305,10 +286,9 @@ class RagRetriever:
             # reduce_k: keep what fitted, record why
             fallback_reason = (fallback_reason + "; " if fallback_reason else "") + budget_reason
 
-        # Per-negative provenance is serialised HERE, not merely carried on ExampleRef: this
-        # dict is the only thing that reaches rag_traces.json, and the WP4 audit reads it.
-        # Positives and donor-cross-v1 negatives carry nulls, so the frozen v1 trace shape
-        # stays a strict subset. See CORE_BUMP_SPEC_2026-07-25.md §3.1a2.
+        # Per-negative provenance is serialised here: this dict is the only thing that
+        # reaches rag_traces.json. Positives and donor-cross-v1 negatives carry nulls, so
+        # the frozen v1 trace shape stays a strict subset.
         selected_log = [{
             "example_id": r.example_id, "label": r.label, "source": r.source.value,
             "direction": r.direction.value, "rank": r.rank, "similarity": r.similarity,
@@ -332,11 +312,10 @@ class RagRetriever:
         """Build exactly one negative per positive: ``Ni = (Pi.src, ti')``.
 
         Returns ``(list[(Example, similarity) | None], negative_fallback_reason | None)``,
-        index-aligned with ``positives``. ``None`` marks a positive for which no eligible
-        target existed at all; the caller drops that pair rather than emitting a dangling
-        positive, so ``Ni.src == Pi.src`` holds for every rendered i by construction (D-d).
-
-        The two branches differ ONLY in how ``ti'`` is chosen. Eligibility is shared.
+        index-aligned with ``positives``. ``None`` marks a positive with no eligible target;
+        the caller drops that pair rather than emitting a dangling positive, so
+        ``Ni.src == Pi.src`` holds for every rendered i. The two branches differ only in
+        how ``ti'`` is chosen; eligibility is shared.
         """
         donors = [ex for ex, _sim in ranked_pos]
         sim_by_id = {ex.example_id: sim for ex, sim in ranked_pos}
@@ -358,8 +337,8 @@ class RagRetriever:
                     positive=positive, kind=kind, cfg=cfg, eligible=_eligible)
 
             if chosen is None:
-                # Branch (i) falls back to the branch (ii) rule for this negative, and the
-                # reason is recorded on the negative itself. NEVER silent (invariant V5).
+                # Branch (i) falls back to the branch (ii) rule for this negative; the
+                # reason is recorded on the negative itself, never silently dropped.
                 donor = self._choose_donor_target(
                     positive=positive, index=index, donors=donors, eligible=_eligible)
                 if donor is not None:
@@ -384,7 +363,7 @@ class RagRetriever:
                 # The negative is never embedded or indexed; it inherits its positive's
                 # similarity text so the record stays interpretable.
                 embed_text=positive.embed_text,
-                # Carry the AUTHORITATIVE lane, exactly as the positives do. donor-cross-v1
+                # Carry the authoritative lane, exactly as the positives do; donor-cross-v1
                 # deliberately keeps its (src, tgt) tuple payload so its prompts reproduce.
                 payload=kind.value,
                 construction=chosen["construction"],
@@ -403,7 +382,7 @@ class RagRetriever:
         return selected, ("; ".join(unique_reasons) if unique_reasons else None)
 
     def _choose_sibling_target(self, *, positive, kind, cfg, eligible):
-        """Branch (i): the highest-ranked ELIGIBLE ontology sibling of the positive's target."""
+        """Branch (i): the highest-ranked eligible ontology sibling of the positive's target."""
         try:
             candidates, reason = self.sibling_fn(
                 positive.tgt_iri, kind, cfg.sibling_candidate_count)
@@ -428,11 +407,11 @@ class RagRetriever:
 
     @staticmethod
     def _choose_donor_target(*, positive, index, donors, eligible):
-        """Branch (ii): the target of the next ELIGIBLE ranked donor after this positive.
+        """Branch (ii): the target of the next eligible ranked donor after this positive.
 
-        Donors strictly after ``index`` are tried first — that is the rule, and at k=2 it
-        reproduces donor-cross-v1 exactly. Only if none is eligible do we wrap around to the
-        donors before it, which is recorded rather than silent.
+        Donors strictly after ``index`` are tried first (at k=2 this reproduces
+        donor-cross-v1 exactly); only if none is eligible do we wrap around to the donors
+        before it, which is recorded rather than silent.
         """
         for wrapped, order in ((False, range(index + 1, len(donors))),
                                (True, range(0, index))):
@@ -454,10 +433,9 @@ class RagRetriever:
     def _build_negatives(self, *, kind, mode, n_neg, ranked_pos, excl_keys, known_pos_keys, cfg):
         """Return (list[(Example, similarity)], fallback_reason|None).
 
-        FROZEN reproduction of ``donor-cross-v1`` plus the STATIC_RANDOM path. Every negative
-        takes the top-ranked donor's source and a successive donor's target, so at k=4 three
-        of four demonstrations hang off P1. That is the defect the v2 layouts remove; it is
-        preserved here, unchanged, only so the completed campaigns can be re-rendered.
+        Frozen reproduction of ``donor-cross-v1`` plus the STATIC_RANDOM path: every
+        negative takes the top-ranked donor's source and a successive donor's target.
+        Preserved unchanged so the completed campaigns can be re-rendered.
         """
         if n_neg <= 0:
             return [], None
@@ -552,10 +530,9 @@ class RagRetriever:
         budget = cfg.token_budget
         budget_reason = None
         rank = 0
-        # BUGFIX (BUDGET-PAIR): under a paired layout, `pairs` is [P1, N1, P2, N2, ...] and
-        # the block invariant is COMPLETE minimal pairs (D-d, enforced as a hard error at
-        # selection time). The greedy stop used to cut mid-pair, emitting a dangling Pi with
-        # no contrasting Ni. Track the last complete (Pi, Ni) boundary and roll back to it.
+        # Under a paired layout, `pairs` is [P1, N1, P2, N2, ...] and the block invariant is
+        # complete minimal pairs, so the greedy budget stop must not cut mid-pair: track the
+        # last complete (Pi, Ni) boundary and roll back to it.
         pair_start_refs = 0
         pair_start_tokens = 0
         for position, (ex, label, sim) in enumerate(pairs):
@@ -573,7 +550,7 @@ class RagRetriever:
                     prompt = self.render_fn(ex.tgt_iri, ex.src_iri, ex.payload)
                 cost = self.token_counter.count(prompt) + self.token_counter.count(answer)
                 if budget is not None and tokens_used + cost > budget:
-                    # greedy stop; NEVER truncate system prompt or the live query (not our concern here)
+                    # greedy stop; never truncates the system prompt or the live query
                     if paired:
                         refs = refs[:pair_start_refs]
                         tokens_used = pair_start_tokens

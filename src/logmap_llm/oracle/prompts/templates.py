@@ -1,7 +1,7 @@
 """
 logmap_llm.oracle.prompts.templates
-Provides the prompt template functions and registry + build_oracle_user_prompts() 
-and build_oracle_user_prompts_bidirectional() (orchestration functions)
+Prompt template functions and registry, plus the build_oracle_user_prompts()
+and build_oracle_user_prompts_bidirectional() orchestration functions.
 """
 from __future__ import annotations
 
@@ -58,37 +58,22 @@ class TemplateSpec:
 
 class TemplateRegistry:
     '''
-    The TemplateRegistry defines a container for which template functions (i.e., prompts) can be bound and resolved.
-    We provide a decorator so that any defined prompts can be convienently bound to the TemplateRegistry container.
-    As of March 2026, we also support features such as 'equivalence by mutual subsumption' where:
+    Container in which template functions (prompts) are bound and resolved; use the
+    decorator (or register_fn) to register. Registration options:
 
-        A \sqsubseteq B \land B \sqsubseteq A \iff A \equiv B
+        1. entity_type: which entity category the prompt handles
+           (CLASS | OBJECTPROPERTY | DATAPROPERTY | INSTANCE; defaults to CLASS).
+           TODO: distinct behaviours for OBJECTPROPERTY vs DATAPROPERTY.
 
-    As well as class, property and instance-based matching; and the use of contrastive examples during few-shot prompting.
-    When registering a prompt template, you can specify whether you would like these features to be used via the register
-    function (or through the decorator), by specifying:
+        2. bidirectional=True: evaluate under 'equivalence by mutual subsumption'
+           (A \sqsubseteq B \land B \sqsubseteq A \iff A \equiv B). This doubles the
+           prompt count — each prompt is sent twice with src and tgt reversed.
+           (defaults to False)
 
-        1. Which entity category your prompt belongs to, i.e.,
-           EntityType = EntityType.CLASS | EntityType.OBJECTPROPERTY | EntityType.DATAPROPERTY | EntityType.INSTANCE
-           TODO (April 10th 2026): Implement distinct behaviours for processing EntityType.OBJECTPROPERTY and EntityType.DATAPROPERTY
-           in case users would like to treat them differently.
-           (defaults to EntityType = EntityType.CLASS)
-
-        2. Whether you would like the prompt to be evaluated under the 'equivalence by mutual subsumption' behaviour.
-           IMPORTANT: This will double the prompt count for any experimental runs, since each prompt has to be sent twice
-           with the src and tgt entities reversed. You can enable this by specifying: `bidirectional = True`.
-           (defaults to `bidirectional = False`)
-
-        3. If a prompt requires siblings (i.e., `requires_siblings=True`), it enables the following optional behaviours:
-            * fetch siblings, order them alphanumerically by label/preferred term, then select the top-k siblings.
-            * embed siblings (via a CLS-pooled or Sentence-Transformers model [configurable]), fetch the most semantically similar
-              by cosine similarity and take the top-k siblings.
-            * TODO: fetch siblings by LM-based ontology embedding, allowing for approximate reasoning in the learnt
-              representation space — hierarchy-aware embeddings support subsumption-based ranking; richer ontology
-              embeddings also allow approximate inference \w roles. (NOT YET IMPLEMENTED, April 10th 2026).
-          (defaults to `require_siblings = False).
-    
-    Please refer to project-specific documentation for further guidance on use of these features (TODO).
+        3. requires_siblings=True: siblings are fetched and the top-k selected, either
+           alphanumerically by label/preferred term or by embedding cosine similarity
+           (CLS-pooled or Sentence-Transformers model, configurable). (defaults to False)
+           TODO: sibling retrieval via LM-based ontology embeddings (not yet implemented).
     '''
     def __init__(self):
         self._templates: dict[str, TemplateSpec] = {}
@@ -151,41 +136,17 @@ registry = TemplateRegistry()
 ###
 
 def _retrieve_siblings(entity, sibling_selector: SiblingSelector=None, max_count=2) -> list[str] | list[tuple[str, float]]:
-    """
-    NOTE: `_retrieve_siblings` has an odd return type. This is accounted for in the downstream
-    consumer (ie. `format_sibling_context` in 'formatting.py'); if the sibling_selector is not none,
-    then a list of labels are returned, whereas the fallthrough returns a list of tuples with scores.
-    Nothing should break if we modify the first return statement to:
-    
-        return [
-            (
-                _get_label(sibling), 
-                _score
-            ) 
-            for sibling, _score in ranked
-        ]
-    
-    Then, the return type can be only `list[tuple[str, float]]` and it should have no effect on the
-    existing consumers. I've made the change, everything appears to continue working. Thoughts?
-    """
+    """Return (preferred label, score) tuples for up to max_count siblings; the
+    no-selector fallthrough scores each sibling 1.0."""
     if sibling_selector is not None:
-        # map sibling_selector.select_siblings(...) -> preferred labels 
-        # ... (required by prompt template consumers; also list comprehension is more pythonic!)
         ranked = sibling_selector.select_siblings(entity, max_count=max_count)
-        
-        # (previous) return statement:
-        # return [
-        #     _get_label(sibling) for sibling, _score in ranked
-        # ]
-        
         return [
             (
                 _get_label(sibling), 
                 score
             ) for sibling, score in ranked
         ]
-    
-    # else:
+
     sib_entries = entity.get_siblings(max_count=max_count)
     return [
         (
@@ -210,11 +171,8 @@ def _get_merged_entropies(src_inst, tgt_inst) -> dict:
 ###
 # LEGACY TEMPLATES
 # NOTE: these are not actively used and are currently untested.
-# DATE: April 10th 2026.
-# BUGFIX (PT-1 class): name-set interpolations are wrapped in sorted() — the raw set reprs
-# previously varied with PYTHONHASHSEED, so these templates produced different prompt text
-# per process. (all_data_dummy also called the nonexistent get_preffered_names(), so every
-# candidate rendered under it raised and was skipped.)
+# Name-set interpolations are wrapped in sorted() so the prompt text does not vary
+# with PYTHONHASHSEED across processes.
 ###
 
 @registry.register("all_data_dummy")
@@ -314,10 +272,7 @@ def prompt_only_with_children(src_entity: OntologyEntryAttr, tgt_entity: Ontolog
 
 @registry.register("one_level_of_parents_structured")
 def oupt_one_level_of_parents_structured(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_direct_entity_ontological`.
-    Ontological prompt that uses ontology-focused language.
-    """
+    """Ontological prompt that uses ontology-focused language."""
     (src_parent, tgt_parent, src_entity_names, tgt_entity_names) = select_best_direct_entity_names(src_entity, tgt_entity)
     
     prompt_lines = [
@@ -335,10 +290,7 @@ def oupt_one_level_of_parents_structured(src_entity: OntologyEntryAttr, tgt_enti
 
 @registry.register("two_levels_of_parents_structured")
 def oupt_two_levels_of_parents_structured(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_sequential_hierarchy_ontological`.
-    Ontological prompt that uses ontology-focused language, and takes hierarchical relationships into account.
-    """
+    """Ontological prompt that uses ontology-focused language and takes hierarchical relationships into account."""
     src_hierarchy = format_hierarchy(src_entity.get_parents_by_levels(max_level=2))
     tgt_hierarchy = format_hierarchy(tgt_entity.get_parents_by_levels(max_level=2))
     
@@ -355,9 +307,6 @@ def oupt_two_levels_of_parents_structured(src_entity: OntologyEntryAttr, tgt_ent
 
 @registry.register("one_level_of_parents")
 def oupt_one_level_of_parents(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_direct_entity`.
-    """
     (src_parent, tgt_parent, src_entity_names, tgt_entity_names) = select_best_direct_entity_names(src_entity, tgt_entity)
     
     prompt_lines = [
@@ -372,9 +321,6 @@ def oupt_one_level_of_parents(src_entity: OntologyEntryAttr, tgt_entity: Ontolog
 
 @registry.register("two_levels_of_parents")
 def oupt_two_levels_of_parents(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_sequential_hierarchy`.
-    """
     src_hierarchy = format_hierarchy(src_entity.get_parents_by_levels(max_level=2), True)
     tgt_hierarchy = format_hierarchy(tgt_entity.get_parents_by_levels(max_level=2), True)
     
@@ -390,10 +336,7 @@ def oupt_two_levels_of_parents(src_entity: OntologyEntryAttr, tgt_entity: Ontolo
 
 @registry.register("one_level_of_parents_and_synonyms")
 def oupt_one_level_of_parents_and_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_direct_entity_with_synonyms`.
-    Natural language prompt that includes synonyms for a more intuitive comparison.
-    """
+    """Natural language prompt that includes synonyms for a more intuitive comparison."""
     (src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms) = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
     
     src_synonyms_text = (", also known as " + ", ".join(f'"{s}"' for s in sorted(src_synonyms))) if src_synonyms else ""
@@ -414,10 +357,7 @@ def oupt_one_level_of_parents_and_synonyms(src_entity: OntologyEntryAttr, tgt_en
 
 @registry.register("two_levels_of_parents_and_synonyms")
 def oupt_two_levels_of_parents_and_synonyms(src_entity: OntologyEntryAttr, tgt_entity: OntologyEntryAttr, *, ctx: PromptContext) -> str:
-    """
-    Previously known as `prompt_sequential_hierarchy_with_synonyms`.
-    Generate a natural language prompt asking whether two ontology entities (with synonyms and hierarchy). Represent the same concept (True/False).
-    """
+    """Natural language prompt asking whether two ontology entities (with synonyms and hierarchy) represent the same concept (True/False)."""
     src_hierarchy = format_hierarchy(src_entity.get_parents_by_levels(max_level=2), True)
     tgt_hierarchy = format_hierarchy(tgt_entity.get_parents_by_levels(max_level=2), True)
     
@@ -453,7 +393,6 @@ def oupt_two_levels_of_parents_and_synonyms(src_entity: OntologyEntryAttr, tgt_e
 
 ###
 # NEW CLASS-BASED PROMPTS
-# (only the addition of a `synonyms_only` prompt, which aligns to the 'new prompts' in style).
 ###
 
 
@@ -479,8 +418,7 @@ def oupt_synonyms_only(src_entity, tgt_entity, *, ctx: PromptContext):
 # (ie. bidirectional=True)
 ###
 
-### TODO: update the name for this; its not only subs_labels.
-### it also contains synonyms (labels + synonyms).
+### TODO: rename; its not only labels, it also contains synonyms.
 @registry.register("sub_labels_only", bidirectional=True)
 def oupt_sub_labels_only(src_entity, tgt_entity, *, ctx: PromptContext):
     _, _, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -518,7 +456,7 @@ def oupt_sub_parents_synonyms(src_entity, tgt_entity, *, ctx: PromptContext):
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("sub_syns_conj_parent", bidirectional=True)
 def oupt_sub_syns_conj_parent(src_entity, tgt_entity, *, ctx: PromptContext):
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -541,7 +479,7 @@ def oupt_sub_syns_conj_parent(src_entity, tgt_entity, *, ctx: PromptContext):
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("single_subs")
 def oupt_single_subs(src_entity, tgt_entity, *, ctx: PromptContext):
     _, _, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -561,7 +499,7 @@ def oupt_single_subs(src_entity, tgt_entity, *, ctx: PromptContext):
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("single_subs_with_parents")
 def oupt_single_subs_with_parents(src_entity, tgt_entity, *, ctx: PromptContext):
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -584,7 +522,7 @@ def oupt_single_subs_with_parents(src_entity, tgt_entity, *, ctx: PromptContext)
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("single_subs_with_conj_parent")
 def oupt_single_subs_with_conj_parent(src_entity, tgt_entity, *, ctx: PromptContext):
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -610,7 +548,7 @@ def oupt_single_subs_with_conj_parent(src_entity, tgt_entity, *, ctx: PromptCont
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("equiv_test_for_ancestral_disjointness", bidirectional=True)
 def oupt_equiv_test_for_ancestral_disjointness(src_entity, tgt_entity, *, ctx: PromptContext):
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -675,7 +613,7 @@ def oupt_deductive_equiv(src_entity, tgt_entity, *, ctx: PromptContext):
 
 
 
-### TODO: SCHEDULED FOR REMOVAL
+### TODO: scheduled for removal
 @registry.register("falsification_equiv", requires_siblings=True)
 def oupt_falsification_equiv(src_entity, tgt_entity, sibling_selector=None, *, ctx: PromptContext):
     src_parent, tgt_parent, src_entity_names, tgt_entity_names, src_synonyms, tgt_synonyms = select_best_direct_entity_names_with_synonyms(src_entity, tgt_entity)
@@ -803,17 +741,10 @@ def oupt_prop_domain_range(src_prop, tgt_prop, *, ctx: PromptContext):
 def _undeclared_safe(entity, meth: str) -> set:
     """Domain/range accessor that tolerates an entity which is not a *declared* property.
 
-    ORACLE-ERRSKIP/c. The `kg-abox` build exists precisely to index predicates that are USED in the
-    ABox but never DECLARED as owl properties. The Java matcher sees them; owlready2 — the Python
-    prompt-builder's view of the ontology — does not (`Indexed 0 properties`), so `resolve_entity`
-    returns an `InstanceEntity`, which has no `get_domain_names`/`get_range_names`. That raised
-    `AttributeError`, and the blanket `except (ClassNotFoundError, Exception)` in the prompt-build loop
-    swallowed it — so every kg-abox run built `0 prop` prompts and **the oracle was never asked a single
-    KG property question**, across all nine models.
-
-    An undeclared predicate has, by definition, no declared domain or range. The correct degradation is
-    therefore an EMPTY CLAUSE — the prompt falls back to name + synonyms, which is exactly the
-    information that exists — and NOT a silently dropped candidate.
+    Predicates used in the ABox but never declared as OWL properties resolve to an
+    `InstanceEntity`, which has no `get_domain_names`/`get_range_names`. An undeclared
+    predicate has no declared domain or range, so return an empty set — the prompt falls
+    back to name + synonyms rather than the candidate being silently dropped.
     """
     fn = getattr(entity, meth, None)
     if not callable(fn):
@@ -1220,12 +1151,11 @@ def oupt_inst_full_context_entropy(src_inst, tgt_inst, max_properties=3, fmt_fn=
 def get_oracle_user_prompt_template_function(
     oupt_name: str, ctx: PromptContext | None = None,
 ) -> Callable:
-    """Resolve a template by name, optionally BOUND to a prompt context.
+    """Resolve a template by name, optionally bound to a prompt context.
 
-    Every template requires `ctx` as a keyword-only argument, so an unbound callable raises
-    TypeError the moment it is used rather than rendering under whatever state a previous
-    caller happened to leave behind. Passing `ctx` here is the ordinary path: it returns a
-    `(src, tgt) -> str` callable, which is the shape every consumer already expects.
+    Passing `ctx` is the ordinary path: it returns the `(src, tgt) -> str` callable every
+    consumer expects. Every template requires `ctx` as a keyword-only argument, so an
+    unbound callable raises TypeError when used rather than rendering under stale state.
     """
     fn = registry.get(oupt_name).fn
     return fn if ctx is None else partial(fn, ctx=ctx)
@@ -1234,11 +1164,10 @@ def get_oracle_user_prompt_template_function(
 def bind_ctx(fn: Callable | None, ctx: PromptContext) -> Callable | None:
     """Return `fn` bound to `ctx`, or `fn` unchanged if it is already bound.
 
-    A lane template that reaches the per-candidate loop still needing `ctx` raises
-    `TypeError`, and that loop's `except (ClassNotFoundError, Exception)` converts the raise
-    into a warning and DROPS the candidate — so a caller that forgets to bind empties a whole
-    lane silently instead of failing. Binding is idempotent and cheap, so the builder does it
-    defensively rather than trusting every caller.
+    A lane template still needing `ctx` in the per-candidate loop raises `TypeError`,
+    which that loop's broad except converts into a warning and a dropped candidate — an
+    unbound lane empties silently. Binding is idempotent and cheap, so the builder does
+    it defensively.
     """
     if fn is None:
         return None
@@ -1281,11 +1210,8 @@ def build_oracle_user_prompts(
     # PROPERTY PROMPT (IF REQUIRED)
     ###
 
-    # BUGFIX (LANE-TEMPLATE): an unknown lane template name used to be demoted to a tqdm
-    # warning, leaving the lane function None so every candidate in that lane was recorded
-    # as 'No property/instance template' and treated as a reject — a misconfiguration
-    # silently emptying a lane. The class-template resolution above raises, and the
-    # developer-prompt registry deliberately raises on retired names; the lanes now match.
+    # An unknown lane template name raises here, matching the class-template resolution
+    # above, rather than leaving the lane function None and silently emptying the lane.
     if property_prompt_name and property_prompt_function is None:
         property_prompt_function = get_oracle_user_prompt_template_function(
             property_prompt_name, ctx)
@@ -1299,8 +1225,8 @@ def build_oracle_user_prompts(
             instance_prompt_name, ctx)
 
     ###
-    # DATA-PROPERTY PROMPT (PT-2, OPTIONAL) — DPROP rows use this when configured,
-    # otherwise they fall back to the (now datatype-aware) object-property template.
+    # DATA-PROPERTY PROMPT (OPTIONAL) — DPROP rows use this when configured,
+    # otherwise they fall back to the object-property template.
     ###
 
     if data_property_prompt_name and data_property_prompt_function is None:
@@ -1310,10 +1236,9 @@ def build_oracle_user_prompts(
     ###
     # CONTEXT BINDING (defensive)
     ###
-    # Functions the CALLER supplied bypass the three `is None` branches above, so they arrive
-    # unbound unless the caller bound them. An unbound one raises TypeError inside the
-    # per-candidate try below, which swallows it and drops the candidate — an empty lane
-    # rather than an error. Binding here is idempotent.
+    # Caller-supplied functions bypass the three `is None` branches above and may arrive
+    # unbound; an unbound one raises TypeError inside the per-candidate try below, which
+    # swallows it and drops the candidate. Binding here is idempotent.
 
     property_prompt_function = bind_ctx(property_prompt_function, ctx)
     instance_prompt_function = bind_ctx(instance_prompt_function, ctx)
@@ -1351,7 +1276,7 @@ def build_oracle_user_prompts(
         
         row_series = row[1]
         src_uri, tgt_uri = row_series.iloc[0], row_series.iloc[1]
-        # PT-2: authoritative LogMap typing takes precedence over ontology-derived typing.
+        # Authoritative LogMap typing takes precedence over ontology-derived typing.
         mask_et = mask_row_entity_type(row_series)
 
         try:
@@ -1368,12 +1293,11 @@ def build_oracle_user_prompts(
 
             lane = resolve_pair_lane(mask_et, src_type, tgt_type)
 
-            # FIX-3: when LogMap AUTHORITATIVELY tags the lane (OPROP/DPROP/INST), class-first
-            # resolve_entity may have mis-resolved an OWL2-punned URI as a class. Re-resolve any side
-            # that disagrees with the authoritative property/instance lane, so the correct entity
-            # type + template are used and the candidate is not spuriously dropped by the mixed-type
-            # guard below. If a side genuinely cannot resolve to the lane, it keeps its resolved type
-            # and the (now-safety-net) `src_type != tgt_type` guard still skips it as inconsistent.
+            # When LogMap authoritatively tags the lane, class-first resolve_entity may have
+            # mis-resolved an OWL2-punned URI as a class. Re-resolve any side that disagrees
+            # with the lane so the correct entity type + template are used; a side that
+            # genuinely cannot resolve to the lane keeps its resolved type and the
+            # `src_type != tgt_type` guard below still skips it as inconsistent.
             mask_authoritative = mask_et in ("CLS", "OPROP", "DPROP", "INST")
             if mask_authoritative and lane == "instance":
                 if src_type != lane:
@@ -1407,8 +1331,8 @@ def build_oracle_user_prompts(
                     skipped_mappings.append({"src": src_uri, "tgt": tgt_uri, "reason": f"Mixed types: {src_type}/{tgt_type}"})
                     continue
 
-                # PT-2: route DPROP rows to the data-property template when configured; otherwise
-                # fall back to the object-property template (now datatype-aware via PropertyEntity).
+                # Route DPROP rows to the data-property template when configured; otherwise
+                # fall back to the (datatype-aware) object-property template.
                 is_dprop = (mask_et == "DPROP") or getattr(src_entity, "is_data_property", False)
                 chosen_prop_fn = (
                     data_property_prompt_function
@@ -1427,15 +1351,12 @@ def build_oracle_user_prompts(
                 oracle_user_prompt = prompt_function(src_entity, tgt_entity)
                 n_class += 1
             
-            # INDEX ORACLE USER PROMPT WITHIN M_ASK_ORACLE_USER_PROMPTS DICT:
+            # index oracle user prompt within m_ask_oracle_user_prompts dict:
             m_ask_oracle_user_prompts[src_uri + PAIRS_SEPARATOR + tgt_uri] = oracle_user_prompt
 
-        # END: TRY
         except (ClassNotFoundError, Exception) as e:
             skipped_mappings.append({"src": src_uri, "tgt": tgt_uri, "reason": str(e)})
             tqdm.write(f"  WARNING: Skipping mapping - {e}")
-
-    # END: FOR  (MAPPING IN M_ASK)
 
     if skipped_mappings:
         warning(f"Skipped {len(skipped_mappings)} mappings.")
@@ -1466,44 +1387,12 @@ def build_oracle_user_prompts_bidirectional(
     n_non_equiv_skipped = 0
     n_equiv_candidates = 0
 
-    # BUGFIX (BIDIR-RELFILTER, sev 0). This loop used to do:
-    #
-    #     relation = row_series.iloc[2]
-    #     if relation != '=':
-    #         n_non_equiv_skipped += 1
-    #         continue          # <- no prompt built, so the oracle was NEVER ASKED
-    #
-    # which is wrong on three counts, and together they inflated the very metric this sweep ranks on.
-    #
-    # 1. WHAT THE TEST IS. Equivalence by mutual subsumption IS an equivalence test:
-    #        A ⊑ B  ∧  B ⊑ A   ⟺   A ≡ B
-    #    The subsumption prompts are only the vehicle. So a bidirectional template must be offered
-    #    exactly the candidates any other equivalence template is offered. The unidirectional builder
-    #    (build_oracle_user_prompts) asks EVERY row and routes by ENTITY TYPE; it never looks at the
-    #    relation column. Filtering here made the two arms answer different question sets, so they
-    #    were not comparable — which is the whole point of a prompt sweep.
-    #
-    # 2. THE COLUMN IS A GUESS, AND IT IS USUALLY WRONG. `relation` is LogMap's HYPOTHESISED relation
-    #    for the candidate, not ground truth. On the largest evaluated task (standard, n=990) 169 rows are
-    #    labelled '>' or '<' — and 133 of them (78.7%) ARE IN THE REFERENCE ALIGNMENT, which for this
-    #    task is refs_equiv (equivalence-only; refs_subs is a separate task we do not run). So LogMap
-    #    guessed "subsumption" for 133 pairs that are true equivalences, and this filter then excluded
-    #    them from the equivalence test on the strength of that guess.
-    #
-    # 3. SKIPPED ≡ REJECT, AND IT IS INVISIBLE. bridging.filter_accepted_predictions forwards only
-    #    True rows to LogMap, so a candidate with no prompt is silently rejected. But metrics.py:317
-    #    does `if prediction is None: errors_encountered += 1; continue` — skipped rows are dropped
-    #    from the confusion matrix entirely. So those 133 force-rejected gold positives never became
-    #    false negatives; they just SHRANK SENSITIVITY'S DENOMINATOR. Measured on that same task:
-    #    Youden's J rose +0.098 while global F1 FELL 0.012. The template would have won the sweep by
-    #    discarding the hardest, highest-prevalence stratum — the same "the denominator moved" artifact
-    #    that has already cost this project five retracted headlines.
-    #
-    # THE FIX: ask every row, and route by entity type exactly as the unidirectional builder does.
-    # Bidirectional treatment applies to CLASS candidates (subsumption between classes is what the
-    # template asks about). Non-class rows are recorded as skipped ONLY as the unidirectional builder
-    # would also skip them (that track declares no property template — ORACLE-ERRSKIP/b), so the two arms
-    # skip the same rows for the same reason and remain comparable.
+    # Ask every row and route by entity type, exactly as the unidirectional builder does; the
+    # relation column is LogMap's hypothesised relation, not ground truth, and is never used to
+    # filter — filtering on it would make the two arms answer different question sets. A skipped
+    # candidate is treated as a reject downstream and excluded from the confusion matrix, so
+    # non-class rows are recorded as skipped only as the unidirectional builder would also skip
+    # them, keeping the arms comparable.
     for row in tqdm(m_ask_df.iterrows(), total=m_ask_df.shape[0], desc="Building bidirectional prompts"):
 
         row_series = row[1]
@@ -1513,21 +1402,18 @@ def build_oracle_user_prompts_bidirectional(
             src_e = OntologyEntryAttr(src_uri, OA_source)
             tgt_e = OntologyEntryAttr(tgt_uri, OA_target)
             base_key = src_uri + PAIRS_SEPARATOR + tgt_uri
-            # forward = (src, tgt) -> "is every SRC a TGT?"; reverse = (tgt, src) -> the converse.
-            # Accepted iff BOTH hold; consult_oracle_bidirectional persists both directions so the
-            # AND can be decomposed after the fact.
-            # BUGFIX (BIDIR-COVERAGE): render BOTH directions before inserting EITHER. The
-            # forward prompt used to be inserted first, so a reverse-side failure left a
-            # dangling forward-only key — a candidate whose forward consultation was paid
-            # for and then silently discarded at aggregation.
+            # forward = (src, tgt) -> "is every src a tgt?"; reverse = (tgt, src) -> the converse.
+            # Accepted iff both hold; consult_oracle_bidirectional persists both directions so the
+            # AND can be decomposed after the fact. Render both directions before inserting either,
+            # so a reverse-side failure cannot leave a dangling forward-only key.
             forward_prompt = prompt_function(src_e, tgt_e)
             reverse_prompt = prompt_function(tgt_e, src_e)
             m_ask_oracle_user_prompts[base_key] = forward_prompt
             m_ask_oracle_user_prompts[base_key + PAIRS_SEPARATOR + "REVERSE"] = reverse_prompt
             n_equiv_candidates += 1
         except (ClassNotFoundError, Exception) as e:
-            # Non-class rows (OPROP/DPROP/INST) land here: OntologyEntryAttr cannot resolve them as
-            # classes. That matches the unidirectional builder's behaviour on a track with no property
+            # Non-class rows (OPROP/DPROP/INST) land here: OntologyEntryAttr cannot resolve them
+            # as classes. That matches the unidirectional builder on a track with no property
             # template declared, so the arms stay comparable — but it is recorded, not silent.
             skipped_mappings.append({"src": src_uri, "tgt": tgt_uri, "reason": str(e)})
 

@@ -1,24 +1,9 @@
 """
-logmap_llm.utils.logging: coloured terminal output and ANSI-safe TeeWriter.
+logmap_llm.utils.logging: coloured terminal print helpers (error/warn/info/step/...)
+plus strip_ansi() and TeeWriter (duplicates stdout to terminal + ANSI-stripped log file).
 
-Originally ported from jd-extended, see:
-
-    https://github.com/jonathondilworth/logmap-llm/tree/jd-extended
-
-fns:
-
-- error()      : bright red for serious errors / pipeline failures
-- critical()   : bright red for critical warnings
-- warning()    : bright red for serious warnings (draws attention)
-- warn()       : pastel yellow for less serious warnings
-- info()       : pastel sky-blue for important informational messages
-- step()       : pastel sky-blue for step headers / section banners
-- success()    : green for successful completion messages
-- fatal()      : bright red, raises exception (NoReturn)
-- strip_ansi() : remove ANSI escape sequences from a string
-- TeeWriter    : duplicates stdout to terminal + log file
-
-NOTE: see: https://ansi-generator.pages.dev/
+Ported from jd-extended: https://github.com/jonathondilworth/logmap-llm/tree/jd-extended
+ANSI refs: https://ansi-generator.pages.dev/
 & https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
 """
 
@@ -30,8 +15,8 @@ from typing import NoReturn
 _RESET = "\033[0m"
 _BRIGHT_RED = "\033[91m"
 _PASTEL_YELLOW = "\033[0;38;5;186;49m"
-_BRIGHT_YELLOW_BOLD_AND_UNDERLINED = "\033[1;4;93;49m" # for critical warnings 
-_DEFAULT_YELLOW = "\033[0;33;49m" # kinda orange
+_BRIGHT_YELLOW_BOLD_AND_UNDERLINED = "\033[1;4;93;49m"  # for critical warnings
+_DEFAULT_YELLOW = "\033[0;33;49m"  # kinda orange
 _PASTEL_BLUE = "\033[38;5;117m"
 _IMPORTANT_STEP_PURPLE = "\033[0;38;2;255;179;219;49m"
 _GREEN = "\033[38;5;114m"
@@ -68,7 +53,7 @@ def critical(msg: str) -> None:
 
 def warning(msg: str) -> None:
     """
-    Print a serious warning in bright yesllow (bold and underlined). Prefixed with 'SERIOUS WARNING'.
+    Print a serious warning in bright yellow (bold and underlined). Prefixed with 'SERIOUS WARNING'.
     """
     print(f"{_BRIGHT_YELLOW_BOLD_AND_UNDERLINED}[SERIOUS WARNING] {msg}{_RESET}")
 
@@ -97,7 +82,7 @@ def step(msg: str, important: bool = False) -> None:
 
 def success(msg: str) -> None:
     """
-    Print a success / completion message in green. Prefixed with SUCCES.
+    Print a success / completion message in green. Prefixed with SUCCESS.
     """
     print(f"{_GREEN}[SUCCESS] {msg}{_RESET}")
 
@@ -112,11 +97,7 @@ def fatal(msg: str, exception_cls: type[Exception] = ValueError) -> NoReturn:
 
 def debug(msg: str) -> None:
     """
-    Print a debug message in magenta on a black background (italisied). Prefixed \w DEBUG.
-    Specifically:
-    ```sh
-    echo -e '\033[3;95;40mHello, World!\033[0m'
-    ```
+    Print a debug message in italic magenta on a black background. Prefixed with DEBUG.
     """
     print(f"{_ITALIC_MAGENTA_W_BG}[DEBUG] {msg}{_RESET}")
 

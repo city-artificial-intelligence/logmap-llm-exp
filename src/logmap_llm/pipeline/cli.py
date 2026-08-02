@@ -8,7 +8,6 @@ from argparse import ArgumentParser, Namespace
 
 
 def parse_args() -> Namespace:
-    
     parser = ArgumentParser(description="LogMap-LLM: Python-based LogMap LLM extension")
 
     parser.add_argument(

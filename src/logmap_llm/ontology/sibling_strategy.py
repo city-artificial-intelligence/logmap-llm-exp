@@ -3,9 +3,9 @@ logmap_llm.ontology.sibling_strategy
 
 The sibling-ranking strategy enum and its resolution rule, with no ontology dependency.
 
-Split out of `sibling_retrieval.py` so that configuration validation can reason about which
-strategy a run will actually use WITHOUT importing owlready2. `sibling_retrieval` re-exports
-`SiblingSelectionStrategy`, so existing imports keep working and there is exactly one
+Split out of `sibling_retrieval.py` so configuration validation can determine the
+strategy a run will use without importing owlready2. `sibling_retrieval` re-exports
+`SiblingSelectionStrategy`, so existing imports keep working; this module is the single
 definition of both the enum and the precedence rule.
 """
 from __future__ import annotations
@@ -27,10 +27,9 @@ class SiblingSelectionStrategy(str, Enum):
 
 
 #: Optional domain -> strategy auto-selection, consulted only when no strategy is configured
-#: explicitly. Empty by default: a deployment that wants a domain-specialised encoder chosen
-#: automatically registers the mapping here, keyed by a lowercase substring of
-#: `alignmentTask.ontology_domain`. Setting `prompts.sibling_strategy` explicitly is preferred,
-#: because it records the experimental condition in the config rather than in module state.
+#: explicitly. Empty by default; a deployment registers mappings here keyed by a lowercase
+#: substring of `alignmentTask.ontology_domain`. Prefer setting `prompts.sibling_strategy`
+#: explicitly, which records the experimental condition in the config rather than module state.
 DOMAIN_STRATEGY_OVERRIDES: dict[str, SiblingSelectionStrategy] = {}
 
 

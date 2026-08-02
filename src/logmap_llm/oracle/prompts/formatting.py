@@ -1,16 +1,14 @@
 """
 logmap_llm.oracle.prompts.formatting
 Prompt formatting utilities (originally prompt_utils.py)
-NOTE: mostly imported from prior code
 """
 from __future__ import annotations
 
 from collections import defaultdict
 from typing import TYPE_CHECKING
 
-# Type-only import: OntologyEntryAttr is used solely in annotations, which `from __future__
-# import annotations` renders as lazy strings — so guarding it under TYPE_CHECKING keeps this
-# module (and the pure formatting functions, e.g. format_domain_range_clause) importable without
+# OntologyEntryAttr is used only in annotations (lazy under `from __future__ import
+# annotations`); guarding it under TYPE_CHECKING keeps this module importable without
 # owlready2, which the CPU test env lacks.
 if TYPE_CHECKING:
     from logmap_llm.ontology.object import OntologyEntryAttr
@@ -31,10 +29,8 @@ def get_single_name(name_set: set | list | str | OntologyEntryAttr) -> str | Non
     """
     Get a single name from the name set.
 
-    BUGFIX (PT-1, sev 1): this used `next(iter(name_set))`. On a SET that is an arbitrary element
-    whose identity depends on PYTHONHASHSEED, which CPython randomises per process. So the same
-    entity yielded a different name on different runs, and the PROMPT TEXT ITSELF was not
-    reproducible. Sets stay sets; we just choose from them deterministically.
+    Sets are reduced with min() rather than next(iter(...)) so the chosen name
+    (and hence the prompt text) does not depend on PYTHONHASHSEED.
     """
     if isinstance(name_set, (set, frozenset)):
         return min(name_set) if name_set else None
@@ -105,12 +101,8 @@ def select_best_direct_entity_names_with_synonyms(
         return parent_name
 
     def get_clean_synonyms(entity: OntologyEntryAttr) -> list[str]:
-        # BUGFIX (PT-1, sev 1): `get_synonyms()` returns a set[str], and this iterated it directly.
-        # CPython randomises str hashing per process (PYTHONHASHSEED), so set-iteration order changed
-        # between runs and the SAME candidate was sent a DIFFERENT PROMPT STRING on every run — the
-        # synonyms were listed in a different order. The prompts, and hence the whole experiment, were
-        # not reproducible; and some of the run-to-run ΔJ this project has been attributing to
-        # server-side sampling noise is in fact PROMPT noise. Sort them.
+        # get_synonyms() returns a set[str]; sort it so set-iteration order
+        # (PYTHONHASHSEED) cannot change the prompt string between runs.
         synonyms = sorted(str(s) for s in entity.get_synonyms())
         entity_name = str(entity.thing_class.name)
         return [] if len(synonyms) == 1 and synonyms[0] == entity_name else synonyms
@@ -146,10 +138,8 @@ def select_best_sequential_hierarchy_with_synonyms(
         parents_by_levels: dict[int, set[OntologyEntryAttr]], idx: int
     ) -> tuple[list[str], str]:
         if len(parents_by_levels) > idx:
-            # BUGFIX (PT-1): `next(iter(<set of parents>))` picked an ARBITRARY parent, and which one
-            # depended on PYTHONHASHSEED — so a class with two parents got a different "falls under the
-            # category X" clause on different runs. Choose deterministically (lowest URI), and sort the
-            # synonyms for the same reason.
+            # choose the parent deterministically (lowest URI) and sort the
+            # synonyms so the clause does not depend on PYTHONHASHSEED
             level = parents_by_levels[idx]
             entry = min(level, key=lambda e: str(e.annotation.get("uri", ""))) if level else None
             if entry is None:
@@ -228,12 +218,10 @@ def format_domain_range_clause(
 ) -> str:
     """Format a property with optional domain/range context.
 
-    PT-2: a DATA property takes literal values of a datatype (its range is e.g. "date",
-    "string"), not related individuals. Rendering it like an object property
-    ('"birthDate" which connects "Person" to something') drops the datatype — the most
-    discriminating feature of a data property — and makes DPROP indistinguishable from
-    OPROP to the oracle. When is_data_property is set, render the datatype range instead
-    ('"birthDate" on "Person" which has data values of type "date"').
+    When is_data_property is set, the datatype range is rendered ('"birthDate" on
+    "Person" which has data values of type "date"') instead of the object-property
+    form ('which connects ... to ...'), since the datatype is the most
+    discriminating feature of a data property.
     """
     desc = f'"{prop_label}"'
 
@@ -400,10 +388,9 @@ def _get_property_value(prop: dict) -> str:
 def _property_sort_key(prop: dict) -> tuple[str, ...]:
     """Return a total ordering for an instance property assertion.
 
-    ``getInstanceContext()`` normally supplies already-sorted lists, but keeping the
-    tie-break here makes selection deterministic for every caller (and for multiple
-    values of the same predicate).  In particular, neither a set-derived label order
-    nor rdflib's triple iteration order may decide which value reaches a prompt.
+    getInstanceContext() normally supplies already-sorted lists, but the tie-break
+    here makes selection deterministic for every caller: neither set-derived label
+    order nor rdflib's triple iteration order may decide which value reaches a prompt.
     """
     return (
         str(prop.get("predicate_label", "")).lower().strip(),
@@ -444,7 +431,7 @@ def select_intersecting_properties(
 ) -> tuple[list[dict], list[dict]]:
     """Select properties for prompt inclusion, prioritising shared predicates."""
     src_all_by_label: dict[str, list[dict]] = defaultdict(list)
-    
+
     for p in src_props:
         label = p["predicate_label"].lower().strip()
         src_all_by_label[label].append(p)
@@ -453,7 +440,7 @@ def select_intersecting_properties(
         entries.sort(key=_property_sort_key)
 
     tgt_all_by_label: dict[str, list[dict]] = defaultdict(list)
-    
+
     for p in tgt_props:
         label = p["predicate_label"].lower().strip()
         tgt_all_by_label[label].append(p)
@@ -464,7 +451,7 @@ def select_intersecting_properties(
     shared_labels = set(src_all_by_label.keys()) & set(tgt_all_by_label.keys())
 
     shared_best_pairs = {}
-    
+
     for label in shared_labels:
         best_src, best_tgt = _find_best_pair(
             src_all_by_label[label], tgt_all_by_label[label]
@@ -480,9 +467,8 @@ def select_intersecting_properties(
                 predicate_entropies.get(src_uri, 0.0),
                 predicate_entropies.get(tgt_uri, 0.0),
             )
-        # ``shared_labels`` is a set. Sorting it only by entropy left equal-entropy
-        # labels in hash-table iteration order, so PYTHONHASHSEED changed both the
-        # selected properties and their order in otherwise identical prompts.
+        # tie-break equal-entropy labels lexicographically so ordering never
+        # falls back to set-iteration order (PYTHONHASHSEED)
         ranked_shared = sorted(
             shared_labels,
             key=lambda label: (-_entropy_for_label(label), label),
@@ -505,7 +491,7 @@ def select_intersecting_properties(
         selected_tgt_labels.add(label)
 
     if not intersection_only:
-        
+
         if len(src_selected) < max_properties:
             for label in sorted(set(src_all_by_label.keys()) - shared_labels):
                 if label in selected_src_labels:

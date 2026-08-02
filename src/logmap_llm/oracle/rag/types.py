@@ -1,11 +1,11 @@
 """
 logmap_llm.oracle.rag.types
 
-Immutable value types for query-specific RAG few-shot retrieval (spec §6).
+Immutable value types for query-specific RAG few-shot retrieval.
 
-Everything here is a *frozen* dataclass or a str-enum: a RetrievalResult can be shared
-across concurrent oracle consultations without any risk of cross-contamination, because
-nothing it references is mutable. The retriever produces a fresh RetrievalResult per query.
+Everything here is a frozen dataclass or a str-enum, so a RetrievalResult can be shared
+across concurrent oracle consultations without cross-contamination. The retriever produces
+a fresh RetrievalResult per query.
 """
 from __future__ import annotations
 
@@ -47,16 +47,16 @@ class Source(str, Enum):
 
 # negative construction layouts
 
-#: How the k/2 pseudo-negatives are built. See CORE_BUMP_SPEC_2026-07-25.md §3.1.
+#: How the k/2 pseudo-negatives are built.
 #:
 #:   paired-sibling-v2  Ni = (Pi.src, highest-ranked eligible ontology sibling of Pi.tgt)
 #:   paired-donor-v2    Ni = (Pi.src, target of the next eligible ranked donor after Pi)
-#:   donor-cross-v1     FROZEN. Every negative takes the top-ranked donor's source and a
-#:                      successive donor's target. Reproduces the completed campaigns
-#:                      byte-for-byte; not for new science.
+#:   donor-cross-v1     Frozen: every negative takes the top-ranked donor's source and a
+#:                      successive donor's target. Kept only to reproduce the completed
+#:                      campaigns byte-for-byte.
 #:
-#: Both v2 layouts guarantee ``Ni.src == Pi.src`` BY CONSTRUCTION, so the rendered block is
-#: k/2 independent minimal pairs rather than k-1 demonstrations hanging off P1 (decision D-d).
+#: Both v2 layouts guarantee ``Ni.src == Pi.src`` by construction, so the rendered block is
+#: k/2 independent minimal pairs.
 LAYOUT_PAIRED_SIBLING_V2 = "paired-sibling-v2"
 LAYOUT_PAIRED_DONOR_V2 = "paired-donor-v2"
 LAYOUT_DONOR_CROSS_V1 = "donor-cross-v1"
@@ -85,7 +85,7 @@ class Direction(str, Enum):
 # fallback policy
 
 # What to do when a pool is empty / too small / the budget overflows.
-# STRICT experiments pick "error"; lenient runs pick an explicit degradation that is RECORDED.
+# Strict experiments pick "error"; lenient runs pick an explicit degradation that is recorded.
 _EMPTY_CHOICES = ("error", "zero_shot", "random")
 _UNDERSIZED_CHOICES = ("error", "reduce_k", "pad_other")
 _BUDGET_CHOICES = ("error", "reduce_k", "zero_shot")
@@ -117,7 +117,7 @@ class RagConfig:
     mode: Mode = Mode.QUERY_RAG
     k: int = 4
     positive_fraction: float = 0.5          # target share of positive examples (balance)
-    seed: int = 42                          # only perturbs an EXPLICIT random fallback
+    seed: int = 42                          # only perturbs an explicit random fallback
     token_budget: int | None = None         # budget for the *examples* block; None = unbounded
     answer_pos: str = '{"answer": true}'    # exact positive answer string (format-matched)
     answer_neg: str = '{"answer": false}'   # exact negative answer string
@@ -125,16 +125,14 @@ class RagConfig:
     preprocessing_version: str = "v2"       # part of the index cache key
     fallback: FallbackPolicy = field(default_factory=FallbackPolicy)
 
-    # How pseudo-negatives are constructed. The default is the FROZEN legacy layout so the
-    # CPU-only unit tests that build a bare RagConfig() keep exercising the reproduction path.
-    # Every pipeline entry point (build_retriever_from_pipeline, build_query_specific_few_shot)
-    # requires this explicitly and has no default, and `few_shot.rag_negative_layout` is
-    # required of any batch at generation and at execution, so no campaign can acquire a
-    # layout by default (decision D-c). See CORE_BUMP_SPEC_2026-07-25.md §3.1f.
+    # How pseudo-negatives are constructed. The default is the frozen legacy layout so the
+    # CPU-only unit tests that build a bare RagConfig() keep exercising the reproduction
+    # path; every pipeline entry point requires the layout explicitly, so no campaign can
+    # acquire one by default.
     negative_layout: str = LAYOUT_DONOR_CROSS_V1
 
     # How many ranked sibling candidates to request per negative under paired-sibling-v2.
-    # Eligibility filtering (§3.1) can reject several, so this is deliberately > 1.
+    # Eligibility filtering can reject several, so this is deliberately > 1.
     sibling_candidate_count: int = 8
 
     # Recorded in the trace so the sibling regime is evidence, not just a condition label.
@@ -174,7 +172,7 @@ class QueryMapping:
 #: Per-negative provenance carried by Example/ExampleRef and serialised into the trace.
 #: All None on positives and on random negatives; all None on donor-cross-v1 except
 #: `construction`, so a v1 trace's `selected[]` entry stays a strict superset of the frozen
-#: shape (no existing key changes name, type or value). See CORE_BUMP_SPEC §3.1a2.
+#: shape (no existing key changes name, type or value).
 NEGATIVE_PROVENANCE_FIELDS = (
     "construction",
     "derived_from_example_id",
@@ -201,17 +199,16 @@ class Example:
 
     # negative provenance (see NEGATIVE_PROVENANCE_FIELDS)
     construction: str | None = None
-    derived_from_example_id: str | None = None   # the positive Pi this negative was built FROM
+    derived_from_example_id: str | None = None   # the positive Pi this negative was built from
     donor_example_id: str | None = None          # the donor whose target was borrowed, if any
     sibling_rank: int | None = None              # 0-based rank among ranked siblings
     sibling_score: float | None = None
     sibling_type_specificity: str | None = None  # "specific" | "uninformative" (INST siblings)
-    #: WHICH sibling rule produced the candidate: "class" (parent's other children),
+    #: Which sibling rule produced the candidate: "class" (parent's other children),
     #: "instance" (shared rdf:type) or "property" (shared rdfs:domain). Recorded because the
-    #: rule is decided by how the TARGET resolves, not by the query's LogMap lane -- measured
-    #: on starwars-swtor, every OPROP/DPROP target resolves as an InstanceEntity, so the
-    #: property lanes actually run the instance rule. Without this the trace would say
-    #: "sibling" and silently mean something different per lane.
+    #: rule is decided by how the target resolves, not by the query's LogMap lane -- e.g. on
+    #: starwars-swtor every OPROP/DPROP target resolves as an InstanceEntity, so the property
+    #: lanes actually run the instance rule.
     sibling_rule: str | None = None
     negative_fallback_reason: str | None = None  # why the branch's primary rule was not used
 
@@ -270,14 +267,14 @@ class RetrievalTrace:
     answer_format: str
     selected: tuple = ()          # tuple[dict]: id,label,source,direction,rank,similarity
     exclusions: tuple = ()        # tuple[dict]: id,reason
-    # RETRIEVAL-MODE degradation only: the retriever could not run the requested mode/k.
+    # Retrieval-mode degradation only: the retriever could not run the requested mode/k.
     # `stage_two._publish_recorded_trace_fallbacks` keys on this field and publishes
     # rag_fallback.json, which `run._is_degraded` turns into a hard BatchRunError unless
     # rag_failure_policy == "record_zero_shot". A negative-construction fallback is a
-    # DIFFERENT thing and must never be recorded here. See CORE_BUMP_SPEC §3.2c.
+    # different thing and must never be recorded here.
     fallback_reason: str | None = None
-    # NEGATIVE-CONSTRUCTION fallback: the layout's primary target rule was unavailable for
-    # at least one negative. The block is complete and the query is NOT degraded.
+    # Negative-construction fallback: the layout's primary target rule was unavailable for
+    # at least one negative. The block is complete and the query is not degraded.
     negative_fallback_reason: str | None = None
     negative_layout: str = ""
     sibling_strategy: str = ""

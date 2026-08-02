@@ -140,12 +140,10 @@ def canonical_hash(value: Any) -> str:
 _MANIFEST_PAYLOAD_KEYS = {
     "schema", "batch", "source", "alignments", "jobs", "aggregate",
 }
-#: Keys a manifest MAY carry. `environment` records the resolved Python dependency set the
-#: batch was generated in (see experiments/environment.py). It is optional because every
-#: manifest generated before this core bump lacks it and must keep verifying: the digest is
-#: built from the keys actually present, so an old manifest digests exactly as before. A
-#: manifest must never acquire `"environment": None` — that would change its digest and break
-#: all six canonical batches.
+#: Keys a manifest may carry. `environment` records the resolved Python dependency set the
+#: batch was generated in (see experiments/environment.py). The seal digest is built from
+#: the keys actually present, so a manifest without `environment` digests unchanged; a
+#: manifest must never acquire `"environment": None`, which would change its digest.
 _MANIFEST_OPTIONAL_KEYS = {"environment"}
 _MANIFEST_SEAL = {
     "schema": 1,
@@ -181,8 +179,8 @@ def seal_manifest(payload: Mapping[str, Any]) -> dict[str, Any]:
 
 def verify_manifest_seal(manifest: Mapping[str, Any]) -> None:
     """Fail closed when any declared execution metadata changed after generation."""
-    # Deliberately a presence test, not a key-set identity: an unsealed manifest that also
-    # carries `environment` must still get this actionable message rather than "malformed".
+    # A presence test, not a key-set identity: an unsealed manifest that also carries
+    # `environment` must still get this actionable message rather than "malformed".
     if "seal" not in manifest:
         raise PlanError(
             "unsealed legacy batch manifest; regenerate the batch from batch.toml"
@@ -197,9 +195,8 @@ def verify_manifest_seal(manifest: Mapping[str, Any]) -> None:
     digest = seal.get("digest")
     if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
         raise PlanError("malformed batch manifest seal digest")
-    # Built from the keys ACTUALLY PRESENT, not a fixed set. A fixed set would silently
-    # exclude `environment` from the digest -- i.e. seal nothing -- and materialising a
-    # `None` for old manifests would change their digest and break every completed batch.
+    # Digest the keys actually present, not a fixed set: a fixed set would exclude
+    # `environment` from the digest, and a materialised `None` would change old digests.
     payload = {key: value for key, value in manifest.items() if key != "seal"}
     if not hmac.compare_digest(_manifest_digest(payload), digest):
         raise PlanError(
@@ -210,10 +207,8 @@ def verify_manifest_seal(manifest: Mapping[str, Any]) -> None:
 def manifest_identity(manifest: Mapping[str, Any]) -> dict[str, Any]:
     """The part of a manifest that must match across hosts: everything but the environment.
 
-    `environment` is a function of the local virtualenv, so two nodes generating the same
-    campaign produce manifests that differ in it -- and therefore in `seal`, which covers it.
-    Any cross-host check (shard import, retry queueing, generate idempotency) must compare
-    this rather than raw bytes, or the multi-node workflow refuses correct inputs.
+    `environment` is a function of the local virtualenv (and `seal` covers it), so any
+    cross-host check must compare this rather than raw bytes.
     """
     return {
         key: value for key, value in manifest.items()
@@ -631,13 +626,10 @@ def _validate_native(config: Mapping[str, Any], label: str) -> dict[str, Any]:
         validated = validate_config(copy.deepcopy(dict(config)))
     except Exception as exc:
         raise PlanError(f"{label}: invalid LogMapLLM config: {exc}") from exc
-    # Decision D-c: a campaign may never be ambiguous about how its pseudo-negatives were
-    # built. This is enforced HERE, at generation, rather than in the config schema: every
-    # frozen per-job config inside a completed batch carries few_shot_k > 0 and no layout,
-    # and aggregate/import/collector paths re-validate those configs. A schema-level
-    # requirement would turn them into status='invalid_plan' rows that aggregate_batch then
-    # writes over the completed batch's own aggregate directory. Generation is the only place
-    # a new campaign is authored, so refusing here is both sufficient and safe.
+    # A campaign may never be ambiguous about how its pseudo-negatives were built. Enforced
+    # at generation rather than in the config schema: frozen per-job configs in completed
+    # batches carry few_shot_k > 0 and no layout, and are re-validated by aggregate/import/
+    # collector paths, so a schema-level requirement would break completed batches.
     if validated.few_shot.few_shot_k > 0 and validated.few_shot.rag_negative_layout is None:
         raise PlanError(
             f"{label}: few_shot.rag_negative_layout is required when few_shot_k > 0. "
@@ -1017,10 +1009,9 @@ def _build(source: Path) -> tuple[Path, dict[str, Any], dict[str, str], dict[str
             "reuse_alignments": batch["reuse_alignments"],
         },
         "source": {"spec_sha256": spec_digest, "core_sha256": core_digest},
-        # Sealed, so it cannot be edited after generation, but deliberately OUTSIDE run
-        # identity: two hosts running the same campaign must produce identical job ids even
-        # though their virtualenvs differ. Cross-host comparisons therefore compare manifests
-        # modulo `environment` and `seal`.
+        # Sealed, but outside run identity: two hosts running the same campaign must
+        # produce identical job ids even though their virtualenvs differ, so cross-host
+        # comparisons work modulo `environment` and `seal`.
         "environment": environment_payload(Path(__file__).resolve().parents[3]),
         "alignments": alignment_rows,
         "jobs": job_rows,
@@ -1071,10 +1062,9 @@ def generate_batch(
 
     if batch_dir.exists():
         existing = load_manifest(batch_dir)
-        # Compare modulo `environment` (and therefore `seal`, which covers it). Otherwise any
-        # `uv sync` between two generate runs would make an otherwise identical batch look
-        # like a conflict and hard-error. The ORIGINAL environment record is kept: it says
-        # what the batch was generated in, and regenerating does not change that.
+        # Compare modulo `environment` (and `seal`, which covers it) so a `uv sync` between
+        # generate runs does not make an identical batch look like a conflict. The original
+        # environment record is kept: it says what the batch was generated in.
         if manifests_equivalent(existing, manifest):
             changed = environments_differ(
                 existing.get("environment"), manifest.get("environment"),

@@ -1,8 +1,8 @@
 """
 logmap_llm.oracle.rag.tokenizer
 
-Token counting behind a Protocol so the retriever can enforce a token budget (spec §6)
-without pulling in a model tokenizer during CPU tests. Default is a deterministic heuristic;
+Token counting behind a Protocol so the retriever can enforce a token budget without
+pulling in a model tokenizer during CPU tests. Default is a deterministic heuristic;
 production may inject a real HF tokenizer via HFTokenCounter.
 """
 from __future__ import annotations

@@ -4,7 +4,7 @@ logmap_llm.oracle.prompts.developer — Developer (system) prompt registry.
 Contains all developer prompt constants and the registry that maps
 config-friendly names to prompt text.
 
-IMPORT CONSTRAINT: This module must NEVER import from logmap_llm.pipeline.*
+Import constraint: this module must never import from logmap_llm.pipeline.*
 to prevent circular imports.
 """
 from __future__ import annotations
@@ -96,7 +96,6 @@ TRUE_FALSE_PLAIN = (
 
 TRUE_FALSE_STRUCTURED = (
     'Respond with a JSON object containing a single boolean field "answer": {"answer": true} or {"answer": false}.'
-    # 'Respond with true or false'
 )
 
 YES_NO_PLAIN = (
@@ -138,9 +137,8 @@ DEVELOPER_PROMPT_INSTRUCTION_REGISTRY = {
 def get_developer_prompt(name: str, answer_format: str = "true_false", response_mode: str = "structured") -> str | None:
     """Resolve a developer prompt by its registry name, optionally resolve its answer_format and response mode.
 
-    NOTE: the domain-expert prompts were previously registered under domain-specific names.
-    A config carrying a retired name fails here rather than silently resolving to a different
-    prompt, which would run a different experiment under the intended one's name.
+    An unrecognised (or retired) prompt name fails here rather than silently
+    resolving to a different prompt.
     """
     if name not in DEVELOPER_PROMPT_REGISTRY:
         raise ValueError(

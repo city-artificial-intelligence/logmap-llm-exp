@@ -19,18 +19,17 @@ from logmap_llm.evaluation.metrics import (
 
 def resolve_response_format_to_str(resp_fmt) -> str:
     '''
-    ad-hoc type-switch
-    returns the resp_fmt value as str for debug logging
+    ad-hoc type-switch: returns the resp_fmt value as str for debug logging
     '''
     if resp_fmt is None:
         return "Plain (None)"
-    
+
     if isinstance(resp_fmt, type) and issubclass(resp_fmt, BaseModel):
         return resp_fmt.__name__
 
     if isinstance(resp_fmt, BaseModel):
         return f"UNEXPECTED instance of {type(resp_fmt).__name__} (expected the class itself, not an instance)"
-    
+
     if isinstance(resp_fmt, dict):
         return f"raw dict schema (keys: {sorted(resp_fmt.keys())})"
 
@@ -46,66 +45,28 @@ def compute_conference_m1_m2_stratified(
     property_reference_path: Path | None = None,
 ) -> dict | None:
     """
-    Note: this function is retained under `misc.py` since it should operate at the process orchestration level, 
-    rather than (as was previously implemented, at the evaluation level). Therefore, we delegate the use of this 
-    function to the same system-level of abstraction as the config generators (TODO).
-    
-    Though, it is noted that: we don't yet have a process-level orchestration layer. The existing experimental results 
-    have been constructed by generating configs (eg. in the case of conference) for each of the ontology pairs (21 pairs) 
-    and then using ad-hoc scripts to aggregate the results. This 'works', but it's not... ideal, since a single change or 
-    ablation means either a. reproducing all configs or b. manually modifying all existing configs; ie. manually updating 
-    keys across 21 configs to perform an ablation (room for error -- its brittle).
+    Compute OAEI conference track M1 (class) and M2 (property) stratified metrics for a single
+    task pair, applying compute_prf separately to class-only and property-only subsets.
 
-    TODO: add 'process orchestration' layer. 'paths.py' module ensures that reads and writes dont cross over processes. 
-    In rare cases where separate processes require access to the same file for both read and write operations 
-    (as is the case with owlready2, since its quadstore only allows readwrite connections/operations), we apply a lock to 
-    the file until a copy (of the file) has been made to a temporary location (eg. /tmp/unique/path/per/process). 
-    Each process competes for the lock on init, copies the file, then releases the lock, then resumes execution 
-    (this is already implemented, its just the orchestration that needs to be better managed). After all processes
-    have completed, the results are then aggregated and stratefied to produce highly interpretable output and can also 
-    be fed to scripts for plotting and visualising (TODO: we need some v.nice plotting scripts).
+    Suitable for calling directly from a notebook or analysis script to inspect M1/M2 breakdowns.
+    Lives in misc.py because it belongs at the process-orchestration level, not the evaluation level.
 
-    THIS FUNCTION
-    -------------
+    TODO: add a proper process-orchestration layer (results are currently aggregated per-pair with
+    ad-hoc scripts, which makes ablations brittle), plus decent plotting scripts.
 
-    Computes the OAEI conference track M1 (class) and M2 (property) stratified metrics for a single task pair; uses 
-    the same underlying compute_prf primitive as standard precision/recall/f1, but applies the computation separately 
-    to  class-only and property-only subsets of the alignment. 
-    
-    eg. it can be called directly from an interactive notebook or analysis script when you want to inspect M1/M2 breakdowns
-    
-    Per-type reference files (can be generated using ad-hoc script)
-    ---------------------------------------------------------------
-    
-    The helper looks for per-entity-type reference files via the naming convention used by the OAEI Conference track; for a
-    reference file at 'confOf-iasted.tsv', it expects 'confOf-iasted_class.tsv' and 'confOf-iasted_property.tsv' in the same 
-    directory. These paths can be overridden via the 'class_reference_path' and 'property_reference_path' parameters if the 
-    caller wants to point at non-conventional locations; if neither per-type reference file exists and no overrides are 
-    provided, the helper simply returns None and it is the callers responsibility to interpret this as:
-           
-           "M1/M2 stratification not applicable for this task"
-    
-    URI entity type classification:
-    -------------------------------
+    Per-type reference files follow the conference track naming convention: for 'confOf-iasted.tsv'
+    it expects 'confOf-iasted_class.tsv' and 'confOf-iasted_property.tsv' in the same directory,
+    overridable via 'class_reference_path' / 'property_reference_path'. If neither per-type file
+    exists and no overrides are given, returns None ("M1/M2 stratification not applicable").
 
-    The system pairs (in each mapping) are classified as class-class or property-property mapping type pairs. These use the LogMap 
-    entity type codes read from the initial alignment file; ie. (initial_alignment_path \w the pipe-delimited m_ask format).
-    
-    If this path is not provided, the helper falls back to using the full system pair set for both M1 and M2 buckets -- the resulting 
-    metrics are still internally consistent but effectively disable the split (M1 == M2 == unstratified); callers that care about the 
-    M1/M2 distinction !! MUST !! provide the initial alignment path (and it is their responsibility to do so)
+    System pairs are classified class-class / property-property using LogMap entity type codes read
+    from the initial alignment file (pipe-delimited m_ask format). If 'initial_alignment_path' is
+    not provided, both buckets fall back to the full system pair set -- internally consistent but
+    the split is effectively disabled; callers that care about M1/M2 must provide the path.
 
-    (Finally) This function returns dict | None. The dict has the following shape:
-
-        A dict with zero, one, or two entries:
-
-            {
-                "m1_class":    metric dict from compute_prf,
-                "m2_property": metric dict from compute_prf,
-            }
-
-    Each metric dict has its source field tagged "conference_stratified" so downstream consumers of the JSON can more easily distinguish 
-    stratified  from standard entries. Returns None if neither per-type reference exists.
+    Returns dict | None: zero, one, or two entries {"m1_class": ..., "m2_property": ...}, each a
+    metric dict from compute_prf with its source field tagged "conference_stratified" so downstream
+    JSON consumers can distinguish stratified from standard entries.
     """
     reference_path = Path(reference_path)
     ref_dir = reference_path.parent
@@ -149,9 +110,8 @@ def compute_conference_m1_m2_stratified(
             m1 = compute_prf(class_system, class_ref)
             m1["source"] = "conference_stratified"
         else:
-            # Documented degenerate mode (no URI typing): the bucket is the FULL pair set.
-            # BUGFIX (M1M2-TAG): it used to be tagged 'conference_stratified' anyway, so
-            # sealed results claimed a stratified metric they did not compute.
+            # Degenerate mode (no URI typing): the bucket is the full pair set,
+            # tagged as an unstratified fallback so results don't claim a stratified metric.
             m1 = compute_prf(system_pairs, class_ref)
             m1["source"] = "conference_unstratified_fallback"
             m1["metric_notes"]["stratification"] = (

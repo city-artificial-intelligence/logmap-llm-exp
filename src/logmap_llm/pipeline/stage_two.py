@@ -1,11 +1,9 @@
 '''
 logmap_llm.pipeline.stage_two
-designated subprocess responsible for prompt construction
-This is essentially a stand-alone 'build prompts' script.
-Config loading and filepath resolution are shared with runner.py via
-subprocess_bootstrap (utils/subprocess.py) and PipelinePaths, so both
-processes resolve artifacts identically. See notes in code regarding
-remaining work.
+Designated subprocess responsible for prompt construction — essentially a
+stand-alone 'build prompts' script. Config loading and filepath resolution are
+shared with runner.py via subprocess_bootstrap (utils/subprocess.py) and
+PipelinePaths, so both processes resolve artifacts identically.
 '''
 import os
 import sys
@@ -67,11 +65,10 @@ def _remove_artifact(run_paths, filename: str) -> None:
 
 
 def _remove_stale_rag_fallback(run_paths) -> None:
-    """Clear BOTH fallback records.
+    """Clear both fallback records.
 
-    A zero-shot retry in an existing attempt directory must not inherit either one from an
-    earlier few-shot attempt. Each publisher below owns exactly one of them; this is the
-    reset used by the empty-stage and k=0 paths.
+    A zero-shot retry in an existing attempt directory must not inherit either one
+    from an earlier few-shot attempt; used by the empty-stage and k=0 paths.
     """
     _remove_artifact(run_paths, "rag_fallback.json")
     _remove_artifact(run_paths, "rag_negative_fallback.json")
@@ -122,19 +119,15 @@ def _handle_rag_generation_failure(run_paths, few_shot_cfg, exc: Exception) -> N
 
 
 def _publish_negative_construction_fallbacks(run_paths, few_shot_cfg, traces: dict) -> bool:
-    """Publish per-lane negative-construction fallbacks, SEPARATELY from rag_fallback.json.
+    """Publish per-lane negative-construction fallbacks, separately from rag_fallback.json.
 
-    These two things must never share an artefact. `rag_fallback.json` means "the retriever
-    could not run the requested mode or k", and `run._is_degraded` raises BatchRunError the
-    moment it exists under any policy other than record_zero_shot -- which every campaign
-    spec sets to "error". A negative-construction fallback is not that: the block is complete
-    and correctly paired, only the branch's PRIMARY target rule was unavailable for some
-    negative. Decision D-a guarantees those occur (undeclared properties, instances with no
-    typed peers, classes with no siblings), so routing them through the degradation channel
-    would fail every sibling job that contains a single such query.
-
-    The rate is a headline reportable, not a diagnostic, so it is written per lane and per
-    reason and registered as a run artefact.
+    The two must never share an artefact: `rag_fallback.json` means the retriever could
+    not run the requested mode or k, and `run._is_degraded` raises BatchRunError the
+    moment it exists under any policy other than record_zero_shot. A negative-construction
+    fallback is not that — the block is complete and correctly paired, only the branch's
+    primary target rule was unavailable for some negative (e.g. undeclared properties,
+    instances with no typed peers, classes with no siblings). It is a reportable rate,
+    written per lane and per reason, not a degradation.
     """
     affected = {
         key: trace.get("negative_fallback_reason")
@@ -223,8 +216,8 @@ def _publish_recorded_trace_fallbacks(run_paths, few_shot_cfg, traces: dict) -> 
     return True
 
 
-#: One definition of the precedence rule, shared with config validation (which cannot import
-#: owlready2). Kept as a module alias so the existing call sites and error message read the same.
+#: Module alias for the precedence rule shared with config validation (which cannot
+#: import owlready2).
 _resolve_sibling_strategy = resolve_sibling_strategy
 
 
@@ -238,12 +231,12 @@ def _build_sibling_selector(
         )
         model_override = prompts_cfg.sibling_model
         max_cands = prompts_cfg.sibling_max_candidates
-        
+
         if max_cands is None:
             max_cands = DEFAULT_MAX_SIBLING_CANDIDATES
-        
+
         step(f'[STEP TWO] Initialising SiblingSelector (strategy={strategy.value}, max_candidates={max_cands}).', important=True)
-        
+
         sel = SiblingSelector(
             strategy=strategy,
             device=prompts_cfg.sibling_encoder_device,
@@ -253,13 +246,11 @@ def _build_sibling_selector(
         )
         success(f'SiblingSelector ready (device: {sel.device})')
         return sel
-    
+
     except Exception as outer_e:
-        # This used to fall back to ALPHANUMERIC sibling selection with only a warning
-        # and the run would then COMPLETE AND SCORE NORMALLY. So a missing encoder
-        # checkpoint silently turned the paper's "embedding-ranked sibling prompt"
-        # into "the two siblings that happen to sort first alphabetically" — a different experiment,
-        # reported under the name of the intended one, with nothing but a log line to say so.
+        # A missing encoder checkpoint must fail loudly: silently falling back to
+        # alphanumeric sibling selection would run a different experiment under the
+        # name of the intended one.
         requested = prompts_cfg.sibling_strategy
         raise RuntimeError(
             f'SiblingSelector initialisation FAILED: {outer_e}\n'
@@ -284,31 +275,14 @@ def main():
     # BOOTSTRAP (THIS SUBPROCESS)
     #############################
 
-    #  This MUST run before the JVM starts and before any ontology
-    # is loaded, or every heavy-track prompt-build deadlocks forever.
-    #
-    #   owlready2/driver.py:246   parallel = os.path.getsize(f.name) >= 8000000
-    #   owlready2/driver.py:248-251  if multiprocessing.get_start_method() != "fork": parallel = False
-    #   owlready2/driver.py:258-259  multiprocessing.Process(target=do_parse).start()
-    #
-    # So owlready2 parses any ontology >= 8 MB in a fork()ed child. Meanwhile this subprocess starts
-    # a JVM via jpype (below) so that bridging.py can import its Java classes — which leaves the
-    # process with ~29 threads. fork() copies only the calling thread, so any malloc/JVM mutex that
-    # happened to be held by another thread at fork time is inherited LOCKED and is never released:
-    # the child blocks in futex, the parent blocks reading the mp.Queue, and neither ever returns.
-    # Worse, this happens INSIDE ontology/cache.py's exclusive flock, so every other model's run
-    # then piles up behind the dead builder and the whole sweep convoys.
-    #
-    # This is why the fast tracks passed and the heavy ones never did: the light-track ontologies
-    # (~0.6 MB, and a 4 MB / 1.9 MB pair) are all UNDER the 8 MB threshold, so they never fork.
-    # Every heavy-track ontology is over it (a spread of 11 MB, 52 MB, 57 MB, and 240 MB).
-    # It is also racy — it only wedges when a lock happens to be held at fork time — so "it worked
-    # once" proves nothing.
-    #
-    # Forcing "spawn" makes owlready2 take its own non-parallel branch (driver.py:250) and parse
-    # IN-PROCESS. No fork, no inherited locks, no deadlock. The cost is that the >=8 MB parse is no
-    # longer overlapped with a child process; correctness beats that trade, and the quadstore cache
-    # means we pay the parse once per ontology per node anyway.
+    # This must run before the JVM starts and before any ontology is loaded. Under the
+    # "fork" start method owlready2 parses any ontology >= 8 MB in a fork()ed child, and
+    # this subprocess also starts a JVM via jpype (for bridging.py) — fork() from that
+    # multi-threaded process can inherit a locked malloc/JVM mutex and deadlock, inside
+    # ontology/cache.py's exclusive flock, stalling every other run behind it. Forcing
+    # "spawn" makes owlready2 parse in-process: the large parse is no longer overlapped
+    # with a child process, but the quadstore cache means we pay it once per ontology
+    # per node anyway.
     import multiprocessing
     if multiprocessing.get_start_method(allow_none=True) != "spawn":
         multiprocessing.set_start_method("spawn", force=True)
@@ -321,9 +295,9 @@ def main():
     args = parse_args()
 
     config, run_paths, tee = subprocess_bootstrap("PROMPT_BUILD_STAGE_TWO", args=args)
-    
+
     config_path = args.config
-    
+
     step(f"[STEP 2] Configuration loaded from: {config_path}")
 
     initial_mappings_fp = run_paths.logmap_mappings()
@@ -331,10 +305,8 @@ def main():
     try:
         mappings = pd.read_csv(initial_mappings_fp, sep=PAIRS_SEPARATOR, header=None)
     except pd.errors.EmptyDataError:
-        # BUGFIX (EMPTY-INITIAL): a 0-byte initial alignment crashed here BEFORE the
-        # empty-M_ask early exit below could run. Mirror that guard's semantics: an empty
-        # alignment is data, not a parse failure (matches oracle/rag/bundle._alignment's
-        # empty_ok handling of the same format).
+        # An empty (0-byte) initial alignment is data, not a parse failure (matches
+        # oracle/rag/bundle._alignment's empty_ok handling of the same format).
         mappings = pd.DataFrame(columns=range(5))
     step(f'[STEP 2] Number of mappings in initial alignment: {len(mappings)}')
 
@@ -343,12 +315,10 @@ def main():
     from logmap_llm.bridging import dedupe_m_ask_by_uri_pair
     m_ask_fp = run_paths.logmap_m_ask()
 
-    # If LogMap produced no uncertain mappings, exit early — this MUST happen BEFORE pd.read_csv,
-    # which raises pandas.errors.EmptyDataError ("No columns to parse from file") on a 0-byte file.
-    # Common on well-aligned pairs (e.g. conference cmt-iasted / ekaw-sigkdd: a few confident mappings,
-    # 0 to ask). The standard-M_ask sweep's broad coverage exposed this; the guard previously sat AFTER
-    # the read so it never protected it. Empty M_ask => the LogMapLLM refined alignment is identical to
-    # the plain-LogMap initial alignment (there is nothing for the oracle to refine).
+    # If LogMap produced no uncertain mappings, exit early — this must happen before
+    # pd.read_csv, which raises EmptyDataError on a 0-byte file. Common on well-aligned
+    # pairs. Empty M_ask means the LogMapLLM refined alignment is identical to the
+    # plain-LogMap initial alignment (there is nothing for the oracle to refine).
     if (not os.path.exists(m_ask_fp)) or os.path.getsize(m_ask_fp) == 0:
         warning("M_ask file is empty — no uncertain mappings to build prompts for.")
         _publish_empty_prompt_artifacts(run_paths)
@@ -364,23 +334,16 @@ def main():
     # policy) is prompted once, consistent with the consultation path (bridging.load_m_ask_from_file).
     m_ask_df = dedupe_m_ask_by_uri_pair(m_ask_df)
     step(f'[STEP 2] Loading mappings to ask an Oracle from: {m_ask_fp}')
-    
 
-
-    # The response configuration and ontology domain used to be MUTABLE MODULE STATE in
-    # templates.py, set by this subprocess and read implicitly by every template. Process
-    # isolation contained that; in-process or concurrent use did not, and the failure mode
-    # was a prompt rendered under the wrong response instruction rather than a crash. They
-    # are now an immutable PromptContext, constructed once here and passed explicitly.
-
-
+    # The response configuration and ontology domain travel as an immutable
+    # PromptContext, constructed once here and passed explicitly to every template.
 
     ###
     # CONFIGURE RESPONSE FORMAT FOR PROMPTS
     #######################################
     # apply response configuration to prompt templates
     # must happen before any prompt functions are called
-    
+
     step(f"[STEP 2] Response config set to: answer_format={config.oracle.answer_format}.")
     step(f"[STEP 2] Response config set to: response_mode={config.oracle.response_mode}")
     prompt_context = PromptContext.from_config(config)
@@ -412,11 +375,11 @@ def main():
     ###
     # CONFIGURE SIBLING CONTEXT (IF REQUIRED)
     #########################################
-    # if the selected template requires sibling-based 
-    # context then initialise the SiblingSelector 
+    # if the selected template requires sibling-based
+    # context then initialise the SiblingSelector
 
     # A selector is needed for two independent reasons: the class template may render sibling
-    # CONTEXT, and paired-sibling-v2 needs siblings to build NEGATIVES. Only the first is
+    # context, and paired-sibling-v2 needs siblings to build negatives. Only the first is
     # conditioned on the template, so the second must be asked for separately - the campaign
     # templates (one_level_of_parents_and_synonyms, prop_domain_range,
     # inst_full_context_entropy) declare no sibling requirement at all.
@@ -427,7 +390,7 @@ def main():
     )
     sibling_selector = None
     if template_needs_siblings or negatives_need_siblings:
-        # _build_sibling_selector refuses to degrade to ALPHANUMERIC when a semantic
+        # _build_sibling_selector refuses to degrade to alphanumeric when a semantic
         # checkpoint cannot be loaded, which is exactly the guarantee the sibling arm needs.
         sibling_selector = _build_sibling_selector(
             config.prompts, config.alignmentTask.ontology_domain,
@@ -451,12 +414,10 @@ def main():
         resolved_prop_template_entry = opb.registry.get(property_prompt_template_name)
 
         # TODO: handle DPROP and OPROPs differently in future
-        # BOUND to the prompt context, never the raw registry callable: every template takes
-        # `ctx` as a required keyword-only argument, and build_oracle_user_prompts only binds
-        # the ones it resolves ITSELF (templates.py:1258-1287, guarded on `is None`). An
-        # unbound callable raises TypeError inside the per-candidate try, whose
-        # `except (ClassNotFoundError, Exception)` (templates.py:1400) turns it into a warning
-        # and DROPS the candidate — silently emptying the OPROP/DPROP/INST lanes.
+        # Bind to the prompt context, never the raw registry callable: every template
+        # takes `ctx` as a required keyword-only argument, and an unbound callable raises
+        # TypeError inside build_oracle_user_prompts' per-candidate try, which turns it
+        # into a warning and drops the candidate — silently emptying the lane.
         if resolved_prop_template_entry.entity_type == EntityType.OBJECTPROPERTY:
             property_prompt_function = opb.get_oracle_user_prompt_template_function(
                 property_prompt_template_name, prompt_context)
@@ -471,11 +432,11 @@ def main():
 
 
     ###
-    # RESOLVE DATA-PROPERTY PROMPT (PT-2, OPTIONAL)
-    ##############################################
+    # RESOLVE DATA-PROPERTY PROMPT (OPTIONAL)
+    #########################################
     # An optional dedicated DPROP template. When unset, DPROP candidates fall back to the
-    # (now datatype-aware) object-property template resolved above. Accepts a template
-    # registered as either DATAPROPERTY or OBJECTPROPERTY (both are property-shaped).
+    # object-property template resolved above. Accepts a template registered as either
+    # DATAPROPERTY or OBJECTPROPERTY (both are property-shaped).
 
     data_property_prompt_function = None
     data_property_prompt_template_name = config.prompts.dprop_usr_prompt_template_name
@@ -521,9 +482,8 @@ def main():
 
 
     ###
-    # !! END OF BOOTSTRAPPING PROCESS !!
+    # END: BOOTSTRAP
     ###
-
 
 
     ###
@@ -548,8 +508,8 @@ def main():
     cache_dir = None if args.no_cache else DEFAULT_OWLREADY2_CACHE_DIR
 
     OA_source, OA_target = load_ontologies(
-        config.alignmentTask.onto_source_filepath, 
-        config.alignmentTask.onto_target_filepath, 
+        config.alignmentTask.onto_source_filepath,
+        config.alignmentTask.onto_target_filepath,
         cache_dir=cache_dir,
         stub_import_iris=config.alignmentTask.stub_import_iris,
         vocabulary=config.alignmentTask.resolved_vocabulary,
@@ -596,9 +556,8 @@ def main():
         step(f"[STEP 2] Number of LLM Oracle user prompts obtained: {len(m_ask_oracle_user_prompts)}", important=True)
 
 
-    # NOTE: LOGIC HERE IS BACKWARDS. DONT BOTHER DOING ANYTHING IF WE ARE NOT IN BUILD MODE.
-    # IN FACT. THIS SCRIPT WONT EVEN BE CALLED IF PromptBuildMode IS NOT SET TO BUILD!
-    # THIS IS SIMPLY A GUARD? (REALLY NECCESARY?!)
+    # NOTE: probably a redundant guard — this script isn't even called unless
+    # PromptBuildMode is set to BUILD.
 
 
     ###
@@ -618,28 +577,26 @@ def main():
 
 
     ###
-    # !! END OF PROMPT CONSTRUCTION PROCESS FOR CONSULTATION !!
+    # END: PROMPT CONSTRUCTION
     ###
 
 
-
     ###
-    # START: QUERY-SPECIFIC RAG FEW-SHOT (RAG_INTEGRATION.md wiring point 1)
+    # START: QUERY-SPECIFIC RAG FEW-SHOT
     ###
-    # Replaces the legacy single static example set (one dominant entity type, RF-1) with the
-    # query-specific RAG retriever: each M_ask candidate gets its OWN typed examples (CLS queries
-    # get CLS examples, OPROP/DPROP get property examples, INST get instance examples), written to
-    # few_shot_json() as a DICT keyed by the M_ask key + per-query retrieval traces for provenance.
-    # STATIC_* strategies stay behaviour-compatible (query-agnostic examples). spec §6.
+    # Each M_ask candidate gets its own typed examples (CLS queries get CLS examples,
+    # OPROP/DPROP get property examples, INST get instance examples), written to
+    # few_shot_json() as a dict keyed by the M_ask key, plus per-query retrieval traces
+    # for provenance. STATIC_* strategies use query-agnostic examples.
 
     few_shot_k = config.few_shot.few_shot_k
 
     if few_shot_k > 0:
 
-        # Decision D-c, execution half. plan.py refuses to GENERATE a batch without this;
-        # this refuses to RUN one, which also covers the single-run `logmap-llm` entry point
-        # that never passes through the planner. Deliberately not a schema validator: that
-        # would make every frozen historical config unloadable (see config/schema.py).
+        # plan.py refuses to generate a batch without a layout; this refuses to run one,
+        # which also covers the single-run `logmap-llm` entry point that never passes
+        # through the planner. Deliberately not a schema validator: that would make every
+        # frozen historical config unloadable (see config/schema.py).
         negative_layout = config.few_shot.rag_negative_layout
         if negative_layout is None:
             raise ValueError(

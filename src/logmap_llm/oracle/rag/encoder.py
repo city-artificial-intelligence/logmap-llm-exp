@@ -7,7 +7,7 @@ deterministic HashingEncoder.
 
 Contract: encode(texts) -> np.ndarray of shape (len(texts), dim), L2-normalised rows, so a
 plain dot product is cosine similarity. `repo`, `revision`, `preprocessing_version` feed the
-index cache key (spec §6).
+index cache key.
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ class Encoder(Protocol):
     revision: str
     preprocessing_version: str
     #: The library versions that actually produced the embeddings. Part of the index cache
-    #: key, because a cache rebuilt under a different `transformers` holds DIFFERENT vectors
+    #: key, because a cache rebuilt under a different `transformers` holds different vectors
     #: while every other key component is unchanged (see index.compute_index_hash).
     runtime_versions: str
 
@@ -47,9 +47,9 @@ def _l2_normalise(mat: np.ndarray) -> np.ndarray:
 def cls_pool_preprocessing_version(max_length: int) -> str:
     """ClsPooledEncoder's preprocessing identity (an index-cache-key component).
 
-    Module-level (rather than inline in __init__) so the CPU test suite can pin the
-    format without torch: the string must change whenever truncation changes, or two
-    runs with different max_length share one cache entry holding different vectors.
+    Module-level so the CPU test suite can pin the format without torch. The string
+    must change whenever truncation changes, or runs with different max_length would
+    share one cache entry holding different vectors.
     """
     return f"cls-pool-max{int(max_length)}-v1"
 
@@ -60,8 +60,8 @@ class HashingEncoder:
 
     Embeds text as a hashed character n-gram bag projected to a fixed dimension, L2-normalised.
     It is a genuine similarity signal (shared substrings -> higher cosine) and is fully
-    deterministic given (text, dim, ngram, seed) — no RNG, no external model. It is NOT a
-    semantic model; it exists so the retriever's SELECTION logic can be exercised offline.
+    deterministic given (text, dim, ngram, seed) — no RNG, no external model. It is not a
+    semantic model; it exists so the retriever's selection logic can be exercised offline.
     """
 
     def __init__(self, dim: int = 256, ngram: tuple[int, int] = (2, 4), seed: int = 0):
@@ -103,9 +103,9 @@ class HashingEncoder:
 
 class ClsPooledEncoder:
     """
-    Production encoder wrapping a CLS-pooled transformer checkpoint. torch/transformers are imported LAZILY
-    so importing this module never requires them; only instantiating ClsPooledEncoder does.
-    Not used by the unit test suite.
+    Production encoder wrapping a CLS-pooled transformer checkpoint. torch/transformers are
+    imported lazily, so importing this module never requires them; only instantiating
+    ClsPooledEncoder does. Not used by the unit test suite.
     """
 
     def __init__(self, model_name_or_path: str,
@@ -125,14 +125,9 @@ class ClsPooledEncoder:
         self.revision = revision or "unpinned"
         self.batch_size = batch_size
         self.max_length = max_length
-        # Index-cache-key component (index.compute_index_hash). Renamed from the previous
-        # checkpoint-specific value, which invalidates caches built before the rename; they
-        # rebuild on next use. Manifests written earlier retain the old string.
-        # BUGFIX (CLS-MAXLEN): max_length changes tokenizer truncation and therefore the
-        # vectors, so it must be part of the preprocessing identity (SbertEncoder already
-        # encodes it). Two runs differing only in rag_encoder_max_length previously shared
-        # one index_hash and silently served each other's cached vectors. Including it
-        # invalidates pre-fix caches; they rebuild on next use.
+        # Index-cache-key component (index.compute_index_hash). Includes max_length because
+        # truncation changes the vectors; runs differing only in max_length must not share
+        # a cache entry.
         self.preprocessing_version = cls_pool_preprocessing_version(self.max_length)
         self.runtime_versions = _torch_runtime()
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")

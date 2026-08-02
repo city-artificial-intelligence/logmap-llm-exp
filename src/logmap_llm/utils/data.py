@@ -1,29 +1,9 @@
 """
-logmap_llm.utils.data
+logmap_llm.utils.data: shared data utilities for the LogMap-LLM pipeline.
 
-shared data utilities for the LogMap-LLM pipeline
-
-Public API:
-
-    normalise_prediction_column(df_or_series)
-        Return a new DataFrame/Series with the Oracle_prediction column
-        coerced from CSV-string form back to bools where possible; error
-        values=("error", "skipped") and NaN pass through untouched
-
-    prediction_is_true_mask(df_or_series)
-        Return a boolean Series suitable for df[mask] filtering, where
-        true means "the oracle accepted this mapping"; error values 
-        and NaN evaluate to False
-
-    filter_accepted_predictions(df)
-        convenience wrapper: return the subset of rows where the oracle
-        accepted the mapping (equivalent to df[prediction_is_true_mask(df)])
-
-    dedupe_m_ask_by_uri_pair(m_ask_df)
-        collapse duplicate (source, target) M_ask rows to one (keep first),
-        preserving order; reverse pairs are preserved (directional dedup)
-
-Note: callers should use 'df = normalise_prediction_column(df)'
+Normalising/filtering the Oracle_prediction column (error values like "error"/"skipped"
+and NaN pass through normalisation untouched and evaluate to False in the accept mask)
+and deduping M_ask rows by (source, target) URI pair.
 """
 from __future__ import annotations
 
@@ -40,7 +20,7 @@ def _normalise_value(val):
     """
     if isinstance(val, bool):
         return val
-    
+
     if isinstance(val, str):
         low = val.strip().lower()
         if low in POSITIVE_TOKENS:
@@ -68,7 +48,7 @@ def normalise_prediction_column(df_or_series):
 def prediction_is_true_mask(df_or_series) -> pd.Series:
     """
     return a boolean series where true means "the oracle accepted this mapping"
-    Usgae:
+    Usage:
         mask = prediction_is_true_mask(predictions_df)
         accepted = predictions_df[mask]
     """
@@ -85,13 +65,14 @@ def filter_accepted_predictions(df: pd.DataFrame) -> pd.DataFrame:
     """
     return df[prediction_is_true_mask(df)]
 
+
 def dedupe_m_ask_by_uri_pair(m_ask_df: "pd.DataFrame") -> "pd.DataFrame":
     """
     Collapse duplicate (source, target) M_ask rows to a single row (keep first), preserving order.
 
-    The KG-ABOX 'both' lane policy can make LogMap emit a mixed-use undeclared predicate as BOTH a
-    data-property AND an object-property mapping for the SAME URI pair. Left unmerged, that candidate
-    would be asked to the oracle twice and double-counted in every oracle metric. Dedup is DIRECTIONAL
+    The KG-ABOX 'both' lane policy can make LogMap emit a mixed-use undeclared predicate as both a
+    data-property and an object-property mapping for the same URI pair; left unmerged, that candidate
+    would be asked to the oracle twice and double-counted in every oracle metric. Dedup is directional
     on (source, target): reverse pairs (legitimate bidirectional queries) are preserved. Positional-safe
     (uses the first two columns). Logs how many duplicate rows were dropped.
     """

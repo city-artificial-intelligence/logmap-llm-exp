@@ -1,6 +1,6 @@
 '''
 logmap_llm.oracle.manager
-Contains OracleConsultationManager/s which manages LLM interactions via the OpenAI SDK. 
+Contains OracleConsultationManager/s which manages LLM interactions via the OpenAI SDK.
 Supporting both OpenRouter and local endpoints (vLLM, SGLang).
 '''
 from __future__ import annotations
@@ -31,19 +31,17 @@ import re
 
 
 ###
-# PLAIN-ANSWER PARSING
+# Plain-answer parsing
 # --------------------
-# Helpers for OracleConsultationManager._parse_plain_text_answer. Module level so they are
-# unit-testable in isolation and so the parsing rules read as data rather than as control
-# flow buried in a method.
+# Helpers for OracleConsultationManager._parse_plain_text_answer, kept at module level
+# so they are unit-testable in isolation.
 ###
 
 #: Trimmed from both ends before an exact-token match: whitespace, quoting, markdown
-#: emphasis and terminal punctuation. This is what turns the 118 whitespace-wrapped Gemma
-#: responses of the plain campaign into exact matches.
+#: emphasis and terminal punctuation.
 _ANSWER_STRIP_CHARS = " \t\r\n\"'`*_.!,;:()[]{}"
 
-#: Words that invert the polarity of a following answer token WITHIN THE SAME CLAUSE.
+#: Words that invert the polarity of a following answer token within the same clause.
 #: Apostrophes are stripped before matching, so "isn't" arrives as "isnt". Note "no" is both
 #: a negator and a negative token: "no, not true" resolves to False either way.
 _NEGATORS = frozenset({
@@ -56,17 +54,11 @@ _NEGATORS = frozenset({
 #: "cannot really be false", "no, they are not" without reaching across a clause.
 _NEGATION_WINDOW = 3
 
-#: Words a negator may reach ACROSS to govern an answer token. Anything else blocks it.
-#:
-#: A purely positional window is wrong, and confidently so: in "they are not identical -
-#: False" the negator governs "identical", not the verdict, yet "not" sits two tokens before
-#: "false" and a positional window flips it to True — an INVERTED verdict on a string the
-#: old bag-of-words parser read correctly. Widening the clause splitter does not fix the
-#: general case ("not equivalent / False"), and splitting on "/" would break "true/false",
-#: which must stay Ambiguous. So the rule is grammatical rather than positional: a negator
-#: reaches an answer token only through copulas, auxiliaries and intensifiers — the words
-#: that actually chain "cannot" to "false" in "cannot be false". A content word in between
-#: means the negator is negating THAT, and the answer token stands unflipped.
+#: Words a negator may reach across to govern an answer token. Anything else blocks it.
+#: The rule is grammatical rather than positional: a negator reaches an answer token only
+#: through copulas, auxiliaries and intensifiers — the words that chain "cannot" to "false"
+#: in "cannot be false". A content word in between means the negator is negating that word,
+#: and the answer token stands unflipped ("not identical - False" reads False).
 _NEGATION_CARRIERS = frozenset({
     "be", "been", "being", "is", "are", "was", "were", "am",
     "the", "a", "an", "it", "this", "that", "these", "those", "they",
@@ -78,7 +70,7 @@ _NEGATION_CARRIERS = frozenset({
 #: Clause boundaries. A comma splits too, because "not equivalent, so false" carries two
 #: independent verdicts and the second is the terminal one. Dashes, arrows and pipes are
 #: verdict separators in practice ("not identical -> False") and split as well; "/" does
-#: NOT, because "true/false" is a genuine ambiguity that must not resolve to a verdict.
+#: not, because "true/false" is a genuine ambiguity that must not resolve to a verdict.
 _CLAUSE_SPLIT = re.compile(r"[.!?;:\n|–—→]+|,|--+|->|=>|(?<=\s)-(?=\s)")
 _WORD = re.compile(r"[a-z]+(?:'[a-z]+)?")
 
@@ -113,10 +105,8 @@ def _clause_verdicts(text: str) -> list[list[bool]]:
     """Effective verdicts per clause, with negation scope resolved.
 
     Returns one list per clause that contains at least one answer token. A token is flipped
-    when a negator governs it: within `_NEGATION_WINDOW` words, in the same clause, reaching
-    it only across `_NEGATION_CARRIERS`. So "is not true" reads False and "cannot be false"
-    reads True, while "not identical - False" reads False — the negator there governs
-    "identical", and "identical" is not a carrier.
+    when a negator governs it: within `_NEGATION_WINDOW` words, in the same clause, reached
+    only across `_NEGATION_CARRIERS`.
     """
     clauses: list[list[bool]] = []
     for clause in _CLAUSE_SPLIT.split(text.lower()):
@@ -173,7 +163,7 @@ class OracleConsultationManager:
     Manages consultations with an LLM Oracle via OpenAI-compatible API.
     Supports OpenRouter, vLLM, SGLang, and any OpenAI-compatible endpoint.
     """
-    def __init__(self, api_key: str, model_name: str, interaction_style: str, base_url: str, temperature: float, top_p: float, 
+    def __init__(self, api_key: str, model_name: str, interaction_style: str, base_url: str, temperature: float, top_p: float,
                  reasoning_effort: str | None, max_completion_tokens: int, enable_thinking: bool,
                  reasoning_token_budget: int | None = None,
                  supports_chat_template_kwargs: bool | None = None,
@@ -200,11 +190,9 @@ class OracleConsultationManager:
             interaction_style, self.base_url,
         )
 
-        # BUGFIX (LOCAL-GENERIC): 'local' is schema-valid but _dispatch_consult has no
-        # structured-mode branch for it, so every consultation raised 'Interaction style not
-        # recognised' — burning 5 error rows before the OC-1 abort killed the run. Refuse the
-        # combination up front as a clear config error instead. (Plain response mode still
-        # works with 'local': the unstructured branch dispatches before the style switch.)
+        # _dispatch_consult has no structured-mode branch for 'local', so refuse the
+        # combination up front as a clear config error. (Plain response mode still works
+        # with 'local': the unstructured branch dispatches before the style switch.)
         if (
             self.interaction_style == InteractionStyle.LOCAL_GENERIC
             and response_format is not RESPONSE_FORMAT_FOR_UNSTRUCTURED_RESPONSE
@@ -245,34 +233,18 @@ class OracleConsultationManager:
         self.openrouter_allow_fallbacks = openrouter_allow_fallbacks
         self.openrouter_require_parameters = openrouter_require_parameters
 
-        # (The old "CHECK THE FOLLOWING (TODO)" banner here flagged a hardcoded
-        # logprobs=True; that became config-driven request_logprobs with the
-        # thread-safe downgrade latch below — see test_oracle_logprobs.py. The one
-        # remaining hardcoded value is top_logprobs=3, consulted only when logprobs
-        # are on.)
         self.logprobs_requested = request_logprobs
         self.logprobs = request_logprobs
         self.top_logprobs = 3
-        # ORACLE-LOGPROBS: one manager is shared across max_workers consultation threads, and the
-        # logprobs latch below is written from whichever thread is refused first.
+        # One manager is shared across max_workers consultation threads; the logprobs
+        # latch is written from whichever thread is refused first.
         self._logprobs_lock = threading.Lock()
         self.capability_downgrades: list[dict[str, str]] = []
 
-        #############################################################################
-        # --------------------------------------------------------------------------#
-        # chat_template_kwargs compatibility (Mistral support)                      #
-        # --------------------------------------------------------------------------#
-        # Does the model's tokenizer supports chat_template_kwargs in extra_body?   #
-        # Mistral models served via vLLM use a proprietary "tekken" tokenizer...    #
-        # this rejects any chat_template / chat_template_kwargs parameters.         #
-        #                                                                           #
-        # Resolution order:                                                         #
-        #   1. Explicit config override (True/False) — takes priority               #
-        #   2. Auto-detection from model_name                                       #
-        #   3. Otherwise default to True                                            #
-        # --------------------------------------------------------------------------#
-        #############################################################################
-
+        # chat_template_kwargs compatibility: Mistral models served via vLLM use the
+        # proprietary "tekken" tokenizer, which rejects chat_template /
+        # chat_template_kwargs. Resolution order: explicit config override, else
+        # auto-detection from model_name, else default True.
         explicit = supports_chat_template_kwargs
 
         if explicit is not None:
@@ -337,7 +309,7 @@ class OracleConsultationManager:
         """Add or replace the developer (system) message."""
         if self._frozen:
             raise RuntimeError("Cannot modify messages after freeze_messages().")
-        
+
         role = self._resolve_system_role()
         system_roles = {"developer", "system"}
 
@@ -391,29 +363,23 @@ class OracleConsultationManager:
         """
         Consult the LLM Oracle, dispatching to the appropriate method.
 
-        ``few_shot_examples`` (RAG wiring, spec §6): an OPTIONAL per-query list of
-        (user_prompt, assistant_answer) pairs, assembled into this request LOCALLY and never
-        stored on the manager — so concurrent consultations each carry their OWN query-specific
-        examples with no shared conversation state. When None, behaviour is the legacy shared path
-        (few-shot, if any, already baked into the frozen developer prefix).
+        ``few_shot_examples``: an optional per-query list of (user_prompt, assistant_answer)
+        pairs, assembled into this request locally and never stored on the manager — so
+        concurrent consultations each carry their own query-specific examples with no shared
+        conversation state. When None, few-shot examples (if any) are already baked into the
+        frozen developer prefix.
         """
         try:
             return self._dispatch_consult(message, developer_override, few_shot_examples)
         except Exception as e:
-            # ORACLE-LOGPROBS: a provider that REFUSES logprobs (OpenAI's gpt-5 reasoning family:
-            # HTTP 400 "logprobs are not supported with reasoning models") would otherwise fail EVERY
-            # call -> the OC-1 abort fires after 5 consecutive failures -> consult_oracle returns None
-            # -> the run dies on 'NoneType' has no attribute 'to_csv'. Drop logprobs once, latch it for
-            # the rest of the run, and retry. Verified inert: the confidence derived from logprobs does
-            # not gate which oracle-accepted mappings survive refinement (see _build_base_kwargs).
-            # NOTE the condition does NOT test `self.logprobs`. It must not: consultations run on
-            # max_workers threads against ONE shared manager, so the first thread to be refused latches
-            # self.logprobs=False while the other 15 are already in flight with logprobs=True. Those 15
-            # then arrive here with the latch ALREADY cleared — and a `self.logprobs and ...` guard would
-            # make them re-raise instead of retrying, producing exactly the 5 consecutive failures that
-            # trip the OC-1 abort. (Observed: the first version of this fix failed for precisely that
-            # reason.) Retry is bounded by construction: it happens at most once per call, and the retry
-            # cannot raise a logprobs error because logprobs are no longer sent.
+            # A provider that refuses logprobs outright (e.g. HTTP 400 "logprobs are not
+            # supported with reasoning models") would otherwise fail every call: drop
+            # logprobs once, latch it for the rest of the run, and retry. The condition
+            # deliberately does not test `self.logprobs`: consultations run on max_workers
+            # threads against one shared manager, so threads already in flight when the
+            # first refusal latches self.logprobs=False must still retry here rather than
+            # re-raise. Retry is bounded by construction: at most once per call, and the
+            # retry cannot raise a logprobs error because logprobs are no longer sent.
             if getattr(self, "logprobs_requested", True) and _is_unsupported_logprobs_error(e):
                 with self._logprobs_lock:
                     if self.logprobs:
@@ -474,9 +440,9 @@ class OracleConsultationManager:
             if msgs[0]["role"] in system_roles:
                 msgs[0] = self.build_api_message(msgs[0]["role"], developer_override)
 
-        # RAG (spec §6): per-query few-shot pairs are expanded into user/assistant turns and inserted
-        # AFTER the developer message and BEFORE the target query — assembled locally so concurrent
-        # requests never mutate or read shared conversation state.
+        # Per-query few-shot pairs are expanded into user/assistant turns inserted after
+        # the developer message and before the target query — assembled locally so
+        # concurrent requests never mutate or read shared conversation state.
         fewshot_msgs = []
         for pair in (few_shot_examples or []):
             fewshot_msgs.append(self.build_api_message("user", pair[0]))
@@ -493,40 +459,11 @@ class OracleConsultationManager:
         if self.seed is not None:
             kwargs["seed"] = self.seed
 
-        # ORACLE-LOGPROBS. Some providers REJECT logprobs outright — OpenAI returns
-        # HTTP 400 "logprobs are not supported with reasoning models" for the gpt-5 reasoning family.
-        # Every call 400s, the OC-1 abort fires after 5 consecutive failures, consult_oracle returns
-        # None, and the run dies with 'NoneType' object has no attribute 'to_csv'. self.logprobs is
-        # cleared by the runtime fallback in consult_oracle() the first time a provider refuses.
-        #
-        # SAFE TO DROP — and the reason is STRUCTURAL, not statistical. Oracle_confidence (derived from
-        # logprobs) IS handed to the Java refiner (bridging.py:305), and a NaN falls back to
-        # DEFAULT_CONFIDENCE_FALLBACK = 1.0. It looks like it should matter. It cannot:
-        #
-        #   LocalOracle.loadLocalOraculo() in the DEPLOYED jar reads only getIRIStrEnt1/getIRIStrEnt2.
-        #   `grep -c getConfidence` over that class returns 0. The store is Map<String,Set<String>> and
-        #   the query is `boolean isMappingValid(String,String)`. THE CONFIDENCE DOUBLE IS DEAD ON
-        #   ARRIVAL — Java never reads it.
-        #
-        # (Do NOT repeat the earlier explanation that "min_conf_pro_map = 0.80 is a threshold on this
-        # column". That was WRONG. min_conf_pro_map thresholds LogMap's OWN ISUB-derived confidence and
-        # gates M_ask MEMBERSHIP — CandidateMappingManager.java — not the oracle's answer.)
-        #
-        # Corroborated end-to-end: on one full task, `system_size - (TP+FP) = 1748` EXACTLY for all 13
-        # oracles — spanning 100%-NaN cloud models and real-logprob local models alike. If confidence
-        # gated retention, the local models would keep strictly fewer mappings. Not one is lost.
-        #
-        # This matters far beyond one model: the panel is ALREADY heterogeneous here. Cloud oracles on
-        # OpenRouter mostly return no logprobs (claude-sonnet-4.6, gemini-2.5-pro: 100% NaN) while local
-        # vLLM models always do — and the top three by Youden's J are exactly the all-NaN cloud models.
-        # Had confidence gated retention, the whole cloud-vs-local comparison would have been confounded
-        # by SERVING VENUE. It does not, and it is not.
-        #
-        # This matters beyond one model: the panel is ALREADY heterogeneous here. Cloud oracles served
-        # via OpenRouter mostly return no logprobs (claude-sonnet-4.6 and gemini-2.5-pro: 100% NaN;
-        # mistral 83%; deepseek-v4-flash 49%) while local vLLM models always do. Had confidence gated
-        # retention, the whole cloud-vs-local comparison — and the Youden's-J law built on it — would
-        # have been confounded by serving venue. It does not, and they are not.
+        # self.logprobs is cleared by the runtime fallback in consult_oracle() the first
+        # time a provider refuses the parameter. Dropping logprobs is safe: the derived
+        # Oracle_confidence is handed to the Java refiner but never read there, so it does
+        # not gate which oracle-accepted mappings survive refinement. (min_conf_pro_map
+        # thresholds LogMap's own ISUB-derived confidence, not the oracle's.)
         if self.logprobs:
             kwargs["logprobs"] = self.logprobs
             kwargs["top_logprobs"] = self.top_logprobs
@@ -612,39 +549,20 @@ class OracleConsultationManager:
         Used both as the primary parser in plain mode and as the fallback inside
         _consult_via_create when guided JSON decoding fails.
 
-        WHAT THIS REPLACED, AND WHY
-
-        The previous implementation lowercased the response, extracted every alphabetic
-        token, and intersected the resulting SET with POSITIVE_TOKENS / NEGATIVE_TOKENS.
-        Being a bag of words it had no notion of order, scope or negation:
-
-            "The answer is not true"  ->  {the, answer, is, not, true}
-                                      ->  positive match, no negative match
-                                      ->  True
-
-        an inverted answer, silently. That is stronger than "a Boolean word embedded in
-        unambiguous prose": "not true" is unambiguous to a reader and still parsed wrongly.
-
-        WHAT THIS DOES
-
         A staged cascade, first match wins:
 
           1. the whole response, stripped of whitespace, quotes and trailing punctuation,
-             IS a supported token  ->  that verdict;
-          2. it is JSON of the supported shape                        ->  that verdict;
-          3. clause scan: split into clauses, and for each polarity token compute an
-             effective verdict flipped by a negator within the preceding few words of the
-             SAME clause. All effective verdicts agreeing -> that verdict; otherwise prefer
-             a terminal verdict (the last clause carrying one), if that clause is internally
-             consistent; otherwise Ambiguous.
+             is a supported token  ->  that verdict;
+          2. it is JSON of the supported shape  ->  that verdict;
+          3. clause scan: for each polarity token compute an effective verdict, flipped by
+             a negator within the preceding few words of the same clause. All effective
+             verdicts agreeing -> that verdict; otherwise the terminal verdict (the last
+             clause carrying one) if that clause is internally consistent; otherwise
+             ambiguous (raises).
 
-        WHAT IT DELIBERATELY DOES NOT DO
-
-        It resolves NEGATION SCOPE, not meaning. "true is wrong" still reads as True: that
-        needs semantic evaluation, not a parser. The scientific guarantee has never been
-        this function -- it is the strict raw-format audit each campaign publishes, which
-        measures how many responses were compliant rather than assuming it. Keep publishing
-        that audit.
+        This resolves negation scope, not meaning ("true is wrong" still reads as True).
+        The compliance guarantee is the strict raw-format audit each campaign publishes,
+        not this parser.
         """
         if raw_content is None:
             raise ValueError("LLM returned empty response")
@@ -681,20 +599,18 @@ class OracleConsultationManager:
 
     def _consult_via_plain(self, prompt, developer_override=None, few_shot_examples=None):
         """
-        Consult via create() WITHOUT response_format constraint;
-        if the model produces free-form text, we parse it ourselves
-        against POSITIVE_TOKENS, NEGATIVE_TOKENS. It works identically
-        against any OpenAI-compatible endpoint (OpenRouter, vLLM, SGLang)
-        because no provider-specific schema mechanism is involved
+        Consult via create() without a response_format constraint; free-form text is
+        parsed locally against POSITIVE_TOKENS / NEGATIVE_TOKENS. Works identically
+        against any OpenAI-compatible endpoint (OpenRouter, vLLM, SGLang) because no
+        provider-specific schema mechanism is involved.
         """
         kwargs = self._build_base_kwargs(prompt, developer_override, few_shot_examples)
-        kwargs["max_tokens"] = self.max_completion_tokens        
-        # deliberately do NOT set response_format
-        # this is the whole point of plain mode
+        kwargs["max_tokens"] = self.max_completion_tokens
+        # deliberately no response_format — that is the point of plain mode
         response = self.client.chat.completions.create(**kwargs)
         raw_content = response.choices[0].message.content
         parsed_output = self._parse_plain_text_answer(raw_content)
-        
+
         return self._extract_response(response, parsed_output)
 
 
@@ -747,11 +663,9 @@ class OracleConsultationManager:
         try:
             parsed_dict = json.loads(raw_content)
             if not isinstance(parsed_dict, dict):
-                # Valid JSON but not an object — a provider that ignores response_format and
-                # answers a bare `true`, a quoted string or an array. json.loads succeeds and
-                # the ** splat below would raise TypeError, which previously ESCAPED this
-                # guard: the documented plain-text fallback never ran and an unambiguous
-                # answer became an ('error', NaN) row burning the OC-1 failure budget.
+                # Valid JSON but not an object — a provider that ignores response_format
+                # and answers a bare `true`, a quoted string or an array. Raise here so
+                # the plain-text fallback runs instead of the ** splat's TypeError.
                 raise TypeError(
                     f"guided decoding returned non-object JSON ({type(parsed_dict).__name__})"
                 )

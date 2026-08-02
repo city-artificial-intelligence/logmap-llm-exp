@@ -1,7 +1,7 @@
 """
 logmap_llm.ontology.access
 ontology access via owlready2 (ess. OBDA layer, 'object.py' -> ORM)
-each OntologyAccess instance creates its own owlready2.World 
+each OntologyAccess instance creates its own owlready2.World
 which is an isolated SQLite quadstore (prevents shared-state issues)
 """
 from __future__ import annotations
@@ -24,16 +24,8 @@ from owlready2 import sync_reasoner, sync_reasoner_pellet
 from rdflib import URIRef, RDF, RDFS, Literal
 from rdflib.namespace import OWL
 
-# DH: We have removed the dependency on rdflib. It was only needed to
-# satisfy a return-type hint on method getGraph(). We removed the hint,
-# and so we comment-out the import of rdflib.  Eventually we will remove
-# this commented-out import altogether.
-# import rdflib 
-
-# ^ JD. many of the new prompts depend on this. However we
-#   probably (eventually) swicth this out for accessing directly through
-#   LogMap, if I understand correctly (it just requires implementing
-#   similar java functions in the LogMap code prior to building)
+# JD. many of the new prompts depend on rdflib; we may eventually switch this out
+#     for direct access through LogMap (requires similar Java-side functions there).
 
 from logmap_llm.constants import VERBOSE, VERY_VERBOSE
 from logmap_llm.utils.logging import debug, info, success, step
@@ -120,22 +112,9 @@ def _bind_cached_ontology(world: owlready2.World, source_path: str):
 
 
 
-'''
-owlready2 provides the following types of restrictions
-(they have the same names than in Protégé):
-
-some     : Property.some(Range_Class)
-only     : Property.only(Range_Class)
-min      : Property.min(cardinality, Range_Class)
-max      : Property.max(cardinality, Range_Class)
-exactly  : Property.exactly(cardinality, Range_Class)
-value    : Property.value(Range_Individual / Literal value)
-has_self : Property.has_self(Boolean value)
-
-See: https://owlready2.readthedocs.io/en/latest/restriction.html
-
-As such, we define a restriction map for resolving each to a string for prompt-injection.
-'''
+# owlready2's restriction types (same names as in Protégé), each resolved to a
+# string for prompt-injection.
+# See: https://owlready2.readthedocs.io/en/latest/restriction.html
 
 _OWLREADY2_RESTRICTION_TYPE_MAP = {
     owlready2.SOME     : "some",
@@ -172,20 +151,17 @@ class Reasoner(Enum):
 # ANNOTATION URIs
 ###
 
-#: Annotation predicate IRIs are EXTERNAL identifiers: each must match the RDF byte-for-byte,
-#: so they are data, not authored source, and live in a JSON resource beside this module.
+#: Annotation predicate IRIs must match the RDF byte-for-byte, so they are data,
+#: not authored source, and live in a JSON resource beside this module.
 ANNOTATION_URIS_PATH = Path(__file__).resolve().parent / "data" / "annotation_uris.json"
 
 
 def _literal_text(literal) -> str:
     """The annotation text of an rdflib Literal, always as str.
 
-    BUGFIX (LIT-TEXT): the index used to store Literal.value raw. For typed literals that
-    is an int/date/bool — or None when the lexical form is ill-typed — so a single
-    xsd-typed label annotation poisoned the name sets: min()-based deterministic-name
-    selection then raised TypeError ('<' between str and int), and 'None' leaked toward
-    prompts. For plain and xsd:string literals str(literal) is byte-identical to .value,
-    so existing prompt text is unchanged; for typed literals it is the lexical form.
+    For plain and xsd:string literals this equals ``.value``; for typed literals
+    (where ``.value`` is an int/date/bool, or None when ill-typed) it is the
+    lexical form, keeping the name sets str-only.
     """
     value = literal.value
     if isinstance(value, str):
@@ -250,12 +226,11 @@ class AnnotationURIs:
 
 
 ###
-# HELPERS: ORIGINALLY IN 'oracle_prompt_building.py'
-#   (ontology loading functions)
+# HELPERS: ONTOLOGY LOADING
 ###
 
 def load_xs_ontologies(ontology_file_paths: list[str], eager_annotation=True, cache_dir: Path | str | None = None, vocabulary: OntologyConventionVocabulary = DEFAULT_VOCAB) -> list[OntologyAccess]:
-    
+
     cache:OntologyCache | None = OntologyCache(cache_dir=str(cache_dir)) if cache_dir is not None else None
 
     xs_loaded_ontologies:list[OntologyAccess] = []
@@ -264,8 +239,8 @@ def load_xs_ontologies(ontology_file_paths: list[str], eager_annotation=True, ca
         info(f"Loading ontology {str(onto_idx)} from {str(ontology_fp)}")
         xs_loaded_ontologies.append(
             OntologyAccess(
-                urionto=ontology_fp, 
-                annotate_on_init=eager_annotation, 
+                urionto=ontology_fp,
+                annotate_on_init=eager_annotation,
                 cache=cache,
                 vocabulary=vocabulary,
             )
@@ -281,13 +256,13 @@ def load_ontologies(onto_src_filepath, onto_tgt_filepath, cache_dir=None, vocabu
     print()
 
     # stub_import_iris is empty for every track but circular-economy, so the cache key and the
-    # quadstore contents are unchanged everywhere else (see ontology/cache.py STUB-IMPORTS).
+    # quadstore contents are unchanged everywhere else (see ontology/cache.py).
     cache = OntologyCache(cache_dir=cache_dir, stub_import_iris=stub_import_iris) if cache_dir is not None else None
 
     step(f"[STEP 2] Loading the first ontology from {str(onto_src_filepath)}")
     OA_source_onto = OntologyAccess(
-        urionto=onto_src_filepath, 
-        annotate_on_init=True, 
+        urionto=onto_src_filepath,
+        annotate_on_init=True,
         cache=cache,
         vocabulary=vocabulary,
     )
@@ -321,24 +296,23 @@ class OntologyAccess:
     """
     def __init__(self, urionto: str, annotate_on_init: bool = True, cache=None, vocabulary: OntologyConventionVocabulary = DEFAULT_VOCAB) -> None:
         """
-        urionto : str - URI or file path to the ontology.
-            The ontology this object provides access to (think OntologyAccess for OBDA - ORM-analagous; OntologyObject for entities - Record-analagous).
-        annotate_on_init : bool - if true, load the ontology and index annotations immediately.
-            Most functionality for access is index-based.
-        cache : object, optional - caching interface (see logmap_llm.ontology.cache); if None, then a cache is not used.
-            Note the default cache location: "~/.cache/logmap-llm/owlready2/*" for the owlready2 cache (other caches in ~/.cache/logmap-llm).
-            see: cache-based constants in constants.py
-        vocabulary : OntologyConventionVocabulary — describes this ontology's annotation and URI-structure conventions. 
-            Defaults to DEFAULT_VOCAB (general RDF). Typically set per-task by the loader from config.
+        urionto : str - URI or file path to the ontology this object provides access to.
+        annotate_on_init : bool - if true, load the ontology and index annotations immediately
+            (most access functionality is index-based).
+        cache : object, optional - caching interface (see logmap_llm.ontology.cache); if None, no cache is used.
+            Default owlready2 cache location: "~/.cache/logmap-llm/owlready2/*" (other caches in
+            ~/.cache/logmap-llm; see constants.py).
+        vocabulary : OntologyConventionVocabulary — this ontology's annotation and URI-structure
+            conventions. Defaults to DEFAULT_VOCAB (general RDF); typically set per-task by the loader.
         """
         logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.WARNING)
         self.urionto = str(urionto)
         self._cache = cache
         self._vocabulary = vocabulary
 
-        # JD. each instance gets its own isolated World; but when a cache is provided, the world is backed by a 
-        # process-private copy (a shared on-disk quadstore) so that the source ontology does not need to be 
-        # re-parsed on every run. Without a cache, fall back to a fresh empty world (parses from source in load_ontology)
+        # JD. each instance gets its own isolated World; when a cache is provided, the world is backed
+        # by a process-private copy of a shared on-disk quadstore so the source ontology is not re-parsed
+        # on every run. Without a cache, fall back to a fresh empty world (parses from source in load_ontology)
 
         if self._cache is not None:
             self.world = self._cache.get_cached_world(self.urionto)
@@ -355,31 +329,22 @@ class OntologyAccess:
 
 
     def load_ontology(self, reasoner: Reasoner = Reasoner.NONE, memory_java: str = "10240") -> None:
-        # when the world was constructed from a cached quadstore, the triples are already present 
+        # when the world was constructed from a cached quadstore, the triples are already present
         # and we just need to bind the ontology object; otherwise parse from source
         if self._cache is not None:
             self.onto = _bind_cached_ontology(self.world, self.urionto)
         else:
             self.onto = self.world.get_ontology(self.urionto).load()
-        
+
         owlready2.JAVA_MEMORY = memory_java
 
-        # DH: If we set log level here, then the 2nd call we make
-        # to this function, to load the 2nd (target) ontology, writes
-        # a lot of '* Owlready2 * ...' messages to the console, which
-        # we don't want.  The LogMap-LLM user gets a much better
-        # experience if we do NOT set the owlready2 log level at all.
-        # We can set it to 0 before calling get_ontology() to undo
-        # the effect of the 9 here (i.e. to shut logging off again)
-        # but we get the same effect if we simply do NOT set the
-        # level here.
-        #owlready2.set_log_level(9)
+        # deliberately leave the owlready2 log level unset: setting it floods the
+        # console with '* Owlready2 *' messages when the second ontology is loaded
 
         if reasoner == Reasoner.PELLET:
             try:
                 with self.onto: # it does add inferences to ontology
-                    # Is this wrt data assertions? Check if necessary
-                    # infer_property_values = True, infer_data_property_values = True
+                    # TODO: check whether infer_property_values / infer_data_property_values are needed
                     logging.info("Classifying ontology with Pellet...")
                     sync_reasoner_pellet(x=self.world) # it does add inferences to ontology
                     unsat = len(list(self.onto.inconsistent_classes()))
@@ -394,7 +359,7 @@ class OntologyAccess:
             try:
                 with self.onto: # it does add inferences to ontology
                     logging.info("Classifying ontology with HermiT...")
-                    sync_reasoner(x=self.world) # HermiT doe snot work very well....
+                    sync_reasoner(x=self.world) # HermiT does not work very well....
                     unsat = len(list(self.onto.inconsistent_classes()))
                     logging.info("Ontology successfully classified.")
                     if unsat > 0:
@@ -403,21 +368,18 @@ class OntologyAccess:
                 logging.info("Classifying with HermiT failed.")
 
         self.graph = self.world.as_rdflib_graph()
-        # DH: This used to be a logging.info() statement. But for
-        # LogMap-LLM we have promoted it to a print() statement, so
-        # the user can always see how big the ontology is that is
-        # being processed and prepared from prompt building.
+        # always shown, so the user can see how big the ontology being prepared is
         info(f"There are {len(self.graph)} triples in the ontology", important=True)
 
         # O(1) URI lookup indices
         self._uri_to_class = {cls.iri: cls for cls in self.onto.classes()}
         self._uri_to_entity = dict(self._uri_to_class)
         self._uri_to_property = {}
-        
+
         for prop in self.onto.properties():
             self._uri_to_entity[prop.iri] = prop
             self._uri_to_property[prop.iri] = prop
-        
+
         self._uri_to_individual = {
             ind.iri: ind for ind in self.onto.individuals()
             if hasattr(ind, 'iri') and ind.iri
@@ -479,8 +441,8 @@ class OntologyAccess:
             if name.lower() in cls.name.lower():
                 classes.append(cls)
         return classes
-    
-    
+
+
     def getClassIRIsContainingName(self, name: str) -> list[str]:
         classes = []
         for cls in list(self.getClasses()):
@@ -518,7 +480,7 @@ class OntologyAccess:
     def getDescendants(self, cls: owlready2.EntityClass, include_self: bool = True) -> set[owlready2.ThingClass]:
         return {desc_cls for desc_cls in cls.descendants(include_self=include_self)}
 
-    
+
     def getDescendantNamesForClassName(self, cls_name: str) -> set[str]:
         cls = self.getClassByName(cls_name)
         descendants_str = set()
@@ -559,11 +521,9 @@ class OntologyAccess:
 
     def isDataProperty(self, prop) -> bool:
         """
-        True iff ``prop`` (an owlready2 property or its IRI string) is a DATA property
-        (datatype-valued), as opposed to an object property.  Used by PT-2 so that DPROP
-        candidates surface their datatype range instead of being described like object
-        properties. Falls back to membership in getDataProperties() if the isinstance
-        check is unavailable.
+        True iff ``prop`` (an owlready2 property or its IRI string) is a data property
+        (datatype-valued), as opposed to an object property.  Falls back to membership
+        in getDataProperties() if the isinstance check is unavailable.
         """
         if isinstance(prop, str):
             prop = self.getPropertyByURI(prop)
@@ -594,9 +554,8 @@ class OntologyAccess:
         """
         Return readable names for a data property's datatype range (e.g. {"date"}, {"string"}).
         owlready2 represents XSD datatypes either as wrapper objects carrying ``.name`` or as
-        plain Python types (str/int/float/bool/datetime.date), which expose ``.__name__`` but
-        NOT ``.name`` — so read defensively and never let a single odd range member abort the
-        whole prompt build (PT-2).
+        plain Python types (str/int/float/bool/datetime.date) exposing only ``.__name__``, so
+        read defensively; a single odd range member must not abort the prompt build.
         """
         range_names = set()
         for dt in prop.range:
@@ -664,7 +623,7 @@ class OntologyAccess:
             return None
         labels = self.getPreferredLabels(inverse_prop)
         return next(iter(labels), None) if labels else str(inverse_prop.name)
-    
+
 
     def getDeterministicInverseName(self, prop: owlready2.ObjectPropertyClass) -> str | None:
         """Return the label of the inverse property, or None."""
@@ -708,7 +667,7 @@ class OntologyAccess:
             elif '/' in uri:
                 labels.append(uri.rsplit('/', 1)[-1])
         return labels
-    
+
 
     def getLabelsForURI(self, uri: str) -> list[str]:
         """
@@ -739,19 +698,11 @@ class OntologyAccess:
 
     def indexAnnotations(self) -> None:
         """
-        'Lexical URIs' \supseteq ('Synonym URIs' UNION 'Preferred (label) URIs'):
+        Build all three annotation indices in a single pass.
 
-            lexical_uris is a superset of both synonym_uris and preferred_uris.
-
-        We query each annotation property once via direct rdflib triple lookups.
-        This bypasses per-URI SPARQL query parsing overhead; then distribute each 
-        result to the appropriate subset dicts. This method acts as a replacement
-        for the previous 'three-call pattern': 
-            
-            indexAnnotationDict(x) forall x in (syns, lexical annotations, pref labels)
-
-        Previously ~58 individual SPARQL queries (~21 syn + ~33 lex + ~4 pref); many of 
-        these queried the same URIs.
+        lexical_uris is a superset of both synonym_uris and preferred_uris; each
+        annotation property is queried once via direct rdflib triple lookups (no
+        per-URI SPARQL) and each result is distributed to the subset dicts.
         """
         annotation_uris = AnnotationURIs()
         self.entityToSynonyms = {}
@@ -766,34 +717,26 @@ class OntologyAccess:
 
     def _populateAllAnnotationDicts(self, all_uris: set, synonym_uris: set, preferred_uris: set) -> None:
         """
-        Populate the given dictionary with annotations from the provided URIs 
-        (populates all three annotation dictionaries in a single pass)
-        By default, only annotations with language set to English or 
-        None are added to the dictionary (you can modify this by using the
-        multilingual SKO vocabulary or by defining a custom vocabulary).
-            (see logmap_llm.ontology.vocabulary -- ie. vocabulary.py)
+        Populate all three annotation dictionaries in a single pass.
 
-        Iterates over the superset of annotation URIs (lexicalAnnotationURIs)
-        once using direct rdflib triple-pattern lookups and distributes each
-        result to the appropriate subset dictionaries based on set membership.
-        
-        IMPORTANT: For each annotation property URI, both direct annotations 
-        (where the object is a Literal) and indirect annotations (where the object 
-        is an intermediate node whose rdfs:label provides the text) are resolved.
+        Iterates over the superset of annotation URIs (lexicalAnnotationURIs) once
+        using direct rdflib triple-pattern lookups and distributes each result to
+        the appropriate subset dictionaries based on set membership.  For each
+        annotation property, both direct annotations (the object is a Literal) and
+        indirect ones (an intermediate node whose rdfs:label provides the text)
+        are resolved.  Only languages accepted by the vocabulary are kept — by
+        default 'en' or untagged (see logmap_llm.ontology.vocabularies for the
+        multilingual SKOS or custom vocabularies).
 
-        Only annotations with language tag 'en' or 'None' (untagged) are
-        included, matching the original per-URI SPARQL query behaviour.
-
-        NOTE: check that DH (which I believe is multilinguial) runs as expected
-        with the vocabulary integration and fix (see below).
+        TODO: check that DH (multilingual) runs as expected with the vocabulary integration.
         """
         rdfs_label = URIRef(CANONICAL_RDFS_LABEL_URI_REF_STR)
-        
+
         for annotation_uri_str in all_uris:
             annotation_uri_ref = URIRef(annotation_uri_str)
             in_synonyms = annotation_uri_str in synonym_uris
             in_preferred = annotation_uri_str in preferred_uris
-            
+
             # fetch (subject, objects) for all (subject, annotation_uri_ref, object) triples
             for sub, _pred, obj in self.graph.triples((None, annotation_uri_ref, None)):
                 subject_str = str(sub)
@@ -805,8 +748,8 @@ class OntologyAccess:
                     self._distribute_annotation(
                         subject_str, _literal_text(obj), in_synonyms, in_preferred
                     )
-                
-                else: # this is an 'indirect anotation' (ie. an intermediate node; follow to rdfs:label)
+
+                else: # this is an 'indirect annotation' (ie. an intermediate node; follow to rdfs:label)
                     for _sub, _pred, label in self.graph.triples((obj, rdfs_label, None)):
                         if not isinstance(label, Literal):
                             if VERBOSE:
@@ -819,12 +762,6 @@ class OntologyAccess:
                         self._distribute_annotation(
                             subject_str, _literal_text(label), in_synonyms, in_preferred
                         )
-                
-                # END: if-else
-
-            # END: for (s,p,o) in G.tiples(*,annotation_uri_ref,*)
-
-        # END: for annotation URI (string) in all URIs
 
         if VERBOSE and VERY_VERBOSE:
             debug("(access.py) OntologyAccess::_populateAllAnnotationDicts [COMPLETED]")
@@ -833,10 +770,10 @@ class OntologyAccess:
 
     def _distribute_annotation(self, subj: str, value, in_synonyms: bool, in_preferred: bool) -> None:
         """
-        Adds an annotation value to the appropriate dictionaries.
-        Always adds to 'allEntityAnnotations' (the lexical superset).
-        Conditionally adds to 'entityToSynonyms' and 'preferredLabels'
-        which is based on the annotation propertys category membership
+        Add an annotation value to the appropriate dictionaries: always to
+        'allEntityAnnotations' (the lexical superset), conditionally to
+        'entityToSynonyms' and 'preferredLabels' based on the annotation
+        property's category membership.
         """
         self.allEntityAnnotations.setdefault(subj, set()).add(value)
         if in_synonyms:
@@ -872,8 +809,7 @@ class OntologyAccess:
 
 
     ###
-    # CUSTOM ACCESSOR METHODS
-    # FOR (SEMI) SOPHISTICATED PROMPT CONSTRUCTION
+    # CUSTOM ACCESSORS FOR PROMPT CONSTRUCTION
     ###
 
 
@@ -881,22 +817,23 @@ class OntologyAccess:
     def getInstanceContext(self, uri: str, vocabulary: OntologyConventionVocabulary | None = None, deterministic: bool = True) -> dict:
         """
         Retrieve structured context for an individual via rdflib.
-        Returns dict with keys: uri, labels, types, abstract, categories, data_properties, object_properties.
-        The labels and types lookups use RDF-general conventions by default (if vocabulary=None). However, 
-        for KG evalution on eg. DBpedia type KGs, you'll want to set `ontology_vocabulary="dbpedia_family"`
-        in the config.toml. Additionally, for usage on DH (still untested -- TODO) use `ontology_vocabulary=
-        "multilingual_skos"`.
 
-        Predicates listed in vocabulary.abstract_predicates, vocabulary.category_predicates, or 
-        vocabulary.extra_handled_predicates are excluded from the data_properties / object_properties sweep, 
-        so information surfaced under one of the dedicated keys is not also duplicated as a generic property.
+        Returns a dict with keys: uri, labels, types, abstract, categories,
+        data_properties, object_properties.  Labels/types use RDF-general conventions
+        by default (vocabulary=None); for DBpedia-type KGs set
+        `ontology_vocabulary="dbpedia_family"` in config.toml, and for DH
+        (TODO: still untested) `ontology_vocabulary="multilingual_skos"`.
+
+        Predicates listed in vocabulary.abstract_predicates, category_predicates, or
+        extra_handled_predicates are excluded from the data_properties / object_properties
+        sweep, so information surfaced under a dedicated key is not duplicated as a generic property.
         """
 
         vocab = vocabulary if vocabulary is not None else self._vocabulary
 
         subject = URIRef(uri)
         labels = self.getLabelsForURI(uri)
-        
+
         types: list[dict] = []
         for _sub, _pred, obj in self.graph.triples((subject, RDF.type, None)):
             type_uri = str(obj)
@@ -906,13 +843,12 @@ class OntologyAccess:
                 else type_uri.rsplit('/', 1)[-1]
             )
             types.append({"uri": type_uri, "label": type_label})
-        
+
         if deterministic: # sort by URI (stable det)
             types.sort(key=lambda x: x["uri"])
 
-        # abstracts (TODO: are quite specific to a 
-        # particuar family of KGs; should probably 
-        # be handled under other predicates ... )
+        # abstracts (TODO: quite specific to a particular family of KGs;
+        # should probably be handled under other predicates)
         abstract: str | None = None
         for pred_uri_str in vocab.abstract_predicates:
             pred_ref = URIRef(pred_uri_str)
@@ -960,16 +896,16 @@ class OntologyAccess:
                 datatype = str(obj.datatype) if obj.datatype else "string"
                 if datatype.startswith("http://www.w3.org/2001/XMLSchema#"):
                     datatype = datatype.rsplit('#', 1)[-1]
-                
+
                 data_properties.append({
                     "predicate_uri": pred_uri,
                     "predicate_label": pred_label,
                     "value": str(obj),
                     "datatype": datatype,
-                })    
+                })
                 continue # reloop
-            
-            # else: we're delaing with an object property
+
+            # else: we're dealing with an object property
             obj_uri = str(obj)
             obj_labels = self.getLabelsForURI(obj_uri)
             object_properties.append({
@@ -982,7 +918,7 @@ class OntologyAccess:
                 ),
             })
 
-        # ensures det x runs
+        # ensures determinism across runs
         if deterministic:
             data_properties.sort(
                 key=lambda x: (
@@ -1013,7 +949,7 @@ class OntologyAccess:
             "object_properties": object_properties,
         }
 
-    
+
 
     def compute_predicate_entropies(self, uri_pattern: str | None = None, *, use_disk_cache: bool = True) -> dict[str, float]:
         """
@@ -1023,7 +959,7 @@ class OntologyAccess:
         if uri_pattern is None:
             uri_pattern = self._vocabulary.property_uri_substring
 
-        # IN MEMORY CACHE (lives on the 'access' -- connection -- object)
+        # in-memory cache (lives on the 'access' -- connection -- object)
         # so we don't have to recompute the entropy for each prompt in G
         if not hasattr(self, "_entropy_cache"):
             self._entropy_cache: dict[str, dict[str, float]] = {}
@@ -1034,8 +970,7 @@ class OntologyAccess:
         # ensure the variable is scoped:
         on_disk_ent_cache_path = None
 
-        # ON DISK CACHE:
-        # (similar to the owlready2 cache mechanism)
+        # on-disk cache (similar to the owlready2 cache mechanism)
         if use_disk_cache:
             on_disk_ent_cache_path = compute_entropy_disk_cache_path(
                 local_onto_fp=self.get_ontology_iri(),
@@ -1052,15 +987,14 @@ class OntologyAccess:
                             property_uri_key : float(entropy_value)
                             for property_uri_key, entropy_value in loaded_cache.items()
                         } # ensures JSON numerical values are now python floats
-                        
+
                         self._entropy_cache[uri_pattern] = round_tripable_entropies
                         return round_tripable_entropies
-                
+
                 except (JSONDecodeError, OSError):
                     pass # cache is bad, fall through & recompute
 
-        # ACCUMULATE ENTROPIES:
-        # iterate the entire set of triples such that:
+        # accumulate: iterate the entire set of triples such that
         # calc_ent(p) \forall (s,p,o) \in G : p substr '/property' (is true)
 
         per_predicate_to_obj_counts: dict[str, Counter] = defaultdict(Counter)
@@ -1069,8 +1003,8 @@ class OntologyAccess:
             if uri_pattern not in predicate_uri_str:
                 continue # skip predicates that do not pattern match
             per_predicate_to_obj_counts[predicate_uri_str][str(obj)] += 1
-        
-        # VECTORISED ENTROPIES CALC (\w np):
+
+        # vectorised entropy calc (\w np):
         entropies: dict[str, float] = {}
 
         for predicate_uri in sorted(per_predicate_to_obj_counts):
@@ -1084,18 +1018,17 @@ class OntologyAccess:
                 dtype=np.float64,
                 count=distinct_objs_for_predicate
             )
-            
-            vectorised_probabilities = vectorised_distinct_obj_counts / vectorised_distinct_obj_counts.sum()
-            
-            # ^ [ (obj_pred_count / total_obj_pred_count)_1, ..., (obj_pred_count / total_obj_pred_count)_N]
-            
-            entropies[predicate_uri] = float(-(vectorised_probabilities * np.log2(vectorised_probabilities)).sum())
-            
-            # ^ [ ( p(x)_1 * log_2 * p(x)_1 ) + ... + ( p(x)_N * log_2 * p(x)_N ) ] <-- SHANNON ENTROPY
 
-            # see: https://i.sstatic.net/T0Otu.png (we calculate for all 'containers' -- ie. our dict keys; which = predicates)
-        
-        # CACHE THE RESULTS ACCORDINGLY (TO USER PREFERENCE):
+            vectorised_probabilities = vectorised_distinct_obj_counts / vectorised_distinct_obj_counts.sum()
+
+            # ^ [ (obj_pred_count / total_obj_pred_count)_1, ..., (obj_pred_count / total_obj_pred_count)_N]
+
+            entropies[predicate_uri] = float(-(vectorised_probabilities * np.log2(vectorised_probabilities)).sum())
+
+            # ^ [ ( p(x)_1 * log_2 * p(x)_1 ) + ... + ( p(x)_N * log_2 * p(x)_N ) ] <-- Shannon entropy
+            #   (calculated per 'container', ie. per dict key = predicate)
+
+        # cache the results according to user preference:
         self._entropy_cache[uri_pattern] = entropies
         if use_disk_cache and on_disk_ent_cache_path is not None: # cached entropies JSON -> disk
             atomic_json_write(on_disk_ent_cache_path, entropies)
@@ -1106,86 +1039,24 @@ class OntologyAccess:
 
     def getClassRestrictions(self, cls: owlready2.EntityClass) -> list[dict]:
         """
-        Extract OWL restrictions declared on cls (owlready2.EntityClass) via 'is_a'.
-        For an `owlready2.EntityClass`, the `is_a` attribute returns a hetreogeneous list \w superordinate entities:
+        Extract OWL restrictions declared on cls via 'is_a' (which yields named
+        superclasses plus restrictions and anonymous class expressions).
 
-            "Owlready2 provides the .is_a attribute for getting the list of superclasses 
-            (__bases__ can be used, but with some limits described in Class constructs, 
-            restrictions and logical operators). It can also be modified for adding or 
-            removing superclasses."
-        
-        These superordinates (or superclasses) also include restrictions and anonymous class expressions.
+        Returns a deterministically sorted list of dicts with keys
+        restriction_type ("some"|"only"|"min"|"max"|"exactly"|"value"|"has_self"),
+        property_name, filler_name and cardinality (None unless min/max/exactly).
 
-        Each restriction in owlready2 has four attributes:
+        Filler resolution (the restriction's `.value`) into `filler_name: str | None`:
+            - some/only/min/max/exactly : class filler -> preferred label (min(...) for determinism) or class name
+            - value                     : individual -> preferred label or name; literal -> str(...)
+            - has_self (bool filler)    : "reflexive" / "non_reflexive"
+            - class constructs / nested restrictions : naive str(...) (TODO: recursive parsing)
 
-        ```
-        # see: https://github.com/pwin/owlready2/blob/master/class_construct.py#L295
-
-        class Restriction(ClassConstruct):
-            is_a = ()
-            def __init__(self, Property, type, cardinality = None, value = None, ontology = None, bnode = None):
-
-                self.__dict__["property"]    = Property
-                self.__dict__["type"]        = type
-                self.__dict__["cardinality"] = cardinality
-                
-                if (not value is None) or (not bnode):
-                    if value is None: value = Thing
-                        self.__dict__["value"] = value
-                
-                super().__init__(ontology, bnode)
-        ```
-
-        "Restrictions can be modified in place (Owlready2 updates the quadstore 
-        automatically), using the following attributes: .property, .type (SOME, 
-        ONLY, MIN, MAX, EXACTLY or VALUE), .cardinality and .value (a Class, an 
-        Individual, a class contruct or another restriction)."
+        Limitations: only 'is_a' is walked, so restrictions declared inside
+        equivalence axioms are omitted (semantically different anyway — TODO:
+        revisit); label/stringify resolution is naive but deterministic.
 
         See: https://owlready2.readthedocs.io/en/latest/restriction.html
-
-        FILLER RESOLUTION
-        -----------------
-        The `.value` attribute carries the filler, whose shape depends on the restriction type:
-
-            SOME | ONLY | MIN | MAX | EXACTLY : ThingClass (or class construct)
-            VALUE                             : Individual or Literal
-            HAS_SELF                          : bool
-
-        The methdo resolves each case to a `filler_name: str | None`, as below:
-
-            - ThingClass fillers: preferred label (uses 'min(...)' for determinism) or class name
-            - individual fillers: preferred label or individual name
-            - literal    fillers: string-ified literal value
-            - boolean (HAS_SELF): "reflexive" / "non-reflexive"
-            - class constructs  : [see below]
-
-        CLASS CONSTRUCT RESOLUTION
-        --------------------------
-
-        Since 'is_a' can provide anonymous class expressions, its possible that we recieve complex
-        class expressions back in the form of `class_construct` (I believe -- I'm pretty sure these 
-        would be nested class constructs, ie. formed through via composition; so we'd need to 
-        recursively parse them; which is probably too much for the time being -- leave as a TODO).
-
-        TODO
-        
-        LIMITATIONS
-        -----------
-
-        (a) Only 'is_a' is walked. Restrictions declared as part of equivalence
-            relations are omitted (for now -- would also involve recursive parsing;
-            also, a restriction on an equivalent complex CLS def is semantically
-            different to that of one on a superordinate concept [TODO: think about
-            this at a later date].
-
-        (b) The tostring / stringify implementations are fairly naive, ie. we resolve
-            labels naively (using min -- but is deterministic) and then for class
-            construct fillers, we naively use str(...) -- see above comment.
-
-        OWLREADY2 REFERENCES
-        ---------------------
-        For information on 'is_a', see: https://owlready2.readthedocs.io/en/latest/class.html#creating-and-managing-subclasses
-        For information on restrictions, see: https://owlready2.readthedocs.io/en/latest/restriction.html
         """
         xs_restrictions_for_this_cls: list[dict[str, str | None]] = []
 
@@ -1219,7 +1090,6 @@ class OntologyAccess:
             restriction_filler_name = None
             # otherwise: we require a '(rest.) filler' label
             restriction_filler = superordinate_entity.value
-            # NOTE: _OWLREADY2_RESTRICTION_TYPE_MAP[owlready2.HAS_SELF] == "has_self" is True
             if restriction_type == "has_self" and restriction_filler is not None:
                 restriction_filler_name = (
                     _HAS_SELF_FILLER_REFLEXIVE if bool(restriction_filler)
@@ -1275,11 +1145,11 @@ class OntologyAccess:
 
     def getClassRelationalSignature(self, cls: owlready2.EntityClass) -> dict:
         """
-        Return properties where CLS appears in domain or range
+        Return properties where cls appears in domain or range.
         """
         as_domain: list[str] = []
         as_range:  list[str] = []
-        
+
         for itr_obj_property in self.onto.object_properties():
             preferred_obj_property_labels = self.getPreferredLabels(itr_obj_property)
             itr_obj_property_label = (

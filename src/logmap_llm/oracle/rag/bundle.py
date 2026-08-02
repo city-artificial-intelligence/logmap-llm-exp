@@ -240,8 +240,7 @@ class _ProductionOntologyView:
     def _resolve(self, iri: str, ontology: Any, kind: EntityKind) -> tuple[Any, str]:
         from logmap_llm.ontology.object import resolve_entity_as
 
-        # kind is an EntityKind, so these two branches are exhaustive. (An else branch
-        # here used to call an unimported resolve_entity — an unreachable NameError.)
+        # kind is an EntityKind, so these two branches are exhaustive.
         if kind == EntityKind.INST:
             entity, lane = resolve_entity_as(iri, ontology, "instance")
         else:
@@ -267,8 +266,7 @@ class _ProductionOntologyView:
         from logmap_llm.oracle.prompts import templates
         from logmap_llm.oracle.prompts.context import PromptContext
 
-        # Was two setter calls into module state, per rendered row. An immutable context
-        # built here renders identically and cannot leak into a concurrent caller.
+        # An immutable context cannot leak into a concurrent caller.
         context = PromptContext(
             answer_format=prompt.answer_format,
             response_mode=prompt.response_mode,

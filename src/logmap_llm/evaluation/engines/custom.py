@@ -1,7 +1,7 @@
 """
 logmap_llm.evaluation.engines.custom
-Pure-Python evaluation engine. No DeepOnto, no JVM, no external libraries 
-beyond pandas (which is already a project dependency via 'utils.data'). 
+Pure-Python evaluation engine. No DeepOnto, no JVM, no external libraries
+beyond pandas (already a project dependency via 'utils.data').
 """
 from __future__ import annotations
 
@@ -33,11 +33,10 @@ class CustomEvaluationEngine(EvaluationEngine):
         system = load_mapping_pairs(system_path)
         reference = load_mapping_pairs(reference_path)
 
-        # train-reference exclusion: drop pairs present in the training
-        # reference from both system and reference before evaluation
-        #   though, I'm not sure whether this should actually be performed ...
-        # Only used by tracks that ship a separate training reference
-        
+        # train-reference exclusion: drop training-reference pairs from both
+        # system and reference before evaluation (though I'm not sure whether
+        # this should actually be performed). Only used by tracks that ship a
+        # separate training reference.
         if train_reference_path is not None and Path(train_reference_path).exists():
             train_pairs = load_mapping_pairs(train_reference_path)
             system = system - train_pairs
@@ -47,7 +46,7 @@ class CustomEvaluationEngine(EvaluationEngine):
 
         if partial_reference:
             return compute_kg_partial_prf(system, reference)
-        
+
         return compute_prf(system, reference)
 
 
@@ -65,7 +64,7 @@ class CustomEvaluationEngine(EvaluationEngine):
 
     def compute_stratified_global(self, system_path: Path, reference_path: Path, stratified_refs=None, **options) -> dict | None:
         """
-        Per-entity-type global P/R/F1 under COMPLETE gold-standard semantics (EA2, spec §9).
+        Per-entity-type global P/R/F1 under complete gold-standard semantics.
         """
         return self._stratified_global(system_path, reference_path, compute_prf, stratified_refs=stratified_refs)
 

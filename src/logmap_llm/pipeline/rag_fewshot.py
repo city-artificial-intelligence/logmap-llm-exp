@@ -1,18 +1,18 @@
 """
 logmap_llm.pipeline.rag_fewshot
 
-Owlready2-dependent glue that wires the query-specific RAG retriever (oracle/rag) into stage_two
-(RAG_INTEGRATION.md wiring point 1). It builds the two OntologyAccess-backed callables the retriever
-needs — embed_text_fn (similarity text) and render_fn (renders an example with the SAME per-kind
-template as the live query, so CLS/OPROP/DPROP/INST queries get correctly-typed examples, RF-1) —
-runs per-query retrieval over the M_ask, and returns:
+Owlready2-dependent glue that wires the query-specific RAG retriever (oracle/rag) into stage_two.
+It builds the two OntologyAccess-backed callables the retriever needs — embed_text_fn (similarity
+text) and render_fn (renders an example with the same per-kind template as the live query, so
+CLS/OPROP/DPROP/INST queries get correctly-typed examples) — runs per-query retrieval over the
+M_ask, and returns:
 
     per_query : {m_ask_key -> [(user_prompt, assistant_answer), ...]}   -> persisted to few_shot_json()
-    traces    : {m_ask_key -> RetrievalTrace.to_dict()}                 -> persisted for provenance (§6/§12)
+    traces    : {m_ask_key -> RetrievalTrace.to_dict()}                 -> persisted for provenance
 
-STATIC_* modes yield the same behaviour-compatible query-agnostic examples, so the ablation baselines
-are preserved. This module needs owlready2 (resolve_entity + OntologyAccess), so it lives on the
-pipeline path, not in the CPU-only oracle/rag package.
+STATIC_* modes yield the same query-agnostic examples, preserving the ablation baselines. This
+module needs owlready2 (resolve_entity + OntologyAccess), so it lives on the pipeline path, not
+in the CPU-only oracle/rag package.
 """
 from __future__ import annotations
 
@@ -349,12 +349,11 @@ def _local_name(iri: str) -> str:
 
 
 def _resolve_from_either(iri: str, primary, secondary):
-    """Resolve an IRI without assuming that it is in the forward direction.
+    """Resolve an IRI, trying the expected ontology first, then the other.
 
-    A bidirectional demonstration reverses the ontology positions. Trying the
-    expected ontology first preserves the ordinary fast path; trying the other
-    ontology makes reverse examples ontology-grounded instead of silently
-    degrading to local-name-only prompts.
+    Bidirectional demonstrations reverse the ontology positions; trying both
+    keeps reverse examples ontology-grounded instead of silently degrading to
+    local-name-only prompts.
     """
     # Keep owlready2 off the module import path so encoder/fingerprint helpers
     # remain usable in light CPU environments.
@@ -434,26 +433,21 @@ def make_sibling_fn(OA_source, OA_target, selector, *, max_candidates=None) -> C
         sibling_fn(target_iri, kind, max_count)
             -> (ranked [candidate dict], reason_when_empty)
 
-    where each candidate is ``{"iri", "score", "type_specificity", "rule"}``.
+    where each candidate is ``{"iri", "score", "type_specificity", "rule"}``. It lives
+    here, not in ``oracle/rag``, because it needs owlready2 — the retriever is
+    deliberately owlready2-free.
 
-    It lives here, not in ``oracle/rag``, because it needs owlready2 — the retriever is
-    deliberately owlready2-free, which is why ``render_fn``/``embed_text_fn``/``payload_fn``
-    are injected too.
+    Three properties it must have:
 
-    Three properties this must have, and why:
-
-    * **Never raises.** One unresolvable IRI must not abort a query; it returns ``[]`` with a
-      machine-readable reason, and the retriever records that on the negative it builds by the
-      donor rule instead. Silence is forbidden (invariant V5), not failure.
-    * **Always ranks.** ``force_rank=True`` stops ``select_siblings`` short-circuiting to
-      alphabetical order whenever a class has few siblings, which would run the
+    * Never raises: an unresolvable IRI returns ``[]`` with a machine-readable reason,
+      which the retriever records on the donor-rule negative it builds instead —
+      failure is recorded, never silent.
+    * Always ranks: ``force_rank=True`` stops ``select_siblings`` short-circuiting to
+      alphabetical order when a class has few siblings, which would run the
       alphanumeric condition under the configured semantic condition's name.
-    * **Drops same-named candidates.** Sibling ranking maximises label similarity to the true
-      target, i.e. it looks for that target's nearest label-neighbour inside the same
-      ontology — which is what an entity matcher does to find a duplicate. A candidate
-      sharing a normalised preferred name or synonym with the true target is very likely
-      equivalent to it, which would make the "negative" TRUE. The eligibility rules in the
-      retriever cannot see labels, so the filter belongs here.
+    * Drops candidates sharing a normalised preferred name or synonym with the true
+      target — those are very likely equivalent, which would make the "negative" true.
+      The retriever's eligibility rules cannot see labels, so the filter lives here.
     """
     def sibling_fn(target_iri: str, kind, max_count: int):
         try:
@@ -461,13 +455,12 @@ def make_sibling_fn(OA_source, OA_target, selector, *, max_candidates=None) -> C
         except Exception as exc:
             return [], f"unresolvable-target:{type(exc).__name__}"
 
-        # WHICH sibling notion applies is decided by how the TARGET resolves, not by the
-        # query's LogMap lane, and the two disagree in practice: every OPROP/DPROP target in
-        # starwars-swtor resolves as an InstanceEntity (dbkwik predicate URIs are themselves
-        # typed subjects in the graph), so the property lanes run the shared-type instance
-        # rule. That produces good near-misses -- "faction" -> "allegiance", "vehicles" ->
-        # "armor" -- where the declared-domain property rule would produce nothing at all on
-        # this corpus. It is kept, and RECORDED, rather than forced back to the lane.
+        # Which sibling notion applies is decided by how the target resolves, not by the
+        # query's LogMap lane, and the two disagree in practice: OPROP/DPROP targets can
+        # resolve as InstanceEntity (dbkwik predicate URIs are themselves typed subjects
+        # in the graph), so the property lanes run the shared-type instance rule, which
+        # yields better near-misses than the declared-domain property rule on such
+        # corpora. The resolved rule is recorded rather than forced back to the lane.
         rule = {"class": "class", "instance": "instance", "property": "property"}.get(
             str(resolved), "class")
 
@@ -498,11 +491,10 @@ def make_sibling_fn(OA_source, OA_target, selector, *, max_candidates=None) -> C
             # properties have no analogue, so it stays None for those rules.
             specificity = getattr(sibling, "type_specificity", None)
             if specificity == "uninformative":
-                # A candidate whose only shared type is owl:Thing (or a peer) is not a 
-                # near-miss: measured on starwars-swtor that bucket produced Darth_Kallous -> 
-                # Admiral and Foreman_Crusher -> Apprentice's Bracers, i.e. arbitrary resources. 
-                # The ranked-donor rule gives a retrieval near-miss instead, which is a better negative, 
-                # and the swap is recorded per negative and per lane rather than being silent.
+                # A candidate whose only shared type is owl:Thing (or a peer) is an
+                # arbitrary resource, not a near-miss; the ranked-donor rule gives a
+                # better negative instead, and the swap is recorded per negative and
+                # per lane rather than being silent.
                 dropped_uninformative += 1
                 continue
             candidates.append({
@@ -525,11 +517,11 @@ def make_sibling_fn(OA_source, OA_target, selector, *, max_candidates=None) -> C
 
 def make_render_fn(OA_source, OA_target, cls_fn, property_fn, data_property_fn, instance_fn) -> Callable:
     """
-    Render an example prompt with the SAME per-kind template the live query uses (RF-1 resolved):
-    resolve the pair to entities, pick the lane from the authoritative kind (carried in payload) with
-    the PT-2 routing (resolve_pair_lane), and dispatch to the matching bound template fn. A DPROP
-    example is rendered with the data-property template (or the datatype-aware object-property
-    template), so the datatype range surfaces in the example exactly as in the live query.
+    Render an example prompt with the same per-kind template the live query uses: resolve the
+    pair to entities, pick the lane from the authoritative kind (carried in payload) via
+    resolve_pair_lane, and dispatch to the matching bound template fn. A DPROP example is
+    rendered with the data-property template (or the datatype-aware object-property template),
+    so the datatype range surfaces in the example exactly as in the live query.
     """
     def render_fn(src_iri, tgt_iri, payload):
         try:
@@ -693,9 +685,9 @@ def build_query_specific_few_shot(
         raise ValueError("failure_policy must be 'error' or 'record_zero_shot'")
     if encoder is None and not encoder_kind:
         # Deliberate baseline default for CPU tooling and tests; the pipeline caller
-        # (stage_two) always passes the configured kind explicitly. Resolving it HERE
-        # (rather than inline below) makes the trace record 'hashing' instead of a
-        # class name, so the recorded encoder identity matches the config vocabulary.
+        # (stage_two) always passes the configured kind explicitly. Resolving it here
+        # makes the trace record 'hashing' instead of a class name, so the recorded
+        # encoder identity matches the config vocabulary.
         encoder_kind = "hashing"
     effective_encoder = encoder or build_rag_encoder(
         kind=encoder_kind,
@@ -743,8 +735,7 @@ def build_query_specific_few_shot(
             ),
         })
         index = retriever._indexes.get(qm.kind)
-        # 'absent' = no index exists for this kind at all (empty-pool zero-shot fallback);
-        # previously recorded as 'rebuilt', which claimed a build that never happened.
+        # 'absent' = no index exists for this kind at all (empty-pool zero-shot fallback).
         if index is None:
             trace["index_cache_status"] = "absent"
         elif index.rebuilt_reason is None:
@@ -770,11 +761,9 @@ def build_query_specific_few_shot(
             ]
             per_query[reverse_key] = reverse_pairs
             reverse_trace = _directional_trace(trace, "reverse")
-            # the reverse trace used to copy the FORWARD records
-            # verbatim, so its prompt_sha256 (which exists precisely to bind a trace
-            # record to the rendered demonstration — bundle.py recomputes it per
-            # direction) and token cost did not match the reverse prompt actually
-            # persisted and sent. Rebind both to the re-rendered prompts.
+            # prompt_sha256 binds a trace record to the rendered demonstration
+            # (bundle.py recomputes it per direction), so rebind it and the token
+            # cost to the re-rendered reverse prompts.
             counter = retriever.token_counter
             reverse_trace["selected"] = tuple(
                 {

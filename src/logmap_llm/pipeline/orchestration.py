@@ -52,12 +52,9 @@ from logmap_llm.utils.logging import (
     success,
 )
 
-
-
-# NOTE: Do NOT import oracle_prompt_building or onto_access here.
+# NOTE: Do not import oracle_prompt_building or onto_access here.
 # Those modules transitively import owlready2, which cannot coexist
 # with JPype in the same process.  Prompt building runs in a subprocess.
-
 
 
 # PRIVATE HELPERS
@@ -73,11 +70,9 @@ def _subprocess_context_args(ctx: PipelineContext) -> list[str]:
     return args
 
 
-
-
 def _detect_bidirectional(prompts: dict) -> bool:
     """
-    Detect whether prompts were built in bidirectional mode; bidirectional prompt keys 
+    Detect whether prompts were built in bidirectional mode; bidirectional prompt keys
     have a direction suffix, specifically: 'src_uri|tgt_uri|REVERSE', whereas standard
     keys are just: 'src_uri|tgt_uri'
     """
@@ -119,16 +114,15 @@ def _configured_oracle_params(oracle_cfg, capabilities: dict | None = None) -> d
     }
 
 
-
 def _validate_prompt_keys(prompts: dict, bidirectional: bool, template_name: str = "") -> None:
     """
     Validates that the prompt key format matches the consultation mode.
     """
     if not prompts:
         return
-    
+
     keys_have_direction = _detect_bidirectional(prompts)
-    
+
     if bidirectional and not keys_have_direction:
         raise ValueError(
             f"Bidirectional template '{template_name}' selected but prompts   "
@@ -143,7 +137,6 @@ def _validate_prompt_keys(prompts: dict, bidirectional: bool, template_name: str
             f"built with a bidirectional template. Rebuild prompts or select "
             f"a matching template."
         )
-
 
 
 def _load_few_shot_artifact(
@@ -175,16 +168,10 @@ def _load_few_shot_artifact(
 
     if isinstance(loaded, dict):
         if few_shot_cfg.prebuilt_few_shot_bundle_path is None:
-            # BUGFIX (FS-COVERAGE): the ordinary stage-two dict artifact needs the SAME
-            # key-coverage guarantee the prebuilt revalidation above provides. Without it,
-            # the {} sentinel that _handle_rag_generation_failure / the k=0 branch persist
-            # (stage_two.py) survives a --reuse-prompts retry: an empty dict is falsy, so
-            # consultation passes few_shot_examples=None for EVERY query and a few_shot_k>0
-            # run silently executes zero-shot while being sealed as 'succeeded' under the
-            # requested condition. A partial dict likewise drops individual queries to
-            # zero-shot via per_query_examples.get(key). stage_two always writes one entry
-            # per prompt key (zero-shot fallbacks keep their key with an empty pair list),
-            # so exact coverage is the invariant of a fresh, matching artifact.
+            # stage_two always writes one entry per prompt key (zero-shot fallbacks
+            # keep their key with an empty pair list), so exact key coverage is the
+            # invariant of a fresh, matching artifact. A stale empty or partial dict
+            # would silently drop queries to zero-shot under --reuse-prompts.
             expected = {str(key) for key in expected_query_keys}
             actual = {str(key) for key in loaded}
             if actual != expected:
@@ -213,23 +200,22 @@ def _load_few_shot_artifact(
 
 def _resolve_accepted_confidences(accepted_subset: pd.DataFrame, oracle_accepted: pd.DataFrame, retain_logprobs_conf: bool) -> np.ndarray | None:
     """
-    Return logprobs-derived confidences to overwrite LogMap; 
+    Return logprobs-derived confidences to overwrite LogMap,
     or None to keep LogMap confidence.
     """
     if not retain_logprobs_conf:
         return None
-    
+
     if COL_CONFIDENCE not in accepted_subset.columns:
         warn(f"retain_logprobs_conf=True but '{COL_CONFIDENCE}' absent from initial alignment; keeping LogMap confidences.")
         return None
-    
+
     if "Oracle_confidence" not in oracle_accepted.columns:
         warn("retain_logprobs_conf=True but 'Oracle_confidence' absent from oracle predictions; keeping LogMap confidences.")
         return None
-    
+
     raw = oracle_accepted["Oracle_confidence"].to_numpy()
     return np.where(np.isfinite(raw), raw, DEFAULT_CONFIDENCE_FALLBACK)
-
 
 
 def _kg_refine_in_python(ctx: PipelineContext, oracle_result: OracleResult, retain_logprobs_conf: bool = False) -> None:
@@ -238,21 +224,14 @@ def _kg_refine_in_python(ctx: PipelineContext, oracle_result: OracleResult, reta
 
     Computes: refined = { initial - M_ask } U { m \in M_ask : oracle(m) = True }
 
-    Prior to patching, LogMap's Java refinement crashes with NullPointerExceptions for instance matching.
-    Additionally, the alignment stage does take a while (eg. when a KG has > 1m instances); this can be
-    offset through by-passing the initial aligning (with --reuse-align). However, the refinement stage 
-    (similarly) takes a long time; as such, this provides an optional means to quickly calculate an
-    approximation to what the refinement ought to look like, but lacks final conflict resolution.
-    Though, for KGs and instance matching, I am not sure how impactful the conflict resolution is 
-    anyway; since LogMap was not originally designed for this specific use case.
+    This bypasses LogMap's Java refinement: a quick approximation of the refined
+    alignment that lacks final conflict resolution.
 
-    NOTE: since patching LogMap, the new build appears to work as intended.
+    Setting retain_logprobs_conf = True overwrites the LogMap confidence with the
+    LogProbs confidence.
 
-    TODO: _kg_refine_in_python should handle both pipe and tab separators, or use the same format detection 
-    logic as evaluate.py (updated note -- 14th April -- can't quite recall what this TODO was for, exactly;
-    revisit later).
-
-    NOTE: setting retain_logprobs_conf = True will overwrite the LogMap confidence with the LogProbs confidence
+    TODO: handle both pipe and tab separators, or use the same format detection
+    logic as evaluate.py.
     """
     # load initial alignment
     initial_path = ctx.run_paths.logmap_mappings()
@@ -269,8 +248,8 @@ def _kg_refine_in_python(ctx: PipelineContext, oracle_result: OracleResult, reta
     preds = oracle_result.predictions
     m_ask_pairs = set()
 
-    # reference the URI columns BY NAME when available (robust to any stray index column that
-    # slipped past the REUSE normaliser); fall back to positional order otherwise (refine-bridge-1).
+    # reference the URI columns by name when available (robust to any stray index
+    # column); fall back to positional order otherwise.
     _src_col = COL_SOURCE_ENTITY_URI if COL_SOURCE_ENTITY_URI in preds.columns else preds.columns[0]
     _tgt_col = COL_TARGET_ENTITY_URI if COL_TARGET_ENTITY_URI in preds.columns else preds.columns[1]
 
@@ -292,9 +271,9 @@ def _kg_refine_in_python(ctx: PipelineContext, oracle_result: OracleResult, reta
     accepted_subset = oracle_accepted.iloc[:, :ncols].copy()
     accepted_subset.columns = initial_df.columns
 
-    # logprob confidence override (patch April 19th):
+    # logprob confidence override:
     resolved = _resolve_accepted_confidences(
-        accepted_subset, 
+        accepted_subset,
         oracle_accepted, retain_logprobs_conf
     )
     if resolved is not None:
@@ -320,7 +299,6 @@ def _kg_refine_in_python(ctx: PipelineContext, oracle_result: OracleResult, reta
 # END: PRIVATE HELPERS; START: PIPELINE FNS
 # align -> prompt_build -> consult_oracle -> refine_alignment -> evaluate
 ###
-
 
 
 def align(ctx: PipelineContext) -> AlignmentResult:
@@ -379,7 +357,6 @@ def align(ctx: PipelineContext) -> AlignmentResult:
     fatal(f"unable to match on: {ctx.cfg.pipeline.align_ontologies}")
 
 
-
 def prompt_build(ctx: PipelineContext, initial_alignment: AlignmentResult) -> PromptBuildResult:
     """
     Step 2: Build user prompts for oracle consultation.
@@ -390,9 +367,9 @@ def prompt_build(ctx: PipelineContext, initial_alignment: AlignmentResult) -> Pr
     match ctx.cfg.pipeline.build_oracle_prompts:
 
         case PromptBuildMode.BUILD:
-            
+
             step("[Step 2] Building fresh oracle user prompts via subprocess")
-            
+
             if not ctx.config_path:
                 fatal("Stage 2 in BUILD mode without a valid config path.") # @raises
 
@@ -420,7 +397,7 @@ def prompt_build(ctx: PipelineContext, initial_alignment: AlignmentResult) -> Pr
                         f"Stage 2 succeeded but did not publish required prompts: {prompts_path}",
                         FileNotFoundError,
                     )
-            
+
             with open(prompts_path) as fp:
                 prompts = json.load(fp)
             if not isinstance(prompts, dict):
@@ -430,7 +407,7 @@ def prompt_build(ctx: PipelineContext, initial_alignment: AlignmentResult) -> Pr
                     "Stage 2 produced zero prompts for a non-empty M_ask; refusing to "
                     "continue with an undeclared baseline fallback."
                 )
-            
+
             bidirectional = _detect_bidirectional(prompts)
             return PromptBuildResult(
                 prompts=prompts,
@@ -467,10 +444,9 @@ def prompt_build(ctx: PipelineContext, initial_alignment: AlignmentResult) -> Pr
             return PromptBuildResult()
 
         case _:
-            fatal(f"config: build_oracle_prompts param not recognised: {ctx.cfg.pipeline.build_oracle_prompts}")    
+            fatal(f"config: build_oracle_prompts param not recognised: {ctx.cfg.pipeline.build_oracle_prompts}")
 
     fatal(f"unable to match on: {ctx.cfg.pipeline.build_oracle_prompts}")
-
 
 
 def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, prompt_build_result: PromptBuildResult) -> OracleResult:
@@ -481,7 +457,7 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
     import logmap_llm.oracle.consultation as oc
 
     step("\n[Step 3] Consult Oracle for mappings to ask")
-    
+
     ###
     # CLS PROMPT
     ###
@@ -535,7 +511,7 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
     match ctx.cfg.pipeline.consult_oracle:
 
         case ConsultMode.CONSULT:
-            
+
             if prompt_build_result.prompts is None or len(prompt_build_result.prompts) == 0:
                 if initial_alignment.n_m_ask > 0:
                     fatal(
@@ -556,12 +532,12 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
                     predictions=empty_predictions,
                     oracle_params=_configured_oracle_params(ctx.cfg.oracle),
                 )
-            
+
             # else: check few-shot configuration
             few_shot_examples = None
             if ctx.cfg.few_shot.few_shot_k > 0:
                 few_shot_fp = ctx.run_paths.few_shot_json()
-                
+
                 if os.path.isfile(few_shot_fp):
                     few_shot_examples = _load_few_shot_artifact(
                         few_shot_fp,
@@ -569,21 +545,21 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
                         oracle_cfg=ctx.cfg.oracle,
                         expected_query_keys=prompt_build_result.prompts,
                     )
-                    # RAG (spec §6): stage_two now writes a DICT {m_ask_key -> [[user,assistant], ...]}
-                    # (query-specific few-shot). Legacy static few-shot is a flat LIST of pairs. A dict is
-                    # dispatched per-consultation; a list is the shared frozen prefix.
+                    # stage_two writes a dict {m_ask_key -> [[user, assistant], ...]} for
+                    # query-specific few-shot; legacy static few-shot is a flat list of pairs.
+                    # A dict is dispatched per-consultation; a list is the shared frozen prefix.
                     if isinstance(few_shot_examples, dict):
                         success(f"Loaded query-specific few-shot for {len(few_shot_examples)} M_ask keys from {few_shot_fp}")
                     else:
                         success(f"Loaded {len(few_shot_examples)} (shared) few-shot examples from {few_shot_fp}")
-                
+
                 else: # failed to find few-shot file
                     fatal(
                         f"few_shot_k={ctx.cfg.few_shot.few_shot_k} but the required "
                         f"few-shot artifact is missing: {few_shot_fp}",
                         FileNotFoundError,
                     )
-                
+
             # END: FEW-SHOT-HANDLER
 
             ###
@@ -601,7 +577,7 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
                 few_shot_examples=few_shot_examples,
                 **ctx.cfg.oracle.consult_kwargs,
             )
-            
+
             if prompt_build_result.bidirectional:
                 step(f"[Step 3] Consulting LLM oracle (bidirectional) with model: {ctx.cfg.oracle.model_name}")
                 oracle_predictions_df = oc.consult_oracle_bidirectional(**oracle_kwargs)
@@ -626,25 +602,25 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
             atomic_write_text_strict(
                 ctx.run_paths.predictions_csv(),
                 lambda fp: oracle_result.predictions.to_csv(fp, na_rep="nan", index=False),
-            ) # BUGFIX (refine-bridge-1): index=False so REUSE re-read does not gain a phantom
-              # 'Unnamed: 0' column that shifts every positional column right by one and corrupts
-              # the Python set-union refinement. Atomic so a crash mid-write cannot leave a
-              # truncated CSV a later --reuse step silently accepts as complete.
+            ) # index=False so a REUSE re-read does not gain a phantom 'Unnamed: 0' column
+              # that shifts every positional column right by one. Atomic so a crash
+              # mid-write cannot leave a truncated CSV a later --reuse step silently
+              # accepts as complete.
             return oracle_result
 
         case ConsultMode.REUSE:
 
             step(f"[Step 3] Loading LLM oracle predictions from: {ctx.run_paths.predictions_csv()}")
             predictions_df = pd.read_csv(ctx.run_paths.predictions_csv())
-            # belt-and-braces: drop any legacy 'Unnamed:*' index column from CSVs written before
-            # the index=False fix, so positional access stays aligned (refine-bridge-1).
+            # belt-and-braces: drop any legacy 'Unnamed:*' index column so positional
+            # access stays aligned.
             predictions_df = predictions_df.loc[:, ~predictions_df.columns.str.startswith("Unnamed:")]
             predictions_df = normalise_prediction_column(predictions_df) # pred.str_T/F/Y/N -> bool
             return OracleResult(
                 predictions=predictions_df,
                 oracle_params=_configured_oracle_params(ctx.cfg.oracle),
-                # BIDIR-DECOMP columns are written only by bidirectional runs, so their
-                # presence identifies one; REUSE used to drop the flag (misreported runs).
+                # decomposition columns are written only by bidirectional runs,
+                # so their presence identifies one.
                 bidirectional="Oracle_fwd_prediction" in predictions_df.columns,
             )
 
@@ -667,7 +643,6 @@ def consult_oracle(ctx: PipelineContext, initial_alignment: AlignmentResult, pro
     fatal(f"unable to match on: {ctx.cfg.pipeline.consult_oracle}")
 
 
-
 def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> RefinementResult:
     """
     Step 4: Refine alignment using oracle mapping predictions.
@@ -680,10 +655,8 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
 
         case RefineMode.REFINE:
 
-            # BUGFIX (REFINE-FRESH): every other stage unlinks its output before producing
-            # it (run_result, prompts, predictions, eval_json). Without this, a refined TSV
-            # left by a previous run of the same task passed validate_run_artifacts and was
-            # silently evaluated and sealed as THIS run's artifact.
+            # unlink any refined TSV left by a previous run of the same task, so a
+            # stale artifact cannot be evaluated and sealed as this run's output
             ctx.run_paths.refined_mappings_tsv().unlink(missing_ok=True)
 
             if not oracle_result.has_predictions and not oracle_result.is_local:
@@ -697,8 +670,6 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
                 dst = ctx.run_paths.refined_mappings_tsv()
 
                 if not src.exists():
-                    # previously a silent skip: no refined artifact, no error, and the run
-                    # continued toward evaluation with nothing to evaluate
                     fatal(
                         f"[Step 4] Initial alignment TSV is missing: {src}; cannot "
                         "publish a refined alignment."
@@ -709,15 +680,11 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
 
                 return RefinementResult()
 
-            # KG track: there exists a bug in the LogMap KG track execution path
-            # For now, we bypass LogMap's Java refinement (since it crashes with NPEs 
-            # on instance mappings) and produce refined alignment in Python
-            # Note: the version of LogMap shipped with this repository can actually
-            # refine the KG track via LogMap (and can therefore resolve any remaining
-            # mappings associated with logical conflicts -- which is reccomended)
-            # However, we cannot be certain that other users have the latest changes
-            # (for example, if they use a custom LogMap version built from src)
-            # therefore, we also include the PYTHON_SET_UNION bypass (see below):
+            # KG track: unpatched LogMap builds crash with NPEs on instance mappings
+            # during Java refinement. The LogMap shipped with this repository refines
+            # the KG track fine (and resolves logical conflicts, which is recommended),
+            # but users on a custom LogMap build may lack those fixes, so we also
+            # include the PYTHON_SET_UNION bypass (see below):
 
             if (ctx.cfg.pipeline.refinement_strategy == RefinementStrategy.PYTHON_SETUNION and oracle_result.has_predictions):
 
@@ -730,7 +697,7 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
                     fatal("LogMap refinement requires an initialized LogMap JVM")
                 logmap = ctx.logmap
                 logmap.set_output_dir(ctx.run_paths.refined_dir)
-                
+
                 step("[Step 4] Refining initial LogMap alignment with LLM Oracle predictions")
                 preds_java = br.python_oracle_mapping_predictions_2_java(
                     oracle_result.predictions
@@ -748,7 +715,7 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
                     fatal("Local-oracle refinement requires an initialized LogMap JVM")
                 logmap = ctx.logmap
                 logmap.set_output_dir(ctx.run_paths.refined_dir)
-                
+
                 step("[Step 4] Refining initial LogMap alignment with local Oracle predictions")
                 logmap.refine_alignment(str(oracle_result.local_dir))
                 mappings_java = logmap.get_mappings()
@@ -777,22 +744,14 @@ def refine_alignment(ctx: PipelineContext, oracle_result: OracleResult) -> Refin
     fatal(f"unable to match on: {ctx.cfg.pipeline.refine_alignment}")
 
 
-
 def evaluate(ctx) -> EvaluationResult:
     """
     Step 5: Evaluate the refined alignment.
-    Similarly to step two (build_prompts), the evaluate method (which uses the DeepOnto evaluator
-    by default -- which requires the use of another JVM) dispatches to logmap_llm.evaluation.harness
-    as a subprocess; again, this is for JVM isolation (due to DeepOnto); however, we should note that
-    this is not !! strictly !! neccesary, since we also implement our own evalution under the
-        CustomEvaluationEngine class in logmap_llm.evaluation.engines.custom
-    The architectural design decision to use extendable evaluation engines is based on the knowledge
-    that actually multiple evaluators exist, eg. 'MELT', 'HOBBIT', 'SEALS', 'DeepOnto', and so forth
-        (users should be able to extend the EvaluationEngine class and make use of their preffered 
-         evaluator of choice; many of which do utilise another JVM instance, so isolating the evaluate
-         procedure as a subprocess is _arguably_ _fairly_ sensible, though, not required for instances
-         that use the CustomEvaluationEngine -- worth noting)
-    Note: Evaluation can be skipped by setting 'evaluate = false' under '[evaluation]' in config.toml
+    Dispatches to logmap_llm.evaluation.harness as a subprocess for JVM isolation:
+    the default DeepOnto evaluator needs its own JVM, as do most alternative engines
+    (eg. MELT, HOBBIT, SEALS), though CustomEvaluationEngine
+    (logmap_llm.evaluation.engines.custom) does not.
+    Evaluation can be skipped by setting 'evaluate = false' under '[evaluation]' in config.toml
     """
     step("\n[Step 5] Evaluation")
 
@@ -814,14 +773,14 @@ def evaluate(ctx) -> EvaluationResult:
     ctx.run_paths.eval_json().unlink(missing_ok=True)
 
     proc = subprocess.run(cmd, capture_output=False)
-    
+
     subprocess_failed = proc.returncode != 0
-    
+
     if subprocess_failed:
         warning(f"Evaluation subprocess exited with code {proc.returncode}")
 
     eval_results_path = ctx.run_paths.eval_json()
-    
+
     # only trust the results file if the subprocess succeeded
     if not subprocess_failed and eval_results_path.exists():
         with open(eval_results_path) as fp:
@@ -829,7 +788,7 @@ def evaluate(ctx) -> EvaluationResult:
 
         success(f"Evaluation results loaded from: {eval_results_path}")
         return EvaluationResult(results=results_dict)
-    
+
     if not subprocess_failed:
         warning(
             f"Evaluation subprocess succeeded but required result is missing: {eval_results_path}"

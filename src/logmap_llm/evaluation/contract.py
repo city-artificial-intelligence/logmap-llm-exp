@@ -109,9 +109,8 @@ def _validate_global(
     )
     recall = _number(table, "recall", label, minimum=0.0, maximum=1.0, nullable=True)
     f1 = _number(table, "f1", label, minimum=0.0, maximum=1.0, nullable=True)
-    # Existing fully-defined version-1 artifacts did not carry this empty
-    # object, so keep accepting their omission. Any null below still requires
-    # an explicit per-metric reason.
+    # metric_notes may be omitted when every metric is defined, but any null
+    # metric below still requires an explicit per-metric reason.
     notes = _metric_notes(table, label, required=False)
 
     if tp + fp:

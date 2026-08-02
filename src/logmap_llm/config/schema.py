@@ -41,9 +41,8 @@ class AlignmentTaskConfig(StrictConfigModel):
     onto_source_filepath: str = Field(min_length=1)
     onto_target_filepath: str = Field(min_length=1)
     generate_extended_mappings_to_ask_oracle: bool = False
-    # owl:imports IRIs that owlready2 must NOT follow. Empty for every track except
-    # circular-economy, whose CEON.rdf imports a module (.../qudt/0.1/) that its authors never
-    # published — it 404s for everyone, so the import can never be resolved by anyone.
+    # owl:imports IRIs that owlready2 must not follow. Empty for every track except
+    # circular-economy, whose CEON.rdf imports an unpublished module (.../qudt/0.1/) that 404s.
     stub_import_iris: list[str] = Field(default_factory=list)
     logmap_parameters_dirpath: str = ""
     logmap_jvm_memory: str = Field(default="8g", pattern=r"^[1-9][0-9]*[mMgG]$")
@@ -65,17 +64,15 @@ class AlignmentTaskConfig(StrictConfigModel):
 class PromptTemplateConfig(StrictConfigModel):
     '''
     For controlling which templates are used during oracle consultation.
-    We assume that every track includes class-based alignment. Therefore,
-    we provide a default configuration for this under both the cls_dev and
-    cls_user prompt templates using the `class_equivalence` cls dev/system 
-    prompt and the `synonyms_only` cls user prompt.
+    Every track is assumed to include class-based alignment, so the cls dev/user
+    templates default to `class_equivalence` and `synonyms_only`.
     '''
     cls_dev_prompt_template_name: str            = "class_equivalence"
     cls_usr_prompt_template_name: str            = "synonyms_only"
     prop_dev_prompt_template_name: Optional[str] = "property_equivalence"
     prop_usr_prompt_template_name: Optional[str] = None
-    # PT-2: optional dedicated DATA-property user template. When unset, DPROP candidates use the
-    # (now datatype-aware) object-property template `prop_usr_prompt_template_name`.
+    # Optional dedicated data-property user template. When unset, data-property candidates
+    # use the datatype-aware object-property template `prop_usr_prompt_template_name`.
     dprop_usr_prompt_template_name: Optional[str] = None
     inst_dev_prompt_template_name: Optional[str] = "instance_equivalence"
     inst_usr_prompt_template_name: Optional[str] = None
@@ -87,27 +84,24 @@ class PromptTemplateConfig(StrictConfigModel):
         Literal["alphanumeric", "shortest_label", "cls_transformer", "sbert"]
     ] = None
 
-    # optional override of the embedding model; only used when sibling_strategy 
+    # optional override of the embedding model; only used when sibling_strategy
     # is 'cls_transformer' or 'sbert'; when None, the default checkpoint is used
     sibling_model: Optional[str] = None
 
     # An immutable checkpoint commit for the sibling embedding model. Required whenever
-    # `few_shot.rag_negative_layout = 'paired-sibling-v2'` resolves to an embedding strategy,
-    # for the same reason `rag_encoder_revision` is required of a semantic RAG encoder: an
-    # unpinned model can silently change the experiment. It is also a practical necessity --
-    # an unpinned `from_pretrained` resolves `refs/main`, which an offline cache holding the
-    # exact pinned snapshot does not have, so it cannot load a checkpoint that IS present.
+    # `few_shot.rag_negative_layout = 'paired-sibling-v2'` resolves to an embedding strategy:
+    # an unpinned model can silently change the experiment, and an unpinned `from_pretrained`
+    # resolves `refs/main`, which an offline cache holding only the pinned snapshot cannot serve.
     sibling_model_revision: Optional[str] = None
 
     # the cost cap on the candidate sibling set prior to ranking
-    #  None -> uses DEFAULT_MAX_SIBLING_CANDIDATES from constants.py
+    # None -> uses DEFAULT_MAX_SIBLING_CANDIDATES from constants.py
     sibling_max_candidates: Optional[int] = Field(default=None, ge=1)
 
     # Compute device for the sibling ranker. None -> cuda if available, else cpu.
-    # Declare it whenever `rag_negative_layout = 'paired-sibling-v2'` runs on more than one
-    # host: cuda and cpu matmuls differ in the last bits, so a near-tie between two candidate
-    # siblings can resolve differently per machine, and the device is NOT part of
-    # condition_id. `rag_encoder_device` exists for the same reason on the retrieval side.
+    # Declare it when running on more than one host: cuda and cpu matmuls can resolve a
+    # near-tie between candidate siblings differently, and the device is not part of
+    # condition_id (`rag_encoder_device` exists for the same reason on the retrieval side).
     sibling_encoder_device: Optional[str] = None
 
     @model_validator(mode="after")
@@ -137,18 +131,16 @@ class PromptTemplateConfig(StrictConfigModel):
 
 
 #: Strategies whose resolved RAG mode is QUERY_RAG or STATIC_HARD — the only two the
-#: retriever's paired branch accepts (oracle/rag/retriever.py:219). Duplicated here rather
-#: than imported because `config` must not depend on `oracle.rag`; the two are pinned in
-#: agreement by tests/test_negative_layout_config.py, which reads the real
-#: `oracle.rag.pipeline_adapter._STRATEGY_TO_MODE` and fails if they ever drift apart.
+#: retriever's paired branch accepts. Duplicated rather than imported because `config` must
+#: not depend on `oracle.rag`; tests/test_negative_layout_config.py pins this set in
+#: agreement with `oracle.rag.pipeline_adapter._STRATEGY_TO_MODE`.
 _PAIRED_STRATEGIES = frozenset({"query-rag", "hard-similar", "static-hard", "hard"})
 
 
 class FewShotConfig(StrictConfigModel):
     '''
     For controlling the few-shot prompting mode during oracle consultation.
-    By default `few_shot_k` is set to 0, which does not trigger any few-shot
-    prompting mechanisms.
+    The default `few_shot_k` of 0 disables few-shot prompting entirely.
     '''
     few_shot_k: int                 = Field(default=0, ge=0)
     few_shot_seed: int              = 42
@@ -165,31 +157,28 @@ class FewShotConfig(StrictConfigModel):
     rag_cache_dir: Optional[str] = None
     prebuilt_few_shot_bundle_path: Optional[str] = None
 
-    # How the k/2 pseudo-negatives are constructed (CORE_BUMP_SPEC_2026-07-25.md §3.1):
+    # How the k/2 pseudo-negatives are constructed:
     #
     #   'paired-sibling-v2'  Ni = (Pi.src, highest-ranked eligible ontology sibling of Pi.tgt)
     #   'paired-donor-v2'    Ni = (Pi.src, target of the next eligible ranked donor after Pi)
-    #   'donor-cross-v1'     FROZEN. Reproduces the completed campaigns byte-for-byte; it is
-    #                        retained ONLY so their demonstration blocks can be re-rendered
-    #                        under a newer core. NOT for new science - new campaign specs
-    #                        must not select it.
+    #   'donor-cross-v1'     Frozen: reproduces the completed campaigns byte-for-byte, retained
+    #                        only so their demonstration blocks can be re-rendered under a
+    #                        newer core. New campaign specs must not select it.
     #
-    # REQUIRED whenever few_shot_k > 0 (decision D-c), but deliberately NOT enforced by a
-    # validator here. Every frozen per-job config inside a completed batch carries
-    # few_shot_k > 0 and no layout, and those configs are re-validated by
-    # experiments/aggregate.py, the campaign collectors and import_alignment. A schema-level
-    # requirement makes them unloadable, and aggregate._job_row converts the resulting
-    # ValidationError into status='invalid_plan' and then OVERWRITES the completed batch's
-    # aggregate directory. D-c is instead enforced where campaigns are created and executed:
-    # experiments/plan.py at generation, pipeline/stage_two.py at execution.
+    # Required whenever few_shot_k > 0, but deliberately not enforced by a validator here:
+    # frozen per-job configs inside completed batches carry few_shot_k > 0 with no layout and
+    # must stay loadable by aggregation and import tooling (a schema-level rejection would make
+    # aggregate._job_row mark them status='invalid_plan' and overwrite the completed batch's
+    # aggregate output). The requirement is instead
+    # enforced where campaigns are created and executed: experiments/plan.py at generation,
+    # pipeline/stage_two.py at execution.
     rag_negative_layout: Optional[
         Literal["paired-sibling-v2", "paired-donor-v2", "donor-cross-v1"]
     ] = None
 
-    # BUGFIX (CR-1): few_shot_negative_strategy was an unvalidated free-form string; any value other
-    # than exactly "hard"/"random" silently downgraded to random (or, for "hard-similar", loaded an
-    # encoder yet still produced random). Validate it against the known strategies / RAG modes so a
-    # typo or an unimplemented mode fails loudly at config load instead of silently changing behaviour.
+    # few_shot_negative_strategy is validated against the known strategies / RAG modes so a
+    # typo or an unimplemented mode fails loudly at config load instead of silently
+    # downgrading to random.
     VALID_NEGATIVE_STRATEGIES: ClassVar[set] = {
         "hard", "random", "hard-similar",          # legacy sampler strategy names
         "query-rag", "static-hard", "static-random", "zero-shot",  # RAG mode names (oracle/rag)
@@ -214,9 +203,8 @@ class FewShotConfig(StrictConfigModel):
                 "model revision or explicitly select rag_encoder_kind='hashing' as a baseline."
             )
         layout = self.rag_negative_layout
-        # These three rules can only ever be violated by a config no completed campaign
-        # produced (every frozen config has rag_negative_layout absent), so unlike the D-c
-        # requirement itself they are safe to enforce at load.
+        # Safe to enforce at load: every frozen config from a completed campaign has
+        # rag_negative_layout absent, so these rules cannot reject one.
         if layout is not None and self.few_shot_k <= 0:
             raise ValueError(
                 "few_shot.rag_negative_layout is meaningless with few_shot_k = 0; "
@@ -228,11 +216,9 @@ class FewShotConfig(StrictConfigModel):
                 f"each retrieved positive, so few_shot_k must be even; got {self.few_shot_k}"
             )
         # The retriever only takes the paired branch when the mode is QUERY_RAG or
-        # STATIC_HARD (oracle/rag/retriever.py:219). Under any other strategy a v2 layout is
-        # accepted, recorded in the trace as `negative_layout`, and then IGNORED — the block
-        # is built by the frozen v1 or the random rule. That is a job whose trace claims one
-        # method and whose prompts contain another; the audit catches it after the fact via
-        # `derivation_errors`, but a whole panel would have been paid for by then.
+        # STATIC_HARD. Under any other strategy a v2 layout would be recorded in the trace
+        # as `negative_layout` and then ignored — a job whose trace claims one method while
+        # its prompts contain another.
         if layout in {"paired-sibling-v2", "paired-donor-v2"} and strat not in _PAIRED_STRATEGIES:
             raise ValueError(
                 f"few_shot.rag_negative_layout={layout!r} builds one negative per retrieved "
@@ -270,14 +256,14 @@ class FewShotConfig(StrictConfigModel):
 
 
 class OracleConfig(StrictConfigModel):
-    model_name: str = Field(min_length=1)  # <-- REQUIRED (provide in the config.toml)
+    model_name: str = Field(min_length=1)  # required; provide in the config.toml
     api_key: str = "EMPTY" # use 'EMPTY' for vLLM or the actual API key for your selected service
-    
+
     # LLM parameters
     base_url: Optional[str] = "https://openrouter.ai/api/v1" # "http://localhost:8000/v1" (for vLLM & SGLang)
-    supports_chat_template_kwargs: Optional[bool] = None     #
+    supports_chat_template_kwargs: Optional[bool] = None
     failure_tolerance: Optional[int] = Field(default=None, ge=1)
-    
+
     max_workers: int                      = Field(default=24, ge=1)
     enable_thinking: Optional[bool]       = False            # toggles thinking mode on/off for supported models
     max_completion_tokens: int            = Field(default=2048, ge=1)
@@ -293,7 +279,7 @@ class OracleConfig(StrictConfigModel):
     top_p: float                          = Field(default=1.0, gt=0.0, le=1.0)
     reasoning_effort: Optional[str]       = None             # set explicitly only for models that support reasoning controls
     reasoning_token_budget: Optional[int] = Field(default=None, ge=1)
-    local_oracle_predictions_dirpath: str = ""               #
+    local_oracle_predictions_dirpath: str = ""
 
     interaction_style: Literal[
         InteractionStyle.AUTOMATIC,
@@ -321,7 +307,6 @@ class OracleConfig(StrictConfigModel):
             return None
         # bool(): enable_thinking=None is schema-valid and means "send no thinking control"
         # — no reasoning output is expected, so the response shape is the same as False.
-        # The raw None key used to raise a bare KeyError here (BUGFIX THINK-NONE).
         return RESPONSE_FORMAT_FOR_ANSWER[
             (self.answer_format, bool(self.enable_thinking))
         ]
@@ -354,7 +339,7 @@ class OracleConfig(StrictConfigModel):
             migrated["model_name"] = legacy_value
             return migrated
         return data
-    
+
     @model_validator(mode="before")
     @classmethod
     def migrate_openrouter_apikey(cls, data: dict) -> dict:
@@ -413,7 +398,7 @@ class EvaluationConfig(StrictConfigModel):
     train_alignment_path: Optional[str] = None
     test_cands_path: Optional[str] = None
     metrics: list[str] | str = Field(default_factory=lambda: ["global", "oracle"])
-    force_custom_eval: bool = True                  #
+    force_custom_eval: bool = True
     partial_reference: bool = False                 # for kg track: true
     stratified_by_entity_type: bool = False
     stratified_class_property: bool = False
@@ -449,9 +434,9 @@ class EvaluationConfig(StrictConfigModel):
 
 class LogMapLLMConfig(StrictConfigModel):
     """
-    Top-level configuration schema for LogMap-LLM.
-    Allows for validation of the entire TOML config structure on construction.
-    NOTE (TODO): should we not make all these default factories?
+    Top-level configuration schema for LogMap-LLM; validates the entire TOML
+    config structure on construction.
+    TODO: should we not make all these default factories?
     """
     alignmentTask: AlignmentTaskConfig
     oracle: OracleConfig
@@ -465,15 +450,12 @@ class LogMapLLMConfig(StrictConfigModel):
     def validate_sibling_negative_requirements(self) -> "LogMapLLMConfig":
         """`paired-sibling-v2` must not run on an accidentally-defaulted sibling strategy.
 
-        `prompts.sibling_strategy` already has its VALUE validated by pydantic. What is not
-        otherwise checked is the auto-resolution path: with no explicit strategy, the
-        selector consults any registered domain override for `ontology_domain` and falls
-        back to SBERT. If neither knob is set, the sibling arm silently runs SBERT on a
-        track whose domain nobody declared - a different experiment wearing the intended
-        one's name, which is what stage_two's SIB-SILENTFALLBACK fix exists to prevent.
-
-        This is a cross-section rule, so it lives here rather than on FewShotConfig. It is
-        unreachable for any frozen historical config, since none can carry the layout.
+        Pydantic already validates the strategy value; this checks the auto-resolution
+        path: with no explicit strategy, the selector consults any registered domain
+        override for `ontology_domain` and falls back to SBERT, silently running a
+        different experiment under the intended one's name. Cross-section rule, so it
+        lives here rather than on FewShotConfig; unreachable for any frozen historical
+        config, since none can carry the layout.
         """
         if self.few_shot.rag_negative_layout != "paired-sibling-v2":
             return self
@@ -551,7 +533,5 @@ class LogMapLLMConfig(StrictConfigModel):
 
 
 def validate_config(config_dict: dict) -> LogMapLLMConfig:
-    """
-    Validate the config dict and return a typed config object.
-    """
+    """Validate the config dict and return a typed config object."""
     return LogMapLLMConfig.model_validate(config_dict)

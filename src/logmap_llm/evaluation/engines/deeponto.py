@@ -30,13 +30,12 @@ def _ensure_jvm_memory(memory: str = "8g", *, overwrite: bool = False) -> None:
 
 def _prestart_jvm_for_deeponto() -> None:
     """
-    DEEPONTO-JVM-1 fix: deeponto 0.9.3 sizes its JVM heap via an INTERACTIVE ``click.prompt``
-    executed at the FIRST import of deeponto.onto / deeponto.align (it ignores JAVA_MEMORY /
-    DEEPONTO_JVM_MEMORY / JVM_MEMORY — verified empirically). In a non-interactive harness (the
-    standalone scoring path) that prompt hangs on stdin, or raises click.Abort when stdin
-    is closed, so scoring never runs. Pre-start the JVM explicitly here (deeponto.init_jvm reads
-    the memory string directly and skips the prompt). No-op when the pipeline already started a
-    JVM via jpype — in that case deeponto reuses it.
+    Pre-start the JVM before importing deeponto.align. deeponto 0.9.3 sizes its
+    JVM heap via an interactive ``click.prompt`` at the first import of
+    deeponto.onto / deeponto.align (it ignores JAVA_MEMORY / DEEPONTO_JVM_MEMORY
+    / JVM_MEMORY), which hangs or raises click.Abort in a non-interactive
+    harness. ``deeponto.init_jvm`` reads the memory string directly and skips
+    the prompt. No-op when a JVM is already running via jpype — deeponto reuses it.
     """
     import deeponto
     import jpype
@@ -52,7 +51,7 @@ def _probe_availability() -> bool:
     _ensure_jvm_memory()
 
     try:
-        _prestart_jvm_for_deeponto()   # must precede the deeponto.align import (DEEPONTO-JVM-1)
+        _prestart_jvm_for_deeponto()   # must precede the deeponto.align import
         from deeponto.align.evaluation import AlignmentEvaluator
         from deeponto.align.mapping import ReferenceMapping, EntityMapping
         from deeponto.align.oaei import ranking_eval
@@ -62,29 +61,25 @@ def _probe_availability() -> bool:
         _DEEPONTO_MODULES["EntityMapping"] = EntityMapping
         _DEEPONTO_MODULES["ranking_eval"] = ranking_eval
         _DEEPONTO_AVAILABLE = True
-    
+
     except ImportError:
         _DEEPONTO_AVAILABLE = False
-    
+
     return _DEEPONTO_AVAILABLE
 
 
 def _is_header_line(first_field: str) -> bool:
     """
-    check the first field in a TSV to see if it qualifies as a HEADER
-    for an evaluation mappings file (ie. has been converted to DeepOnto
-    TSV format for evaluation purposes - usually)
+    Check whether the first field of a TSV line is a DeepOnto-style header.
     """
     return first_field in DEEPONTO_TSV_HEADER_PREFIXES
 
 
 def detect_tsv_format(filepath: Path) -> str:
     """
-    observe the first line of a TSV file and return a short format tag:
-        - deeeponto (if the file starts with a deeponto header)
-        - else: 'oaei'
-    used to decide whether a TSV file must be 
-    converted prior to using DeepOnto
+    Inspect the first line of a TSV file and return 'deeponto' if it starts
+    with a DeepOnto header, else 'oaei'. Used to decide whether the file must
+    be converted before handing it to DeepOnto.
     """
     with open(filepath) as fp:
         first_line = fp.readline().rstrip("\n")
@@ -97,13 +92,11 @@ def detect_tsv_format(filepath: Path) -> str:
 
 def convert_to_deeponto_tsv(input_path: Path, output_path: Path) -> None:
     """
-    rewrites an 'OAEI-style' TSV (with no header and variable column count)
-    as a deeponto style TSV with a header and three columns
-    the file @ input_path should have at least 2 tab sep'd fields per row
-    representing (source, target) mappings; if a fourth column is present
-    we assume it contains a confidence score and is parsed as such,
-    otherwise score defaults to 1.0; remaining fields are disgarded
-    writes a new file at 'output_path' and returns nothing
+    Rewrite an OAEI-style TSV (no header, variable column count) as a
+    three-column DeepOnto TSV with a header, written to output_path.
+    Rows need at least 2 tab-separated fields, (source, target); a fourth
+    column is treated as a confidence score (default 1.0); other fields
+    are discarded.
     """
     with open(input_path, "r") as f_in, open(output_path, "w") as f_out:
         f_out.write("SrcEntity\tTgtEntity\tScore\n")
@@ -123,17 +116,14 @@ def convert_to_deeponto_tsv(input_path: Path, output_path: Path) -> None:
 
 def _ensure_deeponto_format(filepath: Path, tmpdir: str) -> Path:
     """
-    returns a filepath to a deeponto TSV version of the input file
-    @ the filepath argument (assuming it matches the neccesary format)
-    the neccesary format is described in comments in previous 
-    fn doc-strings (above)
+    Return a path to a DeepOnto-format TSV version of the input file,
+    converting into tmpdir if needed.
     """
     if detect_tsv_format(filepath) == "deeponto":
         return filepath
     converted = Path(tmpdir) / f"converted_{filepath.name}"
     convert_to_deeponto_tsv(filepath, converted)
     return converted
-
 
 
 class DeepOntoEvaluationEngine(EvaluationEngine):
@@ -159,15 +149,13 @@ class DeepOntoEvaluationEngine(EvaluationEngine):
         return _probe_availability()
 
 
-    #@override
     def name(self) -> str:
         return "deeponto"
 
 
-    #@override
     def compute_global(self, system_path: Path, reference_path: Path, train_reference_path: Path | None = None, **options) -> dict:
         """
-        computes global P/R/F1 via DeepOnto's AlignmentEvaluator.f1
+        Compute global P/R/F1 via DeepOnto's AlignmentEvaluator.f1.
         """
         if options.get("partial_reference", False):
             raise ValueError(
@@ -240,7 +228,7 @@ class DeepOntoEvaluationEngine(EvaluationEngine):
 
     def compute_oracle(self, predictions: list[dict], reference_pairs: set[tuple[str, str]], **options) -> dict:
         """
-        computes oracle discrimination metrics via the pure-function path
+        Compute oracle discrimination metrics via the pure-function path.
         """
         partial_reference = options.get("partial_reference", False)
         return compute_oracle_metrics(

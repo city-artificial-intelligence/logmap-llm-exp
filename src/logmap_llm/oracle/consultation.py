@@ -1,6 +1,6 @@
 '''
 logmap_llm.oracle.consultation
-This module contains functionality that supports consulting 
+This module contains functionality that supports consulting
 (interacting with) LLM Oracles.
 '''
 from __future__ import annotations
@@ -71,13 +71,12 @@ def _require_forward_prompt_coverage(
 
 
 def _require_reverse_prompt_coverage(m_ask_prompts: dict[str, str]) -> None:
-    """Bidirectional consultation needs BOTH directions per candidate; fail before inference.
+    """Bidirectional consultation needs both directions per candidate; fail before inference.
 
-    BUGFIX (BIDIR-COVERAGE): the forward guard deliberately ignores reverse keys, and nothing
-    validated them — the bidirectional builder inserts the forward prompt before rendering the
-    reverse inside one try, so a reverse-side failure left a forward-only candidate. Its
-    forward consultation was submitted and PAID FOR, then the aggregation silently marked the
-    candidate 'skipped'. Same contract as the forward guard: refuse to send anything.
+    The forward guard deliberately ignores reverse keys, so this validates them: a
+    forward-only candidate would be consulted (and paid for) and then silently marked
+    'skipped' by the aggregation. Same contract as the forward guard: refuse to send
+    anything.
     """
     reverse_suffix = PAIRS_SEPARATOR + "REVERSE"
     keys = {str(key) for key in m_ask_prompts}
@@ -201,7 +200,7 @@ def calculate_logprobs_confidence(
 
 
 
-def _check_failure_abort(prediction_status, consecutive_failures, cumulative_failures, failure_tolerance, 
+def _check_failure_abort(prediction_status, consecutive_failures, cumulative_failures, failure_tolerance,
                          consecutive_limit=DEFAULT_CONSECUTIVE_FAILURE_TOLERANCE) -> tuple[bool, int, int]:
     if prediction_status != "error":
         return False, 0, cumulative_failures
@@ -237,10 +236,9 @@ def _print_abort_message(consecutive_failures: int, cumulative_failures: int, fa
 
 
 def _resolve_api_key(api_key: str) -> str:
-    """Resolve an ``ENV:VARNAME`` sentinel to the secret in that environment variable, so the real
-    key is NEVER written into config.toml / manifests / results (spec §2 "never copy credentials
-    into source or results"). A plain value (``EMPTY`` for local vLLM, or a literal key) passes
-    through unchanged. Added: audit FIX-2 (cloud oracle authentication)."""
+    """Resolve an ``ENV:VARNAME`` sentinel to the secret in that environment variable, so the
+    real key is NEVER written into config.toml / manifests / results. A plain value (``EMPTY``
+    for local vLLM, or a literal key) passes through unchanged."""
     import os
     if isinstance(api_key, str) and api_key.startswith("ENV:"):
         var = api_key[4:].strip()
@@ -280,9 +278,9 @@ def _build_oracle_manager(oracle_cfg: OracleConfig, developer_prompt_text: str |
     )
     if developer_prompt_text is not None:
         llm_oracle.add_developer_message(developer_prompt_text)
-    # Legacy shared few-shot (a LIST) is baked into the frozen developer prefix. Query-specific RAG
-    # few-shot (a DICT keyed by M_ask key) is NOT baked here — it is passed per-consultation
-    # (spec §6), so the shared/frozen state stays example-free and concurrency-safe.
+    # Shared few-shot (a list) is baked into the frozen developer prefix. Query-specific
+    # RAG few-shot (a dict keyed by M_ask key) is not baked here — it is passed
+    # per-consultation, so the shared/frozen state stays example-free and concurrency-safe.
     if isinstance(few_shot_examples, list) and few_shot_examples:
         llm_oracle.add_few_shot_examples(few_shot_examples)
     if VERBOSE:
@@ -293,9 +291,9 @@ def _build_oracle_manager(oracle_cfg: OracleConfig, developer_prompt_text: str |
 
 def _build_pair_entity_types(m_ask_init_alignment_df: pd.DataFrame) -> dict[str, str]:
     """
-    Build src|tgt -> entityType lookup from m_ask DataFrame; used for obtaining the neccesary 
-    class (CLS), property (OPROP), and instance (INST) dev/system + user prompts for use during
-    consultation. ie. dict: { "SRC_URI|TGT_URI": "OPROP" || "INST" || "CLS", ... (for all mappings in M_ask) }
+    Build src|tgt -> entityType lookup from the m_ask DataFrame, used to select the class
+    (CLS), property (OPROP), or instance (INST) dev/system + user prompts during
+    consultation. ie. dict: { "SRC_URI|TGT_URI": "OPROP" || "INST" || "CLS", ... }
     """
     pair_entity_types = {}
     for _, row in m_ask_init_alignment_df.iterrows():
@@ -304,7 +302,7 @@ def _build_pair_entity_types(m_ask_init_alignment_df: pd.DataFrame) -> dict[str,
         pair_entity_types[base_key] = etype
         if VERBOSE and VERY_VERBOSE:
             debug(f"Attached Entity Type '{etype}' to Mapping '{base_key}'")
-    
+
     return pair_entity_types
 
 
@@ -324,8 +322,9 @@ def _run_consultations(llm_oracle: OracleConsultationManager, m_ask_prompts: dic
                        per_query_examples: dict | None = None) -> dict | None:
     """
     Dispatches all prompts in parallel; returns None if aborted.
-    ``per_query_examples`` (RAG, spec §6): optional {m_ask_key -> [(user,assistant), ...]} so each
-    consultation carries its OWN query-specific few-shot examples (no shared conversation state).
+    ``per_query_examples``: optional {m_ask_key -> [(user,assistant), ...]} so each
+    consultation carries its own query-specific few-shot examples (no shared conversation
+    state).
     """
     results = {}
     consecutive_failures = 0
@@ -371,9 +370,8 @@ def _run_consultations(llm_oracle: OracleConsultationManager, m_ask_prompts: dic
             except Exception as e:
                 # Defensive: consult_oracle_for_mapping catches its own exceptions and
                 # returns error tuples, so this only fires on a bug in that error path.
-                # BUGFIX (RAISED-FUTURE): record the failure against its ACTUAL key —
-                # previously no result was recorded, so the mapping surfaced downstream as
-                # 'skipped' ("no prompt built"), misattributing an error as a skip.
+                # Record the failure against its actual key so the mapping does not
+                # surface downstream as 'skipped'.
                 failed_key = future_keys.get(future)
                 warning(f"Consultation for {failed_key} raised unexpectedly: "
                         f"{type(e).__name__}: {e}")
@@ -384,14 +382,10 @@ def _run_consultations(llm_oracle: OracleConsultationManager, m_ask_prompts: dic
                     )
                 status = "error"
 
-            # BUGFIX (OC-1): drive the failure-abort policy from the RETURNED status. The
-            # Consultation failures and the BadRequestError branch both RETURN an
-            # ("error", ...) tuple instead of raising, so
-            # future.result() almost never raises. Previously the abort counters only incremented
-            # in the except branch (effectively never), leaving the dual-threshold abort DEAD — a
-            # total API outage silently produced an empty-oracle refinement (== plain LogMap)
-            # instead of aborting. Passing `status` makes both retry-exhausted and BadRequestError
-            # error tuples (and any raised exception) count toward the abort policy.
+            # Drive the failure-abort policy from the returned status: consultation
+            # failures and the BadRequestError branch return ("error", ...) tuples instead
+            # of raising, so future.result() almost never raises. Passing `status` makes
+            # both error tuples and raised exceptions count toward the abort policy.
             should_abort, consecutive_failures, cumulative_failures = _check_failure_abort(
                 status, consecutive_failures, cumulative_failures, failure_tolerance,
             )
@@ -411,7 +405,7 @@ def _run_consultations(llm_oracle: OracleConsultationManager, m_ask_prompts: dic
 
 def consult_oracle_for_mapping(key, prompt, llm_oracle, developer_override=None, few_shot_examples=None):
     """obtain prediction, confidence and token usage for a given mapping (id'd via key).
-    ``few_shot_examples`` = this mapping's own query-specific RAG examples (RAG, spec §6)."""
+    ``few_shot_examples`` = this mapping's own query-specific RAG examples."""
     max_retries = getattr(llm_oracle, "transient_retries", 2)
     seed = getattr(llm_oracle, "seed", None)
     for attempt in range(max_retries + 1):
@@ -463,7 +457,7 @@ def consult_oracle_for_mappings_to_ask(
     llm_oracle = _build_oracle_manager(oracle_cfg, developer_prompt_text, few_shot_examples)
     llm_oracle.freeze_messages() # frozen prefix = developer msg (+ legacy shared few-shot list only)
     pair_entity_types = _build_pair_entity_types(m_ask_init_alignment_df) if developer_prompt_map else {}
-    # RAG (spec §6): a DICT of few-shot examples is query-specific -> passed per-consultation.
+    # A dict of few-shot examples is query-specific -> passed per-consultation.
     per_query_examples = few_shot_examples if isinstance(few_shot_examples, dict) else None
 
     results = _run_consultations(
@@ -552,7 +546,7 @@ def consult_oracle_bidirectional(
     --------------------------------------------------------------
     Sends forward and reverse subsumption queries, then aggregates into
     per-candidate equivalence predictions. A candidate is predicted as
-    equivalent (ie. true) if and only if both forward and reverse subsumption 
+    equivalent (ie. true) if and only if both forward and reverse subsumption
     hold; otherwise false.
     """
     _require_forward_prompt_coverage(m_ask_prompts, m_ask_init_alignment_df)
@@ -578,16 +572,8 @@ def consult_oracle_bidirectional(
         return None
 
     ordered_pred, ordered_conf, ordered_in, ordered_out = [], [], [], []
-    # BUGFIX (BIDIR-DECOMP): the two directional decisions were computed and then THROWN AWAY — only
-    # the AND-ed aggregate was persisted. But equivalence-by-mutual-subsumption is a LOGICAL AND over
-    # two independent oracle calls, and an AND-gate can only shrink the accept set: it necessarily
-    # RAISES specificity and LOWERS sensitivity. Whether that is a win is decided entirely by the two
-    # directional DISAGREEMENT rates — d+ on gold-positives and d- on gold-negatives — via
-    #
-    #     ΔJ = (d- − d+) / 2            [exchangeable directions; zero fitted parameters]
-    #
-    # and neither d+ nor d- is recoverable from the AND alone. Persist both directions, or the whole
-    # experiment is un-analysable after we have paid for it.
+    # Persist both directional decisions, not just the AND-ed aggregate: the directional
+    # disagreement rates the analysis needs are not recoverable from the AND alone.
     ordered_fwd, ordered_rev, ordered_fwd_conf, ordered_rev_conf = [], [], [], []
     skipped_count = 0
 
@@ -639,9 +625,8 @@ def consult_oracle_bidirectional(
 
         ordered_pred.append(agg_pred)
         ordered_conf.append(agg_conf)
-        # BUGFIX (BIDIR-USAGE): `(a or 0) + (b or 0)` recorded UNKNOWN usage as a literal 0,
-        # while unidirectional mode preserves None (nullable Int64). Sum only when at least
-        # one direction reported usage; keep None when neither did.
+        # Sum only when at least one direction reported usage; keep None (nullable Int64)
+        # when neither did, matching unidirectional mode.
         ordered_in.append(_sum_optional_tokens(fwd_usage.input_tokens, rev_usage.input_tokens))
         ordered_out.append(_sum_optional_tokens(fwd_usage.output_tokens, rev_usage.output_tokens))
 
@@ -653,8 +638,7 @@ def consult_oracle_bidirectional(
     m_ask_df_ext['Oracle_confidence'] = pd.Series(ordered_conf, dtype="float64")
     m_ask_df_ext['Oracle_input_tokens'] = pd.Series(ordered_in, dtype="Int64")      # nullable
     m_ask_df_ext['Oracle_output_tokens'] = pd.Series(ordered_out, dtype="Int64")    # nullable
-    # BIDIR-DECOMP: the two directional decisions the AND was taken over. Written ONLY on
-    # bidirectional runs (all of which are new run ids), so this is byte-inert on every existing cell.
+    # The two directional decisions the AND was taken over; written only on bidirectional runs.
     m_ask_df_ext['Oracle_fwd_prediction'] = ordered_fwd
     m_ask_df_ext['Oracle_rev_prediction'] = ordered_rev
     m_ask_df_ext['Oracle_fwd_confidence'] = pd.Series(ordered_fwd_conf, dtype="float64")

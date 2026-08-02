@@ -1,9 +1,6 @@
-"""
-logmap_llm.oracle.rag.index
-
-Embedding index for a typed example pool: builds (or loads from a keyed on-disk cache) an
-L2-normalised embedding matrix aligned to a list of Examples, and ranks a query embedding
-against it with a DETERMINISTIC tie-break (spec §6).
+"""Embedding index for a typed example pool: builds (or loads from a keyed on-disk
+cache) an L2-normalised embedding matrix aligned to a list of Examples, and ranks a
+query embedding against it with a deterministic tie-break.
 
 Cache key = sha256(dataset_sha, encoder repo+revision, encoder preprocessing_version,
 retriever preprocessing_version, language, entity kind, corpus_hash, encoder runtime versions).
@@ -29,11 +26,9 @@ def compute_index_hash(*, dataset_sha: str, encoder_repo: str, encoder_revision:
                        encoder_runtime: str) -> str:
     """Content address for a typed embedding index.
 
-    `encoder_runtime` is REQUIRED, and its absence was a real cache-collision hazard: every
-    other component (dataset, model repo, pinned revision, preprocessing, language, kind,
-    corpus) can be identical across two runs whose `torch`/`transformers` differ, and the
-    embeddings those produce are not. A cache built under one and served to the other would
-    be silently wrong while every recorded identity field agreed.
+    `encoder_runtime` must be part of the key: runs identical in every other component
+    can differ in `torch`/`transformers` versions and produce different embeddings, so
+    omitting it would let one run silently serve another's cache.
     """
     h = hashlib.sha256()
     for part in (dataset_sha, encoder_repo, encoder_revision, encoder_preprocessing,
@@ -103,19 +98,16 @@ class EmbeddingIndex:
     def _save(self, cache_dir: str) -> None:
         os.makedirs(cache_dir, exist_ok=True)
         path = self._cache_path(cache_dir, self.index_hash)
-        # Every writer gets a unique temporary file in the destination directory.
-        # A fixed ``<path>.partial`` races when separate experiment processes warm
-        # the same cache concurrently: one writer can replace or truncate another
-        # writer's temporary file. Each complete archive is published atomically;
-        # concurrent builders may replace one valid equivalent archive with another.
+        # Unique temp file per writer so concurrent cache warmers cannot clobber each
+        # other's partial files; each complete archive is published atomically (one
+        # valid equivalent archive may replace another).
         fd, tmp = tempfile.mkstemp(
             dir=cache_dir,
             prefix=f".ragindex-{self.index_hash}-",
             suffix=".partial",
         )
         try:
-            # np.savez appends ".npz" to string paths, so pass the already-open
-            # file handle to write exactly to our unique temporary path.
+            # np.savez appends ".npz" to string paths, so write via the open handle.
             with os.fdopen(fd, "wb") as fh:
                 np.savez(
                     fh,
@@ -129,8 +121,8 @@ class EmbeddingIndex:
                 os.fsync(fh.fileno())
             os.replace(tmp, path)
         finally:
-            # ``os.replace`` removes tmp on success; this cleans up interrupted
-            # or failed writers without touching another process's file.
+            # os.replace consumed tmp on success; this cleans up interrupted or
+            # failed writers without touching another process's file.
             try:
                 os.unlink(tmp)
             except FileNotFoundError:

@@ -22,13 +22,12 @@ def _file_sha256(path: str | Path | None) -> str | None:
 
 def compute_run_id(cfg: "LogMapLLMConfig", extra: dict | None = None) -> str:
     """
-    Content-addressed run id (spec §12) — a short sha256 over the semantically-identifying config
-    fields, so two runs collide on a path ONLY when they are the same experiment. This is what makes
-    a parallel model x prompt x few-shot grid safe under a shared output_dir: distinct configs get
-    distinct run ids -> distinct output subdirs -> no silent overwrite/misattribution.
+    Content-addressed run id: a short sha256 over the semantically-identifying config fields,
+    so two runs collide on a path only when they are the same experiment (distinct configs get
+    distinct output subdirs, making parallel grids under a shared output_dir safe).
 
-    `extra` folds in identity that lives outside the config (per spec §12): matcher JAR sha, parameters
-    sha + resolved launch dir, framework commit, serving engine+version, seed/repeat, evaluation protocol.
+    `extra` folds in identity that lives outside the config: matcher JAR sha, parameters sha +
+    resolved launch dir, framework commit, serving engine+version, seed/repeat, eval protocol.
     """
     def get_field(obj, name, default=None):
         return getattr(obj, name, default)
@@ -108,9 +107,9 @@ class PipelinePaths:
         self.refined_dir = Path(refined_dir).resolve()
         self.run_root = Path(run_root).resolve() if run_root is not None else None
         self.run_id = run_id
-        # isolate_run roots EVERY artifact under a content-addressed {run_id} subdir, so a parallel
-        # grid sharing one output_dir cannot silently overwrite/misattribute (spec §12). Opt-in:
-        # default False preserves single-run behaviour; the parallel scheduler sets it True.
+        # isolate_run roots every artifact under a content-addressed {run_id} subdir, so a parallel
+        # grid sharing one output_dir cannot silently overwrite/misattribute. Opt-in: default False
+        # preserves single-run behaviour; the parallel scheduler sets it True.
         if isolate_run and run_id:
             self.output_dir = self.output_dir / run_id
             self.initial_dir = self.initial_dir / run_id
@@ -128,8 +127,8 @@ class PipelinePaths:
     ) -> PipelinePaths:
         """
         Construct from a validated LogMapLLMConfig. Pass isolate_run=True (used by the parallel
-        scheduler) to root all artifacts under a content-addressed run-id subdir so concurrent grid
-        runs are collision-free; run_id_extra folds in matcher/params/engine/seed identity (spec §12).
+        scheduler) to root all artifacts under a content-addressed run-id subdir so concurrent
+        grid runs are collision-free; run_id_extra folds in matcher/params/engine/seed identity.
         """
         resolved_root = Path(run_root).resolve() if run_root is not None else None
         output_dir = (
@@ -189,7 +188,7 @@ class PipelinePaths:
 
     def logmap_mappings(self) -> Path:
         return self.initial_dir / f"{self.task_name}-logmap_mappings.txt"
-    
+
     def logmap_mappings_tsv(self) -> Path:
         return self.initial_dir / f"{self.task_name}-logmap_mappings.tsv"
 

@@ -53,11 +53,11 @@ class PartialReferenceEvaluationEngine(EvaluationEngine):
 
     def compute_stratified_global(self, system_path: Path, reference_path: Path, stratified_refs=None, **options) -> dict | None:
         """
-        Per-entity-type global P/R/F1 under PARTIAL gold-standard (KG) semantics (EA2, spec §9).
-        Each stratum is scored with ``compute_kg_partial_prf`` so the KG 1:1 ignored/FP/FN rule
-        applies per entity type — this is what isolates the KG property row for the §22.3 A/B
-        (kg-abox vs paired-control) analysis. Explicit reference_{class,property,instance}.tsv
-        files type the reference when provided; otherwise URI convention is used (diagnostic).
+        Per-entity-type global P/R/F1 under partial gold-standard (KG) semantics.
+        Each stratum is scored with ``compute_kg_partial_prf`` so the KG 1:1
+        ignored/FP/FN rule applies per entity type. Explicit
+        reference_{class,property,instance}.tsv files type the reference when
+        provided; otherwise URI convention is used (diagnostic).
         """
         return self._stratified_global(
             system_path, reference_path, compute_kg_partial_prf, stratified_refs=stratified_refs

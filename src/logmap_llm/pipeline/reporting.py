@@ -201,7 +201,7 @@ def get_gpu_info() -> str:
 
 
 def print_timing_summary(timing: TimingRecord, n_consultations: int) -> None:
-    """Print a human-readable timing summary (Step 6 equivalent)."""
+    """Print a human-readable timing summary."""
     step("[Step 6] Timing Summary")
     print()
     print(f"  Alignment          : {format_duration(timing.align_seconds)}")
@@ -222,7 +222,7 @@ def print_experimental_parameters(
     prompt_result: PromptBuildResult,
     timing: TimingRecord,
 ) -> None:
-    """Print experimental parameters (Step 7 equivalent)."""
+    """Print experimental parameters."""
     step("[Step 7] Experimental Parameters")
     print()
     print(f"  Task name           : {cfg.alignmentTask.task_name}")
@@ -290,10 +290,9 @@ def write_results_file(
         ("refined_alignment", run_paths.refined_mappings_tsv()),
         ("evaluation", run_paths.eval_json()),
         ("rag_fallback", run_paths.output_dir / "rag_fallback.json"),
-        # Negative-construction fallbacks are a DIFFERENT thing from retrieval-mode
-        # degradation: the block is complete and the query is not degraded. Registered
-        # here so the per-lane fallback rate is checksummed and reaches the audit;
-        # without both this and run._expected_artifacts it would be invisible.
+        # Negative-construction fallbacks are distinct from retrieval-mode degradation:
+        # the block is complete and the query is not degraded. Registering the artifact
+        # here checksums the per-lane fallback rate into the run result.
         ("rag_negative_fallback", run_paths.output_dir / "rag_negative_fallback.json"),
         ("rag_traces", run_paths.output_dir / "rag_traces.json"),
     ]

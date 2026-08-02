@@ -409,13 +409,8 @@ def _write_status(attempt: Path, **values: Any) -> None:
 
 def _child_environment() -> dict[str, str]:
     env = os.environ.copy()
-    # BUGFIX (CHILD-PYPATH): this file is <root>/logmap_llm/experiments/run.py, so the
-    # directory that puts `logmap_llm` on the child's sys.path is parents[2] in EVERY
-    # layout. parents[3] pointed one level above the checkout: children spawned with
-    # cwd=attempt could not import logmap_llm at all (ModuleNotFoundError), or worse,
-    # imported a DIFFERENT copy from site-packages/PYTHONPATH than the source whose
-    # core_sha256 verify_batch_identity just verified. The assertion keeps that identity
-    # guarantee honest rather than best-effort.
+    # parents[2] is the checkout root that puts `logmap_llm` on the child's sys.path;
+    # the check below ensures children import the same source verify_batch_identity verified.
     source_root = Path(__file__).resolve().parents[2]
     if not (source_root / "logmap_llm" / "__init__.py").is_file():
         raise BatchRunError(

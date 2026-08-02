@@ -2,7 +2,7 @@
 logmap_llm.evaluation.harness
 """
 from __future__ import annotations
- 
+
 import argparse
 import csv
 import json
@@ -10,7 +10,7 @@ import os
 import tempfile
 from pathlib import Path
 from typing import Any
- 
+
 from logmap_llm.evaluation.engines import (
     CustomEvaluationEngine,
     DeepOntoEvaluationEngine,
@@ -34,18 +34,10 @@ def select_engine(
     jvm_memory: str = "8g",
 ) -> EvaluationEngine:
     """
-    Selects an evaluation engine for the evaluate stage.
-    The choice is between PartialReference, Custom and DeepOnto
-    evaluation engines. The thinking is essentially:
-        1. Are we dealing with a KG-like task? => PartialReference
-        2. CustomEvaluationEngine is fine in most other cases, unless:
-        3. We want to verify our results from the custom implementation
-           agaisnt a trusted evaluator... OR: we want to evaluate subsumption
-           based ranking (in both cases, we need DeepOnto).
-    However, note that the path that scores subsumption-based ranking is
-    not yet implemented. The logic swicthes based on values provided within
-    the config.toml that is provided to the system, under [evaluate]
-        partial_reference: bool, force_custom: bool; else: DeepOnto
+    Select an evaluation engine, driven by the [evaluate] config flags:
+    partial_reference (KG-like tasks) => PartialReference; force_custom =>
+    Custom; else DeepOnto when available, falling back to Custom.
+    The subsumption-based ranking path is not yet implemented.
     """
     if partial_reference:
         return PartialReferenceEvaluationEngine()
@@ -58,8 +50,7 @@ def select_engine(
 
 
 ###
-# HELPERS
-#  (for printing)
+# PRINTING HELPERS
 ###
 
 _BREAKLINE_ON_ORACLE_METRIC_KEYS = frozenset({"Sensitivity"})
@@ -67,7 +58,6 @@ _BREAKLINE_ON_ORACLE_METRIC_KEYS = frozenset({"Sensitivity"})
 def _format_metric(value):
     if isinstance(value, float):
         return f"{value:.4f}"
-    # else:
     return value
 
 
@@ -154,17 +144,14 @@ def _write_false_mappings_csv(false_mappings: list[dict], output_json_path: Path
         raise
 
     return fm_path
- 
- 
+
+
 ###
 # HELPERS FOR AUTOMATIC FILE DETECTION
-# TODO: retire these operations as legacy when the process orchestration
-# layer is fleshed out; for now, we can retain these (as they can be quite
-# helpful for ad-hoc & quick testing operations; but they're coupled to 
-# any naming conventions for our specific experimental setting).
-# Also, they should be using the paths.py module (as mentioned: legacy code)
+# TODO: legacy, retire once the orchestration layer is fleshed out; handy for
+# ad-hoc testing but coupled to our naming conventions; should use paths.py.
 ###
- 
+
 def _find_system_mappings(results_dir: Path, task_name: str) -> Path | None:
     refined_dir = Path(results_dir) / "logmap-refined-alignment"
     if not refined_dir.is_dir():
@@ -175,7 +162,7 @@ def _find_system_mappings(results_dir: Path, task_name: str) -> Path | None:
     for f in refined_dir.glob("*mappings.tsv"):
         return f
     return None
- 
+
 def _find_oracle_predictions(results_dir: Path, task_name: str) -> Path | None:
     output_dir = Path(results_dir) / "logmapllm-outputs"
     if not output_dir.is_dir():
@@ -183,14 +170,13 @@ def _find_oracle_predictions(results_dir: Path, task_name: str) -> Path | None:
     for f in output_dir.glob("*predictions*.csv"):
         return f
     return None
- 
-def _find_reference_alignment(datasets_dir: Path, task_name: str) -> Path | None:
-    """Resolve a task's reference alignment by LAYOUT rather than by track name.
 
-    The on-disk layouts are: a task directory holding its own `refs_equiv/` (either directly
-    under `datasets_dir` or nested one level under a track directory), plus the two prefixed
-    forms the conference and KG tracks use. Probing layouts instead of enumerating track names
-    means a new track needs no change here, and no dataset directory name is baked into source.
+def _find_reference_alignment(datasets_dir: Path, task_name: str) -> Path | None:
+    """Resolve a task's reference alignment by probing on-disk layouts, not track names.
+
+    Layouts: the conference and KG prefixed forms, plus a task directory holding its
+    own `refs_equiv/` either directly under `datasets_dir` or nested one level under
+    any track directory — so a new track needs no change here.
     """
     datasets_dir = Path(datasets_dir)
     candidates: list[Path] = []
@@ -213,33 +199,20 @@ def _find_reference_alignment(datasets_dir: Path, task_name: str) -> Path | None
         if candidate.exists():
             return candidate
     return None
- 
+
 
 ###
 # EVALUATION ORCHESTRATION
-# ------------------------
-# LOCAL PRIVATE CONSTANTS:
-#   _VALID_METRICS:
-#       1. 'global': calculates the global alignment metrics (P/R/F1)
-#           alongside TP/FP/FN, system alignment size (ie. every mapping
-#           that was accepted by LogMap, both through its own alignment
-#           system, as well as after having refined the oracle mappings)
-#           in addition to the reference alignment size (the number of 
-#           mappings present in the reference alignment) and the source
-#           (the source is the evaluation backend / method eg. custom
-#            deeponto or partial reference/kg_partial)
-#       2. 'oracle': calculates the oracle metrics (P/R/F1/YI/Sen/Spec)
-#           it also includes the counts for the 'total candidates'
-#           which is (typically) the M_ask size; the 'oracle excluded'
-#           number, which represents mappings that could not be answered
-#           as well as 'partial scope excluded' (when using partial 
-#           reference alignments) and the number of errors + TP/TN/FP/FN
-#       3. 'ranking' -- this is currently a stub ready for subsumption
-#           ranking metrics.
-#
-#       _DEFAULT_METRICS:
-#           simply: which of the valid metrics do we use by default?
-#           they're specified here.
+# _VALID_METRICS:
+#   'global': global alignment P/R/F1 with TP/FP/FN, system and reference
+#       alignment sizes, and the evaluation backend as 'source'
+#       (custom, deeponto, or kg_partial for partial reference).
+#   'oracle': oracle metrics (P/R/F1/YI/Sen/Spec) plus TP/TN/FP/FN, error
+#       count, total candidates (typically the M_ask size), oracle-excluded
+#       (mappings that could not be answered), and partial-scope-excluded
+#       (when using partial reference alignments).
+#   'ranking': stub reserved for subsumption ranking metrics.
+# _DEFAULT_METRICS: the metrics used when none are requested.
 ###
 
 _VALID_METRICS = {"global", "oracle"}
@@ -291,15 +264,13 @@ def evaluate_alignment(
             raise FileNotFoundError(
                 "Oracle metrics were requested but the predictions artifact is missing"
             )
-    # BUGFIX (TRAIN-REF): a configured-but-missing train reference used to be skipped
-    # SILENTLY inside the engines (their `.exists()` guards), disabling train-pair
-    # exclusion so metrics were computed against the full reference under the
-    # exclusion condition's name. Validate here like the other inputs.
+    # Validate the train reference here: the engines silently skip a missing
+    # file, which would disable train-pair exclusion.
     if train_reference_path and not Path(train_reference_path).is_file():
         raise FileNotFoundError(
             f"Train reference alignment not found: {train_reference_path}"
         )
- 
+
     # pick an engine for this task based on the config flags
     engine = select_engine(
         partial_reference=partial_reference,
@@ -312,17 +283,17 @@ def evaluate_alignment(
         "engine": engine.name(),
         "metrics": list(metrics),
     }
- 
+
     if partial_reference:
         print("NOTE: Partial reference alignment (PARTIAL_SOURCE_COMPLETE_TARGET_COMPLETE semantics)")
- 
+
     ###
     # GLOBAL MATCHING
     ###
 
     if "global" in metrics:
         print("\n- - - - - - - - - - - - - - - - - - - - - - - -")
- 
+
         global_metrics = engine.compute_global(
             system_mappings_path,
             reference_path,
@@ -332,11 +303,9 @@ def evaluate_alignment(
         )
         results["global"] = global_metrics
         _print_global_metrics(global_metrics)
- 
-        # BUGFIX (STRAT-SUPPORT): a requested stratification the engine cannot provide was
-        # silently skipped — the same config produced strata via the custom engine on one
-        # machine and no strata via deeponto on another, with nothing recorded. Refuse
-        # instead of quietly running a different evaluation.
+
+        # Refuse a requested stratification the engine cannot provide rather
+        # than quietly running a different evaluation.
         if stratified_by_entity_type and not engine.supports("stratified_global"):
             raise RuntimeError(
                 f"stratified_by_entity_type was requested but engine '{engine.name()}' "
@@ -345,19 +314,19 @@ def evaluate_alignment(
             )
 
         if stratified_by_entity_type and engine.supports("stratified_global"):
- 
+
             strat_refs: dict[str, Path] = {}
             ref_dir = reference_path.parent
             for etype in ("class", "property", "instance"):
                 p = ref_dir / f"reference_{etype}.tsv"
                 if p.exists():
                     strat_refs[etype] = p
- 
+
             strat_kwargs: dict[str, Any] = {}
 
             if strat_refs:
                 strat_kwargs["stratified_refs"] = strat_refs
- 
+
             strat = engine.compute_stratified_global(
                 system_mappings_path,
                 reference_path,
@@ -372,10 +341,10 @@ def evaluate_alignment(
                 )
                 for etype, m in strat.items():
                     results[f"global_{etype}"] = m
- 
+
         if stratified_class_property:
             from logmap_llm.utils.misc import compute_conference_m1_m2_stratified
- 
+
             m1_m2 = compute_conference_m1_m2_stratified(
                 system_mappings_path=system_mappings_path,
                 reference_path=reference_path,
@@ -388,27 +357,27 @@ def evaluate_alignment(
                 _print_stratified_results(m1_m2, "Conference M1/M2 stratified evaluation")
                 for key, m in m1_m2.items():
                     results[f"global_{key}"] = m
- 
+
     ###
-    # RANKING METRICS
+    # ORACLE METRICS
     ###
-    
+
     if "oracle" in metrics:
         oracle_path = Path(oracle_predictions_path) if oracle_predictions_path else None
         if oracle_path is not None and oracle_path.exists():
             reference_pairs = load_mapping_pairs(reference_path)
             predictions = load_oracle_predictions(oracle_path)
- 
+
             oracle_metrics = engine.compute_oracle(
                 predictions,
                 reference_pairs,
             )
 
             results["oracle"] = oracle_metrics
- 
+
             print("\n- - - - - - - - - - - - - - - - - - - - - - - -")
             _print_oracle_metrics(oracle_metrics)
- 
+
             false_mappings = oracle_metrics.get("false_mappings", [])
             if false_mappings:
                 fm_path = _write_false_mappings_csv(
@@ -419,7 +388,7 @@ def evaluate_alignment(
                 print(f"\nFalse mappings ({len(false_mappings)} FP+FN) saved to: {fm_path}")
             else:
                 _false_mappings_path(output_json_path, oracle_path).unlink(missing_ok=True)
- 
+
     ###
     # WRITE JSON
     ###
@@ -436,13 +405,11 @@ def evaluate_alignment(
         output_json_path = Path(output_json_path)
         atomic_json_write_strict(output_json_path, serialisable, indent=2)
         print(f"\nEvaluation results saved to: {output_json_path}")
- 
+
     return results
 
 
- 
 def _build_arg_parser() -> argparse.ArgumentParser:
-    
     parser = argparse.ArgumentParser(description="LogMap-LLM Evaluation")
     parser.add_argument("--config", "-c", type=str)
     parser.add_argument("--task-name", type=str, default="")
@@ -459,17 +426,13 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--run-root", type=str, default=None)
     parser.add_argument("--no-cache", action="store_true", default=False)
     return parser
- 
- 
-
 
 
 def _run_from_config(args: argparse.Namespace) -> dict:
     """
-    canonical mode for invoking; loads and validate the TOML config via the shared
-    subprocess bootstrap (in logmap_llm.utils.subprocess) and derive paths through 
-    PipelinePaths (single source of truth, shared with the pipeline runner).
-    Dispatches to evaluate_alignment.
+    Canonical invocation mode: load and validate the TOML config via the shared
+    subprocess bootstrap, derive paths through PipelinePaths (shared with the
+    pipeline runner), then dispatch to evaluate_alignment.
     """
     from logmap_llm.utils.subprocess import subprocess_bootstrap
 
@@ -481,14 +444,11 @@ def _run_from_config(args: argparse.Namespace) -> dict:
 
     system_path = run_paths.refined_mappings_tsv()
     oracle_path = run_paths.predictions_csv()
-    # BUGFIX (EA1): Conference M1/M2 stratification must type URIs from the FULL initial
-    # alignment, not the uncertain M_ask subset. Using logmap_m_ask() left every confidently
-    # aligned class/property mapping typed 'UNKNO'->'other', dropping it from the strata and
-    # understating M1/M2 recall. The full alignment carries the same 5-col pipe format WITH
-    # the entityType column, so it gives full URI coverage. (initial_alignment_path is only
-    # consumed by the M1/M2 stratified path.)
+    # Conference M1/M2 stratification types URIs from the full initial alignment
+    # (5-col pipe format with the entityType column), not the uncertain M_ask
+    # subset; initial_alignment_path is only consumed by the M1/M2 path.
     initial_align_path = run_paths.logmap_mappings()
-    
+
     output_path = Path(args.output) if args.output else run_paths.eval_json()
 
     metrics = (
@@ -497,10 +457,9 @@ def _run_from_config(args: argparse.Namespace) -> dict:
         else list(eval_cfg.metrics)
     )
 
-    # BUGFIX (M1M2-TYPING): stratified M1/M2 was requested by config but a missing initial
-    # alignment silently degraded both buckets to the full pair set (see utils/misc.py) —
-    # sealed results then carried unstratified numbers under a stratified label. The
-    # pipeline promised the stratified condition, so its absence is fatal here.
+    # A missing initial alignment silently degrades both M1/M2 buckets to the
+    # full pair set (see utils/misc.py), so its absence is fatal when
+    # stratified_class_property is configured.
     if eval_cfg.stratified_class_property and not initial_align_path.exists():
         raise FileNotFoundError(
             "stratified_class_property=true requires the initial alignment for URI typing, "
@@ -525,13 +484,11 @@ def _run_from_config(args: argparse.Namespace) -> dict:
     )
 
 
-
 def _run_from_explicit_paths(args: argparse.Namespace) -> dict:
     """
-    Secondlry invocation mode, where all paths passed explicitly by/via the 
-    command line; this bypasses config loading and the bootstrap helper entirely
-    which results in no cfg object and no subprocess log (but allows more easily
-    testable code -- TODO test suite)
+    Secondary invocation mode: all paths passed explicitly on the command line,
+    bypassing config loading and the bootstrap (no cfg object, no subprocess
+    log). TODO: test suite.
     """
     metrics = (
         [metric.strip() for metric in args.metrics.split(",")]
@@ -553,11 +510,10 @@ def _run_from_explicit_paths(args: argparse.Namespace) -> dict:
     )
 
 
-
 def main() -> None:
     parser = _build_arg_parser()
     args = parser.parse_args()
-    
+
     if args.config:
         results = _run_from_config(args)
     else:
@@ -570,9 +526,7 @@ def main() -> None:
     }
 
     print(json.dumps(summary, indent=2, default=str))
- 
 
 
 if __name__ == "__main__":
     main()
- 

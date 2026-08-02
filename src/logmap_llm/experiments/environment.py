@@ -1,30 +1,14 @@
-"""
-logmap_llm.experiments.environment
+"""Deterministic record of the resolved Python environment a batch was generated in.
 
-The resolved Python environment a batch was generated in, as a deterministic payload.
-
-WHY THIS IS IN THE PACKAGE
-
-``source_digest()`` hashes only ``*.py`` under ``logmap_llm``, so ``core_sha256`` identifies
-the LogMap-LLM source and nothing else. The Java matcher *is* bound, through
-``input_fingerprints["alignmentTask.logmap_parameters_dirpath"]``. What was not bound is the
-Python dependency set: two runs with an identical ``core_sha256`` may have used different
-``torch``, ``transformers``, ``numpy`` or ``owlready2``. The drift is real — the checked-in
-runtime-RAG figures were rendered under Matplotlib 3.11.0 while ``uv.lock`` pinned 3.11.1.
-
-``campaign/record_environment.py`` recorded this *beside* a campaign as advisory provenance
-because binding it required editing ``src/``. This bump does that edit, so the payload moves
-here and the campaign tool imports it — ``plan.py`` cannot import from ``campaign/``, so
-"reuse it rather than reimplementing" has to run in this direction.
-
-WHAT IT IS AND IS NOT
-
-It is an OPTIONAL top-level manifest key, covered by the seal, so it cannot be edited after
-generation. It is **not** part of run identity: ``condition_id``, ``execution_hash``,
-``_job_id``, ``_alignment_id`` and ``plan_hash`` are built from explicit dicts that never see
-the manifest's top level, and deliberately so — two hosts running the same campaign must
-produce the same job identities even though their virtualenvs differ. Comparisons across
-hosts therefore compare manifests *modulo* ``environment`` and ``seal``.
+``core_sha256`` hashes only ``*.py`` under ``logmap_llm`` (the Java matcher is bound
+separately via ``input_fingerprints``), so it does not bind the Python dependency set;
+this payload records the package versions that can change a result.  It is an optional
+top-level manifest key covered by the seal, so it cannot be edited after generation,
+but it is deliberately not part of run identity: ``condition_id``, ``execution_hash``,
+``_job_id``, ``_alignment_id`` and ``plan_hash`` never include it, so hosts with
+different virtualenvs produce the same job identities, and cross-host comparisons
+compare manifests modulo ``environment`` and ``seal``.  Defined here rather than in
+``campaign/`` because ``plan.py`` cannot import from ``campaign/``.
 """
 from __future__ import annotations
 

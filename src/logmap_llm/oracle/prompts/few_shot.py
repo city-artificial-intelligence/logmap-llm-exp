@@ -1,19 +1,12 @@
 """
 logmap_llm.oracle.prompts.few_shot
 
-Few-shot example prompt generation: builds few-shot examples in the form:
-
-    (user_prompt, assistant_response) <-- these are pairs (tuples)
-
-^ pairs are used for prompt injection between the developer prompt and M_ask query
-
-These are formatted according to the same template function as the M_ask query
-where positive examples are either sampled from train.tsv (or LogMap anchors); 
-negatives are obtained via sibling replacement (hard) or a column-swap (random)
-(however, note that the class itself doesnt concern itself with sampling from
-LogMap anchors, it simply accepts a 'train_tsv', which, in our case, can either
-be a legitimate training set -- eg. one shipped by the track, or a constructed set of anchors)
-     -> handled by stage_two (build prompts) logic ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Builds few-shot (user_prompt, assistant_response) pairs, injected between the
+developer prompt and the M_ask query and formatted with the same template
+function as the M_ask query. Positives are sampled from the supplied train.tsv
+(which may be a track-shipped training set or a constructed set of LogMap
+anchors -- the caller decides); negatives come from sibling replacement
+("hard") or a column swap ("random").
 """
 from __future__ import annotations
 
@@ -53,9 +46,7 @@ from logmap_llm.ontology.sibling_retrieval import SiblingSelector  # type: ignor
 
 logger = logging.getLogger(__name__)
 
-# TODO: probably resolve ANSWERS using a helper `_resolve_answer` that reuses some
-# exitsing implementation elsewhere, for now this is fine; but ensure it matches/updates
-# with changes to constants.py 
+# TODO: resolve ANSWERS via a shared helper; keep in sync with constants.py.
 
 ANSWERS = {
     ("true_false", "structured"): ('{"answer": true}',  '{"answer": false}'),
@@ -66,14 +57,14 @@ ANSWERS = {
 
 class FewShotExampleBuilder:
     """
-    Builds few-shot examples for LLM oracle prompting
-    
-    train_path : fp to train.tsv (eg. a track-supplied training reference)
-    prompt_function : bound template fn \w signature (src_entity, tgt_entity) -> str
+    Builds few-shot examples for LLM oracle prompting.
+
+    train_path : path to train.tsv (eg. a track-supplied training reference)
+    prompt_function : bound template fn, signature (src_entity, tgt_entity) -> str
     m_ask_uri_pairs : exclusion set from M_ask (prevents leakage)
-    negative_strategy: "hard" (replaces \w sibling) or "random" (rand column swap)
+    negative_strategy : "hard" (sibling replacement) or "random" (column swap)
     sibling_selector : required if negative_strategy="hard"
-    answer and response (_format): ensures the correct formatting of prompts
+    answer_format / response_mode : control the answer-string formatting
     """
 
     def __init__(
@@ -154,14 +145,10 @@ class FewShotExampleBuilder:
 
     def _resolve_entities(self, src_uri: str, tgt_uri: str):
         """
-        Resolves two URIs to entity objects \w type-agnostic dispatch
-        which is unlike the prior version, which only reliably worked 
-        for CLS. Returns (src_entity, tgt_entity) or None.
-        This now uses resolve_entity() from ontology.object which probes 
-        class, property, and instance registries (in that order); this 
-        allows few-shot examples to function as intended on the KG tracks 
-        or any alignment task \w INST anchors (without breaking class-only
-        tracks \w CLS anchors)
+        Resolve two URIs to entity objects with type-agnostic dispatch.
+        Uses resolve_entity(), which probes class, property, and instance
+        registries in that order, so INST anchors (eg. KG tracks) work as
+        well as CLS anchors. Returns (src_entity, tgt_entity) or None.
         """
         from logmap_llm.ontology.object import resolve_entity
         try:
@@ -324,10 +311,9 @@ class FewShotExampleBuilder:
                 try:
                     ranked = self.sibling_selector.select_siblings(tgt_entity)
                 except NotImplementedError:
-                    # tgt is a prop or inst — sibling selection does not yet
-                    # implement -- no point retrying \w another pair if the
-                    # examples are non-CLS's every retry will cause the same
-                    # error (as such, revert to rand negatives)
+                    # tgt is a prop/inst — sibling selection is CLS-only, and
+                    # retrying another pair would hit the same error, so fall
+                    # back to random negatives
                     self._hn_unsupported_entity += 1
                     warning("Encountered a non-CLS. Hard negs are CLS-only (for now, see doc-str).")
                     warning("Falling back to random negatives during this call.")
@@ -355,7 +341,7 @@ class FewShotExampleBuilder:
                 failure_reasons.append(f"unexpected: {type(e).__name__}: {e}")
                 continue
 
-        # retries exhausted; fall back to random (\w consolidated warnings)
+        # retries exhausted; fall back to random
         self._hn_exhausted_to_random += 1
 
         if VERBOSE:
@@ -371,10 +357,9 @@ class FewShotExampleBuilder:
 
     def _report_hard_negative_audit(self) -> dict:
         """
-        Return a snapshot of hard-negative construction outcomes
-        intended to be logged once at the end of build_examples
-        allows users to see whether the 'hard' strategy worked vs failed
-        also enables serialisation for analysis \w few-shot examples
+        Return a snapshot of hard-negative construction outcomes, logged once
+        at the end of build_examples (shows whether the 'hard' strategy worked
+        vs failed; also serialisable for analysis).
         """
         eligible = self._hn_succeeded + self._hn_exhausted_to_random
         total_calls = eligible + self._hn_unsupported_entity
@@ -394,26 +379,26 @@ class FewShotExampleBuilder:
     def _make_random_negative(self) -> tuple[str, str] | None:
         _count = 0 # kinda hacky (only useful when VERBOSE & VERY_VERBOSE)
         for _count in range(DEFAULT_MAX_SAMPLE_RETRIES):
-            
+
             src_uri_1, _tgt = self._next_train_pair()
             _src, tgt_uri_2 = self._next_train_pair()
-            
+
             if self._is_in_m_ask(src_uri_1, tgt_uri_2):
                 if VERBOSE and VERY_VERBOSE:
                     debug("(_make_random_negative) Encountered a collision when searching for random negatives.")
                 continue
-            
+
             entities = self._resolve_entities(src_uri_1, tgt_uri_2)
 
             if entities is not None:
                 return self._format_example(entities[0], entities[1], label=False)
-            
+
         if VERBOSE and VERY_VERBOSE:
             if _count > 0:
                 debug(f"(_make_random_negative) Unable to construct a random negative (after {_count} tries).")
             else:
                 debug(f"(_make_random_negative) Unable to construct a random negative, since none exist.")
-        
+
         return None
 
 
@@ -436,9 +421,9 @@ class FewShotExampleBuilder:
         examples = []
 
         if not bidirectional and contrastive:
-            
+
             # produce interleving contrastive examples
-            
+
             for i in range(k):
                 if i % 2 == 0:
                     ex = self._make_positive_example()
@@ -446,12 +431,12 @@ class FewShotExampleBuilder:
                     ex = self._make_negative_example()
                 if ex is not None:
                     examples.append(ex)
-        
+
                 if VERBOSE and VERY_VERBOSE and ex is None:
                     debug("(build_examples) Unable to construct example.")
                     debug("(build_examples)   (NOT bidirectional & CONTRASTIVE).")
 
-        elif not bidirectional and not contrastive: 
+        elif not bidirectional and not contrastive:
 
             # produce positive examples up to N examples
 
@@ -527,16 +512,16 @@ class FewShotExampleBuilder:
     def build_examples(self, k: int, bidirectional: bool = False, contrastive: bool = True) -> list[tuple[str, str]]:
         """
         Build k few-shot examples: list of (user_prompt, assistant_response) tuples.
-        bidirectional mode produces two prompts per resolved entity pair (forward: f(src, tgt); 
-        reverse: f(tgt, src)), each with the same equivalence label. This is consistent with the 
-        "equivalence-via-mutual-subsumption" semantics used in consult_oracle_bidirectional.
+        bidirectional mode produces two prompts per resolved entity pair (forward:
+        f(src, tgt); reverse: f(tgt, src)), each with the same equivalence label,
+        matching the equivalence-via-mutual-subsumption semantics used in
+        consult_oracle_bidirectional.
         """
         if k <= 0:
             return []
 
         examples: list[tuple[str, str]] = []
 
-        # how many entity pairs do we need?
         # bidirectional produces 2 examples per pair, so we need ceil(k/2) pairs
         n_pairs_needed = math.ceil(k / 2) if bidirectional else k
 
@@ -612,12 +597,11 @@ def build_few_shot_examples(
     answer_format: str = "true_false",
     response_mode: str = "structured",
 ) -> list[tuple[str, str]]:
-    """Convenience function to build few-shot examples in one call"""
+    """Convenience function to build few-shot examples in one call."""
     if k <= 0:
         return []
-    
-    # build direction-agnostic 
-    # exclusion set from m_ask
+
+    # build direction-agnostic exclusion set from m_ask
     m_ask_exclusion = set()
     for _, row in m_ask_df.iterrows():
         m_ask_exclusion.add(frozenset({row.iloc[0], row.iloc[1]}))

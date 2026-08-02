@@ -1,13 +1,13 @@
 """
 logmap_llm.oracle.prompts.routing
 
-Pure (dependency-free) prompt-lane routing for M_ask candidates. Extracted from templates.py
-so the routing decision is unit-testable WITHOUT owlready2 (which the CPU test env lacks).
+Pure (dependency-free) prompt-lane routing for M_ask candidates, importable without
+owlready2 so the routing decision is unit-testable in a CPU-only environment.
 
-PT-2 (BUG_LEDGER.md): the prompt builder used to discard LogMap's authoritative entityType
-column and re-derive the type from the ontology, which (a) collapsed DPROP into the OPROP lane
-and (b) mis-routed OWL2-punned (class+property) URIs. These helpers prefer the authoritative
-LogMap tag and fall back to the derived type only when LogMap gave none.
+These helpers prefer LogMap's authoritative entityType tag and fall back to the
+ontology-derived type only when LogMap gave none: re-deriving the type from the
+ontology collapses DPROP into the OPROP lane and mis-routes OWL2-punned
+(class+property) URIs.
 """
 from __future__ import annotations
 

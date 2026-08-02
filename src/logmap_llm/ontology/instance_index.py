@@ -1,28 +1,20 @@
 """
 logmap_llm.ontology.instance_index
 
-A deterministic type -> instances index, built ONCE per ontology from the rdflib graph.
+A deterministic type -> instances index, built once per ontology from the rdflib graph.
 
-Why this exists
----------------
-``SiblingSelector`` was class-only: sibling means "another child of my parent", which needs a
-class hierarchy. Instances have no such hierarchy, and the module's own docstring records the
-planned alternative — "for inst resolution, we will get better results by simply ranking all
-instances with a matching type identity". That is what this index supplies, for
-``paired-sibling-v2`` on the Knowledge Graph track (decision D-a in HANDOFF_CORE_BUMP.md).
+Instances have no class hierarchy, so a "sibling" instance is another individual sharing a
+type identity; this index supplies those candidates. Two properties are enforced here
+rather than left to the caller:
 
-Two properties matter and are enforced here rather than left to the caller:
+**Built once, never per query.** A per-query walk over the graph would be quadratic; the
+index is memoised per ontology on a content fingerprint.
 
-**Built once, never per query.** The KG track has 9,728 INST retrieval traces; a per-query
-walk over the graph would be quadratic in a way nobody would notice until a campaign stalled.
-The index is memoised per ontology on a content fingerprint.
-
-**Type specificity is visible.** Measured on the real data, a large share of dbkwik subjects
-carry no type other than ``owl:Thing`` — 6,643 of them in ``swg.rdf``. A shared ``owl:Thing``
-makes "sibling" mean "any resource in this ontology", which is not a near-miss and would
-quietly contaminate the KG arm of the experiment. So specific types are preferred, the
-uninformative bucket is used only when nothing else is shared, and which one was used is
-recorded on the constructed negative so the rate is reportable per lane.
+**Type specificity is visible.** Many dbkwik subjects carry no type other than
+``owl:Thing``, and a shared ``owl:Thing`` makes "sibling" mean "any resource in this
+ontology", which is not a near-miss. Specific types are preferred, the uninformative
+bucket is used only when nothing else is shared, and which one was used is recorded on
+the constructed negative so the rate is reportable per lane.
 """
 from __future__ import annotations
 
@@ -47,9 +39,8 @@ INDEX_SCHEMA_VERSION = "instance-type-index-v1"
 class IndexedInstance:
     """A candidate sibling instance, carrying just enough to rank and to filter by label.
 
-    Deliberately NOT an ``InstanceEntity``: constructing one calls ``getInstanceContext``,
-    which walks the graph for that subject. Doing that for every candidate in a type bucket
-    would make sibling selection cost a graph walk per candidate per query.
+    Deliberately not an ``InstanceEntity``: constructing one calls ``getInstanceContext``,
+    which walks the graph for that subject — a graph walk per candidate per query.
     """
     uri: str
     label: str
@@ -87,10 +78,8 @@ class InstanceTypeIndex:
 
         Order is deterministic: type buckets in sorted type order, each bucket already
         sorted by ``(label, IRI)``, de-duplicated across buckets. ``limit`` stops early on
-        exactly that stream, so it is identical to slicing the full union — but it matters:
-        the largest real bucket (``dbkwik ontology/Image`` on memory-beta) holds 43,962
-        members, and materialising it per query costs ~4 ms against ~0.02 ms for the
-        50 the caller will actually keep.
+        exactly that stream, so it is identical to slicing the full union without
+        materialising an oversized bucket (the largest real one holds ~44k members).
         """
         wanted = [str(uri) for uri in type_uris if str(uri)]
         specific = sorted(uri for uri in wanted if uri not in UNINFORMATIVE_TYPES)
@@ -131,8 +120,7 @@ def build_instance_type_index(ontology) -> InstanceTypeIndex:
     """Build the index with two passes over the rdflib graph: rdf:type, then rdfs:label.
 
     Labels are collected in the same build rather than looked up per candidate, because
-    ordering a type bucket requires the label of every member of that bucket — up to several
-    thousand — and doing that per query is exactly the cost this index exists to avoid.
+    ordering a type bucket requires the label of every member of that bucket.
     """
     graph = ontology.getGraph()
     ontology_iri = ""

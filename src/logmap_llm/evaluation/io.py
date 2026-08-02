@@ -16,7 +16,7 @@ from logmap_llm.utils.data import normalise_prediction_column
 
 def _is_header_line(first_field: str) -> bool:
     """
-    check the first field in a TSV to see if it qualifies as a HEADER
+    check the first field in a TSV to see if it qualifies as a header
     for an evaluation mappings file (ie. has been converted to DeepOnto
     TSV format for evaluation purposes - usually)
     """
@@ -33,17 +33,14 @@ def load_mapping_pairs(path: Path, sep: str = "\t") -> set[tuple[str, str]]:
         1. DeepOnto-style TSV \\w 'SrcEntity\\tTgtEntity\\tScore'
         2. OAEI-style TSV without a header row
 
-    Pipe-delimited LogMap output is NOT parsed by the tab default — pass
-    sep='|' explicitly. (The docstring used to claim LogMap support while
-    the default separator silently parsed such files to an empty set.)
+    Pipe-delimited LogMap output is not parsed by the tab default — pass
+    sep='|' explicitly.
 
     Note: this function does not consider additional columns, such as
     confidence, relation type, entity type, etc. it just loads the mappings
 
-    BUGFIX (PAIR-LOAD): malformed (fewer-than-two-field) lines used to be dropped
-    silently, so a wrong-separator file scored as an EMPTY alignment — recall became a
-    measured 0.0 rather than an error. A non-empty file yielding zero pairs now raises,
-    and partial drops are logged.
+    A non-empty file that yields zero pairs raises ValueError (wrong separator
+    or malformed file), and partial drops of malformed lines are logged.
     """
     mapping_pairs_from_disk: set[tuple[str, str]] = set()
     data_lines = 0
@@ -99,7 +96,7 @@ def load_mapping_pairs(path: Path, sep: str = "\t") -> set[tuple[str, str]]:
 
 def _coerce_prediction(value) -> bool | None:
     """
-    coerces an 'Oracle_prediction' 
+    coerces an 'Oracle_prediction'
     f : (True, False, 'error', 'skipped', NaN, None, *) -> bool | None
     """
     if value is True or value is False:
@@ -126,18 +123,18 @@ def load_oracle_predictions(filepath: Path) -> list[dict]:
     """
     loads oracle predictions CSV into a list of prediction dicts
     CSVs must have (or are expected to have) at least three columns:
-    
+
         - source_entity_uri : str
         - target_entity_uri : str
         - Oracle_prediction : bool | Literal['error', 'skipped']
 
         - Oracle_confidence : float [0, 1] | NaN [OPTIONAL?]
-    
-    then additional columns, such as oracle_input_tokens, oracle_output_tokens,
-    original m_ask fields; are preserved (in the CSV), but ignored 
-    by this fn (they are used for downstream purposes -- analysis, etc.)
 
-    the list[dict] returned is a list of prediction dicts, where each prediction 
+    additional columns (oracle_input_tokens, oracle_output_tokens, original
+    m_ask fields, etc.) are ignored by this fn but preserved in the CSV for
+    downstream analysis
+
+    the list[dict] returned is a list of prediction dicts, where each prediction
     dict has shape:
         {
             "source":     str,           # source_entity_uri
@@ -163,14 +160,13 @@ def load_oracle_predictions(filepath: Path) -> list[dict]:
 
 
 
-
 def load_entity_types_from_initial_alignment(initial_alignment_path: Path) -> dict[str, str]:
     """
     given a LogMap initial alignment file \w the m_ask format, ie.
         source|target|relation|confidence|entityType
-    produce a map : URI -> entity_type; used by the conference 
+    produce a map : URI -> entity_type; used by the conference
     stratified-metrics path to classify mapping pairs as:
-         - M1 (class) 
+         - M1 (class)
          - M2 (property)
     returns an empty dict if the file does not exist or is not parseable
     """
@@ -197,9 +193,9 @@ def load_entity_types_from_initial_alignment(initial_alignment_path: Path) -> di
 def detect_tsv_format(filepath: Path) -> str:
     """
     observe the first line of a TSV file and return a short format tag:
-        - deeeponto (if the file starts \w deeponto header)
+        - 'deeponto' (if the file starts \w a deeponto header)
         - else: 'oaei'
-    used to decide whether a TSV file must be 
+    used to decide whether a TSV file must be
     converted prior to using DeepOnto
     """
     with open(filepath) as fp:
@@ -214,12 +210,12 @@ def detect_tsv_format(filepath: Path) -> str:
 
 def convert_to_deeponto_tsv(input_path: Path, output_path: Path) -> None:
     """
-    rewrites an 'OAEI-style' TSV (\w no header, variable column count) 
+    rewrites an 'OAEI-style' TSV (\w no header, variable column count)
     as a deeponto style TSV \w header + three columns
     the file @ input_path should have at least 2 tab sep'd fields per row
     representing (source, target) mappings; if a fourth column is present
     we assume it contains a confidence score and is parsed as such,
-    otherwise score defaults to 1.0; remaining fields are disgarded
+    otherwise score defaults to 1.0; remaining fields are discarded
     writes a new file at 'output_path' \w void return
     """
     with open(input_path, "r") as f_in, open(output_path, "w") as f_out:
@@ -241,10 +237,8 @@ def convert_to_deeponto_tsv(input_path: Path, output_path: Path) -> None:
 
 def ensure_deeponto_format(filepath: Path, tmpdir: str) -> Path:
     """
-    returns a filepath to a deeponto TSV version of the input file
-    @ the filepath argument (assuming it matches the neccesary format)
-    the neccesary format is described in comments in previous 
-    fn doc-strings (above)
+    returns a filepath to a deeponto TSV version of the input file,
+    converting into tmpdir first when the input is not already deeponto format
     """
     if detect_tsv_format(filepath) == "deeponto":
         return filepath

@@ -9,8 +9,8 @@ class EvaluationEngine(ABC):
     @abstractmethod
     def name(self) -> str:
         """
-        Return a short identifier for this engine.
-        Used in the 'source' field of returned metric dicts.
+        Return a short identifier for this engine (used in the 'source'
+        field of returned metric dicts).
         """
         ...
 
@@ -40,7 +40,7 @@ class EvaluationEngine(ABC):
         ...
 
     ###
-    # OPTIONAL METHODS
+    # Optional methods
     ###
 
     def compute_stratified_global(self, system_path: Path, reference_path: Path, **options) -> dict | None:
@@ -49,11 +49,8 @@ class EvaluationEngine(ABC):
         """
         return None
 
-    # BUGFIX (EA2, spec §9): stratified-global was dead — the harness gated it on
-    # supports('stratified_global'), which no concrete engine returned True for, so KG
-    # class/property/instance strata never computed (and neither did the §22.3 property-row
-    # A/B isolation). Engines that CAN stratify override compute_stratified_global to call
-    # this shared helper with their own P/R/F function (compute_prf for complete GS,
+    # Engines that can stratify override compute_stratified_global to call this
+    # helper with their own P/R/F function (compute_prf for complete GS,
     # compute_kg_partial_prf for KG partial GS) and flip supports('stratified_global').
     def _stratified_global(
         self,
@@ -63,14 +60,14 @@ class EvaluationEngine(ABC):
         stratified_refs: dict[str, Path] | None = None,
     ) -> dict:
         """
-        Partition system and reference alignments into class/property/instance strata and
-        score each with ``prf_fn(system_stratum, reference_stratum)``.
+        Partition system and reference alignments into class/property/instance
+        strata and score each with ``prf_fn(system_stratum, reference_stratum)``.
 
-        Reference partition: an explicit per-type reference file (stratified_refs[etype],
-        e.g. reference_property.tsv) is used when supplied (the accurate path); otherwise the
-        full reference is partitioned by URI convention (classify_mapping_pair). The SYSTEM is
-        always partitioned by URI convention, since a system mapping carries no gold typing.
-        Strata with neither system nor reference mappings are omitted (undefined, not zero).
+        An explicit per-type reference file (stratified_refs[etype]) is used when
+        supplied; otherwise the full reference is partitioned by URI convention
+        (classify_mapping_pair). The system is always partitioned by URI
+        convention, since a system mapping carries no gold typing. Strata with
+        neither system nor reference mappings are omitted (undefined, not zero).
         """
         from logmap_llm.evaluation.io import load_mapping_pairs
         from logmap_llm.evaluation.metrics import classify_mapping_pair
@@ -95,14 +92,12 @@ class EvaluationEngine(ABC):
     def compute_ranking(self, test_cands_path: Path, oracle_predictions_path: Path, **options) -> dict | None:
         """
         Optional: compute local ranking metrics (MRR, Hits@K).
-        NOTE: this is a stub for embedding-based ranking (ie. \w onto embs).
+        Stub for embedding-based ranking (ie. \\w onto embs).
         """
         return None
 
     ###
-    # CAPABILITY QUERY
-    ##################
-    # check to see what 'this' engine supports.
+    # Capability query
     ###
 
     def supports(self, metric_name: str) -> bool:
@@ -110,4 +105,3 @@ class EvaluationEngine(ABC):
         Return True if this engine can compute the named metric.
         """
         return metric_name in {"global", "oracle"}
-    

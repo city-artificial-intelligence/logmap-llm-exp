@@ -23,9 +23,9 @@ def load_config(
 ) -> LogMapLLMConfig:
     """Load and validate a TOML config without terminating the interpreter.
 
-    This is the public library seam used by experiment planners and notebooks.
-    File, TOML, and Pydantic validation errors deliberately propagate to the
-    caller; CLI-facing code may catch and render them separately.
+    Public library seam for experiment planners and notebooks. File, TOML, and
+    Pydantic validation errors propagate to the caller; CLI-facing code may
+    catch and render them separately.
     """
     path = Path(config_path)
     if not path.is_file():
@@ -73,13 +73,13 @@ def load_and_validate_config(
 
     if reporting:
         success(f"configuration validated: {config_path}")
-    
+
     return cfg
 
 
 def inspect_and_mask_api_key(key: str) -> str:
     """Mask an API key for display, showing only first and last 4 chars"""
-    if key is None: # guards agaisnt None
+    if key is None: # guards against None
         return "<unset>"
     if key == 'EMPTY':
         return key
@@ -93,7 +93,7 @@ def parse_config_into_list(
     if not isinstance(config_dict, dict):
         return [(key_prefix, config_dict)]
     if not config_dict and key_prefix:
-        return [(key_prefix, {})] # antisipate empty dicts
+        return [(key_prefix, {})] # anticipate empty dicts
     kv_config_pairs = []
     for key, value in config_dict.items():
         extended_key = f"{key_prefix}.{key}" if key_prefix else key

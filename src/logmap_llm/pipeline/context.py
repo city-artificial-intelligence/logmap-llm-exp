@@ -5,13 +5,9 @@ logmap_llm.pipeline.context — provides the pipeline execution context
 
     https://github.com/jonathondilworth/logmap-llm/blob/jd-extended/pipeline_steps.py
 
-NOTE: This is quite similar to what you encounter in training pipelines
-it's not atypical to see a huge 'config' or parameters object to be shared
-between each stage in a training pipeline (think: wandb, etc).
-
-NOTE: When this context object grows or needs to reach deeply nested 
-modules, consider whether those modules should receive specific fields 
-or should simply accept full context.
+NOTE: When this context object grows or needs to reach deeply nested modules,
+consider whether those modules should receive specific fields or should simply
+accept full context.
 """
 from __future__ import annotations
 

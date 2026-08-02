@@ -1,9 +1,8 @@
 """
-logmap_llm.ontology.entities
+logmap_llm.ontology.object
 
-Ontology entity classes. Provides the OntologyEntity ABC, ClassEntity 
-(renamed from OntologyEntryAttr in prior version), PropertyEntity,
-InstanceEntity, and the resolve_entity() dispatch function
+Ontology entity classes: the OntologyEntity ABC, ClassEntity, PropertyEntity,
+InstanceEntity, and the resolve_entity() dispatch function.
 """
 from __future__ import annotations
 
@@ -88,13 +87,8 @@ class OntologyEntity(ABC):
     @property
     def iri(self) -> str:
         """
-        A previously overlooked (during refactoring) late addition (12th April 26):
-        Includes the canonical IRI, as accessible from any class that extends the
-        ABS by directly calling <TYPE>Entity.iri (which would be most intuitive)
-        and has been the source of a great deal of pain!
-        Its now sourced from self.annotation["uri"], which every subclass populates
-        via their constructor (during 'annotate_entry); may raise a key error if
-        some problem has occurred during initialisation (ie. is a feature, not a bug)
+        Canonical IRI, read from self.annotation["uri"], which every subclass
+        populates in its constructor; raises KeyError if initialisation failed.
         """
         return self.annotation["uri"]
 
@@ -267,9 +261,8 @@ class ClassEntity(OntologyEntity):
 
     def get_siblings(self, max_count: int = 2) -> list[ClassEntity]:
         """
-        gets sibling classes (sharing a direct parent - excluding self)
-        siblings are sorted alphabetically by preferred label for 
-        reproducibility and capped at max_count
+        Sibling classes (sharing a direct parent, excluding self), sorted
+        alphabetically by preferred label for reproducibility and capped at max_count.
         """
         siblings: set[ClassEntity] = set()
         for parent in self.get_direct_parents():
@@ -306,12 +299,10 @@ class ClassEntity(OntologyEntity):
     def get_attribute_relatives_names(
         self, relatives_name: str, name_type: str
     ) -> list[list[str]]:
-        # BUGFIX (REL-ORDER / PT-1 class): get_parents()/get_children() are sets of
-        # ClassEntity hashed by owlready2 object IDENTITY, so the outer order followed
-        # memory addresses and each inner set rendered in PYTHONHASHSEED order — and the
-        # legacy hierarchy templates interpolate this value verbatim into prompt text.
-        # Sort entities by IRI and each name group alphabetically; a nameless relative
-        # falls back to its IRI rather than an object repr.
+        # get_parents()/get_children() are sets hashed by object identity and the hierarchy
+        # templates interpolate this value verbatim into prompt text, so sort entities by
+        # IRI and each name group alphabetically for deterministic output; a nameless
+        # relative falls back to its IRI rather than an object repr.
         attribute_function = (
             self.get_parents if relatives_name == "parents" else self.get_children
         )
@@ -383,8 +374,8 @@ class PropertyEntity(OntologyEntity):
                 f"Property {prop_uri} not found in ontology."
             )
         self.onto = onto
-        # PT-2: distinguish data properties (datatype-valued) from object properties so their
-        # range renders as a datatype, not an empty object-property range ("connects X to something").
+        # Distinguish data properties (datatype-valued) from object properties so their
+        # range renders as a datatype, not an empty object-property range.
         self.is_data_property = onto.isDataProperty(self.prop)
         self.annotation = {
             "property": self.prop,
@@ -393,8 +384,8 @@ class PropertyEntity(OntologyEntity):
             "synonyms": onto.getSynonymsNames(self.prop),
             "all_names": onto.getAnnotationNames(self.prop),
         }
-        # Populate domain/range names — for a data property the range is a DATATYPE, resolved
-        # via getDatatypeRangeNames (getRangeNames only handles class-valued object-property ranges).
+        # For a data property the range is a datatype, resolved via getDatatypeRangeNames
+        # (getRangeNames only handles class-valued object-property ranges).
         self.annotation["domain_names"] = onto.getDomainNames(self.prop)
         if self.is_data_property:
             self.annotation["range_names"] = onto.getDatatypeRangeNames(self.prop)
@@ -414,10 +405,10 @@ class PropertyEntity(OntologyEntity):
     ) -> None:
         """Create the minimal property view for an authoritative ABox predicate.
 
-        ``kg-abox`` deliberately exposes predicates which occur in triples even when the
-        ontology never declares them as ``owl:ObjectProperty``/``owl:DatatypeProperty``.
-        Such a predicate has no declared domain or range, but LogMap's M_ask type and the
-        URI still provide enough information to ask a label-only property question.
+        ``kg-abox`` exposes predicates that occur in triples even when the ontology never
+        declares them as ``owl:ObjectProperty``/``owl:DatatypeProperty``; such a predicate
+        has no declared domain or range, but LogMap's M_ask type and the URI are enough
+        for a label-only property question.
         """
         self.onto = onto
         self.is_data_property = bool(is_data_property_hint)
@@ -498,13 +489,10 @@ class PropertyEntity(OntologyEntity):
 
     def get_characteristics(self) -> list[str]:
         """Return property characteristics (transitive, symmetric, etc.)."""
-        # BUGFIX (PROP-CHARS): owlready2 (0.50) declares characteristics as membership of
-        # owlready2.TransitiveProperty etc. in prop.is_a — it exposes NO is_transitive /
-        # is_symmetric / is_functional / is_inverse_functional attributes. The previous
-        # getattr probes therefore always took their False default and this method always
-        # returned [], so the 'prop_with_inverse_and_chars' template silently omitted the
-        # characteristics clause it is named for. _URIBackedUndeclaredProperty carries no
-        # is_a, hence the () default keeps undeclared handles characteristic-free.
+        # owlready2 declares characteristics as membership of owlready2.TransitiveProperty
+        # etc. in prop.is_a (there are no is_transitive-style attributes).
+        # _URIBackedUndeclaredProperty carries no is_a, so the () default keeps undeclared
+        # handles characteristic-free.
         chars = []
         try:
             ancestry = list(getattr(self.prop, "is_a", ()) or ())
@@ -527,7 +515,7 @@ class PropertyEntity(OntologyEntity):
             return None
         labels = self.onto.getPreferredLabels(inv)
         return next(iter(labels), None) if labels else str(inv.name)
-    
+
     def get_deterministic_inverse_name(self) -> str | None:
         """Return the label of the inverse property, or None."""
         inv = getattr(self.prop, 'inverse_property', None)
@@ -656,11 +644,11 @@ def resolve_entity(uri: str, onto: OntologyAccess):
 def resolve_entity_as(uri: str, onto: OntologyAccess, lane: str):
     """Resolve a URI respecting an authoritative LogMap lane hint.
 
-    ``resolve_entity`` tries class FIRST, so an OWL2-punned URI (both a class and a property/
-    individual) resolves as a class even when LogMap authoritatively tagged the mapping OPROP/
-    DPROP/INST. That silently drops the candidate downstream (audit FIX-3). This variant tries the
-    hinted kind first. An authoritative OPROP/DPROP URI gets a minimal property view even when it
-    has no OWL declaration; less-specific hints retain the legacy class-first fallback.
+    ``resolve_entity`` tries class first, so an OWL2-punned URI (both a class and a
+    property/individual) would resolve as a class even when LogMap tagged the mapping
+    OPROP/DPROP/INST; this variant tries the hinted kind first. An authoritative
+    OPROP/DPROP URI gets a minimal property view even without an OWL declaration;
+    less-specific hints retain the class-first fallback.
     """
     if lane == "CLS":
         declared = onto.getClassByURI(uri)
@@ -692,7 +680,6 @@ def resolve_entity_as(uri: str, onto: OntologyAccess, lane: str):
                 pass
     # class hint, or the hinted kind was not found -> default class-first resolution
     return resolve_entity(uri, onto)
-
 
 
 # Backward-compatible aliases

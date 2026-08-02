@@ -1,20 +1,13 @@
 """
-logmap_llm.pipeline.mediation_isolation  —  P5.5 isolation-gate harness (T1–T4 support)
+Isolation harness for the mediation arm; used only by the mediation isolation tests, never
+imported by the baseline pipeline.
 
-Add-only. Used ONLY by the mediation isolation gate (tests/test_mediation.py) and the
-`reports/`-driving verification workflow. NOT imported by the baseline pipeline.
-
-Provides:
-  * `run_standard_stub_arm(...)` — a representative LogMapLLM-STANDARD run built ONLY from
-    baseline code (`oracle.consultation.consult_oracle_for_mappings_to_ask` + the
-    `orchestration._kg_refine_in_python` set-union), driven by a stub oracle defined HERE
-    (independent of `pipeline/mediation.py`). This is the "standard arm" for T2/T3: its
-    artifacts must be byte-identical whether or not the mediation module exists/is imported.
-  * a CLI (`python -m logmap_llm.pipeline.mediation_isolation`) so T2/T3 can spawn the
-    standard arm and/or the mediation arm as SEPARATE OS PROCESSES.
-
-The standard stub oracle here is deliberately SEPARATE from mediation's StubOpenAIClient so the
-"without mediation" configuration is genuine.
+`run_standard_stub_arm` runs a representative standard LogMapLLM arm built only from baseline
+code (baseline consultation + set-union refinement) with a local stub oracle; its artifacts
+must be byte-identical whether or not the mediation module exists/is imported. The CLI
+(`python -m logmap_llm.pipeline.mediation_isolation`) lets tests spawn arms as separate OS
+processes. The stub oracle here is deliberately independent of mediation's StubOpenAIClient
+so the "without mediation" configuration is genuine.
 """
 from __future__ import annotations
 
@@ -44,7 +37,7 @@ from logmap_llm.pipeline.orchestration import _kg_refine_in_python
 import logmap_llm.oracle.consultation as oc
 
 
-# --- a deterministic stub oracle LOCAL to this harness (independent of mediation.py) ---
+# --- a deterministic stub oracle local to this harness (independent of mediation.py) ---
 
 def _stub_accept(prompt: str) -> bool:
     d = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
@@ -119,7 +112,7 @@ def _std_oracle_config(max_workers: int = 4) -> OracleConfig:
     )
 
 
-# A FIXED standard M_ask fixture (a handful of class candidates) + a fixed initial alignment.
+# A fixed standard M_ask fixture (a handful of class candidates) + a fixed initial alignment.
 # Held constant so the standard arm's artifacts are deterministic and comparable across processes.
 _STD_INITIAL = [
     ("http://ex.org/o1#A1", "http://ex.org/o2#B1", "=", 0.99, "CLS"),
@@ -134,7 +127,7 @@ _STD_M_ASK = [
 
 
 def run_standard_stub_arm(out_root: str) -> dict:
-    """Run a representative STANDARD LogMapLLM arm from baseline code + the local stub oracle.
+    """Run a representative standard LogMapLLM arm from baseline code + the local stub oracle.
     Returns artifact paths + their sha256. Deterministic."""
     cols = [COL_SOURCE_ENTITY_URI, COL_TARGET_ENTITY_URI, COL_RELATION, COL_CONFIDENCE, COL_ENTITY_TYPE]
     run_paths = PipelinePaths(
@@ -201,10 +194,10 @@ def _cli(argv=None) -> int:
         return 78
 
     if args.import_mediation:
-        import logmap_llm.pipeline.mediation as _med  # noqa: F401  (presence must be inert for T2)
+        import logmap_llm.pipeline.mediation as _med  # noqa: F401  (presence must be inert)
 
     if args.mode == "import-check":
-        # T2 import-inertness: importing mediation must NOT mutate the oracle transport symbol
+        # import-inertness: importing mediation must not mutate the oracle transport symbol
         import logmap_llm.oracle.manager as mgr
         before = mgr.OpenAI
         import logmap_llm.pipeline.mediation  # noqa: F401
@@ -212,9 +205,9 @@ def _cli(argv=None) -> int:
         print(json.dumps({"openai_symbol_unchanged": before is after}))
         return 0
 
-    # The baseline logger prints DEBUG to stdout (VERBOSE=True in constants.py, which is baseline
-    # and must not be edited). Redirect stdout -> stderr WHILE the arm runs, so this process emits
-    # ONLY a single clean JSON line to its real stdout for the parent harness to parse.
+    # The baseline logger prints DEBUG to stdout (VERBOSE=True in constants.py). Redirect stdout
+    # -> stderr while the arm runs, so this process emits only a single clean JSON line to its
+    # real stdout for the parent harness to parse.
     real_stdout = sys.stdout
 
     if args.mode == "standard":

@@ -1,13 +1,13 @@
 """
 logmap_llm.oracle.rag.corpus
 
-Typed example corpora for RAG retrieval (spec §6). Maintains DISJOINT CLS/OPROP/DPROP/INST
-pools of positive examples (and optional explicit negatives), all keyed by COMPLETE IRIs —
-never deduplicated by local name, so the same local name in different namespaces stays distinct.
+Typed example corpora for RAG retrieval. Maintains disjoint CLS/OPROP/DPROP/INST pools of
+positive examples (and optional explicit negatives), all keyed by complete IRIs — never
+deduplicated by local name, so the same local name in different namespaces stays distinct.
 
 Positives come only from authorised sources: training alignments (Source.GOLD) or separately
-labelled high-confidence LogMap anchors (Source.ANCHOR, a pseudo-label). The two are tracked
-distinctly so the trace can tell them apart.
+labelled high-confidence LogMap anchors (Source.ANCHOR, a pseudo-label), tracked distinctly
+so the trace can tell them apart.
 """
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from .types import Example, EntityKind, Source
 
 
 def _iri_pair_key(src: str, tgt: str) -> frozenset:
-    """Direction-agnostic key over COMPLETE IRIs (dedup / exclusion). Not local-name based."""
+    """Direction-agnostic key over complete IRIs (dedup / exclusion). Not local-name based."""
     return frozenset({src, tgt})
 
 
@@ -47,7 +47,7 @@ class TypedCorpus:
     ) -> int:
         """
         Add (src_iri, tgt_iri) pairs of a single kind. Deduplicates by complete-IRI pair-key
-        within the (kind, label) pool. Returns the number of NEW examples added.
+        within the (kind, label) pool. Returns the number of new examples added.
         """
         pool = self.positives[kind] if label else self.negatives[kind]
         seen = {ex.unordered for ex in pool}
