@@ -1,6 +1,6 @@
 # logmap-llm-exp
 
-LogMapLLM experimental. See branches for various experimental data.
+LogMapLLM experimental.
 
 ## LogMapLLM
 
@@ -16,10 +16,33 @@ $refined_{pre-repair} = (initial − M_{ask}) \cup \left\lbrace\ m \in M_{ask} :
 
 either through LogMap's own Java refinement (which also resolves logical conflicts). The refined alignment can finally be scored against a reference, including OAEI Knowledge Graph track semantics for partial gold standards, and every successful run publishes a machine-readable `run_result.json` recording parameters, counts, timings and sha256 artifact hashes.
 
-## Running it in 30 seconds
+## Usage
 
 ```sh
 python -m logmap_llm --config path/to/config.toml
+```
+
+with a config like:
+
+```toml
+[alignmentTask]
+task_name = "mouse-human"
+onto_source_filepath = "data/mouse.owl"
+onto_target_filepath = "data/human.owl"
+
+[oracle]
+model_name = "qwen/qwen3-32b"
+api_key = "ENV:OPENROUTER_API_KEY"    # or "EMPTY" for a local vLLM/SGLang server
+
+[outputs]
+logmapllm_output_dirpath = "output/logmapllm"
+logmap_initial_alignment_output_dirpath = "output/initial-alignment"
+logmap_refined_alignment_output_dirpath = "output/refined-alignment"
+
+# optional: score the refined alignment against a reference
+[evaluation]
+evaluate = true
+reference_alignment_path = "data/reference.rdf"
 ```
 
 The config is a TOML file validated by a strict Pydantic schema; at minimum it needs `[alignmentTask]` (task name and the two ontology paths), `[oracle]` (model name), and `[outputs]` (three output directories). You also need a LogMap bundle on disk (`logmap-matcher-4.0.jar`, `java-dependencies/`, `parameters.txt`), found under `./logmap` by default or wherever `alignmentTask.logmap_parameters_dirpath` points. 
