@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-llama-3-1-70b-bidir-k0-r0-2ac1e153/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260728_130636.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.9636
+[METRIC]    Recall           :  0.8391
+[METRIC]    F1               :  0.8970
+[METRIC]    True Positives   :  1272
+[METRIC]    False Positives  :  48
+[METRIC]    False Negatives  :  244
+[METRIC]    System Size      :  1320
+[METRIC]    Reference Size   :  1516
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.8882
+[METRIC]    Oracle Recall           :  0.9152
+[METRIC]    Oracle Precision        :  0.8629
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.6598
+[METRIC]    Specificity             :  0.7447
+[METRIC]    Sensitivity             :  0.9152
+[METRIC]    Total Candidates        :  259
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  14
+[METRIC]    Tn                      :  70
+[METRIC]    Fp                      :  24
+[METRIC]    Tp                      :  151
+
+False mappings (38 FP+FN) saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-llama-3-1-70b-bidir-k0-r0-2ac1e153/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-llama-3-1-70b-bidir-k0-r0-2ac1e153/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "anatomy",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.9636363636363636,
+    "recall": 0.8390501319261213,
+    "f1": 0.8970380818053597,
+    "true_positives": 1272,
+    "false_positives": 48,
+    "false_negatives": 244,
+    "system_size": 1320,
+    "reference_size": 1516,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

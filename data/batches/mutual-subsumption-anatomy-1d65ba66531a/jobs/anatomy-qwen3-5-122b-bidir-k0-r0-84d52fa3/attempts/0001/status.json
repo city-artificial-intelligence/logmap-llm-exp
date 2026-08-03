@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-qwen3-5-122b-bidir-k0-r0-84d52fa3/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-qwen3-5-122b-bidir-k0-r0-84d52fa3/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 32.853,
+  "finished_at": "2026-07-28T13:07:10+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-28T13:06:37+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

@@ -1,0 +1,64 @@
+{
+  "alignment_id": "409ee787ba30886d",
+  "artifacts": [
+    {
+      "bytes": 545991,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt",
+      "sha256": "22223c0940ebb51e4c2eaf634efbaa4dc10bb6ccdcaea249c9c99c06305457b6"
+    },
+    {
+      "bytes": 94631,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "b7b6c997808d1ebd89874b81c1b2aa8ba03a9dfacca30108bd01a647aec14e53"
+    },
+    {
+      "bytes": 523125,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmap-refined-alignment/ncit-doid-logmap_mappings.tsv",
+      "sha256": "49a4842cd5a53cc3821c0d6798fa8e369fa1e559ed40e344f6fbff8c9529af58"
+    },
+    {
+      "bytes": 868,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "eed2015a6f717210ed2c173540c1d89576dbba48788c5bc6a00fc842399f38e7"
+    },
+    {
+      "bytes": 1384065,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "sha256": "8426c70ebfe1657b678cc837b5303260760b868441b9be8f46f63e0f8963f79b"
+    },
+    {
+      "bytes": 398556,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "aaf08ac37634e738625512b11ccf9b7be260b5c658f3108615eb8806f807104b"
+    },
+    {
+      "bytes": 142108,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "70043f6c10b352a667d14b33df652b83d98a94a7135b3d87f6349d3278402f50"
+    },
+    {
+      "bytes": 4130415,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "1132a7cb861a81eddd37c4ab8606c7ac5afee8384121f31c9e4d25cfbdd7541b"
+    },
+    {
+      "bytes": 4606,
+      "path": "jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "2d5f6823f2fce1cc5839ccab4e589222e2143a967a4407c067d521d2b9390cb9"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "ca-k4",
+  "condition_id": "65080fd1bd658ca558f74cdc153efc9c1ed412cf867b258c1c661cdeff0a8f57",
+  "config_sha256": "b94c31eeed92ea25a85388a98a4b0f262cd95a1696a6c6e6aafb05a49008457e",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "471bf248dc9fceca87c2e264fbcd359f7fc6a199469f209602b068a459adcde2",
+  "finished_at": "2026-07-27T23:34:55+00:00",
+  "id": "ncit-doid-gemma-3-27b-ca-k4-r0-471bf248",
+  "kind": "job",
+  "model": "gemma-3-27b",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "ncit-doid"
+}

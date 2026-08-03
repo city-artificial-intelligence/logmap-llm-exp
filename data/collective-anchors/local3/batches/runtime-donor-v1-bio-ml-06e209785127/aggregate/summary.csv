@@ -1,0 +1,9 @@
+model,condition,expected,completed,coverage,success,degraded,failed,not_run,complete
+deepseek-v4-flash-gmicloud-fp8-off,rt-k4,5,0,0.0,0,0,5,0,False
+gemini-2-5-flash-off,rt-k4,5,1,0.2,1,0,0,4,False
+gemma-3-27b,rt-k4,5,0,0.0,0,0,0,5,False
+llama-3-1-70b,rt-k4,5,0,0.0,0,0,0,5,False
+mistral-small-3-2-24b,rt-k4,5,0,0.0,0,0,0,5,False
+qwen3-235b,rt-k4,5,0,0.0,0,0,0,5,False
+qwen3-5-122b,rt-k4,5,1,0.2,1,0,0,4,False
+qwen3-8b,rt-k4,5,0,0.0,0,0,0,5,False

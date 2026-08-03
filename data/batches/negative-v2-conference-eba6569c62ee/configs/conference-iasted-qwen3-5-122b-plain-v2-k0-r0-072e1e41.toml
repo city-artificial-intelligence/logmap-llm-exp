@@ -1,0 +1,75 @@
+[alignmentTask]
+generate_extended_mappings_to_ask_oracle = false
+logmap_jvm_memory = "12g"
+logmap_parameters_dirpath = "/home/jon/tools/logmap/paired-control/src/target"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+ontology_domain = "academic conferences"
+ontology_vocabulary = "default"
+stub_import_iris = []
+task_name = "conference-iasted"
+
+[evaluation]
+evaluate = true
+force_custom_eval = true
+jvm_memory = "8g"
+metrics = [
+    "global",
+    "oracle",
+]
+partial_reference = false
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-iasted.tsv"
+stratified_by_entity_type = false
+stratified_class_property = true
+
+[few_shot]
+few_shot_k = 0
+few_shot_negative_strategy = "hard"
+few_shot_seed = 42
+rag_encoder_kind = "sapbert"
+rag_encoder_max_length = 64
+rag_encoder_model = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+rag_failure_policy = "error"
+
+[oracle]
+answer_format = "true_false"
+api_key = "EMPTY"
+base_url = "http://127.0.0.1:18011/v1"
+connect_timeout_seconds = 15.0
+enable_thinking = false
+interaction_style = "vllm"
+local_oracle_predictions_dirpath = ""
+max_completion_tokens = 2056
+max_workers = 8
+model_name = "Qwen3.5-122B-A10B"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+request_logprobs = true
+request_timeout_seconds = 300.0
+response_mode = "plain"
+seed = 0
+supports_chat_template_kwargs = true
+temperature = 0.0
+top_p = 1.0
+transient_retries = 2
+
+[outputs]
+logmap_initial_alignment_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/negative-v2-conference-eba6569c62ee/jobs/conference-iasted-qwen3-5-122b-plain-v2-k0-r0-072e1e41/standalone/logmap-initial-alignment"
+logmap_refined_alignment_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/negative-v2-conference-eba6569c62ee/jobs/conference-iasted-qwen3-5-122b-plain-v2-k0-r0-072e1e41/standalone/logmap-refined-alignment"
+logmapllm_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/negative-v2-conference-eba6569c62ee/jobs/conference-iasted-qwen3-5-122b-plain-v2-k0-r0-072e1e41/standalone/logmapllm-outputs"
+
+[pipeline]
+align_ontologies = "align"
+build_oracle_prompts = "build"
+consult_oracle = "consult"
+refine_alignment = "refine"
+refinement_strategy = "logmap"
+
+[prompts]
+cls_dev_prompt_template_name = "class_equivalence"
+cls_usr_prompt_template_name = "one_level_of_parents_and_synonyms"
+dprop_usr_prompt_template_name = "prop_domain_range"
+inst_dev_prompt_template_name = "instance_equivalence"
+inst_usr_prompt_template_name = "inst_full_context_entropy"
+prop_dev_prompt_template_name = "property_equivalence"
+prop_usr_prompt_template_name = "prop_domain_range"

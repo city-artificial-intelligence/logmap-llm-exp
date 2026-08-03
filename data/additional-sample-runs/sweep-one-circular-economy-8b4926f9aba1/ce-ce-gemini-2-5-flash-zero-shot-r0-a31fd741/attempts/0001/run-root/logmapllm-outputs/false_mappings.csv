@@ -1,0 +1,5 @@
+source_entity_uri,target_entity_uri,oracle_prediction,oracle_confidence,in_reference,error_type
+http://qudt.org/schema/qudt/QuantityValue,http://ontorion.com/namespace#Quantity,True,0.0,False,FP
+http://qudt.org/schema/qudt/QuantityKind,http://ontorion.com/namespace#Quantity,True,0.0,False,FP
+http://w3id.org/CEON/ontology/processODP/hasPart,http://ontorion.com/namespace#hasPartIn,True,0.0,False,FP
+http://w3id.org/CEON/ontology/product/Product,http://ontorion.com/namespace#Product,True,0.0,False,FP

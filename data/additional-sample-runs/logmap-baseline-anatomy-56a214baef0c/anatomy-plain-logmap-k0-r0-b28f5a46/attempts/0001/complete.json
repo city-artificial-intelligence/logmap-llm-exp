@@ -1,0 +1,44 @@
+{
+  "alignment_id": "0410e29bcdddd096",
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "jobs/anatomy-plain-logmap-k0-r0-b28f5a46/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-plain-logmap-k0-r0-b28f5a46/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 93567,
+      "path": "jobs/anatomy-plain-logmap-k0-r0-b28f5a46/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "b3730c6761b097e75af57fedf5dc26c02ee48b6e1755c5c1a2fb895441a852cc"
+    },
+    {
+      "bytes": 410,
+      "path": "jobs/anatomy-plain-logmap-k0-r0-b28f5a46/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "aa99e73636fde8513f2458233d90b932b35dab384b5c2f59959ae4277abf4f7e"
+    },
+    {
+      "bytes": 2433,
+      "path": "jobs/anatomy-plain-logmap-k0-r0-b28f5a46/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "729f0569f9cbe4baef41b3f1a4732f96c39608d59499d625a1fd2536247fa125"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "k0",
+  "condition_id": "8f0ebe7272ef61eb11936fa133f8205b1eb267ec4050a2578ad26f1b0332afc6",
+  "config_sha256": "686779e38f17e6ebebe990e6c371c040e5c3c952d379761203592f3f1f507e21",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "b28f5a468f9f5e3f5995353e99f1b6c3c9e9234f9eba835898661f9b0355f458",
+  "finished_at": "2026-07-27T22:25:15+00:00",
+  "id": "anatomy-plain-logmap-k0-r0-b28f5a46",
+  "kind": "job",
+  "model": "plain-logmap",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}

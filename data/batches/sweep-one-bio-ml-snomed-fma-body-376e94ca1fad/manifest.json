@@ -1,0 +1,458 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/f83b0715074ab6a5/config.toml",
+      "config_sha256": "d2e7691ac4967d7d179dd95cb4c1b1bfdf725d9a6c34c3bc1523d97026a0e74a",
+      "id": "f83b0715074ab6a5",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        }
+      },
+      "job_ids": [
+        "snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b",
+        "snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19",
+        "snomed-fma-body-gemma-3-27b-zero-shot-r0-21a240dc",
+        "snomed-fma-body-llama-3-1-70b-zero-shot-r0-83a11862",
+        "snomed-fma-body-mistral-small-3-2-24b-zero-shot-r0-9d54b08b",
+        "snomed-fma-body-plain-logmap-zero-shot-r0-6e8e19ac",
+        "snomed-fma-body-qwen3-235b-zero-shot-r0-ba119299",
+        "snomed-fma-body-qwen3-5-122b-zero-shot-r0-ffa5f616",
+        "snomed-fma-body-qwen3-8b-zero-shot-r0-36a98040"
+      ],
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 9,
+    "id": "sweep-one-bio-ml-snomed-fma-body-376e94ca1fad",
+    "jobs": 2,
+    "name": "sweep-one-bio-ml-snomed-fma-body",
+    "plan_hash": "376e94ca1fadfe2c38fc6fd86f77c7a094458a16d4861f44289211e8fe1eae0f",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "jobs": [
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "04b8517927f5085f86daf8afd62fa7bb2bb9bcad1a4dfca0b550b3a4504d318a",
+      "config_path": "configs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b.toml",
+      "config_sha256": "e101a8f8e34865e0e39a433515c0d5ff5d9ec50d4235b35611f0a85209730c92",
+      "execution_hash": "4e4a8e2ba4c69c18ad1441d2be06be0a44b5a3c1115b98faf19cdb3d18773090",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "4016e382e8aacb342f91acf6802830a4490346d4a570f6d252620b96b9ab83de",
+      "config_path": "configs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19.toml",
+      "config_sha256": "1c5f28ba3e55e8a860c8f4b86d32416c96e20e223615a9d370e5ac9f31ddfdfa",
+      "execution_hash": "94220a19221abc585deeda9db87f0858006ee6070f1265902391b7359667cd64",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "a72b76df748fcee8c58cd240ec7479366957def48ca0c465bd45df22eb0e4c11",
+      "config_path": "configs/snomed-fma-body-gemma-3-27b-zero-shot-r0-21a240dc.toml",
+      "config_sha256": "cd5b78af053b29e167c68f58d9d2dc2ca52eb8106c0a3653ec9961bd617b76f8",
+      "execution_hash": "21a240dc86d03366a10870e77f89b118fb190b91d4b7bb9eb3c15ac0a190324d",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-fma-body-gemma-3-27b-zero-shot-r0-21a240dc",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "8e6efdda323c49edb0b7e0c1c5298831633ced763c6234f42f8e146047e13579",
+      "config_path": "configs/snomed-fma-body-llama-3-1-70b-zero-shot-r0-83a11862.toml",
+      "config_sha256": "178ca71cd7ac70c17ce707ac798abedbebed3b7cdbad58e91f0b3cabc780547f",
+      "execution_hash": "83a1186267d9c99de883ffb4bb11eed334f06f39b60339d16b7e55b6f96e4f4e",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-fma-body-llama-3-1-70b-zero-shot-r0-83a11862",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "a4048c58d0064147fd442eb70c5bc08b92518723a5b485100724154c8a8485c8",
+      "config_path": "configs/snomed-fma-body-mistral-small-3-2-24b-zero-shot-r0-9d54b08b.toml",
+      "config_sha256": "100fb0e889939402f6d7d631ef1650980ebc42920a2feffef5834189d7bf70c9",
+      "execution_hash": "9d54b08bbedef1568dd16129ca0c82205d2a67c0cfc29a914f76093f402e4ea8",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-fma-body-mistral-small-3-2-24b-zero-shot-r0-9d54b08b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "59c38ae8fcd3821ac390ad99c24dcbf96d81ac25ea78103fe4438caceaf2c3fb",
+      "config_path": "configs/snomed-fma-body-plain-logmap-zero-shot-r0-6e8e19ac.toml",
+      "config_sha256": "a0051f19963c8f08191d0b6c7c3d6653c2934a837e63ad5b7a8a4a336ce70aa9",
+      "execution_hash": "6e8e19ac784c35a4afacad29fc4f9bd594735931e8ed9094421147ff0e0254d2",
+      "expected_served_model": "plain-logmap",
+      "id": "snomed-fma-body-plain-logmap-zero-shot-r0-6e8e19ac",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "plain-logmap",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": false
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "4a249caef72061068fd00b51c46efe3d3fdda76e52a62e53c5562b43c598425d",
+      "config_path": "configs/snomed-fma-body-qwen3-235b-zero-shot-r0-ba119299.toml",
+      "config_sha256": "e798ae54332dc1f9fe7ddf8abc11fa22f2a5eb91e03bbbc8d93ffe639bb9bca8",
+      "execution_hash": "ba119299ab5105eb5a68de3459ae878505745e7e22909f3c4cfc417706f48d4e",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-fma-body-qwen3-235b-zero-shot-r0-ba119299",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "6824a052084a3034ed8b63761903ff3049b454d6f55c211fd4b88835a34d11b1",
+      "config_path": "configs/snomed-fma-body-qwen3-5-122b-zero-shot-r0-ffa5f616.toml",
+      "config_sha256": "a8e9b9295efe343a8bb5610ca6edfcfd5f1e3d4950d8a01a58bbb6e58631a493",
+      "execution_hash": "ffa5f616def3c1531f4b37083a9d9918cec8804e8dffc4bcb93def4b1c9d5b4f",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-fma-body-qwen3-5-122b-zero-shot-r0-ffa5f616",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "f83b0715074ab6a5",
+      "condition": "zero-shot",
+      "condition_id": "2378c309ff6affb00a15fad91de6b7f870b10c44bd6b45988e87c9529d8dbb5f",
+      "config_path": "configs/snomed-fma-body-qwen3-8b-zero-shot-r0-36a98040.toml",
+      "config_sha256": "fdb0c62c0a5ba7fae7676c4db9379fb99ef053177c20e83d17c193854d607fba",
+      "execution_hash": "36a98040ce04972fd33235d347ad71dc1b14d8a1de74d542d1290bc927807b6c",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-fma-body-qwen3-8b-zero-shot-r0-36a98040",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "82b4a3cdb3c6ff0ca486c32017f13b186bdaf2d826ff38ef3c82a1b974733eb2",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "acf815aa6daad68aea3b77c38ba67c93b185aa590373693fdc5fa9b3033a6cef",
+    "spec_sha256": "2aa1d5419e3706517d3b3bb49ee3eb03ac60fab540c4751750c167bd25856ca2"
+  }
+}

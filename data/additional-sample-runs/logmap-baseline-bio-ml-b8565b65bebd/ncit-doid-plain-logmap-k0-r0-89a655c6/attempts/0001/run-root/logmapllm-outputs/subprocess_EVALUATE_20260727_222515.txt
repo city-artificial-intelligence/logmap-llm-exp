@@ -1,0 +1,38 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-bio-ml-b8565b65bebd/jobs/ncit-doid-plain-logmap-k0-r0-89a655c6/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260727_222515.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8458
+[METRIC]    Recall           :  0.8952
+[METRIC]    F1               :  0.8698
+[METRIC]    True Positives   :  4195
+[METRIC]    False Positives  :  765
+[METRIC]    False Negatives  :  491
+[METRIC]    System Size      :  4960
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-bio-ml-b8565b65bebd/jobs/ncit-doid-plain-logmap-k0-r0-89a655c6/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global"
+  ],
+  "global": {
+    "precision": 0.8457661290322581,
+    "recall": 0.8952198036705079,
+    "f1": 0.8697905867717189,
+    "true_positives": 4195,
+    "false_positives": 765,
+    "false_negatives": 491,
+    "system_size": 4960,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

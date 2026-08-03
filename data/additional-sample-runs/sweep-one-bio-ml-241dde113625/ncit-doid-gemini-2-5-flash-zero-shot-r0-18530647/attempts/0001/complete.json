@@ -1,0 +1,59 @@
+{
+  "alignment_id": "bbbacd6953825341",
+  "artifacts": [
+    {
+      "bytes": 545991,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt",
+      "sha256": "22223c0940ebb51e4c2eaf634efbaa4dc10bb6ccdcaea249c9c99c06305457b6"
+    },
+    {
+      "bytes": 94742,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "e4f5b5111044ccb8e54716a6f4f3634e41c2ee6b62bea0da34131c1d46d68a04"
+    },
+    {
+      "bytes": 515436,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmap-refined-alignment/ncit-doid-logmap_mappings.tsv",
+      "sha256": "d242a43fa9d3de0e442fef2bb8347a326c063c4b42a6f7ca43fa741df2375965"
+    },
+    {
+      "bytes": 870,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "8d73061178cf71c0229ce3185e2b65b5adb13868335eddc9e650dda2a01c34d1"
+    },
+    {
+      "bytes": 428959,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "da9a25b464bda4c0a9aa7f3890ad6f28aa159af6f7d356f3cb5901124b47c32d"
+    },
+    {
+      "bytes": 108017,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "0aafc703af9fb73bdd459ae5760ac19c9c31ca576dac49059b8aa89963429638"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4542,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "e6b05076e2fa1ec1aef88a2cc0d545be9e74988774823eb60abf10f67751d428"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot",
+  "condition_id": "559162d7947516b7fb4727e1c9893861c7728812ec16b47d80938a490f59b7b9",
+  "config_sha256": "71097b601a6b526e5ac4eb3d5546cfdd856ba7c8c817a1cddb532e5ae49a3f33",
+  "core_sha256": "acf815aa6daad68aea3b77c38ba67c93b185aa590373693fdc5fa9b3033a6cef",
+  "execution_hash": "18530647de1f0b339f582681fa7636c2be9ad6733ef04702fa4fe6fce3caef91",
+  "finished_at": "2026-07-17T04:45:32+00:00",
+  "id": "ncit-doid-gemini-2-5-flash-zero-shot-r0-18530647",
+  "kind": "job",
+  "model": "gemini-2-5-flash",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "ncit-doid"
+}

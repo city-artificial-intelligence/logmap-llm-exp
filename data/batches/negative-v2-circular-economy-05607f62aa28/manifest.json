@@ -1,0 +1,902 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/d6fd7e1099bad67e/config.toml",
+      "config_sha256": "dfc58b067a0240e22ea711f862361fed48fb3ab3b313372bd441e7b29dfa1435",
+      "id": "d6fd7e1099bad67e",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        }
+      },
+      "job_ids": [
+        "ce-ce-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-33ce1e66",
+        "ce-ce-gemini-2-5-flash-off-plain-v2-k0-r0-f7cecf18",
+        "ce-ce-gemma-3-27b-plain-v2-k0-r0-50190903",
+        "ce-ce-llama-3-1-70b-plain-v2-k0-r0-90ef4374",
+        "ce-ce-mistral-small-3-2-24b-plain-v2-k0-r0-6e3f806f",
+        "ce-ce-plain-logmap-plain-v2-k0-r0-642a9c71",
+        "ce-ce-qwen3-235b-plain-v2-k0-r0-3b0b2b8e",
+        "ce-ce-qwen3-5-122b-plain-v2-k0-r0-72708b25",
+        "ce-ce-qwen3-8b-plain-v2-k0-r0-9bc4af01"
+      ],
+      "task": "ce-ce",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/dc11470cce010745/config.toml",
+      "config_sha256": "e86104b33a061c7be565aa11b7cad892d111f91ff511242e0ecff824a286b672",
+      "id": "dc11470cce010745",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        }
+      },
+      "job_ids": [
+        "ce-mat-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-b63edb4b",
+        "ce-mat-gemini-2-5-flash-off-plain-v2-k0-r0-7058d704",
+        "ce-mat-gemma-3-27b-plain-v2-k0-r0-e27e33db",
+        "ce-mat-llama-3-1-70b-plain-v2-k0-r0-a00cf8bd",
+        "ce-mat-mistral-small-3-2-24b-plain-v2-k0-r0-e0f57790",
+        "ce-mat-plain-logmap-plain-v2-k0-r0-58e6e98a",
+        "ce-mat-qwen3-235b-plain-v2-k0-r0-7963ef11",
+        "ce-mat-qwen3-5-122b-plain-v2-k0-r0-7e05457b",
+        "ce-mat-qwen3-8b-plain-v2-k0-r0-e1c5532d"
+      ],
+      "task": "ce-mat",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 18,
+    "id": "negative-v2-circular-economy-05607f62aa28",
+    "jobs": 2,
+    "name": "negative-v2-circular-economy",
+    "plan_hash": "05607f62aa28aeba0399381d858069dddb6708b710641e03867b990ce8d33606",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "environment": {
+    "packages": {
+      "JPype1": "1.7.1",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.1",
+      "openai": "2.45.0",
+      "owlready2": "0.51",
+      "pandas": "3.0.3",
+      "pydantic": "2.13.4",
+      "rdflib": "7.6.0",
+      "torch": "2.13.0",
+      "transformers": "5.14.1"
+    },
+    "python": "3.12.3",
+    "python_implementation": "CPython",
+    "schema": 1,
+    "uv_lock_sha256": "5d3a19f7bb752ed069fbfb2ce00e271c31b3654df203e6c41ef3d34c776db155"
+  },
+  "jobs": [
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "7a546f9258558da100f21974bfe6bd023f515b718af7d1d5c41529a225001fee",
+      "config_path": "configs/ce-ce-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-33ce1e66.toml",
+      "config_sha256": "cf69a95cf90c5b76baae1785d20020160411bb1e4ae5cb7cdb3410f11de5a2d4",
+      "execution_hash": "33ce1e66437c5e7cb70ab114152ed1a7ddf3c48116a14dd117a14092c3c387ca",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "ce-ce-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-33ce1e66",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-gmicloud-fp8-off",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "0932612006ce5d18d5a0e89c61b0c02e869c760490cbd68932003a3b52dfe762",
+      "config_path": "configs/ce-ce-gemini-2-5-flash-off-plain-v2-k0-r0-f7cecf18.toml",
+      "config_sha256": "7f1df46fa9e10ca5db1757ef82f817fc69b9ed9c6751fe38f226b07ce93877be",
+      "execution_hash": "f7cecf182017b654024ad7867e9c021d7f9d3d773356da5ebc792f8279c8ff5c",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "ce-ce-gemini-2-5-flash-off-plain-v2-k0-r0-f7cecf18",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "0b620c1f7c071a97ccc0021c29f188f8ae5790037ccd7595859b86d1fa83a6ca",
+      "config_path": "configs/ce-ce-gemma-3-27b-plain-v2-k0-r0-50190903.toml",
+      "config_sha256": "82461467a99d7120ba207db6423bab662c4dd980daef5e93bbb7423342f049b8",
+      "execution_hash": "50190903357eca88a0325800646cf329cc16eb4ff0d9886518994a8917bbbc43",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "ce-ce-gemma-3-27b-plain-v2-k0-r0-50190903",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "5ee5756ff3d44d902b3b45c43264c5bb1993b571229d1045e1530b1eafb3a344",
+      "config_path": "configs/ce-ce-llama-3-1-70b-plain-v2-k0-r0-90ef4374.toml",
+      "config_sha256": "ea6fc9e0f956d36611e3f595f3952cbc1f199eb9c2b6910915a5c1fcddd48c13",
+      "execution_hash": "90ef43749f3f7271ddc5962da277050b2487c9702c737d9d3cdf0e89c271b81a",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "ce-ce-llama-3-1-70b-plain-v2-k0-r0-90ef4374",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "18c3adcc72ea4ec16ffcc31b7d4d204620b447aa625303d61fe1204baf0bb8b5",
+      "config_path": "configs/ce-ce-mistral-small-3-2-24b-plain-v2-k0-r0-6e3f806f.toml",
+      "config_sha256": "e9baa871bcbceb47772eb4bb02a13f72f418104ddc6f48d3219234dac4a62979",
+      "execution_hash": "6e3f806fc9d49937ba7ed1738891484488872192816a230f0ac7b48e14d87db6",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "ce-ce-mistral-small-3-2-24b-plain-v2-k0-r0-6e3f806f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "bb564812df0488607baf28660e50b4d7eda8e48073fcb58526d33e88856078aa",
+      "config_path": "configs/ce-ce-plain-logmap-plain-v2-k0-r0-642a9c71.toml",
+      "config_sha256": "629a911379342fd990dcd680c95af21661ede71404b1ed3e7ffb0af4a78cd012",
+      "execution_hash": "642a9c71838ac3030ef71e1b097a357806ca64b2dee877a8d03f2160cfeffbaf",
+      "expected_served_model": "plain-logmap",
+      "id": "ce-ce-plain-logmap-plain-v2-k0-r0-642a9c71",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "plain-logmap",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": false
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "aa0f93103064944b6cf3122a1adcbab4e414dd4b22a4e915f6352d9f842a09c0",
+      "config_path": "configs/ce-ce-qwen3-235b-plain-v2-k0-r0-3b0b2b8e.toml",
+      "config_sha256": "bde611bb160f073b52814a0dd2d940833034dc7b15b3136d0eb29657c3deada3",
+      "execution_hash": "3b0b2b8e8f0cf937f1d5b4f33f78d87b10c57629827e55230c9e21b51834defc",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "ce-ce-qwen3-235b-plain-v2-k0-r0-3b0b2b8e",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "c6240ad1ca7facc9e7f694de56b041d95dd3bde39645b992390db2c16ebd7e75",
+      "config_path": "configs/ce-ce-qwen3-5-122b-plain-v2-k0-r0-72708b25.toml",
+      "config_sha256": "517eb944ce75be5b525572801e57f6e95ee1723c4d1a2bd3692a4882ac507d19",
+      "execution_hash": "72708b25d4846c234442ad84c5226b2c9a8744c942fdd1ea1593288b0293a835",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "ce-ce-qwen3-5-122b-plain-v2-k0-r0-72708b25",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "d6fd7e1099bad67e",
+      "condition": "plain-v2-k0",
+      "condition_id": "cbd8b26a11eb725c00b50b229d29cce81bbdcc449b2d590814023a789462ec34",
+      "config_path": "configs/ce-ce-qwen3-8b-plain-v2-k0-r0-9bc4af01.toml",
+      "config_sha256": "fbb22346d440fac7f2a842f4c613ca6be5c02f4cb273de28e1b2a4310e462328",
+      "execution_hash": "9bc4af01735b8924fb5875018336660a96bd1a8976093a9644e9d15618f3113d",
+      "expected_served_model": "Qwen3-8B",
+      "id": "ce-ce-qwen3-8b-plain-v2-k0-r0-9bc4af01",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 481608,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf",
+          "sha256": "6054634e6f02167f4535ff27bd7bb90db4a85341388ccb33212a09c4e0a4dcc2"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 2677,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv",
+          "sha256": "7399e91a9ea1be7a6c50f9526afaa1c0eaf856edae0bc6bc11c86414a73df215"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "ce-ce",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "e0aa67d2438946e908429580d620ee19ed491c6fbbec64f4da8450119e3c874b",
+      "config_path": "configs/ce-mat-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-b63edb4b.toml",
+      "config_sha256": "0ab31963a92d2555029e38e2bc73368acf3fc21578a074bb43a3b4ba42ba28bd",
+      "execution_hash": "b63edb4b204cdfd735acdc658ba3b6fcb6518ffd3e493cbebda97120b46d7d06",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "ce-mat-deepseek-v4-flash-gmicloud-fp8-off-plain-v2-k0-r0-b63edb4b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-gmicloud-fp8-off",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "d5a854603d0ce4cf2f6c857f77d3631c0cde263b8b7310e44657dc594c6afeb8",
+      "config_path": "configs/ce-mat-gemini-2-5-flash-off-plain-v2-k0-r0-7058d704.toml",
+      "config_sha256": "f8b9fb59e575cf75e0190502d06f4eb25ba28d34968fd5803023c54a4f807cb5",
+      "execution_hash": "7058d7046793723bac04ecbc5d44527770b88d3854d04d12ec83ff00569a64c2",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "ce-mat-gemini-2-5-flash-off-plain-v2-k0-r0-7058d704",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "28221aa44c6d6a333c18c0370192d8b9480125b7556af6541a3057d66d91bc60",
+      "config_path": "configs/ce-mat-gemma-3-27b-plain-v2-k0-r0-e27e33db.toml",
+      "config_sha256": "5eb3a8fa58c66bca0bad03b6432af531a75968077e6d67a34f0aeb5ee38e1f5b",
+      "execution_hash": "e27e33dbc246f631cfbdabcf97f93bac67be32665e13357ad2ed2bc1104a8938",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "ce-mat-gemma-3-27b-plain-v2-k0-r0-e27e33db",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "d139814c927cb8d4a4e48da4d4a9a2fb12f76b7e7cf80149e3501fe690ae895f",
+      "config_path": "configs/ce-mat-llama-3-1-70b-plain-v2-k0-r0-a00cf8bd.toml",
+      "config_sha256": "a3817def01777e82f32c3e716b28c02cee196ae38f03f791af0e0b524fc8bb79",
+      "execution_hash": "a00cf8bd033cc3156e7136ab8cd09c0d31abf20a52238a8eb2c03d499c6fd278",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "ce-mat-llama-3-1-70b-plain-v2-k0-r0-a00cf8bd",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "187f09a75cd9fa5a05058fbb5ff5bb79d7a2c50d0d6e0ef7504a0136743184c6",
+      "config_path": "configs/ce-mat-mistral-small-3-2-24b-plain-v2-k0-r0-e0f57790.toml",
+      "config_sha256": "e462e1c53b970aa0cf742ed62830d09d119921a95246be9a4bbb9a23748d88a9",
+      "execution_hash": "e0f577907838288fcdb62642bae2f95cf1227174920dc1022f3203f05d4dd52d",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "ce-mat-mistral-small-3-2-24b-plain-v2-k0-r0-e0f57790",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "33e08d8750d54e3a47c6317ac937144ab1a8f0f5be7c81d397b2367acc78e9e8",
+      "config_path": "configs/ce-mat-plain-logmap-plain-v2-k0-r0-58e6e98a.toml",
+      "config_sha256": "45d94bf116196be9ca8c487ceeefba6377e6f14cf171cb2f7d2d0efded4a3b68",
+      "execution_hash": "58e6e98a9986801e6dd898235575093f241533fbefc43b31f51727ba67f0efcf",
+      "expected_served_model": "plain-logmap",
+      "id": "ce-mat-plain-logmap-plain-v2-k0-r0-58e6e98a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "plain-logmap",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": false
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "8f561dd63a080785f74b159861a73b8de2652e8791d6db2db1100ab8f9b688ec",
+      "config_path": "configs/ce-mat-qwen3-235b-plain-v2-k0-r0-7963ef11.toml",
+      "config_sha256": "7a51434fc56307c4db4c12bd6c3bd25273496340665fa4c16c57989b38ab6bd2",
+      "execution_hash": "7963ef1143975060a840099c965e1e8a878c9d0761115d5f924b35bc5d6bd4a9",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "ce-mat-qwen3-235b-plain-v2-k0-r0-7963ef11",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "4033c4dacf530d6e270a8322d619113d56bba5c56fd5af62ba06ee6de7a5dfe8",
+      "config_path": "configs/ce-mat-qwen3-5-122b-plain-v2-k0-r0-7e05457b.toml",
+      "config_sha256": "2a032a384212d0f41722f92959205c28420cc95cf118213cb93deb012b063d76",
+      "execution_hash": "7e05457b92a7882e480f087504130cd20b161646dca74410146e93dc9083b626",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "ce-mat-qwen3-5-122b-plain-v2-k0-r0-7e05457b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dc11470cce010745",
+      "condition": "plain-v2-k0",
+      "condition_id": "63dff9efb0f0a0d0ecc389ec13e9aab7f5ee9094b0818384c3e76d4df6ee2881",
+      "config_path": "configs/ce-mat-qwen3-8b-plain-v2-k0-r0-e1c5532d.toml",
+      "config_sha256": "2b763da0156304bc1f50297aeec47360ac9a4b1c5583568a5834d0dc10268460",
+      "execution_hash": "e1c5532db7e48b256bcaabfbc220751e7ca0c50e9a27a379b45403409be106e8",
+      "expected_served_model": "Qwen3-8B",
+      "id": "ce-mat-qwen3-8b-plain-v2-k0-r0-e1c5532d",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 368660,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/CEON.rdf",
+          "sha256": "0136cc43bcadc7c3a125c97c870dc60c229d4fb3072b27831d10eacfd261dea9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 915295,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-ce-v2/ce-mat/MATONTO.rdf",
+          "sha256": "7b168aefa90542453c6bf6cd3f0dd1ba3d4b8ac6ec5ed18da6d16b7927bceb35"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1487,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-mat/reference.tsv",
+          "sha256": "69560d1386fd1f936644aa866a414126a27102ed5fdb265e5c72230963000fc6"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "ce-mat",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "615b57958252ed8a2cf25c0919fdd5b76733862720cd033f5b7a96be394bc10f",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+    "spec_sha256": "c3392a99102535f0eaf907c3ec803c7bcea6de548f31c93901a7f19fb530b780"
+  }
+}

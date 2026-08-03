@@ -1,0 +1,7 @@
+model,family,config,prompt,Youden's index,F1 Score,fail_rate,mean_num_retries,cost_total_$,note
+deepseek|deepseek-v3.2,deepseek,thinking_budget=0,direct_entity,0.752,0.919,0.0,0.000,0.064,strong backup
+google|gemini-3.1-flash-lite-preview,google,reasoning_effort=medium,direct_entity,0.75,0.927,0.0,2.811,0.076,strong backup
+qwen|qwen3.5-122b-a10b,qwen,base,direct_entity,0.742,0.92,0.0,—,—,strong backup
+google|gemini-2.5-flash,google,thinking_budget=1024,direct_entity,0.741,0.916,0.0,0.000,0.223,strong backup
+google|gemini-2.5-flash-lite,google,thinking_budget=512,direct_entity,0.726,0.918,0.0,0.012,0.032,strong backup
+x-ai|grok-4.1-fast,x-ai,base,direct_entity,0.721,0.918,0.0,—,—,strong backup

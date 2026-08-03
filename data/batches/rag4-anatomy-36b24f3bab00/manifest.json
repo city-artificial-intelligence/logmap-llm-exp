@@ -1,0 +1,462 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/1dcb647e95318dc9/config.toml",
+      "config_sha256": "a8febd942ebed51101becc90dca2510afc0abad003ac3b7b2fdc54630f766894",
+      "id": "1dcb647e95318dc9",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        }
+      },
+      "job_ids": [
+        "anatomy-deepseek-v4-flash-query-rag-k4-r0-01dc40c1",
+        "anatomy-gemini-2-5-flash-query-rag-k4-r0-bae17f0f",
+        "anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf",
+        "anatomy-llama-3-1-70b-query-rag-k4-r0-838d2fdd",
+        "anatomy-mistral-small-3-2-24b-query-rag-k4-r0-df67e80f",
+        "anatomy-qwen3-235b-query-rag-k4-r0-e2b19550",
+        "anatomy-qwen3-5-122b-query-rag-k4-r0-cd874517",
+        "anatomy-qwen3-8b-query-rag-k4-r0-ac865f12"
+      ],
+      "task": "anatomy",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 8,
+    "id": "rag4-anatomy-36b24f3bab00",
+    "jobs": 2,
+    "name": "rag4-anatomy",
+    "plan_hash": "36b24f3bab00544704bb026ba2d487a978b7d3e8b57be70333ac1945d2727baa",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "jobs": [
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "fd8ebcca45d050f78f26d755870ae5bcd9932c5d02ba80162278d04bddd2b0a9",
+      "config_path": "configs/anatomy-deepseek-v4-flash-query-rag-k4-r0-01dc40c1.toml",
+      "config_sha256": "5b577e1d1d618d0f5f7ed403bb7d9def04ed82e8eeb614a9d598c8585e77aeb3",
+      "execution_hash": "01dc40c1c8a55aa49b42e938081d734a293a9ca3b84fb777a940a2f1de51cd85",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "anatomy-deepseek-v4-flash-query-rag-k4-r0-01dc40c1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "9ff88945edf0a5b9a23f90318922a4aaa073d416a48c3f546b8c75b93c9b8be6",
+      "config_path": "configs/anatomy-gemini-2-5-flash-query-rag-k4-r0-bae17f0f.toml",
+      "config_sha256": "e27a72a7de4412ca7eb1a5d3891ae62975c64cebe9198d6e2780b033a2c1f858",
+      "execution_hash": "bae17f0f63d2b8c0646a369b1437252f58fcc1cfaaccf2a5dd43b425c742d53f",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "anatomy-gemini-2-5-flash-query-rag-k4-r0-bae17f0f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "bc50527d03547cdf8b8ddb98c38c7f521f4b4b8c2d672e9729c269e1b3c2e152",
+      "config_path": "configs/anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf.toml",
+      "config_sha256": "fd90670f145375a54fc4f5b9b5f49a5e41a9589c2e40f649e9fefa53d31bba60",
+      "execution_hash": "0e88d6bf399d7455337900a53f8bb1ec009fdfc4e70842c9671daeef1d989309",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "f70e8f62f9d8682394f22429e3522294f04d97365c1a05e1ae5600e4dd35a1bf",
+      "config_path": "configs/anatomy-llama-3-1-70b-query-rag-k4-r0-838d2fdd.toml",
+      "config_sha256": "729c6ca7ca807496ed8b5e9913876461587180d3ef9689515e9ac70352342ac4",
+      "execution_hash": "838d2fddb781e0a954020b5fa04e4414f921c2bd603828793cab0a2ea9de3d3d",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "anatomy-llama-3-1-70b-query-rag-k4-r0-838d2fdd",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "7fe30ea23a111f55dd74bdd8d507683a2bdea170fa03eea5b36fa12fc350864d",
+      "config_path": "configs/anatomy-mistral-small-3-2-24b-query-rag-k4-r0-df67e80f.toml",
+      "config_sha256": "376cb38dd5b60fc8ecf89d77a3a0ce05be06bf73356d2563d47cb9d98362d383",
+      "execution_hash": "df67e80f28d1cac9872c01f5e0fd9ce87c8315448bcfb514052432e592625036",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "anatomy-mistral-small-3-2-24b-query-rag-k4-r0-df67e80f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "4e7f525b9c4010aa940d7c4a78783799a0c86b517f8c4e7dd13aa22703bc291e",
+      "config_path": "configs/anatomy-qwen3-235b-query-rag-k4-r0-e2b19550.toml",
+      "config_sha256": "15c9b9554e5ca63bdfd5d8a95c18a6d5f53d9468998ad5ebcc994888f1c8133c",
+      "execution_hash": "e2b195509345a5731fa3f7c566c2987ae41ce6cde3f11622b24abc95c31fdad7",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "anatomy-qwen3-235b-query-rag-k4-r0-e2b19550",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "e8a49c67bf5a1a4d6791906b914adf8848b09ecedf64d22143adafcfa71ae120",
+      "config_path": "configs/anatomy-qwen3-5-122b-query-rag-k4-r0-cd874517.toml",
+      "config_sha256": "f18dfc521e509da348ba9f347a3927c06d04de90c536f0a9decf140e370858dd",
+      "execution_hash": "cd874517719f00adca8cd557384c3f3075bc81776433bb50c427cfd7051c70c0",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "anatomy-qwen3-5-122b-query-rag-k4-r0-cd874517",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "1dcb647e95318dc9",
+      "condition": "query-rag-k4",
+      "condition_id": "68155ec671b3784e698660d98208fe4d1862092da662bae6d1f7e6a59a93be51",
+      "config_path": "configs/anatomy-qwen3-8b-query-rag-k4-r0-ac865f12.toml",
+      "config_sha256": "1bdf7e9ca9e9467165b7f64c5624b2abc3dd749de2e8282a6db46f1946ce8f70",
+      "execution_hash": "ac865f12cc5354a92d3be508cd01116cfdeedd86bffd65c7b263d274b847b7e4",
+      "expected_served_model": "Qwen3-8B",
+      "id": "anatomy-qwen3-8b-query-rag-k4-r0-ac865f12",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918468,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control/src/target",
+          "sha256": "1b4169430925d911aa5adeeb46250a445a1d0b45a448a8a0ac8dec4ca85c431b"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        },
+        "few_shot.prebuilt_few_shot_bundle_path": {
+          "bytes": 1845894,
+          "kind": "file",
+          "path": "/home/jon/data/logmap-llm-rag4/bundles/anatomy.json",
+          "sha256": "9f8a4725fda46cd8ff36a2b4864c309da61b4fcb31f858830116aba4840f4ccd"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "f9b213e8443d3eed8c234f03e50b35026474affc40359b8090f0989887ab5399",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "8cb8875fd9982f87f68c4436332f1f3b1948fb6db0a9148011088630c1e31ebe",
+    "spec_sha256": "b38b52b6e0d17359853366fea2824f2a28523505b9bcdb71227932100b900621"
+  }
+}

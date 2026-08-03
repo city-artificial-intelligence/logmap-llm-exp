@@ -1,0 +1,55 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-knowledge-graph-98d95f601649/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-parasail-off-zero-shot-current-r0-03511944/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260719_115123.txt
+[STEP 2] Configuration loaded from: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-knowledge-graph-98d95f601649/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-parasail-off-zero-shot-current-r0-03511944/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-knowledge-graph-98d95f601649/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-parasail-off-zero-shot-current-r0-03511944/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 2276
+[STEP 2] Loading mappings to ask an Oracle from: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-knowledge-graph-98d95f601649/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-parasail-off-zero-shot-current-r0-03511944/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.STRUCTURED
+[STEP 2] MODIFYING GLOBAL RESPONSE CONFIG STATE FOR TEMPLATES!
+[STEP 2] Specifying 'ontology_domain' as 'knowledge graphs' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+[SUCCESS] Using cached quadstore for marvelcinematicuniverse.rdf (cache age: 53h 31m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-cets4gwr/marvelcinematicuniverse_rdf_1950b2c0c605.sqlite3
+[INFO] There are 1225116 triples in the ontology
+[INFO] Indexed 55 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+[SUCCESS] Using cached quadstore for marvel.rdf (cache age: 53h 31m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-57aicn9k/marvel_rdf_773dcb7f712f.sqlite3
+[INFO] There are 6733364 triples in the ontology
+[INFO] Indexed 186 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: <function oupt_one_level_of_parents_and_synonyms at 0x72a2728205e0>
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: <function oupt_prop_domain_range at 0x72a272821120>
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: <function oupt_inst_full_context_entropy at 0x72a2728219e0>
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/t705data/experimental_logmap_llm/datasets/knowledgegraph/marvelcinematicuniverse-marvel/source.rdf|175145892|1774221321119786058|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): c4963b8646927ce1
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/source_c4963b8646927ce1.json
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/t705data/experimental_logmap_llm/datasets/knowledgegraph/marvelcinematicuniverse-marvel/target.rdf|974662845|1774221321246787342|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): 0d12e8270014be67
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/target_0d12e8270014be67.json
+[INFO] Prompts built: 2 cls, 4 prop, 76 inst (82 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 82
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-knowledge-graph-98d95f601649/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-parasail-off-zero-shot-current-r0-03511944/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json

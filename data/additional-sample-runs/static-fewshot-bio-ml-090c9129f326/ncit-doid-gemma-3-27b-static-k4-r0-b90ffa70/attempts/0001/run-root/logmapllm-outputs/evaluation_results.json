@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.8837998303647159,
+    "false_negatives": 518,
+    "false_positives": 578,
+    "metric_notes": {},
+    "precision": 0.878213232195533,
+    "recall": 0.8894579598804951,
+    "reference_size": 4686,
+    "source": "custom",
+    "system_size": 4746,
+    "true_positives": 4168
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 27,
+    "fp": 305,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.6699801192842942,
+    "oracle_precision": 0.5249221183800623,
+    "oracle_recall": 0.9258241758241759,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.9258241758241759,
+    "specificity": 0.3800813008130081,
+    "tn": 187,
+    "total_candidates": 856,
+    "tp": 337,
+    "youdens_j": 0.30590547663718404
+  },
+  "schema_version": 1,
+  "task_name": "ncit-doid"
+}

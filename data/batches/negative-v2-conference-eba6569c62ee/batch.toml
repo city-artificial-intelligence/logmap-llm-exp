@@ -1,0 +1,391 @@
+schema = 1
+
+[batch]
+name = "negative-v2-conference"
+output_root = "../../../batches"
+jobs = 2
+timeout_seconds = 86400
+reuse_alignments = true
+
+[defaults.alignmentTask]
+generate_extended_mappings_to_ask_oracle = false
+logmap_parameters_dirpath = "/home/jon/tools/logmap/paired-control/src/target"
+logmap_jvm_memory = "12g"
+ontology_domain = "academic conferences"
+ontology_vocabulary = "default"
+
+[defaults.oracle]
+max_workers = 8
+enable_thinking = false
+max_completion_tokens = 2056
+request_timeout_seconds = 300.0
+connect_timeout_seconds = 15.0
+transient_retries = 2
+seed = 0
+request_logprobs = true
+temperature = 0.0
+top_p = 1.0
+answer_format = "true_false"
+response_mode = "plain"
+
+[defaults.prompts]
+cls_dev_prompt_template_name = "class_equivalence"
+cls_usr_prompt_template_name = "one_level_of_parents_and_synonyms"
+prop_dev_prompt_template_name = "property_equivalence"
+prop_usr_prompt_template_name = "prop_domain_range"
+dprop_usr_prompt_template_name = "prop_domain_range"
+inst_dev_prompt_template_name = "instance_equivalence"
+inst_usr_prompt_template_name = "inst_full_context_entropy"
+
+[defaults.pipeline]
+align_ontologies = "align"
+build_oracle_prompts = "build"
+consult_oracle = "consult"
+refine_alignment = "refine"
+refinement_strategy = "logmap"
+
+[defaults.evaluation]
+evaluate = true
+metrics = [
+    "global",
+    "oracle",
+]
+force_custom_eval = true
+stratified_class_property = true
+jvm_memory = "8g"
+
+[tasks.cmt-confOf.config.alignmentTask]
+task_name = "cmt-confOf"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+
+[tasks.cmt-confOf.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-confOf.tsv"
+
+[tasks.cmt-conference.config.alignmentTask]
+task_name = "cmt-conference"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+
+[tasks.cmt-conference.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-conference.tsv"
+
+[tasks.cmt-edas.config.alignmentTask]
+task_name = "cmt-edas"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+
+[tasks.cmt-edas.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-edas.tsv"
+
+[tasks.cmt-ekaw.config.alignmentTask]
+task_name = "cmt-ekaw"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+
+[tasks.cmt-ekaw.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-ekaw.tsv"
+
+[tasks.cmt-iasted.config.alignmentTask]
+task_name = "cmt-iasted"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+
+[tasks.cmt-iasted.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-iasted.tsv"
+
+[tasks.cmt-sigkdd.config.alignmentTask]
+task_name = "cmt-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/cmt.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.cmt-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-sigkdd.tsv"
+
+[tasks.confOf-edas.config.alignmentTask]
+task_name = "confOf-edas"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+
+[tasks.confOf-edas.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/confOf-edas.tsv"
+
+[tasks.confOf-ekaw.config.alignmentTask]
+task_name = "confOf-ekaw"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+
+[tasks.confOf-ekaw.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/confOf-ekaw.tsv"
+
+[tasks.confOf-iasted.config.alignmentTask]
+task_name = "confOf-iasted"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+
+[tasks.confOf-iasted.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/confOf-iasted.tsv"
+
+[tasks.confOf-sigkdd.config.alignmentTask]
+task_name = "confOf-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.confOf-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/confOf-sigkdd.tsv"
+
+[tasks.conference-confOf.config.alignmentTask]
+task_name = "conference-confOf"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/confOf.owl"
+
+[tasks.conference-confOf.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-confOf.tsv"
+
+[tasks.conference-edas.config.alignmentTask]
+task_name = "conference-edas"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+
+[tasks.conference-edas.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-edas.tsv"
+
+[tasks.conference-ekaw.config.alignmentTask]
+task_name = "conference-ekaw"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+
+[tasks.conference-ekaw.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-ekaw.tsv"
+
+[tasks.conference-iasted.config.alignmentTask]
+task_name = "conference-iasted"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+
+[tasks.conference-iasted.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-iasted.tsv"
+
+[tasks.conference-sigkdd.config.alignmentTask]
+task_name = "conference-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/Conference.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.conference-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/conference-sigkdd.tsv"
+
+[tasks.edas-ekaw.config.alignmentTask]
+task_name = "edas-ekaw"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+
+[tasks.edas-ekaw.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/edas-ekaw.tsv"
+
+[tasks.edas-iasted.config.alignmentTask]
+task_name = "edas-iasted"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+
+[tasks.edas-iasted.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/edas-iasted.tsv"
+
+[tasks.edas-sigkdd.config.alignmentTask]
+task_name = "edas-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/edas.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.edas-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/edas-sigkdd.tsv"
+
+[tasks.ekaw-iasted.config.alignmentTask]
+task_name = "ekaw-iasted"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+
+[tasks.ekaw-iasted.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/ekaw-iasted.tsv"
+
+[tasks.ekaw-sigkdd.config.alignmentTask]
+task_name = "ekaw-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/ekaw.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.ekaw-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/ekaw-sigkdd.tsv"
+
+[tasks.iasted-sigkdd.config.alignmentTask]
+task_name = "iasted-sigkdd"
+onto_source_filepath = "/home/jon/data/oaei-2025-conference-ontologies/iasted.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-conference-ontologies/sigkdd.owl"
+
+[tasks.iasted-sigkdd.config.evaluation]
+reference_alignment_path = "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/iasted-sigkdd.tsv"
+
+[models.deepseek-v4-flash-gmicloud-fp8-off]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.deepseek-v4-flash-gmicloud-fp8-off.config.oracle]
+model_name = "deepseek/deepseek-v4-flash"
+max_workers = 1
+base_url = "https://openrouter.ai/api/v1"
+api_key = "ENV:OPENROUTER_API_KEY"
+interaction_style = "openrouter"
+reasoning_effort = "none"
+request_logprobs = false
+openrouter_provider = "gmicloud/fp8"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+
+[models.gemini-2-5-flash-off]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.gemini-2-5-flash-off.config.oracle]
+model_name = "google/gemini-2.5-flash"
+base_url = "https://openrouter.ai/api/v1"
+api_key = "ENV:OPENROUTER_API_KEY"
+interaction_style = "openrouter"
+reasoning_effort = "none"
+request_logprobs = false
+openrouter_provider = "google-vertex/eu"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+
+[models.mistral-small-3-2-24b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.mistral-small-3-2-24b.config.oracle]
+model_name = "mistralai/mistral-small-3.2-24b-instruct"
+base_url = "https://openrouter.ai/api/v1"
+api_key = "ENV:OPENROUTER_API_KEY"
+interaction_style = "openrouter"
+request_logprobs = false
+openrouter_provider = "deepinfra/fp8"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+
+[models.qwen3-235b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.qwen3-235b.config.oracle]
+model_name = "Qwen3-235B-A22B-Instruct-2507"
+base_url = "http://127.0.0.1:18012/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = true
+
+[models.qwen3-5-122b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.qwen3-5-122b.config.oracle]
+model_name = "Qwen3.5-122B-A10B"
+base_url = "http://127.0.0.1:18011/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = true
+
+[models.llama-3-1-70b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.llama-3-1-70b.config.oracle]
+model_name = "Llama-3.1-70B-Instruct"
+base_url = "http://127.0.0.1:18010/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = false
+
+[models.gemma-3-27b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.gemma-3-27b.config.oracle]
+model_name = "Gemma-3-27B"
+base_url = "http://127.0.0.1:18004/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = false
+
+[models.qwen3-8b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.qwen3-8b.config.oracle]
+model_name = "Qwen3-8B"
+base_url = "http://127.0.0.1:18001/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = true
+
+[models.plain-logmap]
+max_parallel_runs = 1
+verify_endpoint = false
+
+[models.plain-logmap.config.oracle]
+model_name = "plain-logmap"
+base_url = "http://127.0.0.1:1/v1"
+api_key = "EMPTY"
+interaction_style = "local"
+request_logprobs = false
+
+[models.plain-logmap.config.pipeline]
+build_oracle_prompts = "bypass"
+consult_oracle = "bypass"
+
+[models.plain-logmap.config.evaluation]
+metrics = [
+    "global",
+]
+
+[conditions.plain-v2-k0.config.few_shot]
+few_shot_k = 0
+
+[matrix]
+tasks = [
+    "cmt-confOf",
+    "cmt-conference",
+    "cmt-edas",
+    "cmt-ekaw",
+    "cmt-iasted",
+    "cmt-sigkdd",
+    "confOf-edas",
+    "confOf-ekaw",
+    "confOf-iasted",
+    "confOf-sigkdd",
+    "conference-confOf",
+    "conference-edas",
+    "conference-ekaw",
+    "conference-iasted",
+    "conference-sigkdd",
+    "edas-ekaw",
+    "edas-iasted",
+    "edas-sigkdd",
+    "ekaw-iasted",
+    "ekaw-sigkdd",
+    "iasted-sigkdd",
+]
+models = [
+    "deepseek-v4-flash-gmicloud-fp8-off",
+    "gemini-2-5-flash-off",
+    "gemma-3-27b",
+    "llama-3-1-70b",
+    "mistral-small-3-2-24b",
+    "plain-logmap",
+    "qwen3-235b",
+    "qwen3-5-122b",
+    "qwen3-8b",
+]
+conditions = [
+    "plain-v2-k0",
+]
+
+[aggregate]
+group_by = [
+    "model",
+]
+require_complete = true

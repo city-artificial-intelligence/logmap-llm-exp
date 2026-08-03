@@ -1,0 +1,44 @@
+{
+  "alignment_id": "20e6ae9e912b3ff9",
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 15124,
+      "path": "jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 399879,
+      "path": "jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 1574,
+      "path": "jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "8e70011a956d5eea867575d7ae06f62446f6f2a633c58639e2930268d046fa9b"
+    },
+    {
+      "bytes": 3805,
+      "path": "jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "9f96177b1f9c2c6b13a66742647d160b30647f64a91ea07491fd5bb9129daa10"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "k0",
+  "condition_id": "648bf70c843328d63a063fa22b8fc227d51abf0f21b5a1c7b3ecfe890658a011",
+  "config_sha256": "0c62bbdf8d7e44938385c97a80f0e94f1e79a77ba0c47b95a20a8cdcbee0755a",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "1ef460daa2eb172e4321ab52f54a6043fb9dedc7cc5d4481117000fa48e9d6cf",
+  "finished_at": "2026-07-27T22:25:17+00:00",
+  "id": "marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da",
+  "kind": "job",
+  "model": "plain-logmap",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "marvelcinematicuniverse-marvel"
+}

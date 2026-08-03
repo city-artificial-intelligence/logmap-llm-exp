@@ -1,0 +1,64 @@
+{
+  "alignment_id": "b948ad6206940c19",
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 15124,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 401602,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "sha256": "1fbb697617092726e6e854de5ad4d6d929f8c42a7cc85e0a38f6951a1f5711a6"
+    },
+    {
+      "bytes": 1963,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "77ff2ffafff68c1e573f837910f7d6c7501c688454b7b1c8c2e335ce92e9a556"
+    },
+    {
+      "bytes": 269087,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "sha256": "15e8465a672225d4b572b047cc6fae5d2d8cba70e07af6fc8e94075a2dd7b369"
+    },
+    {
+      "bytes": 71742,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "0e609f2aa13988b56638b601830b0ee174e56500bccaa2bf770dba648037c236"
+    },
+    {
+      "bytes": 17868,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "c8e2480100e1e1e29c11847c5ccbcfc3378c65a04a8f666b401a487eb53c6ab1"
+    },
+    {
+      "bytes": 432334,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "28a034e17ab679678a669de2123cf934f3c5ec21a703bcef0efdff8504bc29e2"
+    },
+    {
+      "bytes": 5910,
+      "path": "jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "8bfcc6923bf11b527d156f316aa20c76b625cc082f688ff8264569f7c35d5788"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "query-rag-k4",
+  "condition_id": "bc1e19b76441887e73fbb3dc5a1958d78c0980414858f39af7a0f4051cd377fd",
+  "config_sha256": "c3e5684155f58ac2ab1c653acf45e20103e65203f5b40222f69ca0a32d7a7cd9",
+  "core_sha256": "8cb8875fd9982f87f68c4436332f1f3b1948fb6db0a9148011088630c1e31ebe",
+  "execution_hash": "68a95429e27a1e920a42c9d4194db766b1a733e59f00a0887fcff80dafaad449",
+  "finished_at": "2026-07-17T11:43:35+00:00",
+  "id": "marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429",
+  "kind": "job",
+  "model": "llama-3-1-70b",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "marvelcinematicuniverse-marvel"
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-bio-ml-f8b04e2a8f53/jobs/ncit-doid-llama-3-1-70b-query-rag-k4-r0-518d11d1/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-bio-ml-f8b04e2a8f53/jobs/ncit-doid-llama-3-1-70b-query-rag-k4-r0-518d11d1/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 331.529,
+  "finished_at": "2026-07-17T10:23:55+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T10:18:23+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

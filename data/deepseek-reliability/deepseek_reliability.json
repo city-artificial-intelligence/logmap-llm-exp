@@ -1,0 +1,2461 @@
+{
+  "generated": "2026-07-28T12:52:58+01:00",
+  "attempts_total": 172,
+  "attempts_by_status": {
+    "failed": 155,
+    "success": 5,
+    "degraded": 4,
+    "running": 8
+  },
+  "attempts_by_route": {
+    "siliconflow": 81,
+    "gmicloud": 91
+  },
+  "distinct_job_cells_attempted": 45,
+  "job_cells_with_a_success": 5,
+  "job_cells_degraded_only": 4,
+  "failure_causes": {
+    "provider rejects model (GMICloud)": 84,
+    "HTTP 429": 12,
+    "aborted at failure threshold": 151,
+    "no endpoint satisfies the parameter filter": 69
+  },
+  "per_attempt_coverage": [
+    {
+      "job": "ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-ead63d7a",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 856,
+      "errors": 1,
+      "coverage_pct": 99.88
+    },
+    {
+      "job": "omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-aa5f4212",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 399,
+      "errors": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-c8cb1b21",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 301,
+      "errors": 1,
+      "coverage_pct": 99.67
+    },
+    {
+      "job": "anatomy-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-11640eb0",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 259,
+      "errors": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "job": "anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 259,
+      "errors": 7,
+      "coverage_pct": 97.3
+    },
+    {
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-ab822695",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 153,
+      "errors": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-c7c5f6c4",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 82,
+      "errors": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-225ea9f2",
+      "attempt": "0001",
+      "route": "gmicloud",
+      "predictions": 82,
+      "errors": 0,
+      "coverage_pct": 100.0
+    },
+    {
+      "job": "starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-575aae37",
+      "attempt": "0002",
+      "route": "gmicloud",
+      "predictions": 40,
+      "errors": 3,
+      "coverage_pct": 92.5
+    }
+  ],
+  "attempts": [
+    {
+      "batch": "collective-anchors-anatomy-a29f53d0214a",
+      "job": "anatomy-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-11640eb0",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "success",
+      "error": "",
+      "finished_at": "2026-07-28T00:49:35+00:00",
+      "causes": []
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-c7c5f6c4",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "success",
+      "error": "",
+      "finished_at": "2026-07-28T00:59:05+00:00",
+      "causes": []
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-c8cb1b21",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "degraded",
+      "error": "",
+      "finished_at": "2026-07-28T01:22:10+00:00",
+      "causes": []
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-ab822695",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "success",
+      "error": "",
+      "finished_at": "2026-07-28T01:28:54+00:00",
+      "causes": []
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-ead63d7a",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "degraded",
+      "error": "",
+      "finished_at": "2026-07-28T01:16:54+00:00",
+      "causes": [
+        "HTTP 429"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-aa5f4212",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "success",
+      "error": "",
+      "finished_at": "2026-07-28T01:33:49+00:00",
+      "causes": []
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T01:54:16+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T02:55:13+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T03:43:13+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T04:22:11+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T04:59:15+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T05:35:00+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0007",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T06:09:28+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0008",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T06:49:05+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0009",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-e05593d8 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-a",
+      "finished_at": "2026-07-28T07:28:06+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T02:20:44+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T03:20:33+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T03:59:27+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T04:37:29+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T05:13:20+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T05:50:30+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0007",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T06:24:28+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0008",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T07:02:39+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0009",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-b49809ab failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collecti",
+      "finished_at": "2026-07-28T07:45:42+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T02:32:35+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T03:28:51+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T04:06:04+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T04:44:27+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T05:20:44+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T05:56:55+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0007",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T06:32:29+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0008",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T07:09:24+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-bio-ml-319a9a59644b",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0009",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-157b376f failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective",
+      "finished_at": "2026-07-28T07:51:54+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T01:44:01+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T04:50:39+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T04:59:48+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:05:31+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:10:03+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:16:00+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0007",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:22:44+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0008",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:26:41+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0009",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:31:48+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0010",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:36:54+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0011",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:41:51+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0012",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:47:45+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0013",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:53:01+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0014",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T05:57:24+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0015",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:03:51+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0016",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:08:29+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0017",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:13:43+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0018",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:19:50+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0019",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:23:44+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0020",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:29:54+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0021",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:35:05+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0022",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:39:49+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0023",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:44:28+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0024",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:49:33+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0025",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:54:03+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0026",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T06:59:41+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0027",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:04:53+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0028",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:10:01+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0029",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:15:40+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0030",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:19:32+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0031",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:25:19+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0032",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:32:01+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0033",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:35:22+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0034",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:41:26+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0035",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-7a72eab9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-anch",
+      "finished_at": "2026-07-28T07:45:47+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-575aae37",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-575aae37 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/collective-an",
+      "finished_at": "2026-07-28T01:48:19+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "collective-anchors-knowledge-graph-4adbf71c7237",
+      "job": "starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-575aae37",
+      "arm": "collective",
+      "route": "gmicloud",
+      "attempt": "0002",
+      "status": "degraded",
+      "error": "",
+      "finished_at": "2026-07-28T04:53:31+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-anatomy-bae23cd55bb9",
+      "job": "anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "degraded",
+      "error": "",
+      "finished_at": "2026-07-28T01:36:28+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-anatomy-bae23cd55bb9",
+      "job": "anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-v1-anato",
+      "finished_at": "2026-07-28T02:58:53+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-225ea9f2",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "success",
+      "error": "",
+      "finished_at": "2026-07-28T01:22:34+00:00",
+      "causes": []
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-225ea9f2",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-225ea9f2 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches",
+      "finished_at": "2026-07-28T02:56:32+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d5526719",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d5526719 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runti",
+      "finished_at": "2026-07-28T03:22:14+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d5526719",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d5526719 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime",
+      "finished_at": "2026-07-28T03:05:07+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d56e0326",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d56e0326 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runti",
+      "finished_at": "2026-07-28T04:01:18+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d56e0326",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-d56e0326 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime",
+      "finished_at": "2026-07-28T03:08:53+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e8ee02ea",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e8ee02ea failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runtime-donor-v1-b",
+      "finished_at": "2026-07-28T03:22:28+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e8ee02ea",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e8ee02ea failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-v1-bio",
+      "finished_at": "2026-07-28T03:14:58+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-21a4fca0",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-21a4fca0 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runtime-donor-v1-b",
+      "finished_at": "2026-07-28T04:35:41+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-21a4fca0",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-21a4fca0 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-v1-bio",
+      "finished_at": "2026-07-28T03:23:39+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-0fa639ac",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-0fa639ac failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runtime-dono",
+      "finished_at": "2026-07-28T06:58:44+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-0fa639ac",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-0fa639ac failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-",
+      "finished_at": "2026-07-28T03:41:40+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-eaad27e9",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-eaad27e9",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-eaad27e9 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-do",
+      "finished_at": "2026-07-28T04:21:16+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "HTTP 429",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-bio-ml-06e209785127",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9e6e95cb",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9e6e95cb failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-dono",
+      "finished_at": "2026-07-28T04:27:56+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9997af39",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9997af39 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runtime-donor-v",
+      "finished_at": "2026-07-28T04:30:31+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9997af39",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-9997af39 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-v1-",
+      "finished_at": "2026-07-28T03:10:13+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-fadb4b04",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-fadb4b04 failed; see /home/jon/logmap_llm_sweep/collective-anchors/deepseek/batches/runtime-donor",
+      "finished_at": "2026-07-28T04:49:07+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "runtime-donor-v1-knowledge-graph-13f46cd38f28",
+      "job": "starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-fadb4b04",
+      "arm": "runtime",
+      "route": "gmicloud",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-fadb4b04 failed; see /home/jon/logmap_llm_sweep/collective-anchors/local3/batches/runtime-donor-v",
+      "finished_at": "2026-07-28T03:13:40+00:00",
+      "causes": [
+        "provider rejects model (GMICloud)",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-bdc03be79ef7",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-a14cdac8",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-a14cdac8 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T04:18:59+00:00",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-bdc03be79ef7",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-a14cdac8",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T03:41:57+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T03:47:26+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T03:52:41+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T03:58:00+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T04:03:15+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-anatomy-9f147357d017",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f212b721 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collec",
+      "finished_at": "2026-07-28T04:08:42+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T03:42:53+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T03:48:22+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T03:53:47+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T03:59:01+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T04:04:14+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-3898ecc3",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0006",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:43:21+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:48:49+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:54:14+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:59:28+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-206527da failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T04:04:40+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:43:37+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:49:05+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:54:30+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:59:45+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-b8037bb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T04:04:57+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:42:07+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:47:37+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:52:51+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:58:10+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T04:03:25+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-c3e1115e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T04:08:58+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:42:17+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:47:47+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:53:04+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T03:58:21+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T04:03:36+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0006",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-f3aeb20e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-coll",
+      "finished_at": "2026-07-28T04:09:09+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T03:42:49+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T03:48:16+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T03:53:39+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T03:58:54+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T04:04:06+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-8c5b0d87",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0006",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T03:43:07+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T03:48:30+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T03:54:00+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T03:59:11+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-970415cb failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T04:04:20+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconf",
+      "finished_at": "2026-07-28T03:43:22+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconf",
+      "finished_at": "2026-07-28T03:48:45+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconf",
+      "finished_at": "2026-07-28T03:54:19+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconf",
+      "finished_at": "2026-07-28T03:59:29+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-bio-ml-9b565727e19a",
+      "job": "snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job snomed-ncit-pharm-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-921ad0ea failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconf",
+      "finished_at": "2026-07-28T04:04:36+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-c",
+      "finished_at": "2026-07-28T03:44:17+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-c",
+      "finished_at": "2026-07-28T03:49:41+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-c",
+      "finished_at": "2026-07-28T03:55:06+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-c",
+      "finished_at": "2026-07-28T04:00:20+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-81622929 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-c",
+      "finished_at": "2026-07-28T04:05:31+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T03:44:59+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T03:50:14+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T03:55:44+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T04:00:56+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-collective-anchors-knowledge-graph-fdb203665f41",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c",
+      "arm": "collective",
+      "route": "siliconflow",
+      "attempt": "0005",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-ca-k4-r0-d6c0d15c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T04:06:05+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-f8d08bbaefa8",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-2ad44d66",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-2ad44d66 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtim",
+      "finished_at": "2026-07-28T04:16:01+00:00",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-f8d08bbaefa8",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-2ad44d66",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtim",
+      "finished_at": "2026-07-28T03:47:49+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtim",
+      "finished_at": "2026-07-28T03:59:35+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0003",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtim",
+      "finished_at": "2026-07-28T04:05:17+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "failed",
+      "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtim",
+      "finished_at": "2026-07-28T04:15:50+00:00",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f",
+      "job": "anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0004",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T03:45:50+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "failed",
+      "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batche",
+      "finished_at": "2026-07-28T04:13:42+00:00",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0002",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-aef10ec4",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-memorybeta-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-aef10ec4 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T03:55:18+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-afdeefa4",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job memoryalpha-stexpanded-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-afdeefa4 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-sil",
+      "finished_at": "2026-07-28T04:00:05+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9",
+      "job": "ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-eb6effb1",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job ncit-doid-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-eb6effb1 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runt",
+      "finished_at": "2026-07-28T04:00:17+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9",
+      "job": "omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-b9bac3d8",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job omim-ordo-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-b9bac3d8 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runt",
+      "finished_at": "2026-07-28T04:04:16+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9",
+      "job": "snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-1099b710",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-fma-body-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-1099b710 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflo",
+      "finished_at": "2026-07-28T04:07:37+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-0bdbba25",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-0bdbba25 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-silico",
+      "finished_at": "2026-07-28T04:17:24+00:00",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9",
+      "job": "snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-0bdbba25",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "running",
+      "error": "",
+      "finished_at": "",
+      "causes": []
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-6e76238d",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swg-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-6e76238d failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-r",
+      "finished_at": "2026-07-28T04:02:59+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    },
+    {
+      "batch": "ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021",
+      "job": "starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-1a4d27c7",
+      "arm": "runtime",
+      "route": "siliconflow",
+      "attempt": "0001",
+      "status": "failed",
+      "error": "job starwars-swtor-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-1a4d27c7 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow",
+      "finished_at": "2026-07-28T04:04:36+00:00",
+      "causes": [
+        "no endpoint satisfies the parameter filter",
+        "aborted at failure threshold"
+      ]
+    }
+  ]
+}

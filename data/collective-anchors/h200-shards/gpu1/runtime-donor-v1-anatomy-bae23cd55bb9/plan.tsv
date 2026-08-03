@@ -1,0 +1,9 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102	anatomy	deepseek-v4-flash-gmicloud-fp8-off	rt-k4	0	0410e29bcdddd096	configs/anatomy-deepseek-v4-flash-gmicloud-fp8-off-rt-k4-r0-e7a56102.toml
+anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179	anatomy	gemini-2-5-flash-off	rt-k4	0	0410e29bcdddd096	configs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179.toml
+anatomy-gemma-3-27b-rt-k4-r0-965cea27	anatomy	gemma-3-27b	rt-k4	0	0410e29bcdddd096	configs/anatomy-gemma-3-27b-rt-k4-r0-965cea27.toml
+anatomy-llama-3-1-70b-rt-k4-r0-e77301a4	anatomy	llama-3-1-70b	rt-k4	0	0410e29bcdddd096	configs/anatomy-llama-3-1-70b-rt-k4-r0-e77301a4.toml
+anatomy-mistral-small-3-2-24b-rt-k4-r0-3f662728	anatomy	mistral-small-3-2-24b	rt-k4	0	0410e29bcdddd096	configs/anatomy-mistral-small-3-2-24b-rt-k4-r0-3f662728.toml
+anatomy-qwen3-235b-rt-k4-r0-529f67d1	anatomy	qwen3-235b	rt-k4	0	0410e29bcdddd096	configs/anatomy-qwen3-235b-rt-k4-r0-529f67d1.toml
+anatomy-qwen3-5-122b-rt-k4-r0-1ff86446	anatomy	qwen3-5-122b	rt-k4	0	0410e29bcdddd096	configs/anatomy-qwen3-5-122b-rt-k4-r0-1ff86446.toml
+anatomy-qwen3-8b-rt-k4-r0-1eab10c4	anatomy	qwen3-8b	rt-k4	0	0410e29bcdddd096	configs/anatomy-qwen3-8b-rt-k4-r0-1eab10c4.toml

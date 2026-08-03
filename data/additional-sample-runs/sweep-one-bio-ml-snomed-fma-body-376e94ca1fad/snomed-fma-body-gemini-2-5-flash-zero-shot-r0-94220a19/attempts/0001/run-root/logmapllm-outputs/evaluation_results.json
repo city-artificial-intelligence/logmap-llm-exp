@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.6457640538400634,
+    "false_negatives": 3178,
+    "false_positives": 1296,
+    "metric_notes": {},
+    "precision": 0.7588388537402307,
+    "recall": 0.5620176405733186,
+    "reference_size": 7256,
+    "source": "custom",
+    "system_size": 5374,
+    "true_positives": 4078
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 41,
+    "fp": 305,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.654690618762475,
+    "oracle_precision": 0.5181674565560821,
+    "oracle_recall": 0.8888888888888888,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.8888888888888888,
+    "specificity": 0.5088566827697263,
+    "tn": 316,
+    "total_candidates": 990,
+    "tp": 328,
+    "youdens_j": 0.3977455716586151
+  },
+  "schema_version": 1,
+  "task_name": "snomed-fma-body"
+}

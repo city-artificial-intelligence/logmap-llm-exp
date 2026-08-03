@@ -1,0 +1,78 @@
+[alignmentTask]
+generate_extended_mappings_to_ask_oracle = false
+logmap_jvm_memory = "16g"
+logmap_parameters_dirpath = "/home/jon/tools/logmap/paired-control-class-only/src/target"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl"
+ontology_domain = "biomedical"
+ontology_vocabulary = "default"
+stub_import_iris = []
+task_name = "ncit-doid"
+
+[evaluation]
+evaluate = true
+force_custom_eval = true
+jvm_memory = "8g"
+metrics = [
+    "global",
+    "oracle",
+]
+partial_reference = false
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv"
+stratified_by_entity_type = false
+stratified_class_property = false
+
+[few_shot]
+few_shot_k = 4
+few_shot_negative_strategy = "query-rag"
+few_shot_seed = 0
+rag_cache_dir = "/home/jon/data/logmap-llm-rag-runtime/cache"
+rag_encoder_device = "cpu"
+rag_encoder_kind = "sapbert"
+rag_encoder_max_length = 64
+rag_encoder_model = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+rag_encoder_revision = "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+rag_failure_policy = "error"
+
+[oracle]
+answer_format = "true_false"
+api_key = "EMPTY"
+base_url = "http://127.0.0.1:18010/v1"
+connect_timeout_seconds = 15.0
+enable_thinking = false
+interaction_style = "vllm"
+local_oracle_predictions_dirpath = ""
+max_completion_tokens = 2056
+max_workers = 8
+model_name = "Llama-3.1-70B-Instruct"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+request_logprobs = true
+request_timeout_seconds = 300.0
+response_mode = "plain"
+seed = 0
+supports_chat_template_kwargs = false
+temperature = 0.0
+top_p = 1.0
+transient_retries = 2
+
+[outputs]
+logmap_initial_alignment_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/plain-true-false-bio-ml-3c20271012cc/jobs/ncit-doid-llama-3-1-70b-plain-k4-r0-1d32eec4/standalone/logmap-initial-alignment"
+logmap_refined_alignment_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/plain-true-false-bio-ml-3c20271012cc/jobs/ncit-doid-llama-3-1-70b-plain-k4-r0-1d32eec4/standalone/logmap-refined-alignment"
+logmapllm_output_dirpath = "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/plain-true-false-bio-ml-3c20271012cc/jobs/ncit-doid-llama-3-1-70b-plain-k4-r0-1d32eec4/standalone/logmapllm-outputs"
+
+[pipeline]
+align_ontologies = "align"
+build_oracle_prompts = "build"
+consult_oracle = "consult"
+refine_alignment = "refine"
+refinement_strategy = "logmap"
+
+[prompts]
+cls_dev_prompt_template_name = "class_equivalence"
+cls_usr_prompt_template_name = "one_level_of_parents_and_synonyms"
+dprop_usr_prompt_template_name = "prop_domain_range"
+inst_dev_prompt_template_name = "instance_equivalence"
+inst_usr_prompt_template_name = "inst_full_context_entropy"
+prop_dev_prompt_template_name = "property_equivalence"
+prop_usr_prompt_template_name = "prop_domain_range"

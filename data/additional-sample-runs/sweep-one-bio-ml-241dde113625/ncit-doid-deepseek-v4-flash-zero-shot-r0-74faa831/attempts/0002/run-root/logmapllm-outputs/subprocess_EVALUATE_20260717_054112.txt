@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0002/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_054112.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8908
+[METRIC]    Recall           :  0.8899
+[METRIC]    F1               :  0.8904
+[METRIC]    True Positives   :  4170
+[METRIC]    False Positives  :  511
+[METRIC]    False Negatives  :  516
+[METRIC]    System Size      :  4681
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.7205
+[METRIC]    Oracle Recall           :  0.9313
+[METRIC]    Oracle Precision        :  0.5875
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.4486
+[METRIC]    Specificity             :  0.5172
+[METRIC]    Sensitivity             :  0.9313
+[METRIC]    Total Candidates        :  857
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  25
+[METRIC]    Tn                      :  255
+[METRIC]    Fp                      :  238
+[METRIC]    Tp                      :  339
+
+False mappings (263 FP+FN) saved to: /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0002/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0002/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.890835291604358,
+    "recall": 0.8898847631241997,
+    "f1": 0.8903597736735348,
+    "true_positives": 4170,
+    "false_positives": 511,
+    "false_negatives": 516,
+    "system_size": 4681,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260728_125943.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8958
+[METRIC]    Recall           :  0.8878
+[METRIC]    F1               :  0.8917
+[METRIC]    True Positives   :  4160
+[METRIC]    False Positives  :  484
+[METRIC]    False Negatives  :  526
+[METRIC]    System Size      :  4644
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.7279
+[METRIC]    Oracle Recall           :  0.9038
+[METRIC]    Oracle Precision        :  0.6093
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.4750
+[METRIC]    Specificity             :  0.5711
+[METRIC]    Sensitivity             :  0.9038
+[METRIC]    Total Candidates        :  856
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  35
+[METRIC]    Tn                      :  281
+[METRIC]    Fp                      :  211
+[METRIC]    Tp                      :  329
+
+False mappings (246 FP+FN) saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.8957795004306632,
+    "recall": 0.8877507469056765,
+    "f1": 0.8917470525187566,
+    "true_positives": 4160,
+    "false_positives": 484,
+    "false_negatives": 526,
+    "system_size": 4644,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

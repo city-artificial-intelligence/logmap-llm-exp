@@ -1,0 +1,49 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260717_032024.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmap-initial-alignment/cmt-confOf-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 6
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmap-initial-alignment/cmt-confOf-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.STRUCTURED
+[STEP 2] MODIFYING GLOBAL RESPONSE CONFIG STATE FOR TEMPLATES!
+[STEP 2] Specifying 'ontology_domain' as 'academic conferences' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-conference-ontologies/cmt.owl
+[SUCCESS] Using cached quadstore for cmt.owl (cache age: 9m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-vjnes6lw/cmt_owl_2f26ce886814.sqlite3
+[INFO] There are 414 triples in the ontology
+[INFO] Indexed 29 classes.
+[INFO] Indexed 59 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-conference-ontologies/cmt.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-conference-ontologies/confOf.owl
+[SUCCESS] Using cached quadstore for confOf.owl (cache age: 9m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-eivayc2f/confOf_owl_000cea709b67.sqlite3
+[INFO] There are 541 triples in the ontology
+[INFO] Indexed 38 classes.
+[INFO] Indexed 36 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-conference-ontologies/confOf.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: <function oupt_one_level_of_parents_and_synonyms at 0x75848530e160>
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: <function oupt_prop_domain_range at 0x75848530eca0>
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: <function oupt_inst_full_context_entropy at 0x75848530f560>
+[INFO] Prompts built: 0 cls, 1 prop, 0 inst (1 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 1
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmapllm-outputs/cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json

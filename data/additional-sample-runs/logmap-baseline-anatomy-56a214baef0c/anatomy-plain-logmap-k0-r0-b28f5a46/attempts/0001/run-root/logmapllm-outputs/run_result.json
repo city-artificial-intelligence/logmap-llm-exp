@@ -1,0 +1,84 @@
+{
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 93567,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "b3730c6761b097e75af57fedf5dc26c02ee48b6e1755c5c1a2fb895441a852cc"
+    },
+    {
+      "bytes": 17337,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 93567,
+      "path": "logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "b3730c6761b097e75af57fedf5dc26c02ee48b6e1755c5c1a2fb895441a852cc"
+    },
+    {
+      "bytes": 410,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "aa99e73636fde8513f2458233d90b932b35dab384b5c2f59959ae4277abf4f7e"
+    }
+  ],
+  "counts": {
+    "candidates": 0,
+    "error": 0,
+    "false": 0,
+    "prompts": 0,
+    "skipped": 0,
+    "true": 0
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.8808219178082192,
+      "false_negatives": 230,
+      "false_positives": 118,
+      "metric_notes": {},
+      "precision": 0.915954415954416,
+      "recall": 0.8482849604221636,
+      "reference_size": 1516,
+      "source": "custom",
+      "system_size": 1404,
+      "true_positives": 1286
+    },
+    "metrics": [
+      "global"
+    ],
+    "schema_version": 1,
+    "task_name": "anatomy"
+  },
+  "model_name": "plain-logmap",
+  "oracle": {},
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "anatomy",
+  "timing": {
+    "align_seconds": 0.004205942153930664,
+    "consult_seconds": 0.4819307327270508,
+    "evaluate_seconds": 0.3439462184906006,
+    "prompt_build_seconds": 1.0728836059570312e-05,
+    "refine_seconds": 0.00026154518127441406,
+    "total_seconds": 0.830355167388916
+  }
+}

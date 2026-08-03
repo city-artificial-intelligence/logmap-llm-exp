@@ -1,0 +1,10 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1	anatomy	deepseek-v4-flash	zero-shot	0	21ac6be7e135fc00	configs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1.toml
+anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3	anatomy	gemini-2-5-flash	zero-shot	0	21ac6be7e135fc00	configs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3.toml
+anatomy-gemma-3-27b-zero-shot-r0-f2e43c21	anatomy	gemma-3-27b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-gemma-3-27b-zero-shot-r0-f2e43c21.toml
+anatomy-llama-3-1-70b-zero-shot-r0-5c4133a1	anatomy	llama-3-1-70b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-llama-3-1-70b-zero-shot-r0-5c4133a1.toml
+anatomy-mistral-small-3-2-24b-zero-shot-r0-e9177970	anatomy	mistral-small-3-2-24b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-mistral-small-3-2-24b-zero-shot-r0-e9177970.toml
+anatomy-plain-logmap-zero-shot-r0-0d675e99	anatomy	plain-logmap	zero-shot	0	21ac6be7e135fc00	configs/anatomy-plain-logmap-zero-shot-r0-0d675e99.toml
+anatomy-qwen3-235b-zero-shot-r0-238267ce	anatomy	qwen3-235b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-qwen3-235b-zero-shot-r0-238267ce.toml
+anatomy-qwen3-5-122b-zero-shot-r0-1e7a2e2e	anatomy	qwen3-5-122b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-qwen3-5-122b-zero-shot-r0-1e7a2e2e.toml
+anatomy-qwen3-8b-zero-shot-r0-d6fe47fe	anatomy	qwen3-8b	zero-shot	0	21ac6be7e135fc00	configs/anatomy-qwen3-8b-zero-shot-r0-d6fe47fe.toml

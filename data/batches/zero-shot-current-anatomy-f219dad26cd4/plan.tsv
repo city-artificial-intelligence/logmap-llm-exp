@@ -1,0 +1,9 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599	anatomy	deepseek-v4-flash-parasail-off	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599.toml
+anatomy-gemini-2-5-flash-off-zero-shot-current-r0-76231eb1	anatomy	gemini-2-5-flash-off	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-gemini-2-5-flash-off-zero-shot-current-r0-76231eb1.toml
+anatomy-gemma-3-27b-zero-shot-current-r0-71e506d0	anatomy	gemma-3-27b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-gemma-3-27b-zero-shot-current-r0-71e506d0.toml
+anatomy-llama-3-1-70b-zero-shot-current-r0-f51b66f2	anatomy	llama-3-1-70b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-llama-3-1-70b-zero-shot-current-r0-f51b66f2.toml
+anatomy-mistral-small-3-2-24b-zero-shot-current-r0-1169015c	anatomy	mistral-small-3-2-24b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-mistral-small-3-2-24b-zero-shot-current-r0-1169015c.toml
+anatomy-qwen3-235b-zero-shot-current-r0-d233f6e0	anatomy	qwen3-235b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-qwen3-235b-zero-shot-current-r0-d233f6e0.toml
+anatomy-qwen3-5-122b-zero-shot-current-r0-c73ae886	anatomy	qwen3-5-122b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-qwen3-5-122b-zero-shot-current-r0-c73ae886.toml
+anatomy-qwen3-8b-zero-shot-current-r0-89d6c28b	anatomy	qwen3-8b	zero-shot-current	0	3bf31921d63a3dc9	configs/anatomy-qwen3-8b-zero-shot-current-r0-89d6c28b.toml

@@ -1,0 +1,193 @@
+{
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 15124,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 71742,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "0e609f2aa13988b56638b601830b0ee174e56500bccaa2bf770dba648037c236"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 22153,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "f59be80dd87dc3477ff333c65b851a520dfc4ae85ab459562f40447850f3fe83"
+    },
+    {
+      "bytes": 400785,
+      "path": "logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "63aa7ae92fe6fe92bc822036ee137a8b89ec5e4b1866939f64dc238dafda32c4"
+    },
+    {
+      "bytes": 1962,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "137198392c558415760b157466bba4141b15ff0038755eba97990e6761872487"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 82,
+    "error": 0,
+    "false": 75,
+    "prompts": 82,
+    "skipped": 0,
+    "true": 7
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "partial_reference",
+    "global": {
+      "evaluated_size": 927,
+      "f1": 0.5985345160046278,
+      "false_negatives": 890,
+      "false_positives": 151,
+      "ignored": 1354,
+      "metric_notes": {},
+      "precision": 0.837108953613808,
+      "recall": 0.4657863145258103,
+      "reference_size": 1666,
+      "source": "kg_partial",
+      "system_size": 2281,
+      "true_positives": 776
+    },
+    "global_class": {
+      "evaluated_size": 2,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "ignored": 7,
+      "metric_notes": {},
+      "precision": 1.0,
+      "recall": 1.0,
+      "reference_size": 2,
+      "source": "partial_reference_stratified_class",
+      "system_size": 9,
+      "true_positives": 2
+    },
+    "global_instance": {
+      "evaluated_size": 912,
+      "f1": 0.5964912280701754,
+      "false_negatives": 888,
+      "false_positives": 147,
+      "ignored": 1338,
+      "metric_notes": {},
+      "precision": 0.8388157894736842,
+      "recall": 0.4627949183303085,
+      "reference_size": 1653,
+      "source": "partial_reference_stratified_instance",
+      "system_size": 2250,
+      "true_positives": 765
+    },
+    "global_property": {
+      "evaluated_size": 13,
+      "f1": 0.7500000000000001,
+      "false_negatives": 2,
+      "false_positives": 4,
+      "ignored": 9,
+      "metric_notes": {},
+      "precision": 0.6923076923076923,
+      "recall": 0.8181818181818182,
+      "reference_size": 11,
+      "source": "partial_reference_stratified_property",
+      "system_size": 22,
+      "true_positives": 9
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 0,
+      "fp": 1,
+      "metric_notes": {},
+      "oracle_excluded": 75,
+      "oracle_f1": 0.8,
+      "oracle_precision": 0.6666666666666666,
+      "oracle_recall": 1.0,
+      "partial_scope_excluded": 75,
+      "sensitivity": 1.0,
+      "specificity": 0.8,
+      "tn": 4,
+      "total_candidates": 82,
+      "tp": 2,
+      "youdens_j": 0.8
+    },
+    "schema_version": 1,
+    "task_name": "marvelcinematicuniverse-marvel"
+  },
+  "model_name": "google/gemini-2.5-flash",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "openrouter",
+    "logprobs_effective": false,
+    "logprobs_requested": false,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "google/gemini-2.5-flash",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": "google-vertex/eu",
+    "openrouter_require_parameters": true,
+    "reasoning_effort": "none",
+    "reasoning_token_budget": null,
+    "request_logprobs": false,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "marvelcinematicuniverse-marvel",
+  "timing": {
+    "align_seconds": 0.00471186637878418,
+    "consult_seconds": 4.2883453369140625,
+    "evaluate_seconds": 0.28821325302124023,
+    "prompt_build_seconds": 15.08896255493164,
+    "refine_seconds": 0.017876148223876953,
+    "total_seconds": 19.688109159469604
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "artifacts": [
+    {
+      "bytes": 93649,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "4c8993275e8d4943414c29d4c7dd986ec7cd85e8b764ce8948c9f943ede50e64"
+    },
+    {
+      "bytes": 93649,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "9dc07bfd38eb15c6f4321a7f6774ecc0881d6bf649094a9d4cde282c53d75e6c"
+    },
+    {
+      "bytes": 17337,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 134764,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "4ba4db7962b4e30084f62c6b991fa8d4d0015a1bce1020d28c0e81e14c1b8b75"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 21435,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "14db9e90dd8069cc47760215de84ff5564dd04fc03152ae4828e1955e8ca6bf5"
+    },
+    {
+      "bytes": 89030,
+      "path": "logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "2bb132ba517a54631663fef0254f6395d3d786f4b96cadb329da66cf946ef128"
+    },
+    {
+      "bytes": 863,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "57ba4ad0b4175ac1b13ea0bb7df6627c01ef62b7a920ce91b5b2068323b789f2"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 259,
+    "error": 0,
+    "false": 69,
+    "prompts": 259,
+    "skipped": 0,
+    "true": 190
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.8983169705469846,
+      "false_negatives": 235,
+      "false_positives": 55,
+      "metric_notes": {},
+      "precision": 0.9588323353293413,
+      "recall": 0.8449868073878628,
+      "reference_size": 1516,
+      "source": "custom",
+      "system_size": 1336,
+      "true_positives": 1281
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 5,
+      "fp": 30,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.9014084507042254,
+      "oracle_precision": 0.8421052631578947,
+      "oracle_recall": 0.9696969696969697,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.9696969696969697,
+      "specificity": 0.6808510638297872,
+      "tn": 64,
+      "total_candidates": 259,
+      "tp": 160,
+      "youdens_j": 0.650548033526757
+    },
+    "schema_version": 1,
+    "task_name": "anatomy"
+  },
+  "model_name": "deepseek/deepseek-v4-flash",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "openrouter",
+    "logprobs_effective": false,
+    "logprobs_requested": false,
+    "max_completion_tokens": 64,
+    "max_workers": 1,
+    "model_name": "deepseek/deepseek-v4-flash",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": "wandb/fp8",
+    "openrouter_require_parameters": true,
+    "reasoning_effort": "none",
+    "request_logprobs": false,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "zero-shot",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_revision": null
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "anatomy",
+  "timing": {
+    "align_seconds": 0.007458209991455078,
+    "consult_seconds": 205.59901666641235,
+    "evaluate_seconds": 0.4672713279724121,
+    "prompt_build_seconds": 1.1148276329040527,
+    "refine_seconds": 4.6103901863098145,
+    "total_seconds": 211.7989640235901
+  }
+}

@@ -1,0 +1,57 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260727_223220.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 1404
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.PLAIN
+[STEP 2] Prompt context: AnswerFormat.TRUE_FALSE/ResponseModes.PLAIN, domain='biomedical anatomy'
+[STEP 2] Specifying 'ontology_domain' as 'biomedical anatomy' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-anatomy/mouse.owl
+[SUCCESS] Using cached quadstore for mouse.owl (cache age: 259h 46m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-cnidwyc8/mouse_owl_787698316b74.sqlite3
+[INFO] There are 15959 triples in the ontology
+[INFO] Indexed 2744 classes.
+[INFO] Indexed 10 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/mouse.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-anatomy/human.owl
+[SUCCESS] Using cached quadstore for human.owl (cache age: 259h 46m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-q74403dp/human_owl_cde3de736519.sqlite3
+[INFO] There are 35355 triples in the ontology
+[INFO] Indexed 3304 classes.
+[INFO] Indexed 8 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/human.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: functools.partial(<function oupt_one_level_of_parents_and_synonyms at 0x7d0877c2aa20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical anatomy', instance_fmt_fn=<function format_instance_attribute_clause at 0x7d0877de5d00>))
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: functools.partial(<function oupt_prop_domain_range at 0x7d0877c2b560>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical anatomy', instance_fmt_fn=<function format_instance_attribute_clause at 0x7d0877de5d00>))
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: functools.partial(<function oupt_inst_full_context_entropy at 0x7d0877c2be20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical anatomy', instance_fmt_fn=<function format_instance_attribute_clause at 0x7d0877de5d00>))
+[INFO] Prompts built: 259 cls, 0 prop, 0 inst (259 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 259
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+[STEP 2] Building query-specific RAG few-shot (strategy=query-rag, k=4, negative_layout=donor-cross-v1)
+[SERIOUS WARNING] Query-specific RAG few-shot generation failed: 401 Client Error. (Request ID: Root=1-6a67dc78-1698f7fd0dedfe8f7f04e525;5cb9fe7c-a060-41f3-983a-4f2360d30a0d)
+
+Repository Not Found for url: https://huggingface.co/api/models/cambridgeltl/SapBERT-from-PubMedBERT-fulltext/tree/090663c3ae57bf35ffe4d0d468a2a88d03051a4d/additional_chat_templates?recursive=false&expand=false.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+OAuth token signature verification failed: signature verification failed

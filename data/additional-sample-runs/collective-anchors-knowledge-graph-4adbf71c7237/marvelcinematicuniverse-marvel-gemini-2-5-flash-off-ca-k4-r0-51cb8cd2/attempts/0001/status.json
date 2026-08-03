@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-knowledge-graph-4adbf71c7237/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-ca-k4-r0-51cb8cd2/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-knowledge-graph-4adbf71c7237/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-ca-k4-r0-51cb8cd2/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 49.647,
+  "finished_at": "2026-07-27T23:17:50+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-27T23:17:00+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

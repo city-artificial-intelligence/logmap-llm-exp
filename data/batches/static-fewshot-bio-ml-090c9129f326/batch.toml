@@ -1,0 +1,216 @@
+schema = 1
+
+[batch]
+name = "static-fewshot-bio-ml"
+output_root = "../../../batches"
+jobs = 2
+timeout_seconds = 86400
+reuse_alignments = true
+
+[defaults.alignmentTask]
+generate_extended_mappings_to_ask_oracle = false
+logmap_parameters_dirpath = "/home/jon/tools/logmap/paired-control-class-only/src/target"
+logmap_jvm_memory = "16g"
+ontology_domain = "biomedical"
+ontology_vocabulary = "default"
+
+[defaults.oracle]
+max_workers = 8
+enable_thinking = false
+max_completion_tokens = 2056
+request_timeout_seconds = 300.0
+connect_timeout_seconds = 15.0
+transient_retries = 2
+seed = 0
+request_logprobs = true
+temperature = 0.0
+top_p = 1.0
+answer_format = "true_false"
+response_mode = "plain"
+
+[defaults.prompts]
+cls_dev_prompt_template_name = "class_equivalence"
+cls_usr_prompt_template_name = "one_level_of_parents_and_synonyms"
+prop_dev_prompt_template_name = "property_equivalence"
+prop_usr_prompt_template_name = "prop_domain_range"
+dprop_usr_prompt_template_name = "prop_domain_range"
+inst_dev_prompt_template_name = "instance_equivalence"
+inst_usr_prompt_template_name = "inst_full_context_entropy"
+
+[defaults.pipeline]
+align_ontologies = "align"
+build_oracle_prompts = "build"
+consult_oracle = "consult"
+refine_alignment = "refine"
+refinement_strategy = "logmap"
+
+[defaults.evaluation]
+evaluate = true
+metrics = [
+    "global",
+    "oracle",
+]
+force_custom_eval = true
+jvm_memory = "8g"
+
+[defaults.few_shot]
+few_shot_k = 4
+few_shot_seed = 0
+few_shot_negative_strategy = "query-rag"
+rag_encoder_kind = "sapbert"
+rag_encoder_model = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+rag_encoder_revision = "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+rag_encoder_device = "cpu"
+rag_failure_policy = "error"
+rag_cache_dir = "/home/jon/data/logmap-llm-rag-runtime/cache"
+rag_encoder_max_length = 64
+
+[tasks.ncit-doid.config.alignmentTask]
+task_name = "ncit-doid"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl"
+
+[tasks.ncit-doid.config.evaluation]
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv"
+
+[tasks.omim-ordo.config.alignmentTask]
+task_name = "omim-ordo"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl"
+
+[tasks.omim-ordo.config.evaluation]
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv"
+
+[tasks.snomed-fma-body.config.alignmentTask]
+task_name = "snomed-fma-body"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl"
+
+[tasks.snomed-fma-body.config.evaluation]
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv"
+
+[tasks.snomed-ncit-neoplas.config.alignmentTask]
+task_name = "snomed-ncit-neoplas"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl"
+
+[tasks.snomed-ncit-neoplas.config.evaluation]
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv"
+
+[tasks.snomed-ncit-pharm.config.alignmentTask]
+task_name = "snomed-ncit-pharm"
+onto_source_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl"
+onto_target_filepath = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl"
+
+[tasks.snomed-ncit-pharm.config.evaluation]
+reference_alignment_path = "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv"
+
+[models.gemini-2-5-flash-off]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.gemini-2-5-flash-off.config.oracle]
+model_name = "google/gemini-2.5-flash"
+base_url = "https://openrouter.ai/api/v1"
+api_key = "ENV:OPENROUTER_API_KEY"
+interaction_style = "openrouter"
+reasoning_effort = "none"
+request_logprobs = false
+openrouter_provider = "google-vertex/eu"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+
+[models.mistral-small-3-2-24b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.mistral-small-3-2-24b.config.oracle]
+model_name = "mistralai/mistral-small-3.2-24b-instruct"
+base_url = "https://openrouter.ai/api/v1"
+api_key = "ENV:OPENROUTER_API_KEY"
+interaction_style = "openrouter"
+request_logprobs = false
+openrouter_provider = "deepinfra/fp8"
+openrouter_allow_fallbacks = false
+openrouter_require_parameters = true
+
+[models.qwen3-5-122b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.qwen3-5-122b.config.oracle]
+model_name = "Qwen3.5-122B-A10B"
+base_url = "http://127.0.0.1:18011/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = true
+
+[models.llama-3-1-70b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.llama-3-1-70b.config.oracle]
+model_name = "Llama-3.1-70B-Instruct"
+base_url = "http://127.0.0.1:18010/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = false
+
+[models.gemma-3-27b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.gemma-3-27b.config.oracle]
+model_name = "Gemma-3-27B"
+base_url = "http://127.0.0.1:18004/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = false
+
+[models.qwen3-8b]
+max_parallel_runs = 1
+verify_endpoint = true
+
+[models.qwen3-8b.config.oracle]
+model_name = "Qwen3-8B"
+base_url = "http://127.0.0.1:18001/v1"
+api_key = "EMPTY"
+interaction_style = "vllm"
+supports_chat_template_kwargs = true
+
+[conditions.static-k4.config.few_shot]
+few_shot_k = 4
+rag_negative_layout = "donor-cross-v1"
+rag_encoder_kind = "sapbert"
+rag_encoder_model = "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"
+rag_encoder_revision = "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+rag_encoder_max_length = 64
+few_shot_negative_strategy = "static-hard"
+
+[matrix]
+tasks = [
+    "ncit-doid",
+    "omim-ordo",
+    "snomed-fma-body",
+    "snomed-ncit-neoplas",
+    "snomed-ncit-pharm",
+]
+models = [
+    "gemini-2-5-flash-off",
+    "gemma-3-27b",
+    "llama-3-1-70b",
+    "qwen3-5-122b",
+    "qwen3-8b",
+    "mistral-small-3-2-24b",
+]
+conditions = [
+    "static-k4",
+]
+repeats = 1
+
+[aggregate]
+group_by = [
+    "model",
+    "condition",
+]
+require_complete = true

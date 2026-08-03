@@ -1,0 +1,11 @@
+2026-07-17 06:40:53 INFO  [main                          ] 486  in Parameters           - Reading LogMap parameters from file.
+2026-07-17 06:40:54 INFO  [main                          ] 396  in LogMap2Core          - LogMap: ontology loading and overlapping extraction
+2026-07-17 06:40:56 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:40:56 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:40:57 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:40:57 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:40:57 INFO  [main                          ] 405  in LogMap2Core          - LogMap indexation
+2026-07-17 06:41:00 INFO  [main                          ] 424  in LogMap2Core          - LogMap anchor extraction
+2026-07-17 06:41:05 INFO  [main                          ] 429  in LogMap2Core          - LogMap class mapping extraction
+2026-07-17 06:41:10 INFO  [main                          ] 472  in LogMap2Core          - LogMap property mapping extraction
+2026-07-17 06:41:10 INFO  [main                          ] 480  in LogMap2Core          - LogMap instance mapping extraction

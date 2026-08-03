@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.6902439024390243,
+    "false_negatives": 974,
+    "false_positives": 1566,
+    "metric_notes": {},
+    "precision": 0.6437670609645132,
+    "recall": 0.7439537329127235,
+    "reference_size": 3804,
+    "source": "custom",
+    "system_size": 4396,
+    "true_positives": 2830
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 121,
+    "fp": 356,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.7096774193548386,
+    "oracle_precision": 0.6208732694355698,
+    "oracle_recall": 0.828125,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.828125,
+    "specificity": 0.40765391014975044,
+    "tn": 245,
+    "total_candidates": 1305,
+    "tp": 583,
+    "youdens_j": 0.2357789101497505
+  },
+  "schema_version": 1,
+  "task_name": "snomed-ncit-neoplas"
+}

@@ -1,0 +1,345 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model",
+      "condition"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/0410e29bcdddd096/config.toml",
+      "config_sha256": "448a1ae4172438bd0b9e558a603dfe47e4b94de35e770475935cbc2e893665e8",
+      "id": "0410e29bcdddd096",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        }
+      },
+      "job_ids": [
+        "anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75",
+        "anatomy-gemma-3-27b-static-k4-r0-bf71152c",
+        "anatomy-llama-3-1-70b-static-k4-r0-4b9b267f",
+        "anatomy-mistral-small-3-2-24b-static-k4-r0-621c1d42",
+        "anatomy-qwen3-5-122b-static-k4-r0-ffb0f585",
+        "anatomy-qwen3-8b-static-k4-r0-59b262a9"
+      ],
+      "task": "anatomy",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 6,
+    "id": "static-fewshot-anatomy-5a5fd58bdd9a",
+    "jobs": 2,
+    "name": "static-fewshot-anatomy",
+    "plan_hash": "5a5fd58bdd9abc385db75550da0aabaf7c447283e65c6b014ef16fd4175371fc",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "environment": {
+    "packages": {
+      "JPype1": "1.7.1",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.1",
+      "openai": "2.45.0",
+      "owlready2": "0.51",
+      "pandas": "3.0.3",
+      "pydantic": "2.13.4",
+      "rdflib": "7.6.0",
+      "torch": "2.13.0",
+      "transformers": "5.14.1"
+    },
+    "python": "3.12.3",
+    "python_implementation": "CPython",
+    "schema": 1,
+    "uv_lock_sha256": "5d3a19f7bb752ed069fbfb2ce00e271c31b3654df203e6c41ef3d34c776db155"
+  },
+  "jobs": [
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "80f3d37abcfbfaa8701245bc03bb9a15833d9024292760f2125c331616aa37c9",
+      "config_path": "configs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75.toml",
+      "config_sha256": "51679a9e13290e3c561e2c575704ce933297f7cd68e4a676efa679936af2c987",
+      "execution_hash": "8b97cf75bb52400820a6fd085ca9bcc88d504c29acbc4f5c4b184465dc39f76e",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "b324d6a3bfc8c53364c842ff4d70956e5d0d1b360c3a014524ec72518edca4a1",
+      "config_path": "configs/anatomy-gemma-3-27b-static-k4-r0-bf71152c.toml",
+      "config_sha256": "4cd0b0cc78c771dd9f24cbf485a91ebce00b788ff4f5ed69ba91f766617bd9dd",
+      "execution_hash": "bf71152c17871b76c07a10675009693e40065cc177924449fb93d955607c28ea",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "anatomy-gemma-3-27b-static-k4-r0-bf71152c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "c31f7edcbca6e41d6553ee73e0724495cfe4f72b0c70a7fa9736042aa934ff03",
+      "config_path": "configs/anatomy-llama-3-1-70b-static-k4-r0-4b9b267f.toml",
+      "config_sha256": "a77fbb1702c1f58f3ac2860ce312bfe63f6733e3b3f0a29a333d21766770df50",
+      "execution_hash": "4b9b267fc446bed3cc7c4f2424859bf205bad48e1fcfa0ca03462229fac44fa8",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "anatomy-llama-3-1-70b-static-k4-r0-4b9b267f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "e8b3931079c049153037877aa65d89040bf07ea50fd6d74f44dbc2a917e23521",
+      "config_path": "configs/anatomy-mistral-small-3-2-24b-static-k4-r0-621c1d42.toml",
+      "config_sha256": "ab0c3ad86bce807d3bff0daf99bb22bab57f53c830a2ec5ac65d2958792188f5",
+      "execution_hash": "621c1d42ed39fb179c43e9e1c67aae232116843ecd10cb0378b6fa20209301d0",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "anatomy-mistral-small-3-2-24b-static-k4-r0-621c1d42",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "579cf3db6c7dd5bc0dbecb99075509d72a479a3809aa7060bf201d89e281b637",
+      "config_path": "configs/anatomy-qwen3-5-122b-static-k4-r0-ffb0f585.toml",
+      "config_sha256": "b973f4d3341ab23afc1753dfd300758214676e0ff27bfa1dd15ae0918549661f",
+      "execution_hash": "ffb0f5853f68a801a93ef2b904a6876429a7f9663f7066487a557a3c8d2cbe16",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "anatomy-qwen3-5-122b-static-k4-r0-ffb0f585",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0410e29bcdddd096",
+      "condition": "static-k4",
+      "condition_id": "3c370058e9697bbf8d941740b35771cf8c8388140f94a694fe40a459bfaf5e08",
+      "config_path": "configs/anatomy-qwen3-8b-static-k4-r0-59b262a9.toml",
+      "config_sha256": "fd1519a9c2f24b742f135494a2e5e3e512470c0c4e0d5861063afc585cd60f0f",
+      "execution_hash": "59b262a94dbc7f30c20448e36b5c8aeb0106bdadad6b97095d0313696ed7c7c0",
+      "expected_served_model": "Qwen3-8B",
+      "id": "anatomy-qwen3-8b-static-k4-r0-59b262a9",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1402405,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/mouse.owl",
+          "sha256": "93756393d6306c8f332c884401aa447cc4b2557f0a6be3e0efd988a943cb68f8"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 3436928,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-anatomy/human.owl",
+          "sha256": "5c1ca432d9845f1abb36ecfce313df46d8c56d2fb4137d0590ec4e4a6a9b05bf"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 90986,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/anatomy/reference.tsv",
+          "sha256": "0781e09267f2032ebcd5306c268dd88689a363cc7fd41a2046b70e7dc8df7101"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "anatomy",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "2a3b2d3c5d1ffed557287008fab329da9790e8c581388a859d6d4f3e8bde21b3",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+    "spec_sha256": "f88c83a8c1162eb634f4a2db71a03291dab454839463fd325104808684e80b73"
+  }
+}

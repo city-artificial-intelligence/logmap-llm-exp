@@ -1,0 +1,4 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k0-r0-b00aa11a	anatomy	deepseek-v4-flash-gmicloud-fp8-off	plain-k0	0	3bf31921d63a3dc9	configs/anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k0-r0-b00aa11a.toml
+anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k2-r0-a076ca38	anatomy	deepseek-v4-flash-gmicloud-fp8-off	plain-k2	0	3bf31921d63a3dc9	configs/anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k2-r0-a076ca38.toml
+anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k4-r0-07967be3	anatomy	deepseek-v4-flash-gmicloud-fp8-off	plain-k4	0	3bf31921d63a3dc9	configs/anatomy-deepseek-v4-flash-gmicloud-fp8-off-plain-k4-r0-07967be3.toml

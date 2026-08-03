@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 93567,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "b3730c6761b097e75af57fedf5dc26c02ee48b6e1755c5c1a2fb895441a852cc"
+    },
+    {
+      "bytes": 17337,
+      "path": "logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 125475,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "2d3959d9aa6fa3b427a8c052ffc7663d804a7def6003b98781c5c9acf336ae4d"
+    },
+    {
+      "bytes": 453171,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "1f0b9b67dbf605a03bfa378407b466e7e26f284c54e066ce5222735757731046"
+    },
+    {
+      "bytes": 31112,
+      "path": "logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "d07a5889bf285e7e7dc2b96d053ee198c61bd017a4a413ad3bed1936e67b1bf5"
+    },
+    {
+      "bytes": 90019,
+      "path": "logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "7a32e5bd80afca83731f031d259a4a26714e4808afb26011e7f33230a8176236"
+    },
+    {
+      "bytes": 849,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "f90b386360450e36dd227ce64f6903c3cd66336de072368b305df124ddf41fed"
+    },
+    {
+      "bytes": 1125916,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "eb202336685a01c08abcd4444f6fce1a547eb9958f26f10ba76c39db86d7219e"
+    }
+  ],
+  "counts": {
+    "candidates": 259,
+    "error": 0,
+    "false": 53,
+    "prompts": 259,
+    "skipped": 0,
+    "true": 206
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.8929194279734914,
+      "false_negatives": 236,
+      "false_positives": 71,
+      "metric_notes": {},
+      "precision": 0.9474463360473723,
+      "recall": 0.8443271767810027,
+      "reference_size": 1516,
+      "source": "custom",
+      "system_size": 1351,
+      "true_positives": 1280
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 6,
+      "fp": 47,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.8571428571428571,
+      "oracle_precision": 0.7718446601941747,
+      "oracle_recall": 0.9636363636363636,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.9636363636363636,
+      "specificity": 0.5,
+      "tn": 47,
+      "total_candidates": 259,
+      "tp": 159,
+      "youdens_j": 0.4636363636363636
+    },
+    "schema_version": 1,
+    "task_name": "anatomy"
+  },
+  "model_name": "Gemma-3-27B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "Gemma-3-27B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "reasoning_token_budget": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "plain",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 4,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "anatomy",
+  "timing": {
+    "align_seconds": 0.005173683166503906,
+    "consult_seconds": 75.02346277236938,
+    "evaluate_seconds": 0.6157686710357666,
+    "prompt_build_seconds": 730.5941519737244,
+    "refine_seconds": 11.4751136302948,
+    "total_seconds": 817.7136707305908
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.8974448722436121,
+    "false_negatives": 234,
+    "false_positives": 59,
+    "metric_notes": {},
+    "precision": 0.9560029828486204,
+    "recall": 0.8456464379947229,
+    "reference_size": 1516,
+    "source": "custom",
+    "system_size": 1341,
+    "true_positives": 1282
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 4,
+    "fp": 35,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.8919667590027699,
+    "oracle_precision": 0.8214285714285714,
+    "oracle_recall": 0.9757575757575757,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.9757575757575757,
+    "specificity": 0.6276595744680851,
+    "tn": 59,
+    "total_candidates": 259,
+    "tp": 161,
+    "youdens_j": 0.6034171502256607
+  },
+  "schema_version": 1,
+  "task_name": "anatomy"
+}

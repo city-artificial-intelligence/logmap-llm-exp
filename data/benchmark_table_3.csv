@@ -1,0 +1,8 @@
+model,family,config,Youden's index,F1 Score,fail_rate,mean_num_retries,mean_proc_time,cost_total_$
+ibm-granite|granite-4.1-8b,ibm-granite,base,0.551,0.846,0.0,0.004,5.188,0.002
+google|gemma-3-27b-it,google,base,0.555,0.821,0.0,1.618,4.298,0.003
+qwen|qwen3-14b,qwen,base,0.59,0.857,0.0,3.39,4.47,0.003
+qwen|qwen3-235b-a22b-2507,qwen,base,0.62,0.87,0.0,2.441,10.608,0.003
+deepseek|deepseek-v4-flash,deepseek,thinking_budget=1024,0.737,0.92,0.0,0.075,7.107,0.007
+deepseek|deepseek-v3.2,deepseek,thinking_budget=0,0.752,0.919,0.0,0.0,25.829,0.064
+google|gemini-2.5-pro,google,thinking_budget=1024,0.774,0.924,0.0,0.0,15.717,1.602

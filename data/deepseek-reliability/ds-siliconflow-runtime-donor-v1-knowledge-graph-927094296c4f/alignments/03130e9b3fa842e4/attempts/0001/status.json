@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 482.357,
+  "error": "alignment 03130e9b3fa842e4 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtime-donor-v1-knowledge-graph-927094296c4f/alignments/03130e9b3fa842e4/attempts/0001/run.log",
+  "finished_at": "2026-07-28T04:17:25+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

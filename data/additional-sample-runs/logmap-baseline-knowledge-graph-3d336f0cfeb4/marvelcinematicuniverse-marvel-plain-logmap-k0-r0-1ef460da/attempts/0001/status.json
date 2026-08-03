@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 1.12,
+  "finished_at": "2026-07-27T22:25:17+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-27T22:25:16+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

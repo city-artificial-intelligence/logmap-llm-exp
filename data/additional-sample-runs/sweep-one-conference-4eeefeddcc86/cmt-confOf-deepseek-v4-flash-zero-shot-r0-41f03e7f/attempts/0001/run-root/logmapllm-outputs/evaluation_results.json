@@ -1,0 +1,65 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.45454545454545453,
+    "false_negatives": 11,
+    "false_positives": 1,
+    "metric_notes": {},
+    "precision": 0.8333333333333334,
+    "recall": 0.3125,
+    "reference_size": 16,
+    "source": "custom",
+    "system_size": 6,
+    "true_positives": 5
+  },
+  "global_m1_class": {
+    "f1": 0.5333333333333333,
+    "false_negatives": 6,
+    "false_positives": 1,
+    "metric_notes": {},
+    "precision": 0.8,
+    "recall": 0.4,
+    "reference_size": 10,
+    "source": "conference_stratified",
+    "system_size": 5,
+    "true_positives": 4
+  },
+  "global_m2_property": {
+    "f1": 0.2857142857142857,
+    "false_negatives": 5,
+    "false_positives": 0,
+    "metric_notes": {},
+    "precision": 1.0,
+    "recall": 0.16666666666666666,
+    "reference_size": 6,
+    "source": "conference_stratified",
+    "system_size": 1,
+    "true_positives": 1
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 0,
+    "fp": 0,
+    "metric_notes": {
+      "specificity": "undefined: no negative reference candidates (tn+fp=0)",
+      "youdens_j": "undefined: sensitivity or specificity undefined"
+    },
+    "oracle_excluded": 0,
+    "oracle_f1": 1.0,
+    "oracle_precision": 1.0,
+    "oracle_recall": 1.0,
+    "partial_scope_excluded": 0,
+    "sensitivity": 1.0,
+    "specificity": null,
+    "tn": 0,
+    "total_candidates": 1,
+    "tp": 1,
+    "youdens_j": null
+  },
+  "schema_version": 1,
+  "task_name": "cmt-confOf"
+}

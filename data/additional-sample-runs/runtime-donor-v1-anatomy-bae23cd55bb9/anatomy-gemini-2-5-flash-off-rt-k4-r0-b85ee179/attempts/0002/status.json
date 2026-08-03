@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0002/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-anatomy-bae23cd55bb9/jobs/anatomy-gemini-2-5-flash-off-rt-k4-r0-b85ee179/attempts/0002/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 727.242,
+  "finished_at": "2026-07-27T22:48:51+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-27T22:36:44+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

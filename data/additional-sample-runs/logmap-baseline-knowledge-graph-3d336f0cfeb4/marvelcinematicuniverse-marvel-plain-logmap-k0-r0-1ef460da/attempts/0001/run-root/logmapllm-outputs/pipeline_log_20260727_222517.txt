@@ -1,0 +1,135 @@
+[INFO] Summary of Experiment Parameters:
+
+alignmentTask.task_name: marvelcinematicuniverse-marvel
+alignmentTask.onto_source_filepath: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+alignmentTask.onto_target_filepath: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+alignmentTask.generate_extended_mappings_to_ask_oracle: False
+alignmentTask.stub_import_iris: []
+alignmentTask.logmap_parameters_dirpath: /home/jon/tools/logmap/kg-abox/src/target
+alignmentTask.logmap_jvm_memory: 16g
+alignmentTask.ontology_domain: knowledge graphs
+alignmentTask.ontology_vocabulary: dbpedia_family
+oracle.model_name: plain-logmap
+oracle.api_key: EMPTY
+oracle.base_url: http://127.0.0.1:1/v1
+oracle.supports_chat_template_kwargs: <unset>
+oracle.failure_tolerance: <unset>
+oracle.max_workers: 8
+oracle.enable_thinking: False
+oracle.max_completion_tokens: 2056
+oracle.request_timeout_seconds: 300.0
+oracle.connect_timeout_seconds: 15.0
+oracle.transient_retries: 2
+oracle.seed: 0
+oracle.request_logprobs: False
+oracle.openrouter_provider: <unset>
+oracle.openrouter_allow_fallbacks: False
+oracle.openrouter_require_parameters: True
+oracle.temperature: 0.0
+oracle.top_p: 1.0
+oracle.reasoning_effort: <unset>
+oracle.reasoning_token_budget: <unset>
+oracle.local_oracle_predictions_dirpath: 
+oracle.interaction_style: InteractionStyle.LOCAL_GENERIC
+oracle.answer_format: AnswerFormat.TRUE_FALSE
+oracle.response_mode: ResponseModes.PLAIN
+prompts.cls_dev_prompt_template_name: class_equivalence
+prompts.cls_usr_prompt_template_name: one_level_of_parents_and_synonyms
+prompts.prop_dev_prompt_template_name: property_equivalence
+prompts.prop_usr_prompt_template_name: prop_domain_range
+prompts.dprop_usr_prompt_template_name: prop_domain_range
+prompts.inst_dev_prompt_template_name: instance_equivalence
+prompts.inst_usr_prompt_template_name: inst_full_context_entropy
+prompts.sibling_strategy: <unset>
+prompts.sibling_model: <unset>
+prompts.sibling_model_revision: <unset>
+prompts.sibling_max_candidates: <unset>
+prompts.sibling_encoder_device: <unset>
+few_shot.few_shot_k: 0
+few_shot.few_shot_seed: 0
+few_shot.few_shot_negative_strategy: query-rag
+few_shot.rag_encoder_kind: sapbert
+few_shot.rag_encoder_model: cambridgeltl/SapBERT-from-PubMedBERT-fulltext
+few_shot.rag_encoder_revision: 090663c3ae57bf35ffe4d0d468a2a88d03051a4d
+few_shot.rag_encoder_device: cpu
+few_shot.rag_encoder_max_length: 64
+few_shot.rag_failure_policy: error
+few_shot.rag_cache_dir: /home/jon/data/logmap-llm-rag-runtime/cache
+few_shot.prebuilt_few_shot_bundle_path: <unset>
+few_shot.rag_negative_layout: <unset>
+outputs.logmapllm_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/standalone/logmapllm-outputs
+outputs.logmap_initial_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/standalone/logmap-initial-alignment
+outputs.logmap_refined_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/standalone/logmap-refined-alignment
+pipeline.align_ontologies: AlignMode.REUSE
+pipeline.build_oracle_prompts: PromptBuildMode.BYPASS
+pipeline.consult_oracle: ConsultMode.BYPASS
+pipeline.refine_alignment: RefineMode.REFINE
+pipeline.refinement_strategy: RefinementStrategy.PYTHON_SETUNION
+evaluation.evaluate: True
+evaluation.reference_alignment_path: /home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv
+evaluation.train_alignment_path: <unset>
+evaluation.test_cands_path: <unset>
+evaluation.metrics: ['global']
+evaluation.force_custom_eval: True
+evaluation.partial_reference: True
+evaluation.stratified_by_entity_type: True
+evaluation.stratified_class_property: False
+evaluation.jvm_memory: 8g
+
+[INFO] Summary of File Paths:
+
+  Task                : marvelcinematicuniverse-marvel
+  Prompt template     : one_level_of_parents_and_synonyms
+  Run root            : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root
+  Output directory    : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs
+  Initial align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-initial-alignment
+  Refined align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-refined-alignment
+  Prompts JSON        : marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+  Predictions CSV     : marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+  Few-shot JSON       : marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json
+
+
+[INFO] Ontology domain: knowledge graphs
+
+[INFO] LogMap-LLM pipeline starting.
+[Step 1] Align ontologies and obtain mappings to ask an Oracle
+[Step 1] Loading mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt
+[SUCCESS] Number of mappings within the initial alignment: 2276
+[SUCCESS] Number of mappings within M_ask: 82
+
+[Step 2] Build user prompts for oracle consultation
+[WARNING] Bypassing use of LLM oracle user prompts
+
+[Step 3] Consult Oracle for mappings to ask
+[WARNING] Bypassing oracle consultations
+
+[Step 4] Refine alignment using oracle mapping predictions
+[WARNING] [Step 4] No oracle predictions — skipping refinement (initial alignment is final)
+[Step 4] Initial alignment copied to refined dir: marvelcinematicuniverse-marvel-logmap_mappings.tsv
+[SUCCESS] Refinement stage ending.
+
+[Step 5] Evaluation
+[Step 5] Running evaluation subprocess
+[SUCCESS] Evaluation results loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+[SUCCESS] Evaluation stage ending.
+[Step 6] Timing Summary
+
+  Alignment          : 0.0s
+  Prompt building    : 0.0s
+  Oracle consultation: 0.3s
+  Refinement         : 0.0s
+  Evaluation         : 0.3s
+  Total              : 0.7s
+
+[Step 7] Experimental Parameters
+
+  Task name           : marvelcinematicuniverse-marvel
+  Model               : plain-logmap
+  Endpoint            : Local (vLLM/SGLang)
+  Prompt template     : one_level_of_parents_and_synonyms
+  Developer prompt    : class_equivalence
+  N prompts           : 0
+  GPU                 : NVIDIA RTX 4000 SFF Ada Generation, 20475
+
+[Step 8] Results written to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/run_result.json
+[SUCCESS] LogMap-LLM session ending

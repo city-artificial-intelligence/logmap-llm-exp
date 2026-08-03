@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260719_115655.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.9596
+[METRIC]    Recall           :  0.8450
+[METRIC]    F1               :  0.8986
+[METRIC]    True Positives   :  1281
+[METRIC]    False Positives  :  54
+[METRIC]    False Negatives  :  235
+[METRIC]    System Size      :  1335
+[METRIC]    Reference Size   :  1516
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.9014
+[METRIC]    Oracle Recall           :  0.9697
+[METRIC]    Oracle Precision        :  0.8421
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.6505
+[METRIC]    Specificity             :  0.6809
+[METRIC]    Sensitivity             :  0.9697
+[METRIC]    Total Candidates        :  259
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  5
+[METRIC]    Tn                      :  64
+[METRIC]    Fp                      :  30
+[METRIC]    Tp                      :  160
+
+False mappings (35 FP+FN) saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "anatomy",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.9595505617977528,
+    "recall": 0.8449868073878628,
+    "f1": 0.8986320589266923,
+    "true_positives": 1281,
+    "false_positives": 54,
+    "false_negatives": 235,
+    "system_size": 1335,
+    "reference_size": 1516,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

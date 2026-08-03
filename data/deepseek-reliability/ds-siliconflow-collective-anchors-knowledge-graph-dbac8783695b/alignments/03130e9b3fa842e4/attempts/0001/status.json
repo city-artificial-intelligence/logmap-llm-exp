@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 494.143,
+  "error": "alignment 03130e9b3fa842e4 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-collective-anchors-knowledge-graph-dbac8783695b/alignments/03130e9b3fa842e4/attempts/0001/run.log",
+  "finished_at": "2026-07-28T04:17:08+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

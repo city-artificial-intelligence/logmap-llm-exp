@@ -1,0 +1,139 @@
+[INFO] Summary of Experiment Parameters:
+
+alignmentTask.task_name: ncit-doid
+alignmentTask.onto_source_filepath: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+alignmentTask.onto_target_filepath: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+alignmentTask.generate_extended_mappings_to_ask_oracle: False
+alignmentTask.stub_import_iris: []
+alignmentTask.logmap_parameters_dirpath: /home/jon/tools/logmap/paired-control/src/target
+alignmentTask.logmap_jvm_memory: 16g
+alignmentTask.ontology_domain: biomedical
+alignmentTask.ontology_vocabulary: default
+oracle.model_name: deepseek/deepseek-v4-flash
+oracle.api_key: ENV: ... _KEY
+oracle.base_url: https://openrouter.ai/api/v1
+oracle.supports_chat_template_kwargs: <unset>
+oracle.failure_tolerance: <unset>
+oracle.max_workers: 1
+oracle.enable_thinking: False
+oracle.max_completion_tokens: 64
+oracle.request_timeout_seconds: 300.0
+oracle.connect_timeout_seconds: 15.0
+oracle.transient_retries: 2
+oracle.seed: 0
+oracle.request_logprobs: False
+oracle.openrouter_provider: wandb/fp8
+oracle.openrouter_allow_fallbacks: False
+oracle.openrouter_require_parameters: True
+oracle.temperature: 0.0
+oracle.top_p: 1.0
+oracle.reasoning_effort: none
+oracle.local_oracle_predictions_dirpath: 
+oracle.interaction_style: InteractionStyle.OPEN_ROUTER
+oracle.answer_format: AnswerFormat.TRUE_FALSE
+oracle.response_mode: ResponseModes.STRUCTURED
+prompts.cls_dev_prompt_template_name: class_equivalence
+prompts.cls_usr_prompt_template_name: one_level_of_parents_and_synonyms
+prompts.prop_dev_prompt_template_name: property_equivalence
+prompts.prop_usr_prompt_template_name: prop_domain_range
+prompts.dprop_usr_prompt_template_name: prop_domain_range
+prompts.inst_dev_prompt_template_name: instance_equivalence
+prompts.inst_usr_prompt_template_name: inst_full_context_entropy
+prompts.sibling_strategy: <unset>
+prompts.sibling_model: <unset>
+prompts.sibling_max_candidates: <unset>
+few_shot.few_shot_k: 0
+few_shot.few_shot_seed: 0
+few_shot.few_shot_negative_strategy: zero-shot
+few_shot.rag_encoder_kind: sapbert
+few_shot.rag_encoder_model: cambridgeltl/SapBERT-from-PubMedBERT-fulltext
+few_shot.rag_encoder_revision: <unset>
+few_shot.rag_encoder_device: <unset>
+few_shot.rag_failure_policy: error
+few_shot.rag_cache_dir: <unset>
+outputs.logmapllm_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/standalone/logmapllm-outputs
+outputs.logmap_initial_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/standalone/logmap-initial-alignment
+outputs.logmap_refined_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/standalone/logmap-refined-alignment
+pipeline.align_ontologies: AlignMode.REUSE
+pipeline.build_oracle_prompts: PromptBuildMode.BUILD
+pipeline.consult_oracle: ConsultMode.CONSULT
+pipeline.refine_alignment: RefineMode.REFINE
+pipeline.refinement_strategy: RefinementStrategy.LOGMAP
+evaluation.evaluate: True
+evaluation.reference_alignment_path: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv
+evaluation.train_alignment_path: <unset>
+evaluation.test_cands_path: <unset>
+evaluation.metrics: ['global', 'oracle']
+evaluation.force_custom_eval: True
+evaluation.partial_reference: False
+evaluation.stratified_by_entity_type: False
+evaluation.stratified_class_property: False
+evaluation.jvm_memory: 8g
+
+[INFO] Summary of File Paths:
+
+  Task                : ncit-doid
+  Prompt template     : one_level_of_parents_and_synonyms
+  Run root            : /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root
+  Output directory    : /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root/logmapllm-outputs
+  Initial align dir   : /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root/logmap-initial-alignment
+  Refined align dir   : /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root/logmap-refined-alignment
+  Prompts JSON        : ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+  Predictions CSV     : ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+  Few-shot JSON       : ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json
+
+
+[INFO] Ontology domain: biomedical
+
+[INFO] LogMap-LLM pipeline starting.
+[Step 1] Align ontologies and obtain mappings to ask an Oracle
+[Step 1] Loading mappings from file: /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt
+[SUCCESS] Number of mappings within the initial alignment: 4960
+[SUCCESS] Number of mappings within M_ask: 857
+
+[Step 2] Build user prompts for oracle consultation
+[Step 2] Building fresh oracle user prompts via subprocess
+[SUCCESS] Number of LLM oracle user prompts: 857
+
+[Step 3] Consult Oracle for mappings to ask
+[Step 3] Consulting LLM oracle with model: deepseek/deepseek-v4-flash
+[DEBUG] Effective failure tolerance is set to: 42.
+[DEBUG] Initialising OracleConsultationManager ... with args:
+[DEBUG] model=deepseek/deepseek-v4-flash
+[DEBUG] base_url=https://openrouter.ai/api/v1
+[DEBUG] temp=0.0
+[DEBUG] reasoning=False
+[DEBUG] response_format=BinaryOutputFormat
+[DEBUG] (resolved argument) interaction_style=InteractionStyle.OPEN_ROUTER
+
+[DEBUG] Conversation History:
+[DEBUG] Message 0: {'role': 'developer', 'content': 'You are assisting in an OWL ontology alignment exercise. You will be presented with a pair of class entities, one from each of two different ontologies. Additional ontological context such as parent categories and synonyms may be provided. You will be asked to decide whether the two classes are semantically equivalent. Respond with a JSON object containing a single boolean field "answer": {"answer": true} or {"answer": false}.'}
+
+[DEBUG] Transient retry 1/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101038|http://purl.obolibrary.org/obo/DOID_0080110: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 0.516s
+[DEBUG] Transient retry 2/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101038|http://purl.obolibrary.org/obo/DOID_0080110: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 1.030s
+[SERIOUS WARNING] Consultation for http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101038|http://purl.obolibrary.org/obo/DOID_0080110 failed: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}
+[WARNING] A consultation failure has been encountered.
+[DEBUG] Transient retry 1/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101074|http://purl.obolibrary.org/obo/DOID_10487: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 0.617s
+[DEBUG] Transient retry 2/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101074|http://purl.obolibrary.org/obo/DOID_10487: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 1.111s
+[SERIOUS WARNING] Consultation for http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101074|http://purl.obolibrary.org/obo/DOID_10487 failed: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}
+[WARNING] A consultation failure has been encountered.
+[DEBUG] Transient retry 1/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101253|http://purl.obolibrary.org/obo/DOID_520: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 0.577s
+[DEBUG] Transient retry 2/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101253|http://purl.obolibrary.org/obo/DOID_520: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 1.245s
+[SERIOUS WARNING] Consultation for http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101253|http://purl.obolibrary.org/obo/DOID_520 failed: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}
+[WARNING] A consultation failure has been encountered.
+[DEBUG] Transient retry 1/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101304|http://purl.obolibrary.org/obo/DOID_1098: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 0.559s
+[DEBUG] Transient retry 2/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101304|http://purl.obolibrary.org/obo/DOID_1098: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 1.114s
+[SERIOUS WARNING] Consultation for http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C101304|http://purl.obolibrary.org/obo/DOID_1098 failed: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}
+[WARNING] A consultation failure has been encountered.
+[DEBUG] Transient retry 1/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103186|http://purl.obolibrary.org/obo/DOID_0060043: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 0.581s
+[DEBUG] Transient retry 2/2 for mapping http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103186|http://purl.obolibrary.org/obo/DOID_0060043: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}; waiting 1.009s
+[SERIOUS WARNING] Consultation for http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103186|http://purl.obolibrary.org/obo/DOID_0060043 failed: RateLimitError: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'deepseek/deepseek-v4-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'WandB', 'is_byok': False, 'provider_error_code': 'rate_limit_exceeded'}}, 'user_id': 'org_361Oibo8YHyOQE7XS4HBIn6lmBA'}
+[WARNING] A consultation failure has been encountered.
+[CRITICAL WARNING] 
+ABORTING Oracle consultations prematurely! Error report:
+[CRITICAL WARNING]   5 consecutive failures. Check your system setup.
+[CRITICAL WARNING]   5 cumulative failures (threshold: 42)
+[SERIOUS WARNING] Pending consultations will be cancelled.
+[SERIOUS WARNING] Running consultations will run to completion.
+
+[ERROR] Oracle consultation aborted before producing predictions; no partial condition will be reported as successful.

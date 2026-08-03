@@ -1,0 +1,16 @@
+model,family,config,prompt,Youden's index,F1 Score,fail_rate,mean_num_retries,cost_total_$
+google|gemini-2.5-pro,google,thinking_budget=1024,direct_entity,0.774,0.924,0.0,0.000,1.602
+qwen|qwen3.5-35b-a3b,qwen,base,direct_entity,0.753,0.923,0.0,—,—
+deepseek|deepseek-v3.2,deepseek,thinking_budget=0,direct_entity,0.752,0.919,0.0,0.000,0.064
+google|gemini-3.1-flash-lite-preview,google,reasoning_effort=medium,direct_entity,0.75,0.927,0.0,2.811,0.076
+qwen|qwen3.5-122b-a10b,qwen,base,direct_entity,0.742,0.92,0.0,—,—
+google|gemini-2.5-flash,google,thinking_budget=1024,direct_entity,0.741,0.916,0.0,0.000,0.223
+mistralai|mistral-medium-3-5,mistralai,reasoning_effort=high,direct_entity,0.737,0.92,0.0,4.000,0.700
+deepseek|deepseek-v4-flash,deepseek,thinking_budget=1024,direct_entity,0.737,0.92,0.0,0.075,0.007
+z-ai|glm-5,z-ai,base,direct_entity,0.735,0.913,0.0,—,—
+anthropic|claude-sonnet-4.6,anthropic,base,direct_entity,0.734,0.924,0.0,—,—
+openai|gpt-5-nano,openai,reasoning_effort=medium,direct_entity,0.73,0.897,0.0,—,—
+openai|gpt-5.5,openai,reasoning_effort=medium,direct_entity_with_synonyms,0.728,0.921,0.0,0.004,1.197
+google|gemini-2.5-flash-lite,google,thinking_budget=512,direct_entity,0.726,0.918,0.0,0.012,0.032
+bytedance-seed|seed-2.0-mini,bytedance-seed,base,direct_entity,0.726,0.885,0.0,0.000,0.059
+x-ai|grok-4.3,x-ai,base,direct_entity,0.724,0.91,0.0,0.000,0.446

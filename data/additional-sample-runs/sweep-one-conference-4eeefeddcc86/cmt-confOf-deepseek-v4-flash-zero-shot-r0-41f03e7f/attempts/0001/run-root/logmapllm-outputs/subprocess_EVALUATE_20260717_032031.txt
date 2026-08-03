@@ -1,0 +1,87 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_032031.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8333
+[METRIC]    Recall           :  0.3125
+[METRIC]    F1               :  0.4545
+[METRIC]    True Positives   :  5
+[METRIC]    False Positives  :  1
+[METRIC]    False Negatives  :  11
+[METRIC]    System Size      :  6
+[METRIC]    Reference Size   :  16
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+Conference M1/M2 stratified evaluation:
+[METRIC]          m1_class:  P=0.8000  R=0.4000  F1=0.5333  (TP=4, FP=1, FN=6)
+[METRIC]       m2_property:  P=1.0000  R=0.1667  F1=0.2857  (TP=1, FP=0, FN=5)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  1.0000
+[METRIC]    Oracle Recall           :  1.0000
+[METRIC]    Oracle Precision        :  1.0000
+[METRIC]    Metric Notes            :  {'specificity': 'undefined: no negative reference candidates (tn+fp=0)', 'youdens_j': 'undefined: sensitivity or specificity undefined'}
+[METRIC]    Youdens J               :  None
+[METRIC]    Specificity             :  None
+[METRIC]    Sensitivity             :  1.0000
+[METRIC]    Total Candidates        :  1
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  0
+[METRIC]    Tn                      :  0
+[METRIC]    Fp                      :  0
+[METRIC]    Tp                      :  1
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-deepseek-v4-flash-zero-shot-r0-41f03e7f/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "cmt-confOf",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.8333333333333334,
+    "recall": 0.3125,
+    "f1": 0.45454545454545453,
+    "true_positives": 5,
+    "false_positives": 1,
+    "false_negatives": 11,
+    "system_size": 6,
+    "reference_size": 16,
+    "metric_notes": {},
+    "source": "custom"
+  },
+  "global_m1_class": {
+    "precision": 0.8,
+    "recall": 0.4,
+    "f1": 0.5333333333333333,
+    "true_positives": 4,
+    "false_positives": 1,
+    "false_negatives": 6,
+    "system_size": 5,
+    "reference_size": 10,
+    "metric_notes": {},
+    "source": "conference_stratified"
+  },
+  "global_m2_property": {
+    "precision": 1.0,
+    "recall": 0.16666666666666666,
+    "f1": 0.2857142857142857,
+    "true_positives": 1,
+    "false_positives": 0,
+    "false_negatives": 5,
+    "system_size": 1,
+    "reference_size": 6,
+    "metric_notes": {},
+    "source": "conference_stratified"
+  }
+}

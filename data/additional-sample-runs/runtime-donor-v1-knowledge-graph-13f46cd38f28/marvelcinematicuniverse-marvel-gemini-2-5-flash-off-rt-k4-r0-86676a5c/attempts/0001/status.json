@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 41.852,
+  "error": "job marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run.log",
+  "finished_at": "2026-07-27T22:33:05+00:00",
+  "return_code": 1,
+  "started_at": "2026-07-27T22:32:23+00:00",
+  "status": "failed",
+  "timeout_seconds": 86400
+}

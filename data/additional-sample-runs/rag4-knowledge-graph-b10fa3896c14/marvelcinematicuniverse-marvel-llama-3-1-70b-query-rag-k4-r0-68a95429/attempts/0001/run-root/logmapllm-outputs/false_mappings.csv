@@ -1,0 +1,2 @@
+source_entity_uri,target_entity_uri,oracle_prediction,oracle_confidence,in_reference,error_type
+http://dbkwik.webdatacommons.org/marvelcinematicuniverse.wikia.com/property/next,http://dbkwik.webdatacommons.org/marvel.wikia.com/property/nextvol,True,0.9898238897070188,False,FP

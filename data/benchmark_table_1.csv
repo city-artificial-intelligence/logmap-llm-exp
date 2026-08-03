@@ -1,0 +1,11 @@
+model,family,config,prompt,Youden's index,F1 Score,fail_rate,mean_num_retries,cost_total_$,rationale
+google|gemini-2.5-pro,google,thinking_budget=1024,direct_entity,0.774,0.924,0.0,0.000,1.602,Top Youden's index
+qwen|qwen3.5-35b-a3b,qwen,base,direct_entity,0.753,0.923,0.0,—,—,2nd best Youden's index
+deepseek|deepseek-v4-flash,deepseek,thinking_budget=1024,direct_entity,0.737,0.92,0.0,0.075,0.007,Cheapest among above-median quality (best value)
+mistralai|mistral-medium-3-5,mistralai,reasoning_effort=high,direct_entity,0.737,0.92,0.0,4.000,0.700,Family diversity (mistralai)
+z-ai|glm-5,z-ai,base,direct_entity,0.735,0.913,0.0,—,—,Family diversity (z-ai)
+anthropic|claude-sonnet-4.6,anthropic,base,direct_entity,0.734,0.924,0.0,—,—,Family diversity (anthropic)
+openai|gpt-5-nano,openai,reasoning_effort=medium,direct_entity,0.73,0.897,0.0,—,—,Family diversity (openai)
+bytedance-seed|seed-2.0-mini,bytedance-seed,base,direct_entity,0.726,0.885,0.0,0.000,0.059,Family diversity (bytedance-seed)
+x-ai|grok-4.3,x-ai,base,direct_entity,0.724,0.91,0.0,0.000,0.446,Family diversity (x-ai)
+minimax|minimax-m2.5,minimax,base,direct_entity,0.691,0.902,0.0,0.008,0.085,Family diversity (minimax)

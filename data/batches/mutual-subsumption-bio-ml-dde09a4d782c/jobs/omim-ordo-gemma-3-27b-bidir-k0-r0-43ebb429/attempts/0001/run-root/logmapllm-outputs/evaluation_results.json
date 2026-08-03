@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.617435537624978,
+    "false_negatives": 1961,
+    "false_positives": 220,
+    "metric_notes": {},
+    "precision": 0.8888888888888888,
+    "recall": 0.47299113141628596,
+    "reference_size": 3721,
+    "source": "custom",
+    "system_size": 1980,
+    "true_positives": 1760
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 21,
+    "fp": 81,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.7475247524752475,
+    "oracle_precision": 0.6508620689655172,
+    "oracle_recall": 0.877906976744186,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.877906976744186,
+    "specificity": 0.6431718061674009,
+    "tn": 146,
+    "total_candidates": 399,
+    "tp": 151,
+    "youdens_j": 0.5210787829115868
+  },
+  "schema_version": 1,
+  "task_name": "omim-ordo"
+}

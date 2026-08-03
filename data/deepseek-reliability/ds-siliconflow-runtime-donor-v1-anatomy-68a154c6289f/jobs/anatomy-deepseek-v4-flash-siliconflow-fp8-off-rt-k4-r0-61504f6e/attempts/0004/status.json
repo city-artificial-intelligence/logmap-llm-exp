@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 408.131,
+  "error": "job anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtime-donor-v1-anatomy-68a154c6289f/jobs/anatomy-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-61504f6e/attempts/0004/run.log",
+  "finished_at": "2026-07-28T04:15:50+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

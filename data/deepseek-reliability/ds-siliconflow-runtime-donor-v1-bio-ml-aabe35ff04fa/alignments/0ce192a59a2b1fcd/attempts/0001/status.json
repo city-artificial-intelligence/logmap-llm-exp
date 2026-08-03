@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 331.623,
+  "error": "alignment 0ce192a59a2b1fcd failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtime-donor-v1-bio-ml-aabe35ff04fa/alignments/0ce192a59a2b1fcd/attempts/0001/run.log",
+  "finished_at": "2026-07-28T04:15:33+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

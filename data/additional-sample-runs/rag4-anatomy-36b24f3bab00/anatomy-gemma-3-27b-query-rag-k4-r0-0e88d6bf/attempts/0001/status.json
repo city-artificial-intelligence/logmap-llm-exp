@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/logmap_llm_sweep/canonical/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/logmap_llm_sweep/canonical/batches/rag4-shards/ngpu-local/rag4-anatomy-36b24f3bab00/jobs/anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/logmap_llm_sweep/canonical/batches/rag4-shards/ngpu-local/rag4-anatomy-36b24f3bab00/jobs/anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 98.533,
+  "finished_at": "2026-07-17T10:18:17+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T10:16:39+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

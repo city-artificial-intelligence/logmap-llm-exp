@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/shards/kg-task-waves/marvelcinematicuniverse-marvel/sweep-one-knowledge-graph-e4b008f4dafc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-zero-shot-r0-971e467c/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/shards/kg-task-waves/marvelcinematicuniverse-marvel/sweep-one-knowledge-graph-e4b008f4dafc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-zero-shot-r0-971e467c/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 69.377,
+  "finished_at": "2026-07-17T06:20:41+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T06:19:31+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

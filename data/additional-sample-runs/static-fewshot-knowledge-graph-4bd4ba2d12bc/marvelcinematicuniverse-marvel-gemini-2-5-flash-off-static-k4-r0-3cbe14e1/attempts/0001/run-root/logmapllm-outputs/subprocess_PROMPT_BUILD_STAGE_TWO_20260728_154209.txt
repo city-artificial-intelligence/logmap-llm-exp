@@ -1,0 +1,57 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260728_154209.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 2276
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.PLAIN
+[STEP 2] Prompt context: AnswerFormat.TRUE_FALSE/ResponseModes.PLAIN, domain='knowledge graphs'
+[STEP 2] Specifying 'ontology_domain' as 'knowledge graphs' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+[SUCCESS] Using cached quadstore for marvelcinematicuniverse.rdf (cache age: 275h 36m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-5z9yq0lu/marvelcinematicuniverse_rdf_9c257b45cbce.sqlite3
+[INFO] There are 1225116 triples in the ontology
+[INFO] Indexed 55 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+[SUCCESS] Using cached quadstore for marvel.rdf (cache age: 275h 35m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-oj6ep0cn/marvel_rdf_0c2859a8ca5c.sqlite3
+[INFO] There are 6733364 triples in the ontology
+[INFO] Indexed 186 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: functools.partial(<function oupt_one_level_of_parents_and_synonyms at 0x75270862aa20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x7527087e5d00>))
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: functools.partial(<function oupt_prop_domain_range at 0x75270862b560>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x7527087e5d00>))
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: functools.partial(<function oupt_inst_full_context_entropy at 0x75270862be20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x7527087e5d00>))
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf|175145892|1784253264811405162|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): a4fcb3235046e76d
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/marvelcinematicuniverse_a4fcb3235046e76d.json
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf|974662845|1784253265045421396|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): c782e11f0612d60b
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/marvel_c782e11f0612d60b.json
+[INFO] Prompts built: 2 cls, 4 prop, 76 inst (82 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 82
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+[STEP 2] Building query-specific RAG few-shot (strategy=static-hard, k=4, negative_layout=donor-cross-v1)
+[STEP 2] SAVED query-specific few-shot for 82 M_ask keys to /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json (traces: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-knowledge-graph-4bd4ba2d12bc/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1/attempts/0001/run-root/logmapllm-outputs/rag_traces.json)

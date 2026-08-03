@@ -1,0 +1,59 @@
+{
+  "alignment_id": "0410e29bcdddd096",
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 89081,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "e1e11b9177892eeb11024865781aa378cb40dd97cb71fc55b095822931ddd238"
+    },
+    {
+      "bytes": 283743,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/anatomy-sub_parents_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "d30e33652d9703ccc712f0a90290e12071b414fed4cbae672cd46dec2ae58aa2"
+    },
+    {
+      "bytes": 32119,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/anatomy-sub_parents_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "f80d48c85b7eca81bb0241abb979b70b29552726e69ea16e06ae03e45ab213f0"
+    },
+    {
+      "bytes": 865,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "d37fd2247e8958a46e204dac72c90f0b4cabcaf21c575121f1e4f2edb17be2a4"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4520,
+      "path": "jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "72420af9b40ae36f50001c00c9a7496aed396fc99309b4ddedd36b597a498ef3"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "bidir-k0",
+  "condition_id": "9893d2252c41782b5626cca38e9a15c94a104fd8b4c54c0fd376ff2acab041d9",
+  "config_sha256": "a57f23c9a3aa4cf2f88b62b87c6e05df47ffea8e3d614ac035b3cc01957125bf",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "a88f746c692e7488581146a822fca340222743dcccb6c5b0c41e641e52b14a2d",
+  "finished_at": "2026-07-28T13:05:36+00:00",
+  "id": "anatomy-gemma-3-27b-bidir-k0-r0-a88f746c",
+  "kind": "job",
+  "model": "gemma-3-27b",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}

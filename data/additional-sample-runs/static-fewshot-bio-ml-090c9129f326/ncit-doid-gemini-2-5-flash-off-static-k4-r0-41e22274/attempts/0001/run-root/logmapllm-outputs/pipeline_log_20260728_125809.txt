@@ -1,0 +1,1558 @@
+[INFO] Summary of Experiment Parameters:
+
+alignmentTask.task_name: ncit-doid
+alignmentTask.onto_source_filepath: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+alignmentTask.onto_target_filepath: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+alignmentTask.generate_extended_mappings_to_ask_oracle: False
+alignmentTask.stub_import_iris: []
+alignmentTask.logmap_parameters_dirpath: /home/jon/tools/logmap/paired-control-class-only/src/target
+alignmentTask.logmap_jvm_memory: 16g
+alignmentTask.ontology_domain: biomedical
+alignmentTask.ontology_vocabulary: default
+oracle.model_name: google/gemini-2.5-flash
+oracle.api_key: ENV: ... _KEY
+oracle.base_url: https://openrouter.ai/api/v1
+oracle.supports_chat_template_kwargs: <unset>
+oracle.failure_tolerance: <unset>
+oracle.max_workers: 8
+oracle.enable_thinking: False
+oracle.max_completion_tokens: 2056
+oracle.request_timeout_seconds: 300.0
+oracle.connect_timeout_seconds: 15.0
+oracle.transient_retries: 2
+oracle.seed: 0
+oracle.request_logprobs: False
+oracle.openrouter_provider: google-vertex/eu
+oracle.openrouter_allow_fallbacks: False
+oracle.openrouter_require_parameters: True
+oracle.temperature: 0.0
+oracle.top_p: 1.0
+oracle.reasoning_effort: none
+oracle.reasoning_token_budget: <unset>
+oracle.local_oracle_predictions_dirpath: 
+oracle.interaction_style: InteractionStyle.OPEN_ROUTER
+oracle.answer_format: AnswerFormat.TRUE_FALSE
+oracle.response_mode: ResponseModes.PLAIN
+prompts.cls_dev_prompt_template_name: class_equivalence
+prompts.cls_usr_prompt_template_name: one_level_of_parents_and_synonyms
+prompts.prop_dev_prompt_template_name: property_equivalence
+prompts.prop_usr_prompt_template_name: prop_domain_range
+prompts.dprop_usr_prompt_template_name: prop_domain_range
+prompts.inst_dev_prompt_template_name: instance_equivalence
+prompts.inst_usr_prompt_template_name: inst_full_context_entropy
+prompts.sibling_strategy: <unset>
+prompts.sibling_model: <unset>
+prompts.sibling_model_revision: <unset>
+prompts.sibling_max_candidates: <unset>
+prompts.sibling_encoder_device: <unset>
+few_shot.few_shot_k: 4
+few_shot.few_shot_seed: 0
+few_shot.few_shot_negative_strategy: static-hard
+few_shot.rag_encoder_kind: sapbert
+few_shot.rag_encoder_model: cambridgeltl/SapBERT-from-PubMedBERT-fulltext
+few_shot.rag_encoder_revision: 090663c3ae57bf35ffe4d0d468a2a88d03051a4d
+few_shot.rag_encoder_device: cpu
+few_shot.rag_encoder_max_length: 64
+few_shot.rag_failure_policy: error
+few_shot.rag_cache_dir: /home/jon/data/logmap-llm-rag-runtime/cache
+few_shot.prebuilt_few_shot_bundle_path: <unset>
+few_shot.rag_negative_layout: donor-cross-v1
+outputs.logmapllm_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/standalone/logmapllm-outputs
+outputs.logmap_initial_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/standalone/logmap-initial-alignment
+outputs.logmap_refined_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/standalone/logmap-refined-alignment
+pipeline.align_ontologies: AlignMode.REUSE
+pipeline.build_oracle_prompts: PromptBuildMode.BUILD
+pipeline.consult_oracle: ConsultMode.CONSULT
+pipeline.refine_alignment: RefineMode.REFINE
+pipeline.refinement_strategy: RefinementStrategy.LOGMAP
+evaluation.evaluate: True
+evaluation.reference_alignment_path: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv
+evaluation.train_alignment_path: <unset>
+evaluation.test_cands_path: <unset>
+evaluation.metrics: ['global', 'oracle']
+evaluation.force_custom_eval: True
+evaluation.partial_reference: False
+evaluation.stratified_by_entity_type: False
+evaluation.stratified_class_property: False
+evaluation.jvm_memory: 8g
+
+[INFO] Summary of File Paths:
+
+  Task                : ncit-doid
+  Prompt template     : one_level_of_parents_and_synonyms
+  Run root            : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root
+  Output directory    : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs
+  Initial align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmap-initial-alignment
+  Refined align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmap-refined-alignment
+  Prompts JSON        : ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+  Predictions CSV     : ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+  Few-shot JSON       : ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json
+
+
+[INFO] Ontology domain: biomedical
+
+[INFO] LogMap-LLM pipeline starting.
+[Step 1] Align ontologies and obtain mappings to ask an Oracle
+[Step 1] Loading mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt
+[SUCCESS] Number of mappings within the initial alignment: 4960
+[SUCCESS] Number of mappings within M_ask: 856
+
+[Step 2] Build user prompts for oracle consultation
+[Step 2] Building fresh oracle user prompts via subprocess
+[SUCCESS] Number of LLM oracle user prompts: 856
+
+[Step 3] Consult Oracle for mappings to ask
+[SUCCESS] Loaded query-specific few-shot for 856 M_ask keys from /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json
+[Step 3] Consulting LLM oracle with model: google/gemini-2.5-flash
+[DEBUG] Effective failure tolerance is set to: 42.
+[DEBUG] Initialising OracleConsultationManager ... with args:
+[DEBUG] model=google/gemini-2.5-flash
+[DEBUG] base_url=https://openrouter.ai/api/v1
+[DEBUG] temp=0.0
+[DEBUG] reasoning=False
+[DEBUG] response_format=Plain (None)
+[DEBUG] (resolved argument) interaction_style=InteractionStyle.OPEN_ROUTER
+
+[DEBUG] Conversation History:
+[DEBUG] Message 0: {'role': 'developer', 'content': 'You are assisting in an OWL ontology alignment exercise. You will be presented with a pair of class entities, one from each of two different ontologies. Additional ontological context such as parent categories and synonyms may be provided. You will be asked to decide whether the two classes are semantically equivalent. Give only a one-word binary response: "True" or "False".'}
+
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[SUCCESS] Mappings to ask an Oracle  : 856
+[SUCCESS] Predicted True             : 540
+[SUCCESS] Predicted False            : 316
+[SUCCESS] Consultation failures      :   0
+[SUCCESS] LLM Oracle consultations   : 856 (unidirectional consultations)
+[SUCCESS] Oracle predictions saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+
+[Step 4] Refine alignment using oracle mapping predictions
+[Step 4] Refining initial LogMap alignment with LLM Oracle predictions
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 0; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 3; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 4; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 6; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 7; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 10; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 12; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 16; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 17; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 19; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 21; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 23; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 24; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 25; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 26; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 27; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 29; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 31; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 34; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 35; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 37; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 40; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 43; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 46; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 47; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 48; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 50; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 51; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 53; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 54; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 56; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 57; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 59; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 60; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 61; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 62; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 63; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 64; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 65; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 66; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 71; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 74; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 75; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 76; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 77; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 78; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 79; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 80; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 81; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 84; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 87; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 88; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 90; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 91; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 93; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 94; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 96; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 97; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 98; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 102; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 103; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 104; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 105; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 106; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 109; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 110; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 112; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 113; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 114; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 118; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 120; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 122; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 123; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 129; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 130; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 132; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 135; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 136; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 138; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 139; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 140; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 143; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 144; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 145; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 148; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 149; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 150; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 151; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 154; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 156; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 157; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 158; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 159; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 162; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 163; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 165; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 166; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 167; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 168; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 169; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 170; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 172; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 173; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 174; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 177; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 178; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 180; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 181; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 182; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 183; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 184; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 185; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 187; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 188; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 190; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 191; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 192; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 193; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 194; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 196; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 199; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 201; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 203; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 204; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 206; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 208; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 209; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 211; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 213; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 215; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 217; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 218; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 221; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 222; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 223; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 228; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 229; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 232; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 234; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 235; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 238; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 239; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 241; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 243; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 245; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 246; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 247; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 249; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 250; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 252; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 253; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 255; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 256; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 257; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 258; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 259; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 260; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 262; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 265; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 268; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 269; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 272; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 273; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 274; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 275; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 278; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 279; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 280; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 281; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 282; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 283; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 284; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 285; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 286; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 288; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 289; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 290; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 291; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 292; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 293; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 294; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 295; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 296; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 297; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 298; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 301; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 302; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 303; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 304; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 309; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 310; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 311; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 315; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 318; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 319; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 320; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 321; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 322; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 323; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 325; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 327; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 334; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 336; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 337; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 338; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 341; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 342; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 344; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 346; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 348; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 350; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 351; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 355; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 356; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 357; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 358; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 359; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 360; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 361; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 362; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 363; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 364; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 365; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 366; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 367; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 368; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 371; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 372; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 373; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 374; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 375; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 376; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 379; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 382; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 383; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 384; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 385; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 386; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 387; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 388; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 390; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 392; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 394; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 396; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 397; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 399; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 401; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 402; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 403; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 404; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 405; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 407; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 408; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 409; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 412; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 414; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 417; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 418; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 419; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 422; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 423; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 424; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 425; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 426; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 428; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 429; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 430; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 431; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 433; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 435; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 437; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 439; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 442; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 443; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 444; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 445; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 446; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 447; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 448; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 450; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 452; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 453; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 454; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 455; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 456; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 457; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 459; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 460; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 463; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 465; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 466; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 470; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 471; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 473; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 474; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 477; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 480; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 482; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 483; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 485; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 487; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 488; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 489; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 491; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 492; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 494; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 496; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 497; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 498; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 500; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 501; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 502; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 503; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 504; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 506; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 509; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 510; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 511; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 514; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 515; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 516; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 517; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 518; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 519; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 521; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 522; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 524; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 526; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 528; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 529; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 531; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 532; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 533; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 536; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 537; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 538; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 541; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 542; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 544; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 545; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 548; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 549; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 550; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 552; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 554; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 556; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 557; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 559; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 560; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 563; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 566; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 567; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 568; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 569; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 572; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 573; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 574; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 577; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 579; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 582; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 583; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 584; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 586; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 589; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 590; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 591; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 592; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 593; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 594; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 595; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 596; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 598; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 599; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 600; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 602; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 604; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 605; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 606; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 609; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 613; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 614; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 615; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 617; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 618; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 619; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 621; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 628; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 629; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 630; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 631; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 632; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 633; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 635; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 636; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 638; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 640; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 642; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 645; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 647; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 649; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 650; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 651; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 653; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 654; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 655; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 656; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 657; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 659; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 660; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 661; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 662; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 663; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 665; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 666; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 667; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 668; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 673; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 674; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 675; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 676; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 679; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 683; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 685; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 686; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 687; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 688; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 690; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 691; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 692; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 693; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 694; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 695; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 696; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 697; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 698; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 699; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 700; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 704; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 705; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 706; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 708; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 709; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 710; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 712; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 714; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 715; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 716; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 717; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 718; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 721; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 722; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 723; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 724; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 725; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 726; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 729; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 730; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 731; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 734; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 736; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 737; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 738; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 739; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 741; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 742; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 743; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 745; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 746; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 748; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 749; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 750; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 751; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 752; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 753; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 756; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 757; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 758; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 759; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 760; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 761; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 762; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 764; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 765; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 767; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 768; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 770; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 771; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 774; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 775; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 778; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 779; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 780; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 782; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 783; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 784; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 786; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 787; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 788; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 790; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 793; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 794; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 795; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 797; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 799; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 800; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 803; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 804; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 805; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 806; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 807; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 808; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 809; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 810; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 814; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 815; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 817; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 820; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 821; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 822; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 823; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 824; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 825; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 827; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 828; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 829; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 830; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 834; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 835; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 836; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 837; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 838; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 839; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 840; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 841; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 843; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 844; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 846; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 847; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 850; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 851; using fallback.
+[Step 4] Number of mappings predicted True by Oracle given to LogMap: 540
+[Step 4] Number of mappings in LogMap refined alignment: 4644
+[SUCCESS] Refinement stage ending.
+
+[Step 5] Evaluation
+[Step 5] Running evaluation subprocess
+[SUCCESS] Evaluation results loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+[SUCCESS] Evaluation stage ending.
+[Step 6] Timing Summary
+
+  Alignment          : 0.0s
+  Prompt building    : 14.8s
+  Oracle consultation: 51.8s
+    Per consultation : 0.1s
+  Refinement         : 26.6s
+  Evaluation         : 0.7s
+  Total              : 1m 33.9s
+
+[Step 7] Experimental Parameters
+
+  Task name           : ncit-doid
+  Model               : google/gemini-2.5-flash
+  Endpoint            : OpenRouter
+  Prompt template     : one_level_of_parents_and_synonyms
+  Developer prompt    : class_equivalence
+  N prompts           : 856
+  Interaction style   : InteractionStyle.OPEN_ROUTER
+  Temperature         : 0.0
+  Top-p               : 1.0
+  Max workers         : 8
+  GPU                 : NVIDIA RTX 4000 SFF Ada Generation, 20475
+
+[SUCCESS] Total refined mappings: 4644
+[Step 8] Results written to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemini-2-5-flash-off-static-k4-r0-41e22274/attempts/0001/run-root/logmapllm-outputs/run_result.json
+[SUCCESS] LogMap-LLM session ending

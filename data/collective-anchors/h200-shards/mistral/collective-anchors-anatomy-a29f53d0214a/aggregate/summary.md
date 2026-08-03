@@ -1,0 +1,56 @@
+# Results: collective-anchors-anatomy
+
+Coverage: **1/8 (12.5%)**
+
+| Status | Jobs |
+|---|---:|
+| not_run | 7 |
+| success | 1 |
+
+## Groups
+
+| model | condition | completed | expected | coverage |
+|---|---|---|---|---|
+| deepseek-v4-flash-gmicloud-fp8-off | ca-k4 | 0 | 1 | 0.0% |
+| gemini-2-5-flash-off | ca-k4 | 0 | 1 | 0.0% |
+| gemma-3-27b | ca-k4 | 0 | 1 | 0.0% |
+| llama-3-1-70b | ca-k4 | 0 | 1 | 0.0% |
+| mistral-small-3-2-24b | ca-k4 | 1 | 1 | 100.0% |
+| qwen3-235b | ca-k4 | 0 | 1 | 0.0% |
+| qwen3-5-122b | ca-k4 | 0 | 1 | 0.0% |
+| qwen3-8b | ca-k4 | 0 | 1 | 0.0% |
+
+## Primary metrics
+
+| model | condition | pooled.global.precision | pooled.global.recall | pooled.global.f1 | mean.global.precision | mean.global.recall | mean.global.f1 | mean.oracle.oracle_precision | mean.oracle.oracle_recall | mean.oracle.oracle_f1 | mean.oracle.sensitivity | mean.oracle.specificity | mean.oracle.youdens_j |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-flash-gmicloud-fp8-off | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| gemini-2-5-flash-off | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| gemma-3-27b | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| llama-3-1-70b | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| mistral-small-3-2-24b | ca-k4 | 0.9497 | 0.8463 | 0.8950 | 0.9497 | 0.8463 | 0.8950 | 0.7864 | 0.9818 | 0.8733 | 0.9818 | 0.5319 | 0.5137 |
+| qwen3-235b | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| qwen3-5-122b | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+| qwen3-8b | ca-k4 |  |  |  |  |  |  |  |  |  |  |  |  |
+
+All metrics and contributor counts are in `summary.csv`.
+
+## Pooled alignment strata
+
+| model | condition | stratum | jobs | expected | TP | FP | FN | precision | recall | f1 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mistral-small-3-2-24b | ca-k4 | Global | 1 | 1 | 1283 | 68 | 233 | 0.9497 | 0.8463 | 0.8950 |
+
+TP/FP/FN are additive. Alignment TN is not defined without an explicit candidate universe.
+
+## Incomplete jobs
+
+| Job | Status | Detail |
+|---|---|---|
+| anatomy-deepseek-v4-flash-gmicloud-fp8-off-ca-k4-r0-11640eb0 | not_run |  |
+| anatomy-gemini-2-5-flash-off-ca-k4-r0-7e7eed14 | not_run |  |
+| anatomy-gemma-3-27b-ca-k4-r0-49c4007c | not_run |  |
+| anatomy-llama-3-1-70b-ca-k4-r0-68fdc153 | not_run |  |
+| anatomy-qwen3-235b-ca-k4-r0-610a9ce2 | not_run |  |
+| anatomy-qwen3-5-122b-ca-k4-r0-1de4c4f7 | not_run |  |
+| anatomy-qwen3-8b-ca-k4-r0-6bf94365 | not_run |  |

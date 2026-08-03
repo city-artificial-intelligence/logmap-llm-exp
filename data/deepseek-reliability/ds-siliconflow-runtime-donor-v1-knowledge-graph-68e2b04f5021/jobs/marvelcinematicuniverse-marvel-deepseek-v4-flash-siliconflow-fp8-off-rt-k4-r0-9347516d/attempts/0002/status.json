@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 256.927,
+  "error": "job marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtime-donor-v1-knowledge-graph-68e2b04f5021/jobs/marvelcinematicuniverse-marvel-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-9347516d/attempts/0002/run.log",
+  "finished_at": "2026-07-28T04:13:42+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

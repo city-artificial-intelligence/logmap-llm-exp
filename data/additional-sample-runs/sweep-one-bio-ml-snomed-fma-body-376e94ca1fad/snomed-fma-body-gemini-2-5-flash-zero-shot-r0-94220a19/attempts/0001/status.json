@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 5975.283,
+  "finished_at": "2026-07-17T07:23:56+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T05:44:20+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

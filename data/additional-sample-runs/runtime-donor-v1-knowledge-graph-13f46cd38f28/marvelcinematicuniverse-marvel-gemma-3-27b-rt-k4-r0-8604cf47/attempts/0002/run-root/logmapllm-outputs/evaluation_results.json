@@ -1,0 +1,82 @@
+{
+  "engine": "partial_reference",
+  "global": {
+    "evaluated_size": 928,
+    "f1": 0.5983037779491133,
+    "false_negatives": 890,
+    "false_positives": 152,
+    "ignored": 1368,
+    "metric_notes": {},
+    "precision": 0.8362068965517241,
+    "recall": 0.4657863145258103,
+    "reference_size": 1666,
+    "source": "kg_partial",
+    "system_size": 2296,
+    "true_positives": 776
+  },
+  "global_class": {
+    "evaluated_size": 2,
+    "f1": 1.0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "ignored": 7,
+    "metric_notes": {},
+    "precision": 1.0,
+    "recall": 1.0,
+    "reference_size": 2,
+    "source": "partial_reference_stratified_class",
+    "system_size": 9,
+    "true_positives": 2
+  },
+  "global_instance": {
+    "evaluated_size": 913,
+    "f1": 0.5962587685113016,
+    "false_negatives": 888,
+    "false_positives": 148,
+    "ignored": 1351,
+    "metric_notes": {},
+    "precision": 0.8378970427163198,
+    "recall": 0.4627949183303085,
+    "reference_size": 1653,
+    "source": "partial_reference_stratified_instance",
+    "system_size": 2264,
+    "true_positives": 765
+  },
+  "global_property": {
+    "evaluated_size": 13,
+    "f1": 0.7500000000000001,
+    "false_negatives": 2,
+    "false_positives": 4,
+    "ignored": 10,
+    "metric_notes": {},
+    "precision": 0.6923076923076923,
+    "recall": 0.8181818181818182,
+    "reference_size": 11,
+    "source": "partial_reference_stratified_property",
+    "system_size": 23,
+    "true_positives": 9
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 0,
+    "fp": 2,
+    "metric_notes": {},
+    "oracle_excluded": 75,
+    "oracle_f1": 0.6666666666666666,
+    "oracle_precision": 0.5,
+    "oracle_recall": 1.0,
+    "partial_scope_excluded": 75,
+    "sensitivity": 1.0,
+    "specificity": 0.6,
+    "tn": 3,
+    "total_candidates": 82,
+    "tp": 2,
+    "youdens_j": 0.6000000000000001
+  },
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel"
+}

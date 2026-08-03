@@ -1,0 +1,191 @@
+{
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 15124,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 71742,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "0e609f2aa13988b56638b601830b0ee174e56500bccaa2bf770dba648037c236"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 16577,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "b62bee9b6bc728eb32efc7d01d9626bedafa0bd0a1b8d194b844aee551947b51"
+    },
+    {
+      "bytes": 400456,
+      "path": "logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "e05a0ef948260affb6914ef6c38df9d8f87ec19b2b8c963d8f51ab651546446b"
+    },
+    {
+      "bytes": 1933,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "e41d0566f19b45dba983ab23dff938edbe7a7c4514e0745552476ef8ce6e31ed"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 82,
+    "error": 0,
+    "false": 77,
+    "prompts": 82,
+    "skipped": 0,
+    "true": 5
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "partial_reference",
+    "global": {
+      "evaluated_size": 926,
+      "f1": 0.5987654320987654,
+      "false_negatives": 890,
+      "false_positives": 150,
+      "ignored": 1353,
+      "metric_notes": {},
+      "precision": 0.838012958963283,
+      "recall": 0.4657863145258103,
+      "reference_size": 1666,
+      "source": "kg_partial",
+      "system_size": 2279,
+      "true_positives": 776
+    },
+    "global_class": {
+      "evaluated_size": 2,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "ignored": 7,
+      "metric_notes": {},
+      "precision": 1.0,
+      "recall": 1.0,
+      "reference_size": 2,
+      "source": "partial_reference_stratified_class",
+      "system_size": 9,
+      "true_positives": 2
+    },
+    "global_instance": {
+      "evaluated_size": 912,
+      "f1": 0.5964912280701754,
+      "false_negatives": 888,
+      "false_positives": 147,
+      "ignored": 1337,
+      "metric_notes": {},
+      "precision": 0.8388157894736842,
+      "recall": 0.4627949183303085,
+      "reference_size": 1653,
+      "source": "partial_reference_stratified_instance",
+      "system_size": 2249,
+      "true_positives": 765
+    },
+    "global_property": {
+      "evaluated_size": 12,
+      "f1": 0.7826086956521738,
+      "false_negatives": 2,
+      "false_positives": 3,
+      "ignored": 9,
+      "metric_notes": {},
+      "precision": 0.75,
+      "recall": 0.8181818181818182,
+      "reference_size": 11,
+      "source": "partial_reference_stratified_property",
+      "system_size": 21,
+      "true_positives": 9
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 0,
+      "fp": 0,
+      "metric_notes": {},
+      "oracle_excluded": 75,
+      "oracle_f1": 1.0,
+      "oracle_precision": 1.0,
+      "oracle_recall": 1.0,
+      "partial_scope_excluded": 75,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "tn": 5,
+      "total_candidates": 82,
+      "tp": 2,
+      "youdens_j": 1.0
+    },
+    "schema_version": 1,
+    "task_name": "marvelcinematicuniverse-marvel"
+  },
+  "model_name": "deepseek/deepseek-v4-flash",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "openrouter",
+    "logprobs_effective": false,
+    "logprobs_requested": false,
+    "max_completion_tokens": 64,
+    "max_workers": 1,
+    "model_name": "deepseek/deepseek-v4-flash",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": "wandb/fp8",
+    "openrouter_require_parameters": true,
+    "reasoning_effort": "none",
+    "request_logprobs": false,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "zero-shot",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_revision": null
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "marvelcinematicuniverse-marvel",
+  "timing": {
+    "align_seconds": 0.0046155452728271484,
+    "consult_seconds": 139.08799028396606,
+    "evaluate_seconds": 0.3299579620361328,
+    "prompt_build_seconds": 14.64695405960083,
+    "refine_seconds": 0.01785111427307129,
+    "total_seconds": 154.08736896514893
+  }
+}

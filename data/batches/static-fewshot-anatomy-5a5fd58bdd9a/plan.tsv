@@ -1,0 +1,7 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75	anatomy	gemini-2-5-flash-off	static-k4	0	0410e29bcdddd096	configs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75.toml
+anatomy-gemma-3-27b-static-k4-r0-bf71152c	anatomy	gemma-3-27b	static-k4	0	0410e29bcdddd096	configs/anatomy-gemma-3-27b-static-k4-r0-bf71152c.toml
+anatomy-llama-3-1-70b-static-k4-r0-4b9b267f	anatomy	llama-3-1-70b	static-k4	0	0410e29bcdddd096	configs/anatomy-llama-3-1-70b-static-k4-r0-4b9b267f.toml
+anatomy-mistral-small-3-2-24b-static-k4-r0-621c1d42	anatomy	mistral-small-3-2-24b	static-k4	0	0410e29bcdddd096	configs/anatomy-mistral-small-3-2-24b-static-k4-r0-621c1d42.toml
+anatomy-qwen3-5-122b-static-k4-r0-ffb0f585	anatomy	qwen3-5-122b	static-k4	0	0410e29bcdddd096	configs/anatomy-qwen3-5-122b-static-k4-r0-ffb0f585.toml
+anatomy-qwen3-8b-static-k4-r0-59b262a9	anatomy	qwen3-8b	static-k4	0	0410e29bcdddd096	configs/anatomy-qwen3-8b-static-k4-r0-59b262a9.toml

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-knowledge-graph-b10fa3896c14/jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-knowledge-graph-b10fa3896c14/jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 74.769,
+  "finished_at": "2026-07-17T11:43:35+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T11:42:20+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

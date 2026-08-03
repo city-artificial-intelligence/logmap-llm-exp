@@ -1,0 +1,11 @@
+source_entity_uri,target_entity_uri,relation,confidence,entityType,Oracle_prediction,Oracle_confidence,Oracle_input_tokens,Oracle_output_tokens
+http://w3id.org/CEON/ontology/resourceODP/Resource,http://ontorion.com/namespace#Resource,=,0.51,CLS,True,nan,143,6
+http://w3id.org/CEON/ontology/process/producesCO2,http://ontorion.com/namespace#produces,=,0.8,OPROP,False,nan,146,6
+http://w3id.org/CEON/ontology/value/EnvironmentalValue,http://ontorion.com/namespace#Environment,=,0.48,CLS,False,nan,144,6
+http://qudt.org/schema/qudt/QuantityValue,http://ontorion.com/namespace#Quantity,=,0.51,CLS,False,nan,136,6
+http://w3id.org/CEON/ontology/cvn/createsValue,http://ontorion.com/namespace#valuates,=,0.8,OPROP,False,nan,143,6
+http://qudt.org/schema/qudt/QuantityKind,http://ontorion.com/namespace#Quantity,=,0.51,CLS,False,nan,136,6
+http://w3id.org/CEON/ontology/value/EconomicValue,http://ontorion.com/namespace#Economics,=,0.49,CLS,False,nan,153,6
+http://w3id.org/CEON/ontology/processODP/hasPart,http://ontorion.com/namespace#hasPartIn,=,0.8,OPROP,False,nan,136,6
+http://w3id.org/CEON/ontology/product/Product,http://ontorion.com/namespace#Production,=,0.5,CLS,False,nan,143,6
+http://w3id.org/CEON/ontology/product/Product,http://ontorion.com/namespace#Product,=,0.5,CLS,True,nan,143,6

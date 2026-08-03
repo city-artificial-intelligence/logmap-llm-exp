@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    {
+      "bytes": 472483,
+      "path": "logmap-initial-alignment/snomed-ncit-neoplas-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "276ae3e893730ecc1d6d6b85de4844e6580baa1ae9344bf2511412224a287d96"
+    },
+    {
+      "bytes": 472483,
+      "path": "logmap-initial-alignment/snomed-ncit-neoplas-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "8f11f7f21ffbb073c842b06c4e2494ec18dd35b6935c961cf84cbb17fb3ed344"
+    },
+    {
+      "bytes": 130802,
+      "path": "logmap-initial-alignment/snomed-ncit-neoplas-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "95584d3db0f6f6653a3362d2ed96708f82db777102251d92ed6cc5ff7bafe70f"
+    },
+    {
+      "bytes": 1491027,
+      "path": "logmapllm-outputs/snomed-ncit-neoplas-sub_parents_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "6ab72bbeadf75e144fc4af7faab540bf0467c0fcba5835e19febc39a2c6078d5"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/snomed-ncit-neoplas-sub_parents_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 212638,
+      "path": "logmapllm-outputs/snomed-ncit-neoplas-sub_parents_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "2652842be83b5e99f4739c19ef738e99d1d0b8f86e7cf7cfaf204e528460c903"
+    },
+    {
+      "bytes": 435688,
+      "path": "logmap-refined-alignment/snomed-ncit-neoplas-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "4292e97dbed84921ed14a26eea7be3786b7bf84f2a93dcd96e732e9b9ca6a3ec"
+    },
+    {
+      "bytes": 882,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "bf2a3635f5fdfee9629edabcad40975263b966c554998f6f1c5a85df3e1fbe03"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 1305,
+    "error": 0,
+    "false": 413,
+    "prompts": 2610,
+    "skipped": 0,
+    "true": 892
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.6986267778322707,
+      "false_negatives": 955,
+      "false_positives": 1503,
+      "metric_notes": {},
+      "precision": 0.6546415441176471,
+      "recall": 0.7489484752891693,
+      "reference_size": 3804,
+      "source": "custom",
+      "system_size": 4352,
+      "true_positives": 2849
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 104,
+      "fp": 292,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.7518796992481204,
+      "oracle_precision": 0.672645739910314,
+      "oracle_recall": 0.8522727272727273,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.8522727272727273,
+      "specificity": 0.5141430948419301,
+      "tn": 309,
+      "total_candidates": 1305,
+      "tp": 600,
+      "youdens_j": 0.3664158221146574
+    },
+    "schema_version": 1,
+    "task_name": "snomed-ncit-neoplas"
+  },
+  "model_name": "Gemma-3-27B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "Gemma-3-27B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "reasoning_token_budget": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "plain",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "sub_parents_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "snomed-ncit-neoplas",
+  "timing": {
+    "align_seconds": 0.013321876525878906,
+    "consult_seconds": 189.9975447654724,
+    "evaluate_seconds": 0.4180593490600586,
+    "prompt_build_seconds": 5.132775545120239,
+    "refine_seconds": 125.3592460155487,
+    "total_seconds": 320.9209475517273
+  }
+}

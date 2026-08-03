@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/runtime-rag/canonical/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 273.148,
+  "finished_at": "2026-07-19T11:56:56+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-19T11:52:22+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

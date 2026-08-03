@@ -1,0 +1,63 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260727_223224.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 2276
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run-root/logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.PLAIN
+[STEP 2] Prompt context: AnswerFormat.TRUE_FALSE/ResponseModes.PLAIN, domain='knowledge graphs'
+[STEP 2] Specifying 'ontology_domain' as 'knowledge graphs' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+[SUCCESS] Using cached quadstore for marvelcinematicuniverse.rdf (cache age: 258h 26m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-_joapov9/marvelcinematicuniverse_rdf_9c257b45cbce.sqlite3
+[INFO] There are 1225116 triples in the ontology
+[INFO] Indexed 55 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+[SUCCESS] Using cached quadstore for marvel.rdf (cache age: 258h 26m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-7rfremqf/marvel_rdf_0c2859a8ca5c.sqlite3
+[INFO] There are 6733364 triples in the ontology
+[INFO] Indexed 186 classes.
+[INFO] Indexed 0 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: functools.partial(<function oupt_one_level_of_parents_and_synonyms at 0x744b4303aa20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x744b431f5d00>))
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: functools.partial(<function oupt_prop_domain_range at 0x744b4303b560>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x744b431f5d00>))
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: functools.partial(<function oupt_inst_full_context_entropy at 0x744b4303be20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='knowledge graphs', instance_fmt_fn=<function format_instance_attribute_clause at 0x744b431f5d00>))
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf|175145892|1784253264811405162|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): a4fcb3235046e76d
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/marvelcinematicuniverse_a4fcb3235046e76d.json
+[DEBUG] (compute_entropy_disk_cache_path) ENCODED HASH INPUT: b'/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf|974662845|1784253265045421396|/property/'
+[DEBUG] (compute_entropy_disk_cache_path) COMPUTED HASH DIGEST (OUTPUT): c782e11f0612d60b
+[DEBUG] (compute_entropy_disk_cache_path) entropy_cache_path: /home/jon/.cache/logmap-llm/entropies/marvel_c782e11f0612d60b.json
+[INFO] Prompts built: 2 cls, 4 prop, 76 inst (82 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 82
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-knowledge-graph-13f46cd38f28/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-rt-k4-r0-86676a5c/attempts/0001/run-root/logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+[STEP 2] Building query-specific RAG few-shot (strategy=query-rag, k=4, negative_layout=donor-cross-v1)
+[SERIOUS WARNING] Query-specific RAG few-shot generation failed: 401 Client Error. (Request ID: Root=1-6a67dca0-585c57397aedff4c260dff8a;473c0575-7379-4040-bab9-ac19bf0b9dd3)
+
+Repository Not Found for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L12-v2/tree/a50ef00143b4d5391434df20ae11632588ac25be/additional_chat_templates?recursive=false&expand=false.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+OAuth token signature verification failed: signature verification failed

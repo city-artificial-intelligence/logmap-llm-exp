@@ -1,0 +1,111 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-knowledge-graph-4adbf71c7237/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-ca-k4-r0-51cb8cd2/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260727_231749.txt
+NOTE: Partial reference alignment (PARTIAL_SOURCE_COMPLETE_TARGET_COMPLETE semantics)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: kg_partial)
+[METRIC]   
+[METRIC]    Precision        :  0.8380
+[METRIC]    Recall           :  0.4658
+[METRIC]    F1               :  0.5988
+[METRIC]    True Positives   :  776
+[METRIC]    False Positives  :  150
+[METRIC]    False Negatives  :  890
+[METRIC]    Ignored          :  1358
+[METRIC]    System Size      :  2284
+[METRIC]    Evaluated Size   :  926
+[METRIC]    Reference Size   :  1666
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  kg_partial
+
+Stratified evaluation (explicit refs, partial GS):
+[METRIC]             class:  P=1.0000  R=1.0000  F1=1.0000  (TP=2, FP=0, FN=0, Ign=7)
+[METRIC]          property:  P=0.7500  R=0.8182  F1=0.7826  (TP=9, FP=3, FN=2, Ign=9)
+[METRIC]          instance:  P=0.8388  R=0.4628  F1=0.5965  (TP=765, FP=147, FN=888, Ign=1342)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  1.0000
+[METRIC]    Oracle Recall           :  1.0000
+[METRIC]    Oracle Precision        :  1.0000
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  1.0000
+[METRIC]    Specificity             :  1.0000
+[METRIC]    Sensitivity             :  1.0000
+[METRIC]    Total Candidates        :  82
+[METRIC]    Oracle Excluded         :  75
+[METRIC]    Partial Scope Excluded  :  75
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  0
+[METRIC]    Tn                      :  5
+[METRIC]    Fp                      :  0
+[METRIC]    Tp                      :  2
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-knowledge-graph-4adbf71c7237/jobs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-ca-k4-r0-51cb8cd2/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel",
+  "engine": "partial_reference",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.838012958963283,
+    "recall": 0.4657863145258103,
+    "f1": 0.5987654320987654,
+    "true_positives": 776,
+    "false_positives": 150,
+    "false_negatives": 890,
+    "ignored": 1358,
+    "system_size": 2284,
+    "evaluated_size": 926,
+    "reference_size": 1666,
+    "metric_notes": {},
+    "source": "kg_partial"
+  },
+  "global_class": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "true_positives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "ignored": 7,
+    "system_size": 9,
+    "evaluated_size": 2,
+    "reference_size": 2,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_class"
+  },
+  "global_property": {
+    "precision": 0.75,
+    "recall": 0.8181818181818182,
+    "f1": 0.7826086956521738,
+    "true_positives": 9,
+    "false_positives": 3,
+    "false_negatives": 2,
+    "ignored": 9,
+    "system_size": 21,
+    "evaluated_size": 12,
+    "reference_size": 11,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_property"
+  },
+  "global_instance": {
+    "precision": 0.8388157894736842,
+    "recall": 0.4627949183303085,
+    "f1": 0.5964912280701754,
+    "true_positives": 765,
+    "false_positives": 147,
+    "false_negatives": 888,
+    "ignored": 1342,
+    "system_size": 2254,
+    "evaluated_size": 912,
+    "reference_size": 1653,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_instance"
+  }
+}

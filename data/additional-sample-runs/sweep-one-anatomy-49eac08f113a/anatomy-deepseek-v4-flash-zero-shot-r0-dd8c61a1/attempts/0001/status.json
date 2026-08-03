@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 213.243,
+  "finished_at": "2026-07-17T03:09:15+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T03:05:41+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

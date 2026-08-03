@@ -1,0 +1,64 @@
+{
+  "alignment_id": "0410e29bcdddd096",
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 89080,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "2c765ddbb6ac79961138b8e5ca658f84806f162192d05c541efd3112d8d5c305"
+    },
+    {
+      "bytes": 469050,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "sha256": "a7eb6bc3dc34a109f3effac559416bbe42bf9800c00f614511976cc50b9d7376"
+    },
+    {
+      "bytes": 125475,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "2d3959d9aa6fa3b427a8c052ffc7663d804a7def6003b98781c5c9acf336ae4d"
+    },
+    {
+      "bytes": 34063,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "a0c315c7ec9bb861fac651ad96c4263d844d13fc589b63c236e37ee3f4721c9f"
+    },
+    {
+      "bytes": 863,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "6b0ae97e8b24ed0e5c8055f630dc144c2dba30545fecda683a8c7e40497325ff"
+    },
+    {
+      "bytes": 1106710,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "106f7a2dac19cfe744c98eafbd8a1c0ef319a8630659e247e16f979b9c3ad508"
+    },
+    {
+      "bytes": 4634,
+      "path": "jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "da0c4d587d27734ec3a91c08c198037bfc5e1365382176f26221683c22f52354"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "static-k4",
+  "condition_id": "80f3d37abcfbfaa8701245bc03bb9a15833d9024292760f2125c331616aa37c9",
+  "config_sha256": "51679a9e13290e3c561e2c575704ce933297f7cd68e4a676efa679936af2c987",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "8b97cf75bb52400820a6fd085ca9bcc88d504c29acbc4f5c4b184465dc39f76e",
+  "finished_at": "2026-07-28T12:55:21+00:00",
+  "id": "anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75",
+  "kind": "job",
+  "model": "gemini-2-5-flash-off",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}

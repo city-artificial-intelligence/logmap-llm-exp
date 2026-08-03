@@ -1,0 +1,49 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260717_030543.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 1405
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.STRUCTURED
+[STEP 2] MODIFYING GLOBAL RESPONSE CONFIG STATE FOR TEMPLATES!
+[STEP 2] Specifying 'ontology_domain' as 'biomedical anatomy' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-anatomy/mouse.owl
+[SUCCESS] Using cached quadstore for mouse.owl (cache age: 20m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-5kqs7l09/mouse_owl_787698316b74.sqlite3
+[INFO] There are 15960 triples in the ontology
+[INFO] Indexed 2744 classes.
+[INFO] Indexed 10 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/mouse.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-anatomy/human.owl
+[SUCCESS] Using cached quadstore for human.owl (cache age: 20m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-1ssud5b8/human_owl_cde3de736519.sqlite3
+[INFO] There are 35356 triples in the ontology
+[INFO] Indexed 3304 classes.
+[INFO] Indexed 8 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/human.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: <function oupt_one_level_of_parents_and_synonyms at 0x76ca727fe160>
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: <function oupt_prop_domain_range at 0x76ca727feca0>
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: <function oupt_inst_full_context_entropy at 0x76ca727ff560>
+[INFO] Prompts built: 259 cls, 0 prop, 0 inst (259 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 259
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-anatomy-49eac08f113a/jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json

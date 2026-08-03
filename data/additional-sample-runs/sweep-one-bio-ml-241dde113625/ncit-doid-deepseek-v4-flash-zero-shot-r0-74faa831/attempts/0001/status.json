@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 18.193,
+  "error": "job ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831 failed; see /t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0001/run.log",
+  "finished_at": "2026-07-17T04:44:41+00:00",
+  "return_code": 1,
+  "started_at": "2026-07-17T04:44:23+00:00",
+  "status": "failed",
+  "timeout_seconds": 86400
+}

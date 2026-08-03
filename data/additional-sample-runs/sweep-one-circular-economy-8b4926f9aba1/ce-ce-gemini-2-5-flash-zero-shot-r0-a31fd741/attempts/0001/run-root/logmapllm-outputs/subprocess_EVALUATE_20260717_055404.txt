@@ -1,0 +1,92 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_055404.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.6410
+[METRIC]    Recall           :  0.8621
+[METRIC]    F1               :  0.7353
+[METRIC]    True Positives   :  25
+[METRIC]    False Positives  :  14
+[METRIC]    False Negatives  :  4
+[METRIC]    System Size      :  39
+[METRIC]    Reference Size   :  29
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+Conference M1/M2 stratified evaluation:
+[METRIC]          m1_class:  P=0.7143  R=0.8621  F1=0.7813  (TP=25, FP=10, FN=4)
+[METRIC]       m2_property:  P=0.0000  R=None  F1=None  (TP=0, FP=2, FN=0)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.3333
+[METRIC]    Oracle Recall           :  1.0000
+[METRIC]    Oracle Precision        :  0.2000
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.5556
+[METRIC]    Specificity             :  0.5556
+[METRIC]    Sensitivity             :  1.0000
+[METRIC]    Total Candidates        :  10
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  0
+[METRIC]    Tn                      :  5
+[METRIC]    Fp                      :  4
+[METRIC]    Tp                      :  1
+
+False mappings (4 FP+FN) saved to: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ce-ce",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.6410256410256411,
+    "recall": 0.8620689655172413,
+    "f1": 0.7352941176470588,
+    "true_positives": 25,
+    "false_positives": 14,
+    "false_negatives": 4,
+    "system_size": 39,
+    "reference_size": 29,
+    "metric_notes": {},
+    "source": "custom"
+  },
+  "global_m1_class": {
+    "precision": 0.7142857142857143,
+    "recall": 0.8620689655172413,
+    "f1": 0.7812500000000001,
+    "true_positives": 25,
+    "false_positives": 10,
+    "false_negatives": 4,
+    "system_size": 35,
+    "reference_size": 29,
+    "metric_notes": {},
+    "source": "conference_stratified"
+  },
+  "global_m2_property": {
+    "precision": 0.0,
+    "recall": null,
+    "f1": null,
+    "true_positives": 0,
+    "false_positives": 2,
+    "false_negatives": 0,
+    "system_size": 2,
+    "reference_size": 0,
+    "metric_notes": {
+      "recall": "undefined: no reference mappings (tp+fn=0)",
+      "f1": "undefined: precision or recall undefined"
+    },
+    "source": "conference_stratified"
+  }
+}

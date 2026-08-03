@@ -1,0 +1,59 @@
+{
+  "alignment_id": "21ac6be7e135fc00",
+  "artifacts": [
+    {
+      "bytes": 93649,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "4c8993275e8d4943414c29d4c7dd986ec7cd85e8b764ce8948c9f943ede50e64"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 89566,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "01810fd17977018a860b8cabe6e5c0d57ac74b9dd57941aa48382646b6a1c65b"
+    },
+    {
+      "bytes": 134764,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "4ba4db7962b4e30084f62c6b991fa8d4d0015a1bce1020d28c0e81e14c1b8b75"
+    },
+    {
+      "bytes": 21427,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "219ad495a3c916daaa070a8750b5768262d1ae1e5f2e0391d74901ea47211b21"
+    },
+    {
+      "bytes": 853,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "63f36d3b4e9c5b175aa53f91fc5392b816d3e98fc0aaee9a7b0c98b67d52e356"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4505,
+      "path": "jobs/anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "4c57c0c1ebb8f29731843bfef273251b77eae87267c3b9b6a9c49c70193f8d21"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot",
+  "condition_id": "d5a6522b9831a8258ad00187b05c3c641e883fcec11b1f309d3c3fae3c4aadd7",
+  "config_sha256": "8a037f7f6ebdd2c3177ab9225a1276c98d3855a9bebad602ea75389136dc3639",
+  "core_sha256": "acf815aa6daad68aea3b77c38ba67c93b185aa590373693fdc5fa9b3033a6cef",
+  "execution_hash": "7a8a8ae33b6f98fdb2506c18364daa8fcce9d8a7e2a3a8a84b95bcf1fe1afcb1",
+  "finished_at": "2026-07-17T03:09:59+00:00",
+  "id": "anatomy-gemini-2-5-flash-zero-shot-r0-7a8a8ae3",
+  "kind": "job",
+  "model": "gemini-2-5-flash",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}

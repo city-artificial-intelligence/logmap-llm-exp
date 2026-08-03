@@ -1,0 +1,6 @@
+id	task	model	condition	repeat	alignment_id	config_path
+marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da	marvelcinematicuniverse-marvel	plain-logmap	k0	0	20e6ae9e912b3ff9	configs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da.toml
+memoryalpha-memorybeta-plain-logmap-k0-r0-9dc1c18f	memoryalpha-memorybeta	plain-logmap	k0	0	ed749f43d95f1814	configs/memoryalpha-memorybeta-plain-logmap-k0-r0-9dc1c18f.toml
+memoryalpha-stexpanded-plain-logmap-k0-r0-5c1da653	memoryalpha-stexpanded	plain-logmap	k0	0	463235595530bcb6	configs/memoryalpha-stexpanded-plain-logmap-k0-r0-5c1da653.toml
+starwars-swg-plain-logmap-k0-r0-69df75c5	starwars-swg	plain-logmap	k0	0	03130e9b3fa842e4	configs/starwars-swg-plain-logmap-k0-r0-69df75c5.toml
+starwars-swtor-plain-logmap-k0-r0-5c8b6a9b	starwars-swtor	plain-logmap	k0	0	75bceab6364c5eb6	configs/starwars-swtor-plain-logmap-k0-r0-5c8b6a9b.toml

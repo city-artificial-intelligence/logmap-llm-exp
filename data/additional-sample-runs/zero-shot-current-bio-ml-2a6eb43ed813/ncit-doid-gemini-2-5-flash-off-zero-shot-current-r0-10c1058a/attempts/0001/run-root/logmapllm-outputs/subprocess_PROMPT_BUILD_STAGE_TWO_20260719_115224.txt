@@ -1,0 +1,49 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260719_115224.txt
+[STEP 2] Configuration loaded from: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 4960
+[STEP 2] Loading mappings to ask an Oracle from: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.STRUCTURED
+[STEP 2] MODIFYING GLOBAL RESPONSE CONFIG STATE FOR TEMPLATES!
+[STEP 2] Specifying 'ontology_domain' as 'biomedical' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+[SUCCESS] Using cached quadstore for ncit.owl (cache age: 55h 7m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-jptohmn9/ncit_owl_4782569f75d9.sqlite3
+[INFO] There are 805333 triples in the ontology
+[INFO] Indexed 15762 classes.
+[INFO] Indexed 206 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+[SUCCESS] Using cached quadstore for doid.owl (cache age: 55h 7m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-7c8g3a85/doid_owl_fb334baf2676.sqlite3
+[INFO] There are 55700 triples in the ontology
+[INFO] Indexed 8465 classes.
+[INFO] Indexed 49 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: <function oupt_one_level_of_parents_and_synonyms at 0x7e2dfc2185e0>
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: <function oupt_prop_domain_range at 0x7e2dfc219120>
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: <function oupt_inst_full_context_entropy at 0x7e2dfc2199e0>
+[INFO] Prompts built: 856 cls, 0 prop, 0 inst (856 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 856
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json

@@ -1,0 +1,59 @@
+{
+  "alignment_id": "f83b0715074ab6a5",
+  "artifacts": [
+    {
+      "bytes": 445868,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmap-initial-alignment/snomed-fma-body-logmap_mappings.txt",
+      "sha256": "6a273938e02d94f17a082cda6b2c7dfda422d0e9e2a0e623cc0799d1525f8c97"
+    },
+    {
+      "bytes": 78671,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmap-initial-alignment/snomed-fma-body-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "3529378a07756f9fdf0d02d9fdbf60e0bc9724b94dc6abf84e5633963f3b394c"
+    },
+    {
+      "bytes": 427140,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmap-refined-alignment/snomed-fma-body-logmap_mappings.tsv",
+      "sha256": "47999b9fc3163b30efa8526e6a9a8e909ea03ffe92936fdaf6a9b7ffa2cb761e"
+    },
+    {
+      "bytes": 879,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "c6b34106e6d1697c8742c6567cec387c9ad836ae40b40ecf57dd23eefd6a5766"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4597,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "f5bb046241d94fc633a76dd6f95f6adcb20390fcf54f530a8c974b82e7b2a8e0"
+    },
+    {
+      "bytes": 567608,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/snomed-fma-body-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "d963c59f17843ceaac5c49af083f7b9c598e745229c50bcf8ffd66c43e6f0e5f"
+    },
+    {
+      "bytes": 94007,
+      "path": "jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/snomed-fma-body-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "4124c76a7e89ed0f8751e695910a40c7174a7cb45f27c158f8f0a897342acdf9"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot",
+  "condition_id": "04b8517927f5085f86daf8afd62fa7bb2bb9bcad1a4dfca0b550b3a4504d318a",
+  "config_sha256": "e101a8f8e34865e0e39a433515c0d5ff5d9ec50d4235b35611f0a85209730c92",
+  "core_sha256": "acf815aa6daad68aea3b77c38ba67c93b185aa590373693fdc5fa9b3033a6cef",
+  "execution_hash": "4e4a8e2ba4c69c18ad1441d2be06be0a44b5a3c1115b98faf19cdb3d18773090",
+  "finished_at": "2026-07-17T07:50:50+00:00",
+  "id": "snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b",
+  "kind": "job",
+  "model": "deepseek-v4-flash",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "snomed-fma-body"
+}

@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-anatomy-5a5fd58bdd9a/jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260728_125520.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.9581
+[METRIC]    Recall           :  0.8450
+[METRIC]    F1               :  0.8980
+[METRIC]    True Positives   :  1281
+[METRIC]    False Positives  :  56
+[METRIC]    False Negatives  :  235
+[METRIC]    System Size      :  1337
+[METRIC]    Reference Size   :  1516
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.8964
+[METRIC]    Oracle Recall           :  0.9697
+[METRIC]    Oracle Precision        :  0.8333
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.6293
+[METRIC]    Specificity             :  0.6596
+[METRIC]    Sensitivity             :  0.9697
+[METRIC]    Total Candidates        :  259
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  5
+[METRIC]    Tn                      :  62
+[METRIC]    Fp                      :  32
+[METRIC]    Tp                      :  160
+
+False mappings (37 FP+FN) saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-anatomy-5a5fd58bdd9a/jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-anatomy-5a5fd58bdd9a/jobs/anatomy-gemini-2-5-flash-off-static-k4-r0-8b97cf75/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "anatomy",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.9581151832460733,
+    "recall": 0.8449868073878628,
+    "f1": 0.8980021030494217,
+    "true_positives": 1281,
+    "false_positives": 56,
+    "false_negatives": 235,
+    "system_size": 1337,
+    "reference_size": 1516,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

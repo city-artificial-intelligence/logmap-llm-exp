@@ -1,0 +1,4143 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model",
+      "condition"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/0a08bd6b314bdcc3/config.toml",
+      "config_sha256": "4a862869975a24066e05b87cbe745ec849956c2314bdf58900d5acbd1ca9b3e4",
+      "id": "0a08bd6b314bdcc3",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        }
+      },
+      "job_ids": [
+        "snomed-ncit-pharm-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-ddd841d5",
+        "snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-3ea496b9",
+        "snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-b5993e53",
+        "snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k2-r0-2fe38ce8",
+        "snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k4-r0-1b22de83",
+        "snomed-ncit-pharm-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-c8d2217a",
+        "snomed-ncit-pharm-gemma-3-27b-runtime-rag-k2-r0-d727112c",
+        "snomed-ncit-pharm-gemma-3-27b-runtime-rag-k4-r0-0bc5a8a0",
+        "snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k2-r0-36a355e9",
+        "snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k4-r0-8ab19ce8",
+        "snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k2-r0-530a40b2",
+        "snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k4-r0-3357c3aa",
+        "snomed-ncit-pharm-qwen3-235b-runtime-rag-k2-r0-56c00491",
+        "snomed-ncit-pharm-qwen3-235b-runtime-rag-k4-r0-1c75c72f",
+        "snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k2-r0-051501cf",
+        "snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k4-r0-58c95219",
+        "snomed-ncit-pharm-qwen3-8b-runtime-rag-k2-r0-ff9d726c",
+        "snomed-ncit-pharm-qwen3-8b-runtime-rag-k4-r0-449536f6"
+      ],
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/133b6d246e1414df/config.toml",
+      "config_sha256": "fdd661da779e664d1f2c1abe011ec660b9e4c29d42e72155f50a67d11c153769",
+      "id": "133b6d246e1414df",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        }
+      },
+      "job_ids": [
+        "ncit-doid-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-818af87a",
+        "ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-70370376",
+        "ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-76b0ffc2",
+        "ncit-doid-gemini-2-5-flash-off-runtime-rag-k2-r0-41b4567d",
+        "ncit-doid-gemini-2-5-flash-off-runtime-rag-k4-r0-f5bd5a88",
+        "ncit-doid-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-5ce93dc5",
+        "ncit-doid-gemma-3-27b-runtime-rag-k2-r0-1f6b187c",
+        "ncit-doid-gemma-3-27b-runtime-rag-k4-r0-159e718e",
+        "ncit-doid-llama-3-1-70b-runtime-rag-k2-r0-04eee07c",
+        "ncit-doid-llama-3-1-70b-runtime-rag-k4-r0-b5ebc59d",
+        "ncit-doid-mistral-small-3-2-24b-runtime-rag-k2-r0-925662cb",
+        "ncit-doid-mistral-small-3-2-24b-runtime-rag-k4-r0-35aef55e",
+        "ncit-doid-qwen3-235b-runtime-rag-k2-r0-d00a0cda",
+        "ncit-doid-qwen3-235b-runtime-rag-k4-r0-9c0ad4ef",
+        "ncit-doid-qwen3-5-122b-runtime-rag-k2-r0-37712cfc",
+        "ncit-doid-qwen3-5-122b-runtime-rag-k4-r0-46251e48",
+        "ncit-doid-qwen3-8b-runtime-rag-k2-r0-48dc7c90",
+        "ncit-doid-qwen3-8b-runtime-rag-k4-r0-d32e92d7"
+      ],
+      "task": "ncit-doid",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/5db9c49d371f8fb4/config.toml",
+      "config_sha256": "9d77d216e082ff2f35496f724f1337f9ce81516ce75ba46e99de4dabb0cb617c",
+      "id": "5db9c49d371f8fb4",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        }
+      },
+      "job_ids": [
+        "snomed-ncit-neoplas-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-bb42d51b",
+        "snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-e976e6c6",
+        "snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-367a4db6",
+        "snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k2-r0-b5a78412",
+        "snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k4-r0-c8a87906",
+        "snomed-ncit-neoplas-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-232816be",
+        "snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k2-r0-9c3c991c",
+        "snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k4-r0-8c9cfcda",
+        "snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k2-r0-ec20bd27",
+        "snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k4-r0-a2535938",
+        "snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k2-r0-39b044eb",
+        "snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k4-r0-08a325ab",
+        "snomed-ncit-neoplas-qwen3-235b-runtime-rag-k2-r0-6fcf51b7",
+        "snomed-ncit-neoplas-qwen3-235b-runtime-rag-k4-r0-d5529376",
+        "snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k2-r0-3d512c1b",
+        "snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k4-r0-3ee99076",
+        "snomed-ncit-neoplas-qwen3-8b-runtime-rag-k2-r0-da39d9c4",
+        "snomed-ncit-neoplas-qwen3-8b-runtime-rag-k4-r0-a91f5d5a"
+      ],
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/aac030fa49e2d0ae/config.toml",
+      "config_sha256": "0a72f34ac9f073165bd06663112e1314f70dd8c0045664f3c11b729d6ee77c6e",
+      "id": "aac030fa49e2d0ae",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        }
+      },
+      "job_ids": [
+        "snomed-fma-body-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-d2bf425e",
+        "snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-94eeceb2",
+        "snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-9b9cc2de",
+        "snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k2-r0-90683c78",
+        "snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k4-r0-a40a283b",
+        "snomed-fma-body-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-0002f2a1",
+        "snomed-fma-body-gemma-3-27b-runtime-rag-k2-r0-8109f801",
+        "snomed-fma-body-gemma-3-27b-runtime-rag-k4-r0-8d38343f",
+        "snomed-fma-body-llama-3-1-70b-runtime-rag-k2-r0-064a1e14",
+        "snomed-fma-body-llama-3-1-70b-runtime-rag-k4-r0-faacad2f",
+        "snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k2-r0-3a54a940",
+        "snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k4-r0-cea5c5d8",
+        "snomed-fma-body-qwen3-235b-runtime-rag-k2-r0-e5f90f3c",
+        "snomed-fma-body-qwen3-235b-runtime-rag-k4-r0-8ae1c1d7",
+        "snomed-fma-body-qwen3-5-122b-runtime-rag-k2-r0-52965ce8",
+        "snomed-fma-body-qwen3-5-122b-runtime-rag-k4-r0-91f058fa",
+        "snomed-fma-body-qwen3-8b-runtime-rag-k2-r0-37bfa0a1",
+        "snomed-fma-body-qwen3-8b-runtime-rag-k4-r0-90e731dd"
+      ],
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/dce940525025ca6c/config.toml",
+      "config_sha256": "44239ec0282d1669b7ab56f1ab5ee462b4b1581f6357abad4584aca19176f198",
+      "id": "dce940525025ca6c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        }
+      },
+      "job_ids": [
+        "omim-ordo-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-75ef5ee1",
+        "omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-f15a6fba",
+        "omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-bcdef016",
+        "omim-ordo-gemini-2-5-flash-off-runtime-rag-k2-r0-9212d547",
+        "omim-ordo-gemini-2-5-flash-off-runtime-rag-k4-r0-9e741751",
+        "omim-ordo-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-78a76401",
+        "omim-ordo-gemma-3-27b-runtime-rag-k2-r0-b58783e3",
+        "omim-ordo-gemma-3-27b-runtime-rag-k4-r0-db40456c",
+        "omim-ordo-llama-3-1-70b-runtime-rag-k2-r0-db6a4878",
+        "omim-ordo-llama-3-1-70b-runtime-rag-k4-r0-649f7e4d",
+        "omim-ordo-mistral-small-3-2-24b-runtime-rag-k2-r0-c3a658e3",
+        "omim-ordo-mistral-small-3-2-24b-runtime-rag-k4-r0-90154bb5",
+        "omim-ordo-qwen3-235b-runtime-rag-k2-r0-86c5d648",
+        "omim-ordo-qwen3-235b-runtime-rag-k4-r0-a5e5fa74",
+        "omim-ordo-qwen3-5-122b-runtime-rag-k2-r0-dd747cc8",
+        "omim-ordo-qwen3-5-122b-runtime-rag-k4-r0-fef6cae2",
+        "omim-ordo-qwen3-8b-runtime-rag-k2-r0-676d3468",
+        "omim-ordo-qwen3-8b-runtime-rag-k4-r0-23590ba6"
+      ],
+      "task": "omim-ordo",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 90,
+    "id": "rag-runtime-bio-ml-6c511800d96a",
+    "jobs": 2,
+    "name": "rag-runtime-bio-ml",
+    "plan_hash": "6c511800d96a8df9a3cc43e8ce5f07fe997ebad79d1c728c3c94349fc3fec67a",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "jobs": [
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "4c22611afb388e1641f9656d6e2da4739186c43a12ef33a3979b8f9d8f99e8fc",
+      "config_path": "configs/ncit-doid-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-818af87a.toml",
+      "config_sha256": "3c598bfa2f0baa849f8744aa3555b0d198a4663bd1166de63bfb4c5565f3bb4d",
+      "execution_hash": "818af87a1c08d1b0e43b5f73713f920b438f7bf82dca8a50cf0a05ccb6e1e4bc",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "ncit-doid-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-818af87a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-high",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "4a42991a2eeb5ba61b92526ebf174825642151751d357b925f3ec468e0107195",
+      "config_path": "configs/ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-70370376.toml",
+      "config_sha256": "57a297e317fab5a28c2fc68a05664024c60cb0d2ebdc46c0ebe662c67200ecb1",
+      "execution_hash": "703703760ff8741ca7cc1968fb77d6df89ca2376844cc1288293dacf35c995ed",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-70370376",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "430443ddea51bd651b6b287fc9454b2c63d4ad02c60d1de003bdd1c8b03f96c0",
+      "config_path": "configs/ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-76b0ffc2.toml",
+      "config_sha256": "71d5b8d021b648eabe8be33dfe01da8ebadefad2c9b80e0d0ca4d12738cdcffc",
+      "execution_hash": "76b0ffc23014a1e75c7a1b8c8862df47e9bd0bd4006c45d45d125f41dec4a9c5",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "ncit-doid-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-76b0ffc2",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "e882e1aeec72a8c60e6861032c1b7b486d64a174e73c6c5e08c4f7e7ce5a4a91",
+      "config_path": "configs/ncit-doid-gemini-2-5-flash-off-runtime-rag-k2-r0-41b4567d.toml",
+      "config_sha256": "d0a1a53b29524e48bd52e8de34769f711472370223b5b61c604283221589db9c",
+      "execution_hash": "41b4567d43ddc392cba511a3b8049f33c2cbab20361da9cd1e9f1a8055b7463f",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "ncit-doid-gemini-2-5-flash-off-runtime-rag-k2-r0-41b4567d",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "0b4988f49c8176c28788f7f9c9de92aa6b3fca74785e7d2304cd400a7cfcc510",
+      "config_path": "configs/ncit-doid-gemini-2-5-flash-off-runtime-rag-k4-r0-f5bd5a88.toml",
+      "config_sha256": "c07336d68122be91ca1aca679d7a0f4914adc87ae4e7a989b39de38e3548d4c2",
+      "execution_hash": "f5bd5a88bb1aea3d9e24f7cb81f71537284280a508b36558869c96163bb392e6",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "ncit-doid-gemini-2-5-flash-off-runtime-rag-k4-r0-f5bd5a88",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "39c9aa50207932ded729cdfeb6c183e92ec0bef067a81cd8e522f020bb4cd7b4",
+      "config_path": "configs/ncit-doid-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-5ce93dc5.toml",
+      "config_sha256": "f40009a495b49bd6778df8a86ae5add56863fb1702d9df4d85e68063d2fa3a5c",
+      "execution_hash": "5ce93dc524de294e80f7542d186545c6459a1ba2d39d87cb589e6d1ca18ae2d9",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "ncit-doid-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-5ce93dc5",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-reason-1028",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "ea2ead564604aa31e42bef7331ef77c00b25a8f9a0d2a8a1e0e50b5a094e5e35",
+      "config_path": "configs/ncit-doid-gemma-3-27b-runtime-rag-k2-r0-1f6b187c.toml",
+      "config_sha256": "7b54d53a994b734250dc48735332c751d8c41fd019e82d0b66f3c9eebb748a5b",
+      "execution_hash": "1f6b187c665e4aac8de96d0be2ce5e58f7aedba0eecf0f46e7c24b21577654de",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "ncit-doid-gemma-3-27b-runtime-rag-k2-r0-1f6b187c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "b6e0beb5ccf2edcda1cebfe39356b44a802d66b393dcc29c807de1d30079bb70",
+      "config_path": "configs/ncit-doid-gemma-3-27b-runtime-rag-k4-r0-159e718e.toml",
+      "config_sha256": "ad7d52ed5fb5de310bec088b3be0f664eaf2bcb81039d29ea9bc02b49673a53f",
+      "execution_hash": "159e718e38725197e986bb74e718eb05c50a6eea8448e5c982cf198f555ff529",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "ncit-doid-gemma-3-27b-runtime-rag-k4-r0-159e718e",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "08927e685a1eb73bdc1de9b03ca4348fed8da25912790c8ffd543038c5dbc798",
+      "config_path": "configs/ncit-doid-llama-3-1-70b-runtime-rag-k2-r0-04eee07c.toml",
+      "config_sha256": "bcf4fd5594448ac8b1830ed0eddb53da49209aef030bb74df1e23ed84ac9c76a",
+      "execution_hash": "04eee07c93fbe3f0e0679c1b0fdb12d2a1e80dbe32834c38be325187f41d7348",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "ncit-doid-llama-3-1-70b-runtime-rag-k2-r0-04eee07c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "09a8d6c202c38d710bb5d18b66dca954bb9860fbaaaa5b09ac86da36bff7fb27",
+      "config_path": "configs/ncit-doid-llama-3-1-70b-runtime-rag-k4-r0-b5ebc59d.toml",
+      "config_sha256": "2c79bf99cdf285277248049b0019a379778537bd3a88246bfb77f94a50bd0037",
+      "execution_hash": "b5ebc59d19fa440f8211f877f9bed413629da05f0a21085d071952fbfc2fc5b5",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "ncit-doid-llama-3-1-70b-runtime-rag-k4-r0-b5ebc59d",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "5c1f833a913907aab9e99b224fc488403a0f61368de8b15e5350b3577dcd04de",
+      "config_path": "configs/ncit-doid-mistral-small-3-2-24b-runtime-rag-k2-r0-925662cb.toml",
+      "config_sha256": "eb31ad3def75c17b849d8816a1bd5e3fdd3a946e98504feb179d92b5e5fd953f",
+      "execution_hash": "925662cb4ce853aa46590e7ec874ef446ac2b771d1cd94952a9d4272b0b7b2eb",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "ncit-doid-mistral-small-3-2-24b-runtime-rag-k2-r0-925662cb",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "adad98516bac3f353668f1eba7d792317a5987ad4cdde254cdd3f58ee57ca95f",
+      "config_path": "configs/ncit-doid-mistral-small-3-2-24b-runtime-rag-k4-r0-35aef55e.toml",
+      "config_sha256": "3ffe966e664f23895247a1720dd9bfcfa4d7cfb05164ad401689398da427f096",
+      "execution_hash": "35aef55eef8c1b0954f47fc8b09979bd91a263a9161bc3de50a68d43b1643472",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "ncit-doid-mistral-small-3-2-24b-runtime-rag-k4-r0-35aef55e",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "e92226df1e3c8b64f7e3e12feced21a0297c83d54dec5cde5d19f2de480d957e",
+      "config_path": "configs/ncit-doid-qwen3-235b-runtime-rag-k2-r0-d00a0cda.toml",
+      "config_sha256": "65046f3ec313dd574267f69458ebd55b15704ded314c0d0982b883ffbea02d18",
+      "execution_hash": "d00a0cdaaf1338e01238345dcdfb2d857f64d2959a1aa83eb1911b37ce515208",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "ncit-doid-qwen3-235b-runtime-rag-k2-r0-d00a0cda",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "95e3bb0a59c91c45e32655641574b75711469b96c2be2ce6d47c5863383c50be",
+      "config_path": "configs/ncit-doid-qwen3-235b-runtime-rag-k4-r0-9c0ad4ef.toml",
+      "config_sha256": "e6af36aaf4383b5923817c6037e6b5d18a26a4318f81c11fb85843319943fcb8",
+      "execution_hash": "9c0ad4ef11d0eff12b08b331bf30694701946822b5834cf7b5c71d3fef442e53",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "ncit-doid-qwen3-235b-runtime-rag-k4-r0-9c0ad4ef",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "a0ab5953615b8b1acd8b95e1e8c1d36c078dd22be06374c7cf327c4ba729f6f9",
+      "config_path": "configs/ncit-doid-qwen3-5-122b-runtime-rag-k2-r0-37712cfc.toml",
+      "config_sha256": "50767c67d15c2efa80bed50f9895f9e8bea4210d9ba595358bb43d4fb70f0ef7",
+      "execution_hash": "37712cfcc220999c2cc2c8908b3b63ed68c213d60202bc56abcb99572a3ddf5f",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "ncit-doid-qwen3-5-122b-runtime-rag-k2-r0-37712cfc",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "992d0ff8b8320ec043ac3459b0e2e6d8987d0de41b1df78704d01e16075746cb",
+      "config_path": "configs/ncit-doid-qwen3-5-122b-runtime-rag-k4-r0-46251e48.toml",
+      "config_sha256": "bde5f4e1360a663d0ae285468170bb9668ec539314dcffeb69a1e9e98111bf4d",
+      "execution_hash": "46251e48a0fac968547870daba56325d98888952e04941690eff2f9b058fa1fd",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "ncit-doid-qwen3-5-122b-runtime-rag-k4-r0-46251e48",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k2",
+      "condition_id": "7610e92bff1357a55c17db3090252eeb88f3891d896c39303287f388da449a9a",
+      "config_path": "configs/ncit-doid-qwen3-8b-runtime-rag-k2-r0-48dc7c90.toml",
+      "config_sha256": "20a27223ffa0f28a93737a16324df12037e0e146b8c5735f97ba1d69775ba37e",
+      "execution_hash": "48dc7c90635ee8a1b44342e2ef5cb0dd597e396c135bf12c4424f844b17029b1",
+      "expected_served_model": "Qwen3-8B",
+      "id": "ncit-doid-qwen3-8b-runtime-rag-k2-r0-48dc7c90",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "133b6d246e1414df",
+      "condition": "runtime-rag-k4",
+      "condition_id": "b2422028a95d9c7475f4b7a7a02838020572f0c5e868510284e48ecb5f67f2a2",
+      "config_path": "configs/ncit-doid-qwen3-8b-runtime-rag-k4-r0-d32e92d7.toml",
+      "config_sha256": "4951d1d641e59a84eddbf534279bfb8e543bdad63982cf3fe63fc6efee0c1f1d",
+      "execution_hash": "d32e92d715075170487ccd2bbbcb3e3829f8838ef2bf63c2cbcf8933d69fe66c",
+      "expected_served_model": "Qwen3-8B",
+      "id": "ncit-doid-qwen3-8b-runtime-rag-k4-r0-d32e92d7",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 57163710,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl",
+          "sha256": "379a37f47c0c8e7c30397769358cca955140d16b2797a1cc75da4b1fc2b354eb"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 6687536,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl",
+          "sha256": "76f41cce3616ad1a9ba6353f469e96bde7addba5d43e541651a3ab703f9ba2bc"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 483307,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/refs_equiv/full.tsv",
+          "sha256": "970d79ce4faa619201c0c3383bf5a5572e285193c00d78a4603c01c78ac7fb6d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "ncit-doid",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "81eabf1a794bffed2a098b855b8ffe3ad2956cc59844fc4272b19b6c6daac4f0",
+      "config_path": "configs/omim-ordo-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-75ef5ee1.toml",
+      "config_sha256": "f1e3444183caf144961dca7605aec5f4694df307e87d335892eb93e8b8560655",
+      "execution_hash": "75ef5ee1384a3889113c61914dfdab9cf29b0d392ed8a8d2f92d8289b8b3c7ce",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "omim-ordo-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-75ef5ee1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-high",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "49e39ef5e8b00c0cedd7999c3ebd73b6d1a038faa6081edced3837d878b4f16a",
+      "config_path": "configs/omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-f15a6fba.toml",
+      "config_sha256": "bfbda2032cfaed7fb8a8dbe13ee4c710bd3df1caab6d45a8ad3f66d2dbded2af",
+      "execution_hash": "f15a6fbab6e3c210a1055f8691765ca8115a6a6cfecfaa54990e4f81e58300bb",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-f15a6fba",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "019a5ac475c658b4d4a498e7fb479b8b11f395a59660c617fcd1a0f303ecf848",
+      "config_path": "configs/omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-bcdef016.toml",
+      "config_sha256": "925a93085a90f9cb6eb9b906a33a722b42c3a9a6b4c7b623fd906b7b1279a21d",
+      "execution_hash": "bcdef0164f07febace57af1baab5a05aafbd2c7df24e33b1c7d2c1047f773de3",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "omim-ordo-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-bcdef016",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "74a08f52d41e5164811b8ae16bdfbf1a4ea2b00df5bcb84ef1740c71cb0368df",
+      "config_path": "configs/omim-ordo-gemini-2-5-flash-off-runtime-rag-k2-r0-9212d547.toml",
+      "config_sha256": "c828e114da5e1ae2bb4ad55c13499e38cb504868f517b2ab9b4e55d8862a79df",
+      "execution_hash": "9212d5471ea4ac6e6faa85369e7319f4dc39acd31e6dc9522c28ea7652d8d536",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "omim-ordo-gemini-2-5-flash-off-runtime-rag-k2-r0-9212d547",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "47df7974f55adfa676238f281f88905024d8a4f38d543f3274ca32cbd7b3cb27",
+      "config_path": "configs/omim-ordo-gemini-2-5-flash-off-runtime-rag-k4-r0-9e741751.toml",
+      "config_sha256": "a4b9b423a1e26695d2cf24fdda45ce993a8cb1daa786b954702d099922021dd5",
+      "execution_hash": "9e7417515370243c862300268317a8516d6bc3fad8f95ac91fb0b9c84cbafa4c",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "omim-ordo-gemini-2-5-flash-off-runtime-rag-k4-r0-9e741751",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "6b8b677b8e91446bca3da623846e70c9fcfcb0ce91bc2da396c02cc51a02ae95",
+      "config_path": "configs/omim-ordo-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-78a76401.toml",
+      "config_sha256": "cab607efe7bbf9253222c7da277a0366462173accfeb2aa0ccbdb46038fad718",
+      "execution_hash": "78a764014fe50614dd4a4ab92a43cacb40c9194ac3caa83a2304c98874ad5321",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "omim-ordo-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-78a76401",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-reason-1028",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "af56a0eebb36c42aaa70c328e05894e692aad0cba2f9ff52f5c3511a3683e1c8",
+      "config_path": "configs/omim-ordo-gemma-3-27b-runtime-rag-k2-r0-b58783e3.toml",
+      "config_sha256": "52a4f726c55c1631ac59bebd908d05f5ec870bc054259919e30aa8df2e9cf22a",
+      "execution_hash": "b58783e3e53a161dad621c7bd3e652d7ea5ddf3cc8ef2ce8bcf40f9bc8e447c8",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "omim-ordo-gemma-3-27b-runtime-rag-k2-r0-b58783e3",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "4bec31fb829a64b20fb6adb2fa17b70ff4241bace0748f5bc7cd2d23d4187819",
+      "config_path": "configs/omim-ordo-gemma-3-27b-runtime-rag-k4-r0-db40456c.toml",
+      "config_sha256": "cfef920534b38cfc63dccd63e56c0d7613d0c7e15454c2c01b5fef2ef1bc00c2",
+      "execution_hash": "db40456cfc016e9fda5ee7a2181ea4ac624a5619168c14709d84d03d1860a6e1",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "omim-ordo-gemma-3-27b-runtime-rag-k4-r0-db40456c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "bdf803bb2c69a702f6975788b2c3e4d3c8672a0eca5702d7863c406ac2b47272",
+      "config_path": "configs/omim-ordo-llama-3-1-70b-runtime-rag-k2-r0-db6a4878.toml",
+      "config_sha256": "5e2e170c4317da6dfcae48a7c81ee629a39d2fa2c8a64ab1e513e114463cc909",
+      "execution_hash": "db6a4878916623e551eb633f1a99e0667e86bad1de9ccde707ab7c4c1508d93c",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "omim-ordo-llama-3-1-70b-runtime-rag-k2-r0-db6a4878",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "aa5bea4f4b89c3bc60c907adeb4110ce6de9c243079d9d0982d7944bf04120f6",
+      "config_path": "configs/omim-ordo-llama-3-1-70b-runtime-rag-k4-r0-649f7e4d.toml",
+      "config_sha256": "05bf309aa9648bb7212c935f83d7fde19b8515fc8005cad4c9fe745045c2b09f",
+      "execution_hash": "649f7e4d02b6b07ef83bcf6fae28d1c1bae89c7af5ce6fb2572d4d872788f759",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "omim-ordo-llama-3-1-70b-runtime-rag-k4-r0-649f7e4d",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "723e61dff63611baa35e888f8e962223fa4c480d49e998fc08d8432e3c4cd073",
+      "config_path": "configs/omim-ordo-mistral-small-3-2-24b-runtime-rag-k2-r0-c3a658e3.toml",
+      "config_sha256": "ba65a4d0f2f4059685e4ab5453b115f07bb35ef949157bcef2345ff5dff696d4",
+      "execution_hash": "c3a658e39eff7860f2eeda719247984de5382f4e6ba9e6fd670484ca7db2f99f",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "omim-ordo-mistral-small-3-2-24b-runtime-rag-k2-r0-c3a658e3",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "34401a4ac1604c4a61183dcd54734369995797428d8e53ebaff7c876d542ccdb",
+      "config_path": "configs/omim-ordo-mistral-small-3-2-24b-runtime-rag-k4-r0-90154bb5.toml",
+      "config_sha256": "ce75d1a6665d964f805e3e158501453a67629e75b191148e59b74138baa315aa",
+      "execution_hash": "90154bb52fb54a9963677f932149125ff36ac99fd8d05a78e8d7fa6c011cf73a",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "omim-ordo-mistral-small-3-2-24b-runtime-rag-k4-r0-90154bb5",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "bfc95db48a738b956d5d64fb70895fb9872f09071d2d5e5878c27e3c77525811",
+      "config_path": "configs/omim-ordo-qwen3-235b-runtime-rag-k2-r0-86c5d648.toml",
+      "config_sha256": "b4b86cc614c02653cd1aef3b7268a9624df954fc63061e9d934e517e643b69ee",
+      "execution_hash": "86c5d648b49475e6762315a305f781923299c8fcf49a7036177ffabe7b110614",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "omim-ordo-qwen3-235b-runtime-rag-k2-r0-86c5d648",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "58d31d65fbe270ced680501b169913e0dc25fe6ffaf94c263c42261202932c58",
+      "config_path": "configs/omim-ordo-qwen3-235b-runtime-rag-k4-r0-a5e5fa74.toml",
+      "config_sha256": "3b2d11c116320cc6820434a91ec3b19edb6144739ace6d1bfbfa149e08db17c2",
+      "execution_hash": "a5e5fa74999c2f3cc68867ae3cd5f9a91ffb9745a2f6fdb6942ba0588b0e07e7",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "omim-ordo-qwen3-235b-runtime-rag-k4-r0-a5e5fa74",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "057f88108dd6864a9e7ace131a416f80e63e6e6c78a15fc6a84d7cd1be4c30a6",
+      "config_path": "configs/omim-ordo-qwen3-5-122b-runtime-rag-k2-r0-dd747cc8.toml",
+      "config_sha256": "2bb84e447893f51b8938d34446c0db75ef588ef373bd260e3acab6651a95ba3a",
+      "execution_hash": "dd747cc898dbb45ffef6719d8b99c1338dbc7b629bab0b0bb91712436a2c71ac",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "omim-ordo-qwen3-5-122b-runtime-rag-k2-r0-dd747cc8",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "d005ff4649660dcd98f5c2617e18cb5370008b5fa610b61bb56a317673163108",
+      "config_path": "configs/omim-ordo-qwen3-5-122b-runtime-rag-k4-r0-fef6cae2.toml",
+      "config_sha256": "3fbccf329c5881648e2d8527f84721436124a3c2224837833fd4804d555e8bbf",
+      "execution_hash": "fef6cae2993d7ad8ef0b8435a0a83eb05dbbcc207404d8529d3734a6b3a0839a",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "omim-ordo-qwen3-5-122b-runtime-rag-k4-r0-fef6cae2",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k2",
+      "condition_id": "921fd6a4bb555ed2ecd050b3b9fca6d09b1996f96f983f264d633592cd824cdc",
+      "config_path": "configs/omim-ordo-qwen3-8b-runtime-rag-k2-r0-676d3468.toml",
+      "config_sha256": "c2d79f8bb905ca9d2e8c4ec28b71b85cde4d10cc478d16ad8236a62b0eedf590",
+      "execution_hash": "676d3468b3e74d1524ab5c805f007c12fb577a1dca7daf51fc887194a55fbec3",
+      "expected_served_model": "Qwen3-8B",
+      "id": "omim-ordo-qwen3-8b-runtime-rag-k2-r0-676d3468",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "dce940525025ca6c",
+      "condition": "runtime-rag-k4",
+      "condition_id": "b791b0645b0e031e095b86d44d44ea814d17506ea08c560e4166437b55b66610",
+      "config_path": "configs/omim-ordo-qwen3-8b-runtime-rag-k4-r0-23590ba6.toml",
+      "config_sha256": "ecbca60b40f84ecf3fd85c22deabea0040f688f761b7fccdaaa251d8bf4f0c83",
+      "execution_hash": "23590ba679b9f8f14e76f155f30892b89bc96814571c047168310413a84025f2",
+      "expected_served_model": "Qwen3-8B",
+      "id": "omim-ordo-qwen3-8b-runtime-rag-k4-r0-23590ba6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 11237181,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/omim.owl",
+          "sha256": "3a42c43d34c9b6f2d85278bb03471a99a64f6dccd5e299cd9b0fa882c0b9bcc9"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 52811113,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/ordo.owl",
+          "sha256": "89ae759f2c9c2f2f7c6ea4f8a680bf751660480b09b9b4748b405c8a10dabf2f"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 280720,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo/refs_equiv/full.tsv",
+          "sha256": "c61a254a887585d581bdea5a2464a9043552bdebdd5016d2f3f7bc32c193873d"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "omim-ordo",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "0877fa25e7745057b7d548e15db2f19b5fd3021b53b077ac08795efc3e0df6cb",
+      "config_path": "configs/snomed-fma-body-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-d2bf425e.toml",
+      "config_sha256": "014f032218d918b33ecfaddfcffa942d8773bf726143308715be41e4b8db3e99",
+      "execution_hash": "d2bf425e5aac24ee4a6dd3b360f7d287b1ebc88634d08b5c98f2300aca847497",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-fma-body-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-d2bf425e",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-high",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "430cdc9abc07b038e5d803535220c467607a575ff7a56d1d46a1e34a44421249",
+      "config_path": "configs/snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-94eeceb2.toml",
+      "config_sha256": "f1cf962ccbf9a5884104a971b2321e334f7cda122ffee47080cfbfe35da2c1c5",
+      "execution_hash": "94eeceb2c76e6c4efb98da7299950d7e332859e980969a8771ea085f1a046d73",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-94eeceb2",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "7493a73e60e631ebdcbf8d59220a287bb11790b96f3a48558385ee420dc897f9",
+      "config_path": "configs/snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-9b9cc2de.toml",
+      "config_sha256": "61a7ea58d6029e2cfdc73a92160a8d2cb1ec44254a3ac05904875afaae932143",
+      "execution_hash": "9b9cc2de7cffac5502089b340c65d6a47dd1f05fddfd13ae0cf621936784ed9e",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-fma-body-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-9b9cc2de",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "90dc9fd6f2443d0e0060196efe24f33cb2f59624dcaea6f23b2a734615fbd5f4",
+      "config_path": "configs/snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k2-r0-90683c78.toml",
+      "config_sha256": "287bb9b2037aeed248dafd6aaac817996fb668852488a183803900e7ecb4f62c",
+      "execution_hash": "90683c781a5dcd10de00a7d220419930301154d9ba3f4f0ea1f4afbcb12f6dfd",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k2-r0-90683c78",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "0fbff36297f341d05760d96615de83e473cb1bb2148af890ae9101476914a393",
+      "config_path": "configs/snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k4-r0-a40a283b.toml",
+      "config_sha256": "810880ac85a85557f59c8a1ea4047a2adca3f04cd1b193f8bc6dc5125a474a3e",
+      "execution_hash": "a40a283ba78ae0ca5ee2a3d5486b0e54833c6854b0bf10a6d1401a41a1acc903",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-fma-body-gemini-2-5-flash-off-runtime-rag-k4-r0-a40a283b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "f5f6e6f32fd134e958e699fa4923185e9f9086285f50f367b4e3ee4fe7242fd7",
+      "config_path": "configs/snomed-fma-body-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-0002f2a1.toml",
+      "config_sha256": "2a0930f10d495bbbaedfb59afa2143712bcf340b795bd3b274a246298269ffa4",
+      "execution_hash": "0002f2a169f10fed35a6f9d70dab0f6ed816c1a6a5f682f2b6f191729ceae44e",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-fma-body-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-0002f2a1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-reason-1028",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "45c21d12dd81922b70fae76408908e11cad8cea3a491cd94f5aa6ba6806d1728",
+      "config_path": "configs/snomed-fma-body-gemma-3-27b-runtime-rag-k2-r0-8109f801.toml",
+      "config_sha256": "fa271428cf545ea47beb1178baccd9888aec025c2d93fe52a9ed9cc002690328",
+      "execution_hash": "8109f801066630fe98f96d7dd4605957ed9954af49dfe0b04f562787257f028e",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-fma-body-gemma-3-27b-runtime-rag-k2-r0-8109f801",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "2105e67fcc808e55194a66be604a2a3a7717149a672369a101cde0e52aee4f32",
+      "config_path": "configs/snomed-fma-body-gemma-3-27b-runtime-rag-k4-r0-8d38343f.toml",
+      "config_sha256": "970c1255e73dd897a4619c1573e1bb90c66827632fd674c34139af07672fc99f",
+      "execution_hash": "8d38343ff4a8ca4cebf8242829969d408ac5767f672e2b5449898c2c3c9405e4",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-fma-body-gemma-3-27b-runtime-rag-k4-r0-8d38343f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "6b58e142eccd040fb461dfbe95391afe7b9355b0f281c5dee6da5d7fbc953b6b",
+      "config_path": "configs/snomed-fma-body-llama-3-1-70b-runtime-rag-k2-r0-064a1e14.toml",
+      "config_sha256": "02b348cbd7dbf9d7548ce7efeff47a55a2048db7a5bec8d5649b34c5308a1ee6",
+      "execution_hash": "064a1e143894d8a3d6f63504ffd447ed9e2a45594b7028b1e3755ce17c78644a",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-fma-body-llama-3-1-70b-runtime-rag-k2-r0-064a1e14",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "8233978a384e19d28071c8238bcb9091da318e34338ba79e6c72978b9e99d579",
+      "config_path": "configs/snomed-fma-body-llama-3-1-70b-runtime-rag-k4-r0-faacad2f.toml",
+      "config_sha256": "6d2738ad389f94dd8f667d37bec68516d890a274418c108b9bfda32379c890de",
+      "execution_hash": "faacad2f03fcd5478a0367f775f7fe7c65ba0cd9a1d23fc613b17de856c714f9",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-fma-body-llama-3-1-70b-runtime-rag-k4-r0-faacad2f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "d1e2344244649d16cb462178fa2f0fccf459c91b7d76c913a51a8aff2efab6ed",
+      "config_path": "configs/snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k2-r0-3a54a940.toml",
+      "config_sha256": "e60ec8c39508f6007aa880036340d0516100c10c5f0aceb1ba4d4849de64fa11",
+      "execution_hash": "3a54a94010ca201b8eab3d7c731c278277d23dd6ec61e96c2f67efbd5635936b",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k2-r0-3a54a940",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "0f4e83a99d7b3e2d513ad212e1e08610b6fe7b1dc0d9f4d82fdb1d4b9c453b25",
+      "config_path": "configs/snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k4-r0-cea5c5d8.toml",
+      "config_sha256": "20c22a96d3890c7907749ea9f4de978a62a952b45654f5aba2b13f0230905442",
+      "execution_hash": "cea5c5d82af71cdacf40229a1c8a72ce73b46f4cf3024c6088114b1cb2fb10b0",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-fma-body-mistral-small-3-2-24b-runtime-rag-k4-r0-cea5c5d8",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "648f9393c6bb9553424f1a73db9f7c569eadcf528d259df8372e5351e67297a7",
+      "config_path": "configs/snomed-fma-body-qwen3-235b-runtime-rag-k2-r0-e5f90f3c.toml",
+      "config_sha256": "800873d33bcd70c4f13263ded5417924f53827ee1a99042614b3f1853a7e9156",
+      "execution_hash": "e5f90f3c8a3732ad2dca55c89104fddc9479b2140030ca7858dca96c73948954",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-fma-body-qwen3-235b-runtime-rag-k2-r0-e5f90f3c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "101e0f2b95c09ba3215351a47489b875a355d4244036cea3a73ba82ad428e2d3",
+      "config_path": "configs/snomed-fma-body-qwen3-235b-runtime-rag-k4-r0-8ae1c1d7.toml",
+      "config_sha256": "1499ba0af328e5e940d7dad5e070866a0c57b4f8cedb97962591a5ce3450be8c",
+      "execution_hash": "8ae1c1d7ffe8e05441e0b47933946a27038cae10af8b85e2977fef6dc5da1dd9",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-fma-body-qwen3-235b-runtime-rag-k4-r0-8ae1c1d7",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "99b2bde6de171f18f048dde2bb258b45c1e58d44faa8a0f2a13a09c78c9cb431",
+      "config_path": "configs/snomed-fma-body-qwen3-5-122b-runtime-rag-k2-r0-52965ce8.toml",
+      "config_sha256": "46fdad1f6dcdbe76bdae2e5cf9e5dac1e252cbb509132a3658387e8d989aaf50",
+      "execution_hash": "52965ce8196220f6d220e6b0cecb1f1849e322226046144d58b1fc5e113416af",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-fma-body-qwen3-5-122b-runtime-rag-k2-r0-52965ce8",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "f701c281353d6b6352531707b93e3e0ef9880625c364b6933d34857345891784",
+      "config_path": "configs/snomed-fma-body-qwen3-5-122b-runtime-rag-k4-r0-91f058fa.toml",
+      "config_sha256": "55635a980e3b08373eed583c8b19042ca30a13ea4874280b0493109a97445e3f",
+      "execution_hash": "91f058fa005b65c10dbfdf69e3f723cc1ba644cea2cc88e5cd40bb3f90d9e25c",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-fma-body-qwen3-5-122b-runtime-rag-k4-r0-91f058fa",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k2",
+      "condition_id": "b7521f9cab4d8b9ca82634a6f7f43d7e934ed2a17126e3ca07d01014ab506ea3",
+      "config_path": "configs/snomed-fma-body-qwen3-8b-runtime-rag-k2-r0-37bfa0a1.toml",
+      "config_sha256": "26793fab03d26cdc10dc93a074b9d975721c1d44c58961a044535de6b1102b3b",
+      "execution_hash": "37bfa0a16a40ffbb6e1ff810fc364ff10c6ee9420c38b41c42505e88c3e788c8",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-fma-body-qwen3-8b-runtime-rag-k2-r0-37bfa0a1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "aac030fa49e2d0ae",
+      "condition": "runtime-rag-k4",
+      "condition_id": "71b80fdeb0f678ef66ea699b1eae3913e895bc6223d7098c73d619cb0663486a",
+      "config_path": "configs/snomed-fma-body-qwen3-8b-runtime-rag-k4-r0-90e731dd.toml",
+      "config_sha256": "c6de541dfc9baa7296dc4623f567b077e9f8fcba8a4797aaa19493b24bbbef5d",
+      "execution_hash": "90e731dd7bc5f1aed13f0d9a2fbf2fd5596212c9dce8ba9e1a540cb559f9a22e",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-fma-body-qwen3-8b-runtime-rag-k4-r0-90e731dd",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 32227282,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl",
+          "sha256": "3a69eea251e40b4c09bd1f22ad9e1ef1229540264b4ed1121b29a432ca77e7a7"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 240697917,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl",
+          "sha256": "d6013f4b710b6163c67ff25a4c7e8e80ab5c541b4a51a73b49edd32a75bfa143"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 524160,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/refs_equiv/full.tsv",
+          "sha256": "558f80d5791aa6dafa4d61f3dc7e6a88063c55e41b68149eaa564e15a89b24a5"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-fma-body",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "64f44349dd1c17ab7e60a55394cf902c4ce7de67d3d475ff7e0b0f409f8438ed",
+      "config_path": "configs/snomed-ncit-neoplas-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-bb42d51b.toml",
+      "config_sha256": "c9343773edd5f035355335365432738ce244d15a64ecee09e3aee575f71735d8",
+      "execution_hash": "bb42d51be69102be50d86d791bf9c26d2dfe3ca38df4c73ab8f08b8cc15d1e43",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-neoplas-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-bb42d51b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-high",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "d37ec3949590c65c97b502c977e582f9549528b601a55211d56b109ba5ab56d6",
+      "config_path": "configs/snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-e976e6c6.toml",
+      "config_sha256": "d52709b5cfd19dbf521a43055a9c59bc1d0f59e8b5e6a537e37d652cda1cbc9d",
+      "execution_hash": "e976e6c6e8e1f6952c4283d528b09921915c22acee09008516fe08c16ad606e9",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-e976e6c6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "44deaf9142474044897479de8ba490ba7d004daa6a201c12bf1c72f44b9ac14a",
+      "config_path": "configs/snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-367a4db6.toml",
+      "config_sha256": "f541423a9749f0aaf422ae3bac0b7c40300845b48c0e98c589851dadcdc991e2",
+      "execution_hash": "367a4db65168eecfa6399304dc348fcd4bf0c999b42e6acf11bb60a345aca5eb",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-neoplas-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-367a4db6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "c65cd4bbc817ca21272155a6e96877bcfa0b0f883fa9d4bcca05acf2134028a9",
+      "config_path": "configs/snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k2-r0-b5a78412.toml",
+      "config_sha256": "d4e7752dfae38f129dab6999f89b674b97a4076b54c259e698410ce7029e527a",
+      "execution_hash": "b5a78412efaee67df88f4dceb2045bcec1a1a2274f2d225fddcd6f1bc51b5069",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k2-r0-b5a78412",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "27bcead5a027b867dd570ff625144dc0e3715850ff60ee177128557f5ab7c2a5",
+      "config_path": "configs/snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k4-r0-c8a87906.toml",
+      "config_sha256": "873098d097933a41e6c9f25706c7efe91cd600197fc8ea92a4b34adefcea8fff",
+      "execution_hash": "c8a87906234509a30af5ed1c2858e51dcc8e0d351afde78afe2b8ddcb04dfbd0",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-neoplas-gemini-2-5-flash-off-runtime-rag-k4-r0-c8a87906",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "34b8fd876453c78211add4b0d3a8404ac829a4aafaf29483f1c827793ddd46d5",
+      "config_path": "configs/snomed-ncit-neoplas-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-232816be.toml",
+      "config_sha256": "40dfb52ecd6a20fbae88085608c36828a18c459a8d1c5758ec2fa11c54eef23c",
+      "execution_hash": "232816be6a02fb571d697fff6a64fb9997e89ddb410903d043308e96d1bba81c",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-neoplas-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-232816be",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-reason-1028",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "a40726eb7e2b8197012d132173f292e117325188cba827b2a9f28781bacd3981",
+      "config_path": "configs/snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k2-r0-9c3c991c.toml",
+      "config_sha256": "41c0365e1099efd0dd77e84b4f258d01b6f8478cfcbc88bb759ce72ba5ad853f",
+      "execution_hash": "9c3c991c811a0e266775d610f6f7824709064779e135096652b37f2fce463c1e",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k2-r0-9c3c991c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "49eb0b9996d4cf6d69769df614f830877576f05eafe9756648e5754695886bbc",
+      "config_path": "configs/snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k4-r0-8c9cfcda.toml",
+      "config_sha256": "543f70d9f3fd63e7a416e46080511504210a849469901d7c4da407fb1b4f2bf9",
+      "execution_hash": "8c9cfcdab48058edc74b13b3dd4822dc531b6a1e56b8ccf1aee64af21e0cd2d8",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-ncit-neoplas-gemma-3-27b-runtime-rag-k4-r0-8c9cfcda",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "4465efe86ae337aac6e6d20b2716170af0361d8cc74fed97b11c2645f7c69c49",
+      "config_path": "configs/snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k2-r0-ec20bd27.toml",
+      "config_sha256": "6078df158fa9e05974fcd3a44a9f63e88faddaab2c026da9058eeacdf3b2a451",
+      "execution_hash": "ec20bd27bdcd06fd4dfcc2d86de620fd311fddf0994bc90acc53398c27f2cc66",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k2-r0-ec20bd27",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "1224359a311724837bfe2e211de17a7cf2375bc97536fcb35a87eb3761d03cca",
+      "config_path": "configs/snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k4-r0-a2535938.toml",
+      "config_sha256": "09c7de50afb7d0083b7127cdd705f792261a00727f7ebd8d98cdd661ec25fb3a",
+      "execution_hash": "a253593863f26356bfb4e059e65fc4d872abc12df25a22deb819346bb35e67eb",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-ncit-neoplas-llama-3-1-70b-runtime-rag-k4-r0-a2535938",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "e91416cd2d01c75fbe13682b7397365e77c45e6c9f99e55f7b73a3fd3a06182b",
+      "config_path": "configs/snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k2-r0-39b044eb.toml",
+      "config_sha256": "d98fbcd57d9007ad2df615c34173a1f1bfa546f5ab8622a5d45dbc36d0a1cd85",
+      "execution_hash": "39b044eb3a1dbe17ed18c823e3e7c31b7f30125d329c4630b395a9d0f41076e9",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k2-r0-39b044eb",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "181137e3b548c52625fd8a2dd0de185e961f5d0c99f2c6b96784a002d98075a3",
+      "config_path": "configs/snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k4-r0-08a325ab.toml",
+      "config_sha256": "eb828928750f2e7063b010c1de8db04825221e22bbf9c415bacf24e5dc294ec8",
+      "execution_hash": "08a325ab324e324b5978172b5a3c403da8aa60473bb1b7a20b371cb6c5382a87",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-ncit-neoplas-mistral-small-3-2-24b-runtime-rag-k4-r0-08a325ab",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "aeeff6a8ea6a7a52c94c397a2eaa8aaaa0447bfc0d53dfa2b1a4fe9c6ccf23f5",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-235b-runtime-rag-k2-r0-6fcf51b7.toml",
+      "config_sha256": "eb6518286add7fae98ed59a0f8221197e3aed4811550afb64c45e4797fbbcf1b",
+      "execution_hash": "6fcf51b7f57583f93ed154ee7242fbbfd9bc445d055be9ae5854d28c11637527",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-ncit-neoplas-qwen3-235b-runtime-rag-k2-r0-6fcf51b7",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "a16ab3125a674288f83aef9e0efff48fb3c14ee37ae3996b61563134a559aa8d",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-235b-runtime-rag-k4-r0-d5529376.toml",
+      "config_sha256": "1318df4a3db1a42c219368ab207b7d13cdd0445e772a7070fa3fc4ed90ad1052",
+      "execution_hash": "d5529376c835cb0769238d8fc81acf63e00b98c6d9100a93336353a0b5becb04",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-ncit-neoplas-qwen3-235b-runtime-rag-k4-r0-d5529376",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "2789a6597102c6f02895917a3e63f59d2ef4471ae4cdf2cda6ed0a624a1298c9",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k2-r0-3d512c1b.toml",
+      "config_sha256": "476aeebac3c089477c0eefc47d5dbc8f2eaa4a52a03fedb9a017c175a15cccc7",
+      "execution_hash": "3d512c1b860a15fdc66712fdd55386c3e962ad9e27226887326571940a14eb97",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k2-r0-3d512c1b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "0be79de03bbc1a8d3982bd5f6fd2438241962e9999333fd102710d93550d3769",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k4-r0-3ee99076.toml",
+      "config_sha256": "6e395de5cd0e591ee48a9f25b82641d0a8450a8d0314d1902fa8f7cdb7da45e4",
+      "execution_hash": "3ee99076a1e5963158e488e0cee35b24d875a38a07b572fe86f9a6ff5c5293e1",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-ncit-neoplas-qwen3-5-122b-runtime-rag-k4-r0-3ee99076",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k2",
+      "condition_id": "72094f20cfd4913c3ecb2a45381601d1e9290e1e68c8376ac4c73e1658ad913b",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-8b-runtime-rag-k2-r0-da39d9c4.toml",
+      "config_sha256": "d1420d6fb90ea9047b10ece725f0eb6fec223f42c0086bfc31b57c3db9cd48bf",
+      "execution_hash": "da39d9c4971b4ffda74c35a26b30e23a71c684116696aea7b6b974081ebad7df",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-ncit-neoplas-qwen3-8b-runtime-rag-k2-r0-da39d9c4",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "5db9c49d371f8fb4",
+      "condition": "runtime-rag-k4",
+      "condition_id": "7196727c40cbe03402d76e2ce7173a4bc60a75e7e4960bf9c076795b8e29584d",
+      "config_path": "configs/snomed-ncit-neoplas-qwen3-8b-runtime-rag-k4-r0-a91f5d5a.toml",
+      "config_sha256": "3db9384cfc004521fa851e5120b4ee65abba2ea9d560490e0ab2198ade6fbede",
+      "execution_hash": "a91f5d5a1f43c17200ef6056cd2ab327e9f2563f594c77e9f0ac47045010ac14",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-ncit-neoplas-qwen3-8b-runtime-rag-k4-r0-a91f5d5a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 37638122,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/snomed.neoplas.owl",
+          "sha256": "fd58ec091b70d2565cd48a74072b6fbe85752fa9429b58a7d467f574b4aa910a"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 78720778,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/ncit.neoplas.owl",
+          "sha256": "b308b7a47c7fdf0e70f2a7a9c020108f36e0e371d98b62419e65acff2da6360b"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 353906,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.neoplas/snomed-ncit.neoplas/refs_equiv/full.tsv",
+          "sha256": "f592948aecf4bdded157475ebc662758f1d599b0b194cdfed94ce1ad724107ca"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-ncit-neoplas",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "11a8c93987fb5f2f925a1141b6fb6b86409b935098b41d9defed7a73fcd7144c",
+      "config_path": "configs/snomed-ncit-pharm-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-ddd841d5.toml",
+      "config_sha256": "b371176e60b9e9ca6810b8d812111476af924115c43267a68a4d9f064bb02469",
+      "execution_hash": "ddd841d52f26155e168edf2b7a8dddc08b7a59e7652cf79781cbbd091ceab04f",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-pharm-deepseek-v4-flash-parasail-high-runtime-rag-k2-r0-ddd841d5",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-high",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "74ef0b566449413ea718757a297c7a0f5e64ea0af7e7e9447825294bea15680d",
+      "config_path": "configs/snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-3ea496b9.toml",
+      "config_sha256": "c1b7ef98fc425efc6ca72a934a5068cd505cab6a73a44f0b347b78b1f8543cf3",
+      "execution_hash": "3ea496b93211ee4ab127266c4fc4a64eea1c32491eb2a2f72a18992d27f3234a",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k2-r0-3ea496b9",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "f220360563fba59abb2c3e65319e0cc4a80250a1391f005f3b8fced52dc887b3",
+      "config_path": "configs/snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-b5993e53.toml",
+      "config_sha256": "b62086bea7b9bbdc8d8c43469c188c56f8d1664623d3539222cbb2d3ef3e7306",
+      "execution_hash": "b5993e53aab3b0837eadbf147c37f78da1474f6f8a27dd446d0ee202f0855528",
+      "expected_served_model": "deepseek/deepseek-v4-flash",
+      "id": "snomed-ncit-pharm-deepseek-v4-flash-parasail-off-runtime-rag-k4-r0-b5993e53",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "deepseek-v4-flash-parasail-off",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "43b844431d59f136262c9565381c9762de62bf272d0840191ef77251a113c160",
+      "config_path": "configs/snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k2-r0-2fe38ce8.toml",
+      "config_sha256": "f8a35e2e1c4c406a3c297207804070287d645ed2a32df31525fe021ca26b1912",
+      "execution_hash": "2fe38ce814140e4184ed8dbe06023d9cfa17957ebbb71ab5b3a7b4b275154aa3",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k2-r0-2fe38ce8",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "d8c097b39c981dbb6d303d6842622768a901365279f57a2d54f13d8f794b603c",
+      "config_path": "configs/snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k4-r0-1b22de83.toml",
+      "config_sha256": "4ef62de00d0e27b3bacc16d88a7f8d950774e2c2a58d00db43ad273f46460fdd",
+      "execution_hash": "1b22de83fa15deea84781a57b9101ab4c8d501eec047a4d02f20bc16161dc08d",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-pharm-gemini-2-5-flash-off-runtime-rag-k4-r0-1b22de83",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "d083324384bff9d99e93f79f4cba720e5eee5dab3d8849de20d64029218d3891",
+      "config_path": "configs/snomed-ncit-pharm-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-c8d2217a.toml",
+      "config_sha256": "400cde668bc4402303acecdf88d72ffd6ab1be7559ac77fcfcf3245d9acc40ca",
+      "execution_hash": "c8d2217a6d5a37af0fe0f8f356ddfd0e760e7448bfea176297f2ee6c4724db56",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "snomed-ncit-pharm-gemini-2-5-flash-reason-1028-runtime-rag-k2-r0-c8d2217a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-reason-1028",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "ae6894be3e790ffe7a3b27c7f9afd543e797c7a36fbf92bf45cf5d98ac3c043a",
+      "config_path": "configs/snomed-ncit-pharm-gemma-3-27b-runtime-rag-k2-r0-d727112c.toml",
+      "config_sha256": "36ef79efa9c5b046484db39ee72cac5b18e285fcedd59e7e1e0b26837464875e",
+      "execution_hash": "d727112ce1fb89721f91df0ea34ca9b4059c3a9c6df356630e0b099e34313a9e",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-ncit-pharm-gemma-3-27b-runtime-rag-k2-r0-d727112c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "b451130605be4c57b13dfc18c83d7a9ab90c6a405fc5a84d5347fbd043ac397e",
+      "config_path": "configs/snomed-ncit-pharm-gemma-3-27b-runtime-rag-k4-r0-0bc5a8a0.toml",
+      "config_sha256": "4f6ce9194cf1318b83abb9568264ca5360101bdfbe239794681e5535adcb1e40",
+      "execution_hash": "0bc5a8a0cff1fb6a546458acd74ea0d56a6783d3cf4661f4469e30116ab3977a",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "snomed-ncit-pharm-gemma-3-27b-runtime-rag-k4-r0-0bc5a8a0",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "e5cf8d5a950df11596f250521af7c79ee1d45936c5796776f105c446d26ffbc0",
+      "config_path": "configs/snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k2-r0-36a355e9.toml",
+      "config_sha256": "6dfa3e0dd3866fb8506f7a4723395f08879114a280616e9aa902266d34cccc55",
+      "execution_hash": "36a355e93ab15b4c5e1812f934bb0170459faf174598ee7308892ae260785cc5",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k2-r0-36a355e9",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "8cbd9d920a658382561ce52d201d44f9d52c5ded83eb83fa24e38f423ba0a5c7",
+      "config_path": "configs/snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k4-r0-8ab19ce8.toml",
+      "config_sha256": "7770a890964e9b4d0a71431f6fffe8dbc1d309313b1c80c81c4ff4ff2eee5447",
+      "execution_hash": "8ab19ce85f51ba4850d935f8beabf38df34a07aa4c4e026723fd5c36686b19b9",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "snomed-ncit-pharm-llama-3-1-70b-runtime-rag-k4-r0-8ab19ce8",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "ed25b23f51ee23c0c1feb2b83f31affdceb0c45e30caab9f24239b87985e230b",
+      "config_path": "configs/snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k2-r0-530a40b2.toml",
+      "config_sha256": "7ab655637258afbc5b35362e04328d16a7b1e17a6076136581c63c6b4b118928",
+      "execution_hash": "530a40b2d227c32435fb73eed3f537eeac8e82e24f8eb441c592827309c989c0",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k2-r0-530a40b2",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "a019a7d90414276e0c5bbcb268a7848abff11180330d36c14e91c34e4adbc69b",
+      "config_path": "configs/snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k4-r0-3357c3aa.toml",
+      "config_sha256": "ba93bf78e489a90a9a91a5e44a4213e5b765140227e3a63ad881bce4e4816078",
+      "execution_hash": "3357c3aadf2db8e361f625d13b2b1f4eeb6f5ff1f8e5c6d247aa28ad59e91f78",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "snomed-ncit-pharm-mistral-small-3-2-24b-runtime-rag-k4-r0-3357c3aa",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "8073f030c42b35b3431ab3c468a8aeb95311596cd12d2c83584b9ddaa29f5b2e",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-235b-runtime-rag-k2-r0-56c00491.toml",
+      "config_sha256": "9c3de3b20981c0a93016cf71f21ba43148106e722190801596d662938e509fe6",
+      "execution_hash": "56c00491f6f6ed2c9fe0da7be0c60774f9fc6d2dfe6a93895bf0c1bd7f59b8dc",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-ncit-pharm-qwen3-235b-runtime-rag-k2-r0-56c00491",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "62e7e95ebdbf15233157b0a66b2825923bb27c1179b10de8848af1aaa9ec770b",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-235b-runtime-rag-k4-r0-1c75c72f.toml",
+      "config_sha256": "ccfa4c4a924b3f3ee9e48d951b0d7114ca8870f0a387d4406ba92c83e7ef2421",
+      "execution_hash": "1c75c72fad43778bcbb708b9017ce58dca4021e6d7eadbdc3b63eedbf11b36ff",
+      "expected_served_model": "Qwen3-235B-A22B-Instruct-2507",
+      "id": "snomed-ncit-pharm-qwen3-235b-runtime-rag-k4-r0-1c75c72f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-235b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "c1b5144eded3724abd951e8cd76de3592b427547228d024726f499b5a41355e7",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k2-r0-051501cf.toml",
+      "config_sha256": "dbd0fe1f54f312d8702a79e7251b5c791666d07f721218a9e44d08bedfce0101",
+      "execution_hash": "051501cf69677ab9c5ad13205b2b399ffe2fcb88a0f3604a42f704029cb2401a",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k2-r0-051501cf",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "8e933a7e79638a3a39e14f064cfc4c0823ca408f5e3fc179dd260f6e40466250",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k4-r0-58c95219.toml",
+      "config_sha256": "a26beefb97830129c417e65c13336a2a16dc03107cf0368daffb0f4ca414a6d4",
+      "execution_hash": "58c95219d42ccaf529c046a17d57e613f1225048f55f6d167fe8c91fcbebd9b8",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "snomed-ncit-pharm-qwen3-5-122b-runtime-rag-k4-r0-58c95219",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k2",
+      "condition_id": "78054e7be13a983ebcf4bb77987b4457babbacfc2f31908cd252a96fb798586a",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-8b-runtime-rag-k2-r0-ff9d726c.toml",
+      "config_sha256": "7721d825f27ad9fe9f88a73e6c2996349210681539273f471de02e35f3720db7",
+      "execution_hash": "ff9d726c92e5374a9073683403c3fb5388cee983c3f2c4e143ed4c93008bad79",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-ncit-pharm-qwen3-8b-runtime-rag-k2-r0-ff9d726c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "0a08bd6b314bdcc3",
+      "condition": "runtime-rag-k4",
+      "condition_id": "da4b76739d6f4f2a30dca7df3f7e0554f266643038ef4fe04e20fca9a2ace285",
+      "config_path": "configs/snomed-ncit-pharm-qwen3-8b-runtime-rag-k4-r0-449536f6.toml",
+      "config_sha256": "2dad31a503fe3bb868454cd1484977df22284ade6ff8f5aa071ba5fa69889f44",
+      "execution_hash": "449536f6a28f720edf53e519ad01d6c3965184f52c41efece89d9aa9b7f442e8",
+      "expected_served_model": "Qwen3-8B",
+      "id": "snomed-ncit-pharm-qwen3-8b-runtime-rag-k4-r0-449536f6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34918472,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/paired-control-class-only/src/target",
+          "sha256": "f99a3b85a04250f1f8dbb3ae6d4a4635b82a07c785f93c0a1f34fc8ad4a8541a"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 52772004,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/snomed.pharm.owl",
+          "sha256": "d3379f04e4fd8264f5098ae1ec6e3bb38f10ba00601e7d6bdb63bf12b740ebd1"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 79622319,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/ncit.pharm.owl",
+          "sha256": "ca223abee53ae2daf47dcf5431a72d802c0caff0b7ae5284e72e2ba8fddb4ad0"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 543294,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-bio-ml/snomed-ncit.pharm/snomed-ncit.pharm/refs_equiv/full.tsv",
+          "sha256": "233c2dd617ff96fa28db8535af7aaf7c884177bf2fdcd8eac6385deccc17c931"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "snomed-ncit-pharm",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "7708fc4cb3154dc14645839c1b9f76a238e6e9723a3be23d156b33b6da93e919",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "acadff1017667326d3a4f63ef11ded59ba2bcd2d88f6cbee434850d500f9ecfb",
+    "spec_sha256": "a32c2888808affe3ac44e93b76096c14377974e0912e6795b2deddf7620ac427"
+  }
+}

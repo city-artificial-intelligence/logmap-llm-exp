@@ -1,0 +1,2 @@
+source_entity_uri,target_entity_uri,relation,confidence,entityType,Oracle_prediction,Oracle_confidence,Oracle_input_tokens,Oracle_output_tokens
+http://cmt#email,http://confOf#hasEmail,=,1.0,DPROP,True,nan,160,6

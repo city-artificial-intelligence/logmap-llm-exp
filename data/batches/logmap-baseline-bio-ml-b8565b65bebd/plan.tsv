@@ -1,0 +1,6 @@
+id	task	model	condition	repeat	alignment_id	config_path
+ncit-doid-plain-logmap-k0-r0-89a655c6	ncit-doid	plain-logmap	k0	0	409ee787ba30886d	configs/ncit-doid-plain-logmap-k0-r0-89a655c6.toml
+omim-ordo-plain-logmap-k0-r0-7769b2da	omim-ordo	plain-logmap	k0	0	084250ed0c160410	configs/omim-ordo-plain-logmap-k0-r0-7769b2da.toml
+snomed-fma-body-plain-logmap-k0-r0-a6dea595	snomed-fma-body	plain-logmap	k0	0	377db2ead7cf268b	configs/snomed-fma-body-plain-logmap-k0-r0-a6dea595.toml
+snomed-ncit-neoplas-plain-logmap-k0-r0-71b6bf83	snomed-ncit-neoplas	plain-logmap	k0	0	0ce192a59a2b1fcd	configs/snomed-ncit-neoplas-plain-logmap-k0-r0-71b6bf83.toml
+snomed-ncit-pharm-plain-logmap-k0-r0-c872e678	snomed-ncit-pharm	plain-logmap	k0	0	f8fc3f3d3faf2594	configs/snomed-ncit-pharm-plain-logmap-k0-r0-c872e678.toml

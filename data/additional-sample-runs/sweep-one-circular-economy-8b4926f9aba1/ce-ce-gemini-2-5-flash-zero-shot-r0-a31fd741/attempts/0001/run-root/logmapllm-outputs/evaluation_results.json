@@ -1,0 +1,65 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.7352941176470588,
+    "false_negatives": 4,
+    "false_positives": 14,
+    "metric_notes": {},
+    "precision": 0.6410256410256411,
+    "recall": 0.8620689655172413,
+    "reference_size": 29,
+    "source": "custom",
+    "system_size": 39,
+    "true_positives": 25
+  },
+  "global_m1_class": {
+    "f1": 0.7812500000000001,
+    "false_negatives": 4,
+    "false_positives": 10,
+    "metric_notes": {},
+    "precision": 0.7142857142857143,
+    "recall": 0.8620689655172413,
+    "reference_size": 29,
+    "source": "conference_stratified",
+    "system_size": 35,
+    "true_positives": 25
+  },
+  "global_m2_property": {
+    "f1": null,
+    "false_negatives": 0,
+    "false_positives": 2,
+    "metric_notes": {
+      "f1": "undefined: precision or recall undefined",
+      "recall": "undefined: no reference mappings (tp+fn=0)"
+    },
+    "precision": 0.0,
+    "recall": null,
+    "reference_size": 0,
+    "source": "conference_stratified",
+    "system_size": 2,
+    "true_positives": 0
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 0,
+    "fp": 4,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.33333333333333337,
+    "oracle_precision": 0.2,
+    "oracle_recall": 1.0,
+    "partial_scope_excluded": 0,
+    "sensitivity": 1.0,
+    "specificity": 0.5555555555555556,
+    "tn": 5,
+    "total_candidates": 10,
+    "tp": 1,
+    "youdens_j": 0.5555555555555556
+  },
+  "schema_version": 1,
+  "task_name": "ce-ce"
+}

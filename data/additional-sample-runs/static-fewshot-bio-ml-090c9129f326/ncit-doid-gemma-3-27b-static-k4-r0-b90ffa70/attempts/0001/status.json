@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemma-3-27b-static-k4-r0-b90ffa70/attempts/0001/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/static-fewshot-bio-ml-090c9129f326/jobs/ncit-doid-gemma-3-27b-static-k4-r0-b90ffa70/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 92.127,
+  "finished_at": "2026-07-28T12:59:40+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-28T12:58:08+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

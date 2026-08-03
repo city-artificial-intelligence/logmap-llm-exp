@@ -1,0 +1,147 @@
+{
+  "artifacts": [
+    {
+      "bytes": 545991,
+      "path": "logmap-initial-alignment/ncit-doid-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "22223c0940ebb51e4c2eaf634efbaa4dc10bb6ccdcaea249c9c99c06305457b6"
+    },
+    {
+      "bytes": 545991,
+      "path": "logmap-initial-alignment/ncit-doid-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "80b7b16e1963ef35904302fcade1a3df5587a016c49f48423f6db10d7617ba78"
+    },
+    {
+      "bytes": 94742,
+      "path": "logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "e4f5b5111044ccb8e54716a6f4f3634e41c2ee6b62bea0da34131c1d46d68a04"
+    },
+    {
+      "bytes": 428959,
+      "path": "logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "da9a25b464bda4c0a9aa7f3890ad6f28aa159af6f7d356f3cb5901124b47c32d"
+    },
+    {
+      "bytes": 1549910,
+      "path": "logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "cde730f16f9d459bef017f57caf0ea068362f0997d75816732cb55a2bc53f505"
+    },
+    {
+      "bytes": 116250,
+      "path": "logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "4c671778adac059842133a4eb02280f94104d227860e579720f0627aeb3106c2"
+    },
+    {
+      "bytes": 522582,
+      "path": "logmap-refined-alignment/ncit-doid-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "d1bda50ceed89c61cb7cb74983199940f9af1b3ac95e3799dc7961fdde7e630c"
+    },
+    {
+      "bytes": 867,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "76e94b68a0cf4e52611ba165334199f60e33f396183b42af27b83ef55f61d05e"
+    },
+    {
+      "bytes": 4136890,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "f8efdffff0aee1e8c114f9aeaa48f35380d0fc66ec317385f51b0afc34d85a37"
+    }
+  ],
+  "counts": {
+    "candidates": 857,
+    "error": 0,
+    "false": 212,
+    "prompts": 857,
+    "skipped": 0,
+    "true": 645
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.8837307896131426,
+      "false_negatives": 517,
+      "false_positives": 580,
+      "metric_notes": {},
+      "precision": 0.877869025057907,
+      "recall": 0.8896713615023474,
+      "reference_size": 4686,
+      "source": "custom",
+      "system_size": 4749,
+      "true_positives": 4169
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 26,
+      "fp": 307,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.669970267591675,
+      "oracle_precision": 0.524031007751938,
+      "oracle_recall": 0.9285714285714286,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.9285714285714286,
+      "specificity": 0.3772819472616633,
+      "tn": 186,
+      "total_candidates": 857,
+      "tp": 338,
+      "youdens_j": 0.3058533758330919
+    },
+    "schema_version": 1,
+    "task_name": "ncit-doid"
+  },
+  "model_name": "Gemma-3-27B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 64,
+    "max_workers": 8,
+    "model_name": "Gemma-3-27B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 4,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "ncit-doid",
+  "timing": {
+    "align_seconds": 0.014377593994140625,
+    "consult_seconds": 282.58181166648865,
+    "evaluate_seconds": 0.4853482246398926,
+    "prompt_build_seconds": 3.162775754928589,
+    "refine_seconds": 49.99213767051697,
+    "total_seconds": 336.23645091056824
+  }
+}

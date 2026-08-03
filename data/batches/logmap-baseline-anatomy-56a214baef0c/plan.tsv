@@ -1,0 +1,2 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-plain-logmap-k0-r0-b28f5a46	anatomy	plain-logmap	k0	0	0410e29bcdddd096	configs/anatomy-plain-logmap-k0-r0-b28f5a46.toml

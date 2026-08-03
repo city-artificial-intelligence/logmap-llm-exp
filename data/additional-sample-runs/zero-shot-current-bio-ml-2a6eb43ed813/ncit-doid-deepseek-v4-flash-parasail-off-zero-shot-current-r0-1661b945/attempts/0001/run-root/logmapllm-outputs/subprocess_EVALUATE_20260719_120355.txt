@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260719_120355.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8922
+[METRIC]    Recall           :  0.8901
+[METRIC]    F1               :  0.8911
+[METRIC]    True Positives   :  4171
+[METRIC]    False Positives  :  504
+[METRIC]    False Negatives  :  515
+[METRIC]    System Size      :  4675
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.7273
+[METRIC]    Oracle Recall           :  0.9341
+[METRIC]    Oracle Precision        :  0.5954
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.4646
+[METRIC]    Specificity             :  0.5305
+[METRIC]    Sensitivity             :  0.9341
+[METRIC]    Total Candidates        :  856
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  24
+[METRIC]    Tn                      :  261
+[METRIC]    Fp                      :  231
+[METRIC]    Tp                      :  340
+
+False mappings (255 FP+FN) saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-deepseek/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.892192513368984,
+    "recall": 0.8900981647460521,
+    "f1": 0.8911441085354129,
+    "true_positives": 4171,
+    "false_positives": 504,
+    "false_negatives": 515,
+    "system_size": 4675,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

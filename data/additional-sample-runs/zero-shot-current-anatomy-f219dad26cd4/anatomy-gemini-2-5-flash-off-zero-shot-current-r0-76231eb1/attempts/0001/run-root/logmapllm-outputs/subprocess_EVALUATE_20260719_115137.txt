@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-gemini-2-5-flash-off-zero-shot-current-r0-76231eb1/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260719_115137.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.9538
+[METRIC]    Recall           :  0.8450
+[METRIC]    F1               :  0.8961
+[METRIC]    True Positives   :  1281
+[METRIC]    False Positives  :  62
+[METRIC]    False Negatives  :  235
+[METRIC]    System Size      :  1343
+[METRIC]    Reference Size   :  1516
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.8815
+[METRIC]    Oracle Recall           :  0.9697
+[METRIC]    Oracle Precision        :  0.8081
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.5654
+[METRIC]    Specificity             :  0.5957
+[METRIC]    Sensitivity             :  0.9697
+[METRIC]    Total Candidates        :  259
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  5
+[METRIC]    Tn                      :  56
+[METRIC]    Fp                      :  38
+[METRIC]    Tp                      :  160
+
+False mappings (43 FP+FN) saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-gemini-2-5-flash-off-zero-shot-current-r0-76231eb1/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-anatomy-f219dad26cd4/jobs/anatomy-gemini-2-5-flash-off-zero-shot-current-r0-76231eb1/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "anatomy",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.9538346984363366,
+    "recall": 0.8449868073878628,
+    "f1": 0.8961175236096537,
+    "true_positives": 1281,
+    "false_positives": 62,
+    "false_negatives": 235,
+    "system_size": 1343,
+    "reference_size": 1516,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

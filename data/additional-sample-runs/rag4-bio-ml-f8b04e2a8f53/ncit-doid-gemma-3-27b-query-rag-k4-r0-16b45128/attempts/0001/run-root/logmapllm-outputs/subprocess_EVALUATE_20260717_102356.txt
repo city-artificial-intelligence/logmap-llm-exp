@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/logmap_llm_sweep/canonical/batches/rag4-shards/ngpu-local/rag4-bio-ml-f8b04e2a8f53/jobs/ncit-doid-gemma-3-27b-query-rag-k4-r0-16b45128/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_102356.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8779
+[METRIC]    Recall           :  0.8897
+[METRIC]    F1               :  0.8837
+[METRIC]    True Positives   :  4169
+[METRIC]    False Positives  :  580
+[METRIC]    False Negatives  :  517
+[METRIC]    System Size      :  4749
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.6700
+[METRIC]    Oracle Recall           :  0.9286
+[METRIC]    Oracle Precision        :  0.5240
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.3059
+[METRIC]    Specificity             :  0.3773
+[METRIC]    Sensitivity             :  0.9286
+[METRIC]    Total Candidates        :  857
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  26
+[METRIC]    Tn                      :  186
+[METRIC]    Fp                      :  307
+[METRIC]    Tp                      :  338
+
+False mappings (333 FP+FN) saved to: /home/jon/logmap_llm_sweep/canonical/batches/rag4-shards/ngpu-local/rag4-bio-ml-f8b04e2a8f53/jobs/ncit-doid-gemma-3-27b-query-rag-k4-r0-16b45128/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /home/jon/logmap_llm_sweep/canonical/batches/rag4-shards/ngpu-local/rag4-bio-ml-f8b04e2a8f53/jobs/ncit-doid-gemma-3-27b-query-rag-k4-r0-16b45128/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.877869025057907,
+    "recall": 0.8896713615023474,
+    "f1": 0.8837307896131426,
+    "true_positives": 4169,
+    "false_positives": 580,
+    "false_negatives": 517,
+    "system_size": 4749,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

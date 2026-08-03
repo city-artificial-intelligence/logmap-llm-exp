@@ -1,0 +1,59 @@
+{
+  "alignment_id": "133b6d246e1414df",
+  "artifacts": [
+    {
+      "bytes": 545991,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt",
+      "sha256": "22223c0940ebb51e4c2eaf634efbaa4dc10bb6ccdcaea249c9c99c06305457b6"
+    },
+    {
+      "bytes": 94631,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "b7b6c997808d1ebd89874b81c1b2aa8ba03a9dfacca30108bd01a647aec14e53"
+    },
+    {
+      "bytes": 514359,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmap-refined-alignment/ncit-doid-logmap_mappings.tsv",
+      "sha256": "83908d9736cfb5481a2e81e19e0b834f00503527b97edac96786e3255b913e36"
+    },
+    {
+      "bytes": 869,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "5635bc7e2273f1cc9c02a8ad33eaa8a86c400ac8763742f0bc0ee31352046964"
+    },
+    {
+      "bytes": 428516,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "432abb9db8f1903319e44da3bf9da15b71664c25c55939074e56ec26cfdc021b"
+    },
+    {
+      "bytes": 167380,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "c8588aca636b98d0b9b264bd480763865296d366234f0e9a5544c6f36f1670dc"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4654,
+      "path": "jobs/ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "9a98f4d8cb5948e43999ec176df51b910884ba4f7d07597e1e28bab5768bb2a0"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot-current",
+  "condition_id": "88ddb31faf2b84266b6e6fb6409d8c99c8afc399f9a7ec6bd7420aa824d12548",
+  "config_sha256": "72147fe708a6ff761b46ab269364b6222de3e2861c206b0ba16ceba5d3cbbe7b",
+  "core_sha256": "acadff1017667326d3a4f63ef11ded59ba2bcd2d88f6cbee434850d500f9ecfb",
+  "execution_hash": "1661b945e12d20cda2c3d20a7ab1989d072ab6b7b156a21dc6ca629abc160ced",
+  "finished_at": "2026-07-19T12:03:56+00:00",
+  "id": "ncit-doid-deepseek-v4-flash-parasail-off-zero-shot-current-r0-1661b945",
+  "kind": "job",
+  "model": "deepseek-v4-flash-parasail-off",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "ncit-doid"
+}

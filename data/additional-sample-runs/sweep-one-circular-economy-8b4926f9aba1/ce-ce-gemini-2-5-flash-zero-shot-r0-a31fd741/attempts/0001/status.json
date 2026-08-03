@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 13.949,
+  "finished_at": "2026-07-17T05:54:05+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T05:53:51+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

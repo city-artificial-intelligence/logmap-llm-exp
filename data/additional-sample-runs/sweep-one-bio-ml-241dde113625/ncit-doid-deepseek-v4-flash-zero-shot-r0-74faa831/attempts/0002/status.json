@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/t705data/logmap_llm_sweep/canonical/.venv/bin/python",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0002/config.toml",
+    "--run-root",
+    "/t705data/logmap_llm_sweep/shards/bio-xgpu/sweep-one-bio-ml-241dde113625/jobs/ncit-doid-deepseek-v4-flash-zero-shot-r0-74faa831/attempts/0002/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 917.872,
+  "finished_at": "2026-07-17T05:41:12+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-17T05:25:55+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

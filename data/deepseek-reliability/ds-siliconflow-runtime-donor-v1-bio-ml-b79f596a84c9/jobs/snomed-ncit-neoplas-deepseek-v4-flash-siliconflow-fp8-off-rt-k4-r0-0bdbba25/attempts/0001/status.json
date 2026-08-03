@@ -1,0 +1,7 @@
+{
+  "duration_seconds": 586.811,
+  "error": "job snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-0bdbba25 failed; see /home/jon/canonical_projects_folder/logmap-llm-exp/batches/ds-siliconflow-runtime-donor-v1-bio-ml-b79f596a84c9/jobs/snomed-ncit-neoplas-deepseek-v4-flash-siliconflow-fp8-off-rt-k4-r0-0bdbba25/attempts/0001/run.log",
+  "finished_at": "2026-07-28T04:17:24+00:00",
+  "return_code": 1,
+  "status": "failed"
+}

@@ -1,0 +1,38 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.719128087191281,
+    "false_negatives": 2207,
+    "false_positives": 602,
+    "metric_notes": {},
+    "precision": 0.8565983801810386,
+    "recall": 0.6196794761330346,
+    "reference_size": 5803,
+    "source": "custom",
+    "system_size": 4198,
+    "true_positives": 3596
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 54,
+    "fp": 75,
+    "metric_notes": {},
+    "oracle_excluded": 0,
+    "oracle_f1": 0.7902439024390244,
+    "oracle_precision": 0.7641509433962265,
+    "oracle_recall": 0.8181818181818182,
+    "partial_scope_excluded": 0,
+    "sensitivity": 0.8181818181818182,
+    "specificity": 0.7115384615384616,
+    "tn": 185,
+    "total_candidates": 557,
+    "tp": 243,
+    "youdens_j": 0.5297202797202798
+  },
+  "schema_version": 1,
+  "task_name": "snomed-ncit-pharm"
+}

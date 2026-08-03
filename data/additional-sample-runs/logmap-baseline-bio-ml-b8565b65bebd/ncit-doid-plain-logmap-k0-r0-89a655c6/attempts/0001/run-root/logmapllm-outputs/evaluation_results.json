@@ -1,0 +1,20 @@
+{
+  "engine": "custom",
+  "global": {
+    "f1": 0.8697905867717189,
+    "false_negatives": 491,
+    "false_positives": 765,
+    "metric_notes": {},
+    "precision": 0.8457661290322581,
+    "recall": 0.8952198036705079,
+    "reference_size": 4686,
+    "source": "custom",
+    "system_size": 4960,
+    "true_positives": 4195
+  },
+  "metrics": [
+    "global"
+  ],
+  "schema_version": 1,
+  "task_name": "ncit-doid"
+}

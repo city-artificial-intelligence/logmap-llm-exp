@@ -1,0 +1,90 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260727_222517.txt
+NOTE: Partial reference alignment (PARTIAL_SOURCE_COMPLETE_TARGET_COMPLETE semantics)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: kg_partial)
+[METRIC]   
+[METRIC]    Precision        :  0.8377
+[METRIC]    Recall           :  0.4646
+[METRIC]    F1               :  0.5977
+[METRIC]    True Positives   :  774
+[METRIC]    False Positives  :  150
+[METRIC]    False Negatives  :  892
+[METRIC]    Ignored          :  1352
+[METRIC]    System Size      :  2276
+[METRIC]    Evaluated Size   :  924
+[METRIC]    Reference Size   :  1666
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  kg_partial
+
+Stratified evaluation (explicit refs, partial GS):
+[METRIC]             class:  P=1.0000  R=1.0000  F1=1.0000  (TP=2, FP=0, FN=0, Ign=8)
+[METRIC]          property:  P=0.7500  R=0.8182  F1=0.7826  (TP=9, FP=3, FN=2, Ign=9)
+[METRIC]          instance:  P=0.8385  R=0.4616  F1=0.5954  (TP=763, FP=147, FN=890, Ign=1335)
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/logmap-baseline-knowledge-graph-3d336f0cfeb4/jobs/marvelcinematicuniverse-marvel-plain-logmap-k0-r0-1ef460da/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel",
+  "engine": "partial_reference",
+  "metrics": [
+    "global"
+  ],
+  "global": {
+    "precision": 0.8376623376623377,
+    "recall": 0.4645858343337335,
+    "f1": 0.5976833976833976,
+    "true_positives": 774,
+    "false_positives": 150,
+    "false_negatives": 892,
+    "ignored": 1352,
+    "system_size": 2276,
+    "evaluated_size": 924,
+    "reference_size": 1666,
+    "metric_notes": {},
+    "source": "kg_partial"
+  },
+  "global_class": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "true_positives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "ignored": 8,
+    "system_size": 10,
+    "evaluated_size": 2,
+    "reference_size": 2,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_class"
+  },
+  "global_property": {
+    "precision": 0.75,
+    "recall": 0.8181818181818182,
+    "f1": 0.7826086956521738,
+    "true_positives": 9,
+    "false_positives": 3,
+    "false_negatives": 2,
+    "ignored": 9,
+    "system_size": 21,
+    "evaluated_size": 12,
+    "reference_size": 11,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_property"
+  },
+  "global_instance": {
+    "precision": 0.8384615384615385,
+    "recall": 0.4615849969751966,
+    "f1": 0.5953960202887242,
+    "true_positives": 763,
+    "false_positives": 147,
+    "false_negatives": 890,
+    "ignored": 1335,
+    "system_size": 2245,
+    "evaluated_size": 910,
+    "reference_size": 1653,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_instance"
+  }
+}

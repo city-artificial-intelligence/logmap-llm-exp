@@ -1,0 +1,1521 @@
+{
+  "aggregate": {
+    "group_by": [
+      "model",
+      "condition"
+    ],
+    "require_complete": true
+  },
+  "alignments": [
+    {
+      "config_path": "alignments/03130e9b3fa842e4/config.toml",
+      "config_sha256": "a2be89ee27e7eca2e8da193a26b72acd7cee923f1971c8a50f929e6916d58893",
+      "id": "03130e9b3fa842e4",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        }
+      },
+      "job_ids": [
+        "starwars-swg-gemini-2-5-flash-off-static-k4-r0-2b1cd59a",
+        "starwars-swg-gemma-3-27b-static-k4-r0-c3347651",
+        "starwars-swg-llama-3-1-70b-static-k4-r0-aaada717",
+        "starwars-swg-mistral-small-3-2-24b-static-k4-r0-97be7f0c",
+        "starwars-swg-qwen3-5-122b-static-k4-r0-699b9e75",
+        "starwars-swg-qwen3-8b-static-k4-r0-5e44f587"
+      ],
+      "task": "starwars-swg",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/20e6ae9e912b3ff9/config.toml",
+      "config_sha256": "5db7c4698c4ed068723ef2ad0f5c00d5fef14d9282e60b94b15f95dde4786989",
+      "id": "20e6ae9e912b3ff9",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        }
+      },
+      "job_ids": [
+        "marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1",
+        "marvelcinematicuniverse-marvel-gemma-3-27b-static-k4-r0-763feecf",
+        "marvelcinematicuniverse-marvel-llama-3-1-70b-static-k4-r0-3f617312",
+        "marvelcinematicuniverse-marvel-mistral-small-3-2-24b-static-k4-r0-a07a77af",
+        "marvelcinematicuniverse-marvel-qwen3-5-122b-static-k4-r0-705ade62",
+        "marvelcinematicuniverse-marvel-qwen3-8b-static-k4-r0-2b0f3540"
+      ],
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/463235595530bcb6/config.toml",
+      "config_sha256": "bde4ad9aa865805011144febfb7c4ccf1633c5383e5a76335e1eda9119cdfdde",
+      "id": "463235595530bcb6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        }
+      },
+      "job_ids": [
+        "memoryalpha-stexpanded-gemini-2-5-flash-off-static-k4-r0-b36284b2",
+        "memoryalpha-stexpanded-gemma-3-27b-static-k4-r0-e4b19f9d",
+        "memoryalpha-stexpanded-llama-3-1-70b-static-k4-r0-9bdfe08b",
+        "memoryalpha-stexpanded-mistral-small-3-2-24b-static-k4-r0-273aae55",
+        "memoryalpha-stexpanded-qwen3-5-122b-static-k4-r0-88a6930f",
+        "memoryalpha-stexpanded-qwen3-8b-static-k4-r0-de60e675"
+      ],
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/75bceab6364c5eb6/config.toml",
+      "config_sha256": "d92f6b020e38490a181367c8131e397d34dce2615195d38cd7bfadf0b6b0aefd",
+      "id": "75bceab6364c5eb6",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        }
+      },
+      "job_ids": [
+        "starwars-swtor-gemini-2-5-flash-off-static-k4-r0-7df842c3",
+        "starwars-swtor-gemma-3-27b-static-k4-r0-bbab602c",
+        "starwars-swtor-llama-3-1-70b-static-k4-r0-ab409e1a",
+        "starwars-swtor-mistral-small-3-2-24b-static-k4-r0-ae2f653b",
+        "starwars-swtor-qwen3-5-122b-static-k4-r0-ec8df846",
+        "starwars-swtor-qwen3-8b-static-k4-r0-170811bb"
+      ],
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400
+    },
+    {
+      "config_path": "alignments/ed749f43d95f1814/config.toml",
+      "config_sha256": "d41ea080af20d1ac386e96bdb1981af34db5fbdc5eac1f42d7d1745915f89e92",
+      "id": "ed749f43d95f1814",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        }
+      },
+      "job_ids": [
+        "memoryalpha-memorybeta-gemini-2-5-flash-off-static-k4-r0-bfd8c9e7",
+        "memoryalpha-memorybeta-gemma-3-27b-static-k4-r0-2b7367e7",
+        "memoryalpha-memorybeta-llama-3-1-70b-static-k4-r0-3230b88c",
+        "memoryalpha-memorybeta-mistral-small-3-2-24b-static-k4-r0-11193b9a",
+        "memoryalpha-memorybeta-qwen3-5-122b-static-k4-r0-f29b42c1",
+        "memoryalpha-memorybeta-qwen3-8b-static-k4-r0-23fba624"
+      ],
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400
+    }
+  ],
+  "batch": {
+    "expected_jobs": 30,
+    "id": "static-fewshot-knowledge-graph-4bd4ba2d12bc",
+    "jobs": 2,
+    "name": "static-fewshot-knowledge-graph",
+    "plan_hash": "4bd4ba2d12bc8df2ab5c7b76141b96cce0981a1822ec7b4c679a05590253e488",
+    "reuse_alignments": true,
+    "timeout_seconds": 86400
+  },
+  "environment": {
+    "packages": {
+      "JPype1": "1.7.1",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.1",
+      "openai": "2.45.0",
+      "owlready2": "0.51",
+      "pandas": "3.0.3",
+      "pydantic": "2.13.4",
+      "rdflib": "7.6.0",
+      "torch": "2.13.0",
+      "transformers": "5.14.1"
+    },
+    "python": "3.12.3",
+    "python_implementation": "CPython",
+    "schema": 1,
+    "uv_lock_sha256": "5d3a19f7bb752ed069fbfb2ce00e271c31b3654df203e6c41ef3d34c776db155"
+  },
+  "jobs": [
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "9485334e2841fa226430c402b2cfa982c736bc0d4abe2edd78bfd17ddcda559d",
+      "config_path": "configs/marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1.toml",
+      "config_sha256": "534a1ecf1df24c8efca144355adc948fde078b81a5aecb9f38ab01625ad62e96",
+      "execution_hash": "3cbe14e1f1ba110c4ea4ae9e084479dd043190a3cb91256156ca4b07266e9961",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "marvelcinematicuniverse-marvel-gemini-2-5-flash-off-static-k4-r0-3cbe14e1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "727e9120768bb9077aa3f4ba066ef5edf99b7d5d730346135aa5a094dad82fe3",
+      "config_path": "configs/marvelcinematicuniverse-marvel-gemma-3-27b-static-k4-r0-763feecf.toml",
+      "config_sha256": "28c740f64bbd11a2b1a1c94db97ee112ac18f2acfee979c285a9fdb4b50ee8ba",
+      "execution_hash": "763feecffe45b85ac08f9e46e0d83711fec19005b5e465e90cc5036def4d7fc3",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "marvelcinematicuniverse-marvel-gemma-3-27b-static-k4-r0-763feecf",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "d92ffcbf3f2e4190bc12ed775ad56f33391cc3322f6155e8bd46ba05d939ffae",
+      "config_path": "configs/marvelcinematicuniverse-marvel-llama-3-1-70b-static-k4-r0-3f617312.toml",
+      "config_sha256": "41d337f367a06032c67479b0b25d927bc7632feeab15861493a7655cd905959b",
+      "execution_hash": "3f617312070ab6f57b551677c77ad8f3cb081ad71771e7074a12cb09b7a936f8",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "marvelcinematicuniverse-marvel-llama-3-1-70b-static-k4-r0-3f617312",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "15f2e945c8ccf14ae08beb03f76c8142ea4dec9c03ccbbb14e4499e32a0cabfb",
+      "config_path": "configs/marvelcinematicuniverse-marvel-mistral-small-3-2-24b-static-k4-r0-a07a77af.toml",
+      "config_sha256": "7cbe60cf86b9cb92e4e5d035f9b04ef2cb1293713d096988b7a0a2d3163cfd30",
+      "execution_hash": "a07a77af17cd6b096ae3d3cf84a518bcd061b230f03ed1e7a600789f705e7de8",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "marvelcinematicuniverse-marvel-mistral-small-3-2-24b-static-k4-r0-a07a77af",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "b9b71607e36ddd6419a130ec89965826248c9dc6e752b13f39db073d44d6e7c2",
+      "config_path": "configs/marvelcinematicuniverse-marvel-qwen3-5-122b-static-k4-r0-705ade62.toml",
+      "config_sha256": "524dc2a12ff9f276ee94c7a9d965b338b60506466c3f2fd2284dcb75b901ea28",
+      "execution_hash": "705ade628b784c030a442d5d493d37e59524c29203c99e032bb17e1603e63256",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "marvelcinematicuniverse-marvel-qwen3-5-122b-static-k4-r0-705ade62",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "20e6ae9e912b3ff9",
+      "condition": "static-k4",
+      "condition_id": "efa91b38dde7470af40232fa0daadd7ce6894b24c78e6a5e4e9c1d411398e3bf",
+      "config_path": "configs/marvelcinematicuniverse-marvel-qwen3-8b-static-k4-r0-2b0f3540.toml",
+      "config_sha256": "1ed122400572e624ad204e079822ef731bb5503d3ab0e599438fd96f94216340",
+      "execution_hash": "2b0f3540a2d7a8ccb89a3de2d122839a66e648ccf7fe10bacac4228b8a7f388e",
+      "expected_served_model": "Qwen3-8B",
+      "id": "marvelcinematicuniverse-marvel-qwen3-8b-static-k4-r0-2b0f3540",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 175145892,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvelcinematicuniverse.rdf",
+          "sha256": "b426fbffa368dd9d289ae19e117edf8d33182814571bbc20847e1f2f2b923023"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 974662845,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/marvel.rdf",
+          "sha256": "c3fa68b7fe8a60dcb392d4738c9c468e53dce07e43d6a38529bb7639dfb30eaa"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 285652,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/marvelcinematicuniverse-marvel/reference_all.tsv",
+          "sha256": "e7388ed38d939a405c33af689ad148fe74ce6d7fb641bd0616271bd323a74dd8"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "marvelcinematicuniverse-marvel",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "1ee3394ed4e526840ec44330631bee794d843b5e9da6a6ef349bbd568a1a8eb1",
+      "config_path": "configs/memoryalpha-memorybeta-gemini-2-5-flash-off-static-k4-r0-bfd8c9e7.toml",
+      "config_sha256": "d87fecadf32ad9dc721af3bac9d17bd6721e3b20ec2a55a34c374db54e48411e",
+      "execution_hash": "bfd8c9e73cad3ee8197e7ba0ba445a39e4fe3865801f858508cf1b6121346a15",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "memoryalpha-memorybeta-gemini-2-5-flash-off-static-k4-r0-bfd8c9e7",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "1cc5ab0ab61d25c6a715693a1c2b5564edcb9b8ba5c3a913a8d71e601ddbced1",
+      "config_path": "configs/memoryalpha-memorybeta-gemma-3-27b-static-k4-r0-2b7367e7.toml",
+      "config_sha256": "aa8559cc70c964c6696bacb4e419c49bd59f23a118a0b6840f0251db5a6e73ee",
+      "execution_hash": "2b7367e70ecb45316a0e2cc6304d772c5fe7a44cd9ecc405f85e6c37137f39b5",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "memoryalpha-memorybeta-gemma-3-27b-static-k4-r0-2b7367e7",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "7efe553f95abb26b0a3d151f42332484fea00d043812d6833d42333a68f0c034",
+      "config_path": "configs/memoryalpha-memorybeta-llama-3-1-70b-static-k4-r0-3230b88c.toml",
+      "config_sha256": "dc3fc188af3f25ac4538e2a8ceecd8a042c3fc1b60095915679c18aab2ff498d",
+      "execution_hash": "3230b88c3feb229a66d079e44fd100aef768ff6034b53e2c74d2d9781c9266b4",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "memoryalpha-memorybeta-llama-3-1-70b-static-k4-r0-3230b88c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "92f905288cef86d160588cf7751fcd526eafe2774c9563ee67c3316f6df04030",
+      "config_path": "configs/memoryalpha-memorybeta-mistral-small-3-2-24b-static-k4-r0-11193b9a.toml",
+      "config_sha256": "ecfdef8c6a11081a4c0298ae7597a1036e5fef578a0ff79fc38d5bf6a277201c",
+      "execution_hash": "11193b9a5cff15f0646d671420fc32b659d9cd9640ec39012be37ab910a4dbdc",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "memoryalpha-memorybeta-mistral-small-3-2-24b-static-k4-r0-11193b9a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "9c0e602c02f938aa459998313498302c4d337e5611d75f1e03027d1598f7f572",
+      "config_path": "configs/memoryalpha-memorybeta-qwen3-5-122b-static-k4-r0-f29b42c1.toml",
+      "config_sha256": "4b14b1b29b55d48bb62198c45c6ecc9ae2f8ae387f9c69f84dc26b736892b15a",
+      "execution_hash": "f29b42c1ee8a1c9f41d4ac4c1ddbc25d5254dcd7f0595901c35ae62e783d23f7",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "memoryalpha-memorybeta-qwen3-5-122b-static-k4-r0-f29b42c1",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "ed749f43d95f1814",
+      "condition": "static-k4",
+      "condition_id": "a4bef7d24d5160462b5128f6460a6ae0c2c5b64f37d05ec24647c910fcc0b07b",
+      "config_path": "configs/memoryalpha-memorybeta-qwen3-8b-static-k4-r0-23fba624.toml",
+      "config_sha256": "4611cb25eebbeba492e740e15cec378f04735abba18d04f910e209d3e0fb6dcf",
+      "execution_hash": "23fba6248677167b1e5c7a9610fc121bea4c59a4d8e37bbee28ee30f58a5ff0e",
+      "expected_served_model": "Qwen3-8B",
+      "id": "memoryalpha-memorybeta-qwen3-8b-static-k4-r0-23fba624",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 354869642,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memorybeta.rdf",
+          "sha256": "19fc599c0fc2782ff020f6cccac01b8b70287c53366c7ff060101c7b32ad3233"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 1518136,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-memorybeta/reference_all.tsv",
+          "sha256": "31a20058c0f7ab390217bdaf733b74e277224674d7f8c845d7d68b86a8534143"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "memoryalpha-memorybeta",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "4303bfd1442349bc2fee548097d3d6198fdd771a11db6920b354c55ca58611f7",
+      "config_path": "configs/memoryalpha-stexpanded-gemini-2-5-flash-off-static-k4-r0-b36284b2.toml",
+      "config_sha256": "7a0ab05c777457a4f1ecb50e227033a9519e3090e1972f74fa85679f8b49257f",
+      "execution_hash": "b36284b288bfe1db58d65467bd13ce46cf245cf0dd1238403f1d1b9cc0f2d053",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "memoryalpha-stexpanded-gemini-2-5-flash-off-static-k4-r0-b36284b2",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "13c2969e6e4ca5e5c6ff975a51607d6b8e7a25b3ef9dd6eab8ca6a1c400c89da",
+      "config_path": "configs/memoryalpha-stexpanded-gemma-3-27b-static-k4-r0-e4b19f9d.toml",
+      "config_sha256": "06d10effabf5946fbf996ac3003f08176ba069e67542d9570803a647b10f669b",
+      "execution_hash": "e4b19f9dd75208c25e30970000983a206a95b39eee3863215781e8c890962232",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "memoryalpha-stexpanded-gemma-3-27b-static-k4-r0-e4b19f9d",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "962642afdf4e3d59378a55d933d0514b181b72a8bc22b4636ea6de700e5f5afc",
+      "config_path": "configs/memoryalpha-stexpanded-llama-3-1-70b-static-k4-r0-9bdfe08b.toml",
+      "config_sha256": "a0fae98ef666d3693b94c7b89ff1a4eaaf1468e798d5c9e6b298860c058740fd",
+      "execution_hash": "9bdfe08b1dc264bbdc778bb7676a0e82b1cb6f2de28a7afd4133f3b3a81f2603",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "memoryalpha-stexpanded-llama-3-1-70b-static-k4-r0-9bdfe08b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "88fc575898355fd5cee452a3b66188c67752db01b26dfa8001caae9bd2f0e17a",
+      "config_path": "configs/memoryalpha-stexpanded-mistral-small-3-2-24b-static-k4-r0-273aae55.toml",
+      "config_sha256": "ba38e89f62716a5ad400ea3e4de66cac20bde49910267286211915b3797fc0bf",
+      "execution_hash": "273aae55e79bc89ca9689894ffe17e19e1d8367ddaa8168a3007e0243bf80cca",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "memoryalpha-stexpanded-mistral-small-3-2-24b-static-k4-r0-273aae55",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "fc314bd7136bc5f7bf3f28e02c05abe34d38ba2b9b400e85bf7867b140b36877",
+      "config_path": "configs/memoryalpha-stexpanded-qwen3-5-122b-static-k4-r0-88a6930f.toml",
+      "config_sha256": "7b71b86a3d57808da1c023a9bc9fa2c90df0ca0c524ded5037a308526966ce00",
+      "execution_hash": "88a6930f46f26044ec97311881dad57ccc72dfbb9e45f2d4cd9d40645d4dd194",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "memoryalpha-stexpanded-qwen3-5-122b-static-k4-r0-88a6930f",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "463235595530bcb6",
+      "condition": "static-k4",
+      "condition_id": "6285245649c7c8b6b782a353982af571d1575f70504710e321b2b153dfc8ed8c",
+      "config_path": "configs/memoryalpha-stexpanded-qwen3-8b-static-k4-r0-de60e675.toml",
+      "config_sha256": "45356eda52e4792674b49c232b75e7cb89e9e74256c2345c7cb3fd5ad1bd49ee",
+      "execution_hash": "de60e675c8d7a5007e4885dcef7102c7034a6ba8d4a87c9eadb7e8f0045d1be1",
+      "expected_served_model": "Qwen3-8B",
+      "id": "memoryalpha-stexpanded-qwen3-8b-static-k4-r0-de60e675",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 366927507,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/memoryalpha.rdf",
+          "sha256": "fbb285801687f06600822567ae46588b3e54a8178843ca2bfbb4591877bf293e"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 80381523,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/stexpanded.rdf",
+          "sha256": "c0fa305ba0a80e16bcae4ef17d7aeaac7107dffbc63cc2bd2f31c448f29092c4"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 284853,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/memoryalpha-stexpanded/reference_all.tsv",
+          "sha256": "80c60b74411b5e62c4f7b08307f56977cdfec866b08d2ac8bbc3e506672197bc"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "memoryalpha-stexpanded",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "b8fb5e46a284c88cf83e5a143c168a2224230ffda8c024a586fb150413f37704",
+      "config_path": "configs/starwars-swg-gemini-2-5-flash-off-static-k4-r0-2b1cd59a.toml",
+      "config_sha256": "0e4829125cd68926ea8dd4de92e3d006adc47b9e402d6687c55ddbbdfb1bc152",
+      "execution_hash": "2b1cd59ad58ad0abe28916260ec7c6acd0629eb56abc0cfbed50e102fa2efe1d",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "starwars-swg-gemini-2-5-flash-off-static-k4-r0-2b1cd59a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "05a691ae2996470bde23027fc8c1a4060a619cc4105c0e5b011cdf5ae8773138",
+      "config_path": "configs/starwars-swg-gemma-3-27b-static-k4-r0-c3347651.toml",
+      "config_sha256": "f037345ca4269b77af4fae35afb48386c0ee694eb749894e31d92eaa74d69f9c",
+      "execution_hash": "c334765163fc0d1e1e175dc0591dab6e6c68f7a4227bf58637f41b054e1ad640",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "starwars-swg-gemma-3-27b-static-k4-r0-c3347651",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "27d0fca25c1ae6ac10d9c49a04e9c1a7f74f3b1a21620fd3b12949cc2453a906",
+      "config_path": "configs/starwars-swg-llama-3-1-70b-static-k4-r0-aaada717.toml",
+      "config_sha256": "ad4572c8055d5fc36257159052f1d6a45747e216f8ff36aa5d15aba51636e1c1",
+      "execution_hash": "aaada7172ede621227275144d337cd741871a893bd6e954985f87bd99682c03d",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "starwars-swg-llama-3-1-70b-static-k4-r0-aaada717",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "5af661a6569bc3120f6ed2a4d544ce3995d7b75b97f061673fb69ce693325da5",
+      "config_path": "configs/starwars-swg-mistral-small-3-2-24b-static-k4-r0-97be7f0c.toml",
+      "config_sha256": "dd86353a3d9f16396a5093a42ba316df78cbc7f0c86cda9e4170fbed7d884b6e",
+      "execution_hash": "97be7f0c5b343170feb02a40a000a31f059802162e89e78ed45426611376adb6",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "starwars-swg-mistral-small-3-2-24b-static-k4-r0-97be7f0c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "6ddc575182d73b098251362aeb1bead9cfc7c7bfaa9ab7e89845069345071f9e",
+      "config_path": "configs/starwars-swg-qwen3-5-122b-static-k4-r0-699b9e75.toml",
+      "config_sha256": "acab8b1c4c0f2743da8b1231fb168a84bc6efec0a40797e688a4a35d83ac9c93",
+      "execution_hash": "699b9e75b8ce2a3d8aaadd922768e0a599dcc76d128b1c6900ec2c2d4dfe428b",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "starwars-swg-qwen3-5-122b-static-k4-r0-699b9e75",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "03130e9b3fa842e4",
+      "condition": "static-k4",
+      "condition_id": "b5c609bfc384a6e764e504ee297f3d40d314e30e4dc76a76ee892daba51c0180",
+      "config_path": "configs/starwars-swg-qwen3-8b-static-k4-r0-5e44f587.toml",
+      "config_sha256": "87639c06fefbaac544fdd397a5c04a8003b7aea44617fab62993c5effc005556",
+      "execution_hash": "5e44f587d6cd8c04ff9c7d5627183d1e9a6ef7662783bb9e204423a4fb2bd4ad",
+      "expected_served_model": "Qwen3-8B",
+      "id": "starwars-swg-qwen3-8b-static-k4-r0-5e44f587",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 37658385,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swg.rdf",
+          "sha256": "0d1168de85d699087845a9167da0f04a01acbd767149b6a9e45773e77314b4c9"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 171101,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swg/reference_all.tsv",
+          "sha256": "17a06e3a9717810970197fb4d090c7d06e51506dc8fe4008089763a9f7381cb0"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "starwars-swg",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "8451412605e30597089e9fb6736994e53d1c48b342af87051c71e40eb5ecb48f",
+      "config_path": "configs/starwars-swtor-gemini-2-5-flash-off-static-k4-r0-7df842c3.toml",
+      "config_sha256": "78ec398a16313b78a0e3cf8843ea029e2d70b3b7f9dbd2bbfc7448f849682b3c",
+      "execution_hash": "7df842c3951a719bb8ab7e247b54f6eedc35ac114e3f4a12afa941a17983276e",
+      "expected_served_model": "google/gemini-2.5-flash",
+      "id": "starwars-swtor-gemini-2-5-flash-off-static-k4-r0-7df842c3",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemini-2-5-flash-off",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "cef811f959aa65a2a95d56247a2caf3f9fe74becc3cc92c7bfcc3b1eba98c9c2",
+      "config_path": "configs/starwars-swtor-gemma-3-27b-static-k4-r0-bbab602c.toml",
+      "config_sha256": "fcd7348af0074e0177b3f60beff5521e1046f19d041091df071cb0ea4606a94a",
+      "execution_hash": "bbab602c9eea23d9a07a04c2aecef992cd4ab4139fdbe26c3734dca84078cbf2",
+      "expected_served_model": "Gemma-3-27B",
+      "id": "starwars-swtor-gemma-3-27b-static-k4-r0-bbab602c",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "gemma-3-27b",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "7e008efcc45d7708ed649a40baa28cdf2384d58adc647a5c4cd5d46ce548561c",
+      "config_path": "configs/starwars-swtor-llama-3-1-70b-static-k4-r0-ab409e1a.toml",
+      "config_sha256": "08b09b00ea3a20f89d41a91b9a830f0eb887759ece38b69daff1933e9b50c2ea",
+      "execution_hash": "ab409e1a458c86b492cbdfdcf142973b8a9901d69d84c61ca8d1b76792717857",
+      "expected_served_model": "Llama-3.1-70B-Instruct",
+      "id": "starwars-swtor-llama-3-1-70b-static-k4-r0-ab409e1a",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "llama-3-1-70b",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "cdf39e97e00014d19d1e4caf3fda61d4a609ff80ebb35c4645da108a157090e7",
+      "config_path": "configs/starwars-swtor-mistral-small-3-2-24b-static-k4-r0-ae2f653b.toml",
+      "config_sha256": "01863c1b726b1bee8ce7825275ebfe6547585a289bed0109aed9df88f9d94edf",
+      "execution_hash": "ae2f653bab2d240343298b87ce1acb47480d30d477050acc6d8fe527251401cd",
+      "expected_served_model": "mistralai/mistral-small-3.2-24b-instruct",
+      "id": "starwars-swtor-mistral-small-3-2-24b-static-k4-r0-ae2f653b",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "mistral-small-3-2-24b",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "7123af14342df7ee0c8d84be4d5e60232ac11d65b7e067ac39077ab1a1105af3",
+      "config_path": "configs/starwars-swtor-qwen3-5-122b-static-k4-r0-ec8df846.toml",
+      "config_sha256": "673f7fd21354c119d2436a9534cb5a1a95e35f8941a9c258eb3f0c11037e5893",
+      "execution_hash": "ec8df84614354d9ef98bd613e1810e5214cb64e872a253dfc510b58398cc9c7e",
+      "expected_served_model": "Qwen3.5-122B-A10B",
+      "id": "starwars-swtor-qwen3-5-122b-static-k4-r0-ec8df846",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-5-122b",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    },
+    {
+      "alignment_id": "75bceab6364c5eb6",
+      "condition": "static-k4",
+      "condition_id": "5e2c5804466601c6f1f09de4a0136d8e4abddf6afee75a3a19b4d998845e216d",
+      "config_path": "configs/starwars-swtor-qwen3-8b-static-k4-r0-170811bb.toml",
+      "config_sha256": "9297dcddfad867fc855d4af875cc1dee6ec840a1921ea9774b71a0bb60f8db62",
+      "execution_hash": "170811bb166e334ad7ce18ccc8cd4988f0cf95aa03459cb9cf3d225de2a5f3bc",
+      "expected_served_model": "Qwen3-8B",
+      "id": "starwars-swtor-qwen3-8b-static-k4-r0-170811bb",
+      "input_fingerprints": {
+        "alignmentTask.logmap_parameters_dirpath": {
+          "bytes": 34927295,
+          "files": 405,
+          "kind": "directory",
+          "path": "/home/jon/tools/logmap/kg-abox/src/target",
+          "sha256": "92e1ede98076a4ec77e0b39563cd1be5509f72ba03ebc72c95ab843d1026cc06"
+        },
+        "alignmentTask.onto_source_filepath": {
+          "bytes": 1099061415,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/starwars.rdf",
+          "sha256": "074387f6ce3189175fe2e20fab84d6e72cec44ce1352fb20c7368c5382d379a2"
+        },
+        "alignmentTask.onto_target_filepath": {
+          "bytes": 19575136,
+          "kind": "file",
+          "path": "/home/jon/data/oaei-2025-knowledge-graph-v4/objects/swtor.rdf",
+          "sha256": "62d9ab18eaea6ca488b67cb29ca9c2c3f174c88d000616b4a372c841d7133b89"
+        },
+        "evaluation.reference_alignment_path": {
+          "bytes": 212901,
+          "kind": "file",
+          "path": "/home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/knowledge-graph/starwars-swtor/reference_all.tsv",
+          "sha256": "294998d23c2da423e2122e16c96eeb05299c5d4069e817bb5a35e1074853c365"
+        }
+      },
+      "max_parallel_runs": 1,
+      "model": "qwen3-8b",
+      "repeat": 0,
+      "task": "starwars-swtor",
+      "timeout_seconds": 86400,
+      "verify_endpoint": true
+    }
+  ],
+  "schema": 1,
+  "seal": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-v1",
+    "digest": "05a00ce314ede117a5c67bbd485819e52fb14ce04cdb86278247fff99cd9b877",
+    "schema": 1
+  },
+  "source": {
+    "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+    "spec_sha256": "dc75157a02dfe312fadb2108bb36856e5faa4886b4c3ea01ff91d78bf7bc8aee"
+  }
+}

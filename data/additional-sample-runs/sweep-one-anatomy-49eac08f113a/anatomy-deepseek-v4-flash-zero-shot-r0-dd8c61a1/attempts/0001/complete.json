@@ -1,0 +1,59 @@
+{
+  "alignment_id": "21ac6be7e135fc00",
+  "artifacts": [
+    {
+      "bytes": 93649,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "4c8993275e8d4943414c29d4c7dd986ec7cd85e8b764ce8948c9f943ede50e64"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 89030,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "2bb132ba517a54631663fef0254f6395d3d786f4b96cadb329da66cf946ef128"
+    },
+    {
+      "bytes": 134764,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "4ba4db7962b4e30084f62c6b991fa8d4d0015a1bce1020d28c0e81e14c1b8b75"
+    },
+    {
+      "bytes": 21435,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "14db9e90dd8069cc47760215de84ff5564dd04fc03152ae4828e1955e8ca6bf5"
+    },
+    {
+      "bytes": 863,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "57ba4ad0b4175ac1b13ea0bb7df6627c01ef62b7a920ce91b5b2068323b789f2"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 4516,
+      "path": "jobs/anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "7f5d1a5b34f4e3a3fd6cbdfe0eba32e9978ad8c30dd985968418acaa7e0e4b6c"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot",
+  "condition_id": "c56bf494431fb525909c2a33def117a515121b97845c152a046ada763e9d1c6c",
+  "config_sha256": "69591de7d5603eb8e0eecc2652371b9dd5a6ad4f09a19f1b0246f991ce8697ae",
+  "core_sha256": "acf815aa6daad68aea3b77c38ba67c93b185aa590373693fdc5fa9b3033a6cef",
+  "execution_hash": "dd8c61a10da3b802b0de7bba561f1f01c2cb263028408b25885237a378c5ce88",
+  "finished_at": "2026-07-17T03:09:15+00:00",
+  "id": "anatomy-deepseek-v4-flash-zero-shot-r0-dd8c61a1",
+  "kind": "job",
+  "model": "deepseek-v4-flash",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}

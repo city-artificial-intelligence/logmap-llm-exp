@@ -1,0 +1,51 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260727_223646.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 4960
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.PLAIN
+[STEP 2] Prompt context: AnswerFormat.TRUE_FALSE/ResponseModes.PLAIN, domain='biomedical'
+[STEP 2] Specifying 'ontology_domain' as 'biomedical' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+[SUCCESS] Using cached quadstore for ncit.owl (cache age: 1h 8m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-z0ercdt5/ncit_owl_f664ecb8fb00.sqlite3
+[INFO] There are 805333 triples in the ontology
+[INFO] Indexed 15762 classes.
+[INFO] Indexed 206 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/ncit.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+[SUCCESS] Using cached quadstore for doid.owl (cache age: 1h 8m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-i317md9y/doid_owl_eb3ac51e8831.sqlite3
+[INFO] There are 55700 triples in the ontology
+[INFO] Indexed 8465 classes.
+[INFO] Indexed 49 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/ncit-doid/ncit-doid/doid.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: functools.partial(<function oupt_one_level_of_parents_and_synonyms at 0x7faf94836a20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical', instance_fmt_fn=<function format_instance_attribute_clause at 0x7faf949f1d00>))
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: functools.partial(<function oupt_prop_domain_range at 0x7faf94837560>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical', instance_fmt_fn=<function format_instance_attribute_clause at 0x7faf949f1d00>))
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: functools.partial(<function oupt_inst_full_context_entropy at 0x7faf94837e20>, ctx=PromptContext(answer_format=<AnswerFormat.TRUE_FALSE: 'true_false'>, response_mode=<ResponseModes.PLAIN: 'plain'>, ontology_domain='biomedical', instance_fmt_fn=<function format_instance_attribute_clause at 0x7faf949f1d00>))
+[INFO] Prompts built: 856 cls, 0 prop, 0 inst (856 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 856
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+[STEP 2] Building query-specific RAG few-shot (strategy=query-rag, k=4, negative_layout=donor-cross-v1)
+[STEP 2] SAVED query-specific few-shot for 856 M_ask keys to /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json (traces: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemma-3-27b-rt-k4-r0-04d0e2a9/attempts/0002/run-root/logmapllm-outputs/rag_traces.json)

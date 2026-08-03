@@ -1,0 +1,174 @@
+{
+  "artifacts": [
+    {
+      "bytes": 318,
+      "path": "logmap-initial-alignment/cmt-confOf-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "616ed99943fca80cf75e8b130719c0d171ba9a4d7df0ce8e50cf59672ece60cf"
+    },
+    {
+      "bytes": 318,
+      "path": "logmap-initial-alignment/cmt-confOf-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "34713ebfd6a77dba9e2b0530338a559efa51855f98fb1029a095ceb0ac1834dd"
+    },
+    {
+      "bytes": 52,
+      "path": "logmap-initial-alignment/cmt-confOf-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "1fba9e12694f9a5e1441c8fff2a7e1f78b959551fd0ef9ee9725d16664bbd5fb"
+    },
+    {
+      "bytes": 425,
+      "path": "logmapllm-outputs/cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "38dd59d924caf508e9fa2b9c0d4cc4f71e917bd9e2b147d239cd82f442f1d39b"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/cmt-confOf-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 211,
+      "path": "logmapllm-outputs/cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "28bebb60a3c3431110e67a36ede3eb220cd5f72cb4ad8132f0748dcc602bfe15"
+    },
+    {
+      "bytes": 318,
+      "path": "logmap-refined-alignment/cmt-confOf-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "34713ebfd6a77dba9e2b0530338a559efa51855f98fb1029a095ceb0ac1834dd"
+    },
+    {
+      "bytes": 1494,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "702c2d931149a7a3094836d4e0b5612816cc8e16e4ff0171c59678315b27015b"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 1,
+    "error": 0,
+    "false": 0,
+    "prompts": 1,
+    "skipped": 0,
+    "true": 1
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.45454545454545453,
+      "false_negatives": 11,
+      "false_positives": 1,
+      "metric_notes": {},
+      "precision": 0.8333333333333334,
+      "recall": 0.3125,
+      "reference_size": 16,
+      "source": "custom",
+      "system_size": 6,
+      "true_positives": 5
+    },
+    "global_m1_class": {
+      "f1": 0.5333333333333333,
+      "false_negatives": 6,
+      "false_positives": 1,
+      "metric_notes": {},
+      "precision": 0.8,
+      "recall": 0.4,
+      "reference_size": 10,
+      "source": "conference_stratified",
+      "system_size": 5,
+      "true_positives": 4
+    },
+    "global_m2_property": {
+      "f1": 0.2857142857142857,
+      "false_negatives": 5,
+      "false_positives": 0,
+      "metric_notes": {},
+      "precision": 1.0,
+      "recall": 0.16666666666666666,
+      "reference_size": 6,
+      "source": "conference_stratified",
+      "system_size": 1,
+      "true_positives": 1
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 0,
+      "fp": 0,
+      "metric_notes": {
+        "specificity": "undefined: no negative reference candidates (tn+fp=0)",
+        "youdens_j": "undefined: sensitivity or specificity undefined"
+      },
+      "oracle_excluded": 0,
+      "oracle_f1": 1.0,
+      "oracle_precision": 1.0,
+      "oracle_recall": 1.0,
+      "partial_scope_excluded": 0,
+      "sensitivity": 1.0,
+      "specificity": null,
+      "tn": 0,
+      "total_candidates": 1,
+      "tp": 1,
+      "youdens_j": null
+    },
+    "schema_version": 1,
+    "task_name": "cmt-confOf"
+  },
+  "model_name": "deepseek/deepseek-v4-flash",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "openrouter",
+    "logprobs_effective": false,
+    "logprobs_requested": false,
+    "max_completion_tokens": 64,
+    "max_workers": 1,
+    "model_name": "deepseek/deepseek-v4-flash",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": "wandb/fp8",
+    "openrouter_require_parameters": true,
+    "reasoning_effort": "none",
+    "request_logprobs": false,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "zero-shot",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_revision": null
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "cmt-confOf",
+  "timing": {
+    "align_seconds": 0.011812448501586914,
+    "consult_seconds": 3.279942512512207,
+    "evaluate_seconds": 0.9434959888458252,
+    "prompt_build_seconds": 1.1333775520324707,
+    "refine_seconds": 3.1178231239318848,
+    "total_seconds": 8.486451625823975
+  }
+}

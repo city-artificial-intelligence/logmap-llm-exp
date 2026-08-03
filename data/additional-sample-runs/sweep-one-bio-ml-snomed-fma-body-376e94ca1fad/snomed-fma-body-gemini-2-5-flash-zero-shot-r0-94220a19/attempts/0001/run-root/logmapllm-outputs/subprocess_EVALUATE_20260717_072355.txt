@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_072355.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.7588
+[METRIC]    Recall           :  0.5620
+[METRIC]    F1               :  0.6458
+[METRIC]    True Positives   :  4078
+[METRIC]    False Positives  :  1296
+[METRIC]    False Negatives  :  3178
+[METRIC]    System Size      :  5374
+[METRIC]    Reference Size   :  7256
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.6547
+[METRIC]    Oracle Recall           :  0.8889
+[METRIC]    Oracle Precision        :  0.5182
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.3977
+[METRIC]    Specificity             :  0.5089
+[METRIC]    Sensitivity             :  0.8889
+[METRIC]    Total Candidates        :  990
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  41
+[METRIC]    Tn                      :  316
+[METRIC]    Fp                      :  305
+[METRIC]    Tp                      :  328
+
+False mappings (346 FP+FN) saved to: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "snomed-fma-body",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.7588388537402307,
+    "recall": 0.5620176405733186,
+    "f1": 0.6457640538400634,
+    "true_positives": 4078,
+    "false_positives": 1296,
+    "false_negatives": 3178,
+    "system_size": 5374,
+    "reference_size": 7256,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

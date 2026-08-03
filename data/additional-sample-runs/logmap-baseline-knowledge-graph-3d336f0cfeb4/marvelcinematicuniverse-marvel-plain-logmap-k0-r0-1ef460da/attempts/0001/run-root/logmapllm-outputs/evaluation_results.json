@@ -1,0 +1,64 @@
+{
+  "engine": "partial_reference",
+  "global": {
+    "evaluated_size": 924,
+    "f1": 0.5976833976833976,
+    "false_negatives": 892,
+    "false_positives": 150,
+    "ignored": 1352,
+    "metric_notes": {},
+    "precision": 0.8376623376623377,
+    "recall": 0.4645858343337335,
+    "reference_size": 1666,
+    "source": "kg_partial",
+    "system_size": 2276,
+    "true_positives": 774
+  },
+  "global_class": {
+    "evaluated_size": 2,
+    "f1": 1.0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "ignored": 8,
+    "metric_notes": {},
+    "precision": 1.0,
+    "recall": 1.0,
+    "reference_size": 2,
+    "source": "partial_reference_stratified_class",
+    "system_size": 10,
+    "true_positives": 2
+  },
+  "global_instance": {
+    "evaluated_size": 910,
+    "f1": 0.5953960202887242,
+    "false_negatives": 890,
+    "false_positives": 147,
+    "ignored": 1335,
+    "metric_notes": {},
+    "precision": 0.8384615384615385,
+    "recall": 0.4615849969751966,
+    "reference_size": 1653,
+    "source": "partial_reference_stratified_instance",
+    "system_size": 2245,
+    "true_positives": 763
+  },
+  "global_property": {
+    "evaluated_size": 12,
+    "f1": 0.7826086956521738,
+    "false_negatives": 2,
+    "false_positives": 3,
+    "ignored": 9,
+    "metric_notes": {},
+    "precision": 0.75,
+    "recall": 0.8181818181818182,
+    "reference_size": 11,
+    "source": "partial_reference_stratified_property",
+    "system_size": 21,
+    "true_positives": 9
+  },
+  "metrics": [
+    "global"
+  ],
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel"
+}

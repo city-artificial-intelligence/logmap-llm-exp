@@ -1,0 +1,157 @@
+[INFO] Summary of Experiment Parameters:
+
+alignmentTask.task_name: cmt-confOf
+alignmentTask.onto_source_filepath: /home/jon/data/oaei-2025-conference-ontologies/cmt.owl
+alignmentTask.onto_target_filepath: /home/jon/data/oaei-2025-conference-ontologies/confOf.owl
+alignmentTask.generate_extended_mappings_to_ask_oracle: False
+alignmentTask.stub_import_iris: []
+alignmentTask.logmap_parameters_dirpath: /home/jon/tools/logmap/paired-control/src/target
+alignmentTask.logmap_jvm_memory: 12g
+alignmentTask.ontology_domain: academic conferences
+alignmentTask.ontology_vocabulary: default
+oracle.model_name: google/gemini-2.5-flash
+oracle.api_key: ENV: ... _KEY
+oracle.base_url: https://openrouter.ai/api/v1
+oracle.supports_chat_template_kwargs: <unset>
+oracle.failure_tolerance: <unset>
+oracle.max_workers: 8
+oracle.enable_thinking: False
+oracle.max_completion_tokens: 64
+oracle.request_timeout_seconds: 300.0
+oracle.connect_timeout_seconds: 15.0
+oracle.transient_retries: 2
+oracle.seed: 0
+oracle.request_logprobs: False
+oracle.openrouter_provider: google-vertex/eu
+oracle.openrouter_allow_fallbacks: False
+oracle.openrouter_require_parameters: True
+oracle.temperature: 0.0
+oracle.top_p: 1.0
+oracle.reasoning_effort: none
+oracle.local_oracle_predictions_dirpath: 
+oracle.interaction_style: InteractionStyle.OPEN_ROUTER
+oracle.answer_format: AnswerFormat.TRUE_FALSE
+oracle.response_mode: ResponseModes.STRUCTURED
+prompts.cls_dev_prompt_template_name: class_equivalence
+prompts.cls_usr_prompt_template_name: one_level_of_parents_and_synonyms
+prompts.prop_dev_prompt_template_name: property_equivalence
+prompts.prop_usr_prompt_template_name: prop_domain_range
+prompts.dprop_usr_prompt_template_name: prop_domain_range
+prompts.inst_dev_prompt_template_name: instance_equivalence
+prompts.inst_usr_prompt_template_name: inst_full_context_entropy
+prompts.sibling_strategy: <unset>
+prompts.sibling_model: <unset>
+prompts.sibling_max_candidates: <unset>
+few_shot.few_shot_k: 0
+few_shot.few_shot_seed: 0
+few_shot.few_shot_negative_strategy: zero-shot
+few_shot.rag_encoder_kind: sapbert
+few_shot.rag_encoder_model: cambridgeltl/SapBERT-from-PubMedBERT-fulltext
+few_shot.rag_encoder_revision: <unset>
+few_shot.rag_encoder_device: <unset>
+few_shot.rag_failure_policy: error
+few_shot.rag_cache_dir: <unset>
+outputs.logmapllm_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/standalone/logmapllm-outputs
+outputs.logmap_initial_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/standalone/logmap-initial-alignment
+outputs.logmap_refined_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/standalone/logmap-refined-alignment
+pipeline.align_ontologies: AlignMode.REUSE
+pipeline.build_oracle_prompts: PromptBuildMode.BUILD
+pipeline.consult_oracle: ConsultMode.CONSULT
+pipeline.refine_alignment: RefineMode.REFINE
+pipeline.refinement_strategy: RefinementStrategy.LOGMAP
+evaluation.evaluate: True
+evaluation.reference_alignment_path: /home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/conference/cmt-confOf.tsv
+evaluation.train_alignment_path: <unset>
+evaluation.test_cands_path: <unset>
+evaluation.metrics: ['global', 'oracle']
+evaluation.force_custom_eval: True
+evaluation.partial_reference: False
+evaluation.stratified_by_entity_type: False
+evaluation.stratified_class_property: True
+evaluation.jvm_memory: 8g
+
+[INFO] Summary of File Paths:
+
+  Task                : cmt-confOf
+  Prompt template     : one_level_of_parents_and_synonyms
+  Run root            : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root
+  Output directory    : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmapllm-outputs
+  Initial align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmap-initial-alignment
+  Refined align dir   : /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmap-refined-alignment
+  Prompts JSON        : cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+  Predictions CSV     : cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+  Few-shot JSON       : cmt-confOf-one_level_of_parents_and_synonyms-few_shot_examples.json
+
+
+[INFO] Ontology domain: academic conferences
+
+[INFO] LogMap-LLM pipeline starting.
+[Step 1] Align ontologies and obtain mappings to ask an Oracle
+[Step 1] Loading mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmap-initial-alignment/cmt-confOf-logmap_mappings_to_ask_oracle_user_llm.txt
+[SUCCESS] Number of mappings within the initial alignment: 6
+[SUCCESS] Number of mappings within M_ask: 1
+
+[Step 2] Build user prompts for oracle consultation
+[Step 2] Building fresh oracle user prompts via subprocess
+[SUCCESS] Number of LLM oracle user prompts: 1
+
+[Step 3] Consult Oracle for mappings to ask
+[Step 3] Consulting LLM oracle with model: google/gemini-2.5-flash
+[DEBUG] Effective failure tolerance is set to: 5.
+[DEBUG] Initialising OracleConsultationManager ... with args:
+[DEBUG] model=google/gemini-2.5-flash
+[DEBUG] base_url=https://openrouter.ai/api/v1
+[DEBUG] temp=0.0
+[DEBUG] reasoning=False
+[DEBUG] response_format=BinaryOutputFormat
+[DEBUG] (resolved argument) interaction_style=InteractionStyle.OPEN_ROUTER
+
+[DEBUG] Conversation History:
+[DEBUG] Message 0: {'role': 'developer', 'content': 'You are assisting in an OWL ontology alignment exercise. You will be presented with a pair of class entities, one from each of two different ontologies. Additional ontological context such as parent categories and synonyms may be provided. You will be asked to decide whether the two classes are semantically equivalent. Respond with a JSON object containing a single boolean field "answer": {"answer": true} or {"answer": false}.'}
+
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[SUCCESS] Mappings to ask an Oracle  : 1
+[SUCCESS] Predicted True             : 1
+[SUCCESS] Predicted False            : 0
+[SUCCESS] Consultation failures      : 0
+[SUCCESS] LLM Oracle consultations   : 1 (unidirectional consultations)
+[SUCCESS] Oracle predictions saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmapllm-outputs/cmt-confOf-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+
+[Step 4] Refine alignment using oracle mapping predictions
+[Step 4] Refining initial LogMap alignment with LLM Oracle predictions
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 0; using fallback.
+[Step 4] Number of mappings predicted True by Oracle given to LogMap: 1
+[Step 4] Number of mappings in LogMap refined alignment: 6
+[SUCCESS] Refinement stage ending.
+
+[Step 5] Evaluation
+[Step 5] Running evaluation subprocess
+[SUCCESS] Evaluation results loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+[SUCCESS] Evaluation stage ending.
+[Step 6] Timing Summary
+
+  Alignment          : 0.0s
+  Prompt building    : 1.1s
+  Oracle consultation: 2.2s
+    Per consultation : 2.2s
+  Refinement         : 2.9s
+  Evaluation         : 1.1s
+  Total              : 7.3s
+
+[Step 7] Experimental Parameters
+
+  Task name           : cmt-confOf
+  Model               : google/gemini-2.5-flash
+  Endpoint            : OpenRouter
+  Prompt template     : one_level_of_parents_and_synonyms
+  Developer prompt    : class_equivalence
+  N prompts           : 1
+  Interaction style   : InteractionStyle.OPEN_ROUTER
+  Temperature         : 0.0
+  Top-p               : 1.0
+  Max workers         : 8
+  GPU                 : NVIDIA RTX 4000 SFF Ada Generation, 20475
+
+[SUCCESS] Total refined mappings: 6
+[Step 8] Results written to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-conference-4eeefeddcc86/jobs/cmt-confOf-gemini-2-5-flash-zero-shot-r0-b0667e4d/attempts/0001/run-root/logmapllm-outputs/run_result.json
+[SUCCESS] LogMap-LLM session ending

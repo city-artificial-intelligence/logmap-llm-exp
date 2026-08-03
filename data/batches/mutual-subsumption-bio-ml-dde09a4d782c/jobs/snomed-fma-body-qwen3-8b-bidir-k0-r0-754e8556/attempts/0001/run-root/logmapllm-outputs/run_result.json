@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    {
+      "bytes": 445869,
+      "path": "logmap-initial-alignment/snomed-fma-body-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "c322c1f8e24c8183475126840d008cf02216ef4a5669385c1d486a2c0d0ed6f9"
+    },
+    {
+      "bytes": 445869,
+      "path": "logmap-initial-alignment/snomed-fma-body-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "b4263c1e7de025d7ce304421f79240c873702220bb5e1fa4ac38f8e4f24316a7"
+    },
+    {
+      "bytes": 78317,
+      "path": "logmap-initial-alignment/snomed-fma-body-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "a5cd448d48772dceee0f20c73010564ea2ce7569299a4e63940af40c6cfa0a49"
+    },
+    {
+      "bytes": 1351561,
+      "path": "logmapllm-outputs/snomed-fma-body-sub_parents_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "3c6058805a90ee1bf88db7a13bac77bc625cb942198e174f4ab22cb5866fd5db"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/snomed-fma-body-sub_parents_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 146737,
+      "path": "logmapllm-outputs/snomed-fma-body-sub_parents_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "d2b2c7897b47b13d18f9f45f2c43047a765ac57cf4a283dbf8db1845d833b8e4"
+    },
+    {
+      "bytes": 418320,
+      "path": "logmap-refined-alignment/snomed-fma-body-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "75f16b934bbb33d5882453fdb17e331281765f836bb00b76e314aa3d2f162856"
+    },
+    {
+      "bytes": 870,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "c0b4d85988501f7e20446206e50a0e6172ce12caa3a752501fd9893f7f9d172b"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 986,
+    "error": 0,
+    "false": 474,
+    "prompts": 1972,
+    "skipped": 0,
+    "true": 512
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.6470259481037924,
+      "false_negatives": 3204,
+      "false_positives": 1217,
+      "metric_notes": {},
+      "precision": 0.7690263807174037,
+      "recall": 0.5584343991179713,
+      "reference_size": 7256,
+      "source": "custom",
+      "system_size": 5269,
+      "true_positives": 4052
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 79,
+      "fp": 222,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.6583427922814982,
+      "oracle_precision": 0.56640625,
+      "oracle_recall": 0.7859078590785907,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.7859078590785907,
+      "specificity": 0.640194489465154,
+      "tn": 395,
+      "total_candidates": 986,
+      "tp": 290,
+      "youdens_j": 0.42610234854374474
+    },
+    "schema_version": 1,
+    "task_name": "snomed-fma-body"
+  },
+  "model_name": "Qwen3-8B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "Qwen3-8B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "reasoning_token_budget": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "plain",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "sub_parents_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "snomed-fma-body",
+  "timing": {
+    "align_seconds": 0.01095438003540039,
+    "consult_seconds": 60.87610912322998,
+    "evaluate_seconds": 0.4633169174194336,
+    "prompt_build_seconds": 12.17040491104126,
+    "refine_seconds": 5872.914516925812,
+    "total_seconds": 5946.435302257538
+  }
+}

@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260719_115323.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8905
+[METRIC]    Recall           :  0.8901
+[METRIC]    F1               :  0.8903
+[METRIC]    True Positives   :  4171
+[METRIC]    False Positives  :  513
+[METRIC]    False Negatives  :  515
+[METRIC]    System Size      :  4684
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.7203
+[METRIC]    Oracle Recall           :  0.9341
+[METRIC]    Oracle Precision        :  0.5862
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.4463
+[METRIC]    Specificity             :  0.5122
+[METRIC]    Sensitivity             :  0.9341
+[METRIC]    Total Candidates        :  856
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  24
+[METRIC]    Tn                      :  252
+[METRIC]    Fp                      :  240
+[METRIC]    Tp                      :  340
+
+False mappings (264 FP+FN) saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/zero-shot-current/cloud-gemini/batches/zero-shot-current-bio-ml-2a6eb43ed813/jobs/ncit-doid-gemini-2-5-flash-off-zero-shot-current-r0-10c1058a/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.8904782237403929,
+    "recall": 0.8900981647460521,
+    "f1": 0.8902881536819638,
+    "true_positives": 4171,
+    "false_positives": 513,
+    "false_negatives": 515,
+    "system_size": 4684,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

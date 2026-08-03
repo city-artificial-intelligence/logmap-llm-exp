@@ -1,0 +1,48 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260728_130448.txt
+[STEP 2] Configuration loaded from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 1404
+[STEP 2] Loading mappings to ask an Oracle from: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.PLAIN
+[STEP 2] Prompt context: AnswerFormat.TRUE_FALSE/ResponseModes.PLAIN, domain='biomedical anatomy'
+[STEP 2] Specifying 'ontology_domain' as 'biomedical anatomy' ... 
+[STEP 2] Using prompt template: sub_parents_synonyms (bidirectional=True).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] (bidirectional mode is set) Constructing two prompts per candidate.
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-anatomy/mouse.owl
+[SUCCESS] Using cached quadstore for mouse.owl (cache age: 274h 19m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-ci46ossw/mouse_owl_787698316b74.sqlite3
+[INFO] There are 15959 triples in the ontology
+[INFO] Indexed 2744 classes.
+[INFO] Indexed 10 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/mouse.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-anatomy/human.owl
+[SUCCESS] Using cached quadstore for human.owl (cache age: 274h 19m)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-r1q9maac/human_owl_cde3de736519.sqlite3
+[INFO] There are 35355 triples in the ontology
+[INFO] Indexed 3304 classes.
+[INFO] Indexed 8 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-anatomy/human.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING BIDIRECTIONAL TEMPLATES.
+[INFO] Prompt template function obtained: sub_parents_synonyms (bidirectional mode)
+[INFO]   Built 518 prompts (259 forward + 259 reverse) from 259 M_ask rows; 0 not buildable as class candidates.
+[STEP 2] (n_prompts=518)
+[STEP 2] (n_equiv_cands=259)
+[STEP 2] (n_non_equiv_skipped=0)
+[STEP 2] Number of LLM Oracle user prompts obtained: 518
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/mutual-subsumption-anatomy-1d65ba66531a/jobs/anatomy-gemma-3-27b-bidir-k0-r0-a88f746c/attempts/0001/run-root/logmapllm-outputs/anatomy-sub_parents_synonyms-mappings_to_ask_oracle_user_prompts.json

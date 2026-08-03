@@ -1,0 +1,174 @@
+{
+  "artifacts": [
+    {
+      "bytes": 3622,
+      "path": "logmap-initial-alignment/ce-ce-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "ea77a5d69caeb889eb4251aa5c1a3e63ea664e5e218a12563f248e88fd50211a"
+    },
+    {
+      "bytes": 3622,
+      "path": "logmap-initial-alignment/ce-ce-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "5e77f532e17bc18afd8f950a1d373c32572534008b5e89f73cc6eaf8b9466fb3"
+    },
+    {
+      "bytes": 984,
+      "path": "logmap-initial-alignment/ce-ce-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "c103c490ad9464bb9b699d031bf7e1cacc4405c91cffd2e49cc84046f996ff28"
+    },
+    {
+      "bytes": 3774,
+      "path": "logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "0cc55384ac21bd8d7d87f8906f034826d66c7e7f3add3f1d4c7efcc1e7af389c"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 1286,
+      "path": "logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "b09d230b0363763fefab36a897c59709e1097de5573491fb88d1a16d89e05d57"
+    },
+    {
+      "bytes": 3533,
+      "path": "logmap-refined-alignment/ce-ce-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "0a4ae2ba4c87170aaea72a1baaa1ca4822af5161d93f2cee8840df980cd9c006"
+    },
+    {
+      "bytes": 1519,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "b0a3d32dac32dbdb567544b6f59911108583a785c2547d1d97ccf28192c71543"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 10,
+    "error": 0,
+    "false": 8,
+    "prompts": 10,
+    "skipped": 0,
+    "true": 2
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.7692307692307692,
+      "false_negatives": 4,
+      "false_positives": 11,
+      "metric_notes": {},
+      "precision": 0.6944444444444444,
+      "recall": 0.8620689655172413,
+      "reference_size": 29,
+      "source": "custom",
+      "system_size": 36,
+      "true_positives": 25
+    },
+    "global_m1_class": {
+      "f1": 0.8064516129032258,
+      "false_negatives": 4,
+      "false_positives": 8,
+      "metric_notes": {},
+      "precision": 0.7575757575757576,
+      "recall": 0.8620689655172413,
+      "reference_size": 29,
+      "source": "conference_stratified",
+      "system_size": 33,
+      "true_positives": 25
+    },
+    "global_m2_property": {
+      "f1": null,
+      "false_negatives": 0,
+      "false_positives": 2,
+      "metric_notes": {
+        "f1": "undefined: precision or recall undefined",
+        "recall": "undefined: no reference mappings (tp+fn=0)"
+      },
+      "precision": 0.0,
+      "recall": null,
+      "reference_size": 0,
+      "source": "conference_stratified",
+      "system_size": 2,
+      "true_positives": 0
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 0,
+      "fp": 1,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.6666666666666666,
+      "oracle_precision": 0.5,
+      "oracle_recall": 1.0,
+      "partial_scope_excluded": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.8888888888888888,
+      "tn": 8,
+      "total_candidates": 10,
+      "tp": 1,
+      "youdens_j": 0.8888888888888888
+    },
+    "schema_version": 1,
+    "task_name": "ce-ce"
+  },
+  "model_name": "deepseek/deepseek-v4-flash",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "openrouter",
+    "logprobs_effective": false,
+    "logprobs_requested": false,
+    "max_completion_tokens": 64,
+    "max_workers": 1,
+    "model_name": "deepseek/deepseek-v4-flash",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": "wandb/fp8",
+    "openrouter_require_parameters": true,
+    "reasoning_effort": "none",
+    "request_logprobs": false,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "structured",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "zero-shot",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_revision": null
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "ce-ce",
+  "timing": {
+    "align_seconds": 0.003988742828369141,
+    "consult_seconds": 5.7037353515625,
+    "evaluate_seconds": 0.40616703033447266,
+    "prompt_build_seconds": 0.41762542724609375,
+    "refine_seconds": 10.620938539505005,
+    "total_seconds": 17.15245509147644
+  }
+}

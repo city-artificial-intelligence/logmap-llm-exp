@@ -1,0 +1,59 @@
+{
+  "alignment_id": "bac7561d3f03594e",
+  "artifacts": [
+    {
+      "bytes": 3622,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmap-initial-alignment/ce-ce-logmap_mappings.txt",
+      "sha256": "ea77a5d69caeb889eb4251aa5c1a3e63ea664e5e218a12563f248e88fd50211a"
+    },
+    {
+      "bytes": 984,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmap-initial-alignment/ce-ce-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "c103c490ad9464bb9b699d031bf7e1cacc4405c91cffd2e49cc84046f996ff28"
+    },
+    {
+      "bytes": 3533,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmap-refined-alignment/ce-ce-logmap_mappings.tsv",
+      "sha256": "0a4ae2ba4c87170aaea72a1baaa1ca4822af5161d93f2cee8840df980cd9c006"
+    },
+    {
+      "bytes": 3774,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "0cc55384ac21bd8d7d87f8906f034826d66c7e7f3add3f1d4c7efcc1e7af389c"
+    },
+    {
+      "bytes": 1286,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "b09d230b0363763fefab36a897c59709e1097de5573491fb88d1a16d89e05d57"
+    },
+    {
+      "bytes": 1519,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "b0a3d32dac32dbdb567544b6f59911108583a785c2547d1d97ccf28192c71543"
+    },
+    {
+      "bytes": 3,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 5197,
+      "path": "jobs/ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "19bab8cea940ecdbb819f21dabc8fda29dac75c2f17edaa0a260096e10ff6fc0"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "zero-shot",
+  "condition_id": "1baca3f5ef52c9ea17cec64150c08209fdce368dd91a8b747ceb1e63c0a2271c",
+  "config_sha256": "130314a5fd2c4b348838c97e8efc15b7a8d5c09e1e553022a7d333b6e57190f7",
+  "core_sha256": "5621292ff1c4c5fab2308b7eb63903644499a1aa1eac087d671614aa2dac8372",
+  "execution_hash": "5231bfd975584dbfd933b8f221554aacabcb077683d14409e1bf863721a22a73",
+  "finished_at": "2026-07-17T05:55:40+00:00",
+  "id": "ce-ce-deepseek-v4-flash-zero-shot-r0-5231bfd9",
+  "kind": "job",
+  "model": "deepseek-v4-flash",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "ce-ce"
+}

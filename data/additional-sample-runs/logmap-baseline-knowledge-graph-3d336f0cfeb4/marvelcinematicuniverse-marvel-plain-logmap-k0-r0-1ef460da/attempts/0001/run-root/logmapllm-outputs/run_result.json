@@ -1,0 +1,128 @@
+{
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 15124,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 399879,
+      "path": "logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 1574,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "8e70011a956d5eea867575d7ae06f62446f6f2a633c58639e2930268d046fa9b"
+    }
+  ],
+  "counts": {
+    "candidates": 0,
+    "error": 0,
+    "false": 0,
+    "prompts": 0,
+    "skipped": 0,
+    "true": 0
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "partial_reference",
+    "global": {
+      "evaluated_size": 924,
+      "f1": 0.5976833976833976,
+      "false_negatives": 892,
+      "false_positives": 150,
+      "ignored": 1352,
+      "metric_notes": {},
+      "precision": 0.8376623376623377,
+      "recall": 0.4645858343337335,
+      "reference_size": 1666,
+      "source": "kg_partial",
+      "system_size": 2276,
+      "true_positives": 774
+    },
+    "global_class": {
+      "evaluated_size": 2,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "ignored": 8,
+      "metric_notes": {},
+      "precision": 1.0,
+      "recall": 1.0,
+      "reference_size": 2,
+      "source": "partial_reference_stratified_class",
+      "system_size": 10,
+      "true_positives": 2
+    },
+    "global_instance": {
+      "evaluated_size": 910,
+      "f1": 0.5953960202887242,
+      "false_negatives": 890,
+      "false_positives": 147,
+      "ignored": 1335,
+      "metric_notes": {},
+      "precision": 0.8384615384615385,
+      "recall": 0.4615849969751966,
+      "reference_size": 1653,
+      "source": "partial_reference_stratified_instance",
+      "system_size": 2245,
+      "true_positives": 763
+    },
+    "global_property": {
+      "evaluated_size": 12,
+      "f1": 0.7826086956521738,
+      "false_negatives": 2,
+      "false_positives": 3,
+      "ignored": 9,
+      "metric_notes": {},
+      "precision": 0.75,
+      "recall": 0.8181818181818182,
+      "reference_size": 11,
+      "source": "partial_reference_stratified_property",
+      "system_size": 21,
+      "true_positives": 9
+    },
+    "metrics": [
+      "global"
+    ],
+    "schema_version": 1,
+    "task_name": "marvelcinematicuniverse-marvel"
+  },
+  "model_name": "plain-logmap",
+  "oracle": {},
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "marvelcinematicuniverse-marvel",
+  "timing": {
+    "align_seconds": 0.005404949188232422,
+    "consult_seconds": 0.3325071334838867,
+    "evaluate_seconds": 0.33700060844421387,
+    "prompt_build_seconds": 6.4373016357421875e-06,
+    "refine_seconds": 0.0003101825714111328,
+    "total_seconds": 0.6752293109893799
+  }
+}

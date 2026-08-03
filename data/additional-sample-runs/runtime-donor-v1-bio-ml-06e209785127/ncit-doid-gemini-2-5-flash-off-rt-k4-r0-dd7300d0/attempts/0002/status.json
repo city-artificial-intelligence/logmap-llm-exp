@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/.venv/bin/python3",
+    "-m",
+    "logmap_llm",
+    "--config",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemini-2-5-flash-off-rt-k4-r0-dd7300d0/attempts/0002/config.toml",
+    "--run-root",
+    "/home/jon/canonical_projects_folder/logmap-llm-exp/batches/runtime-donor-v1-bio-ml-06e209785127/jobs/ncit-doid-gemini-2-5-flash-off-rt-k4-r0-dd7300d0/attempts/0002/run-root",
+    "--reuse-align"
+  ],
+  "duration_seconds": 2402.096,
+  "finished_at": "2026-07-27T23:16:47+00:00",
+  "return_code": 0,
+  "started_at": "2026-07-27T22:36:45+00:00",
+  "status": "success",
+  "timeout_seconds": 86400
+}

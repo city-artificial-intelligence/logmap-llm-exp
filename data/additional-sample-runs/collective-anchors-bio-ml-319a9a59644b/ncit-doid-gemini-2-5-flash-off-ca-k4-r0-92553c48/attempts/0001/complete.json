@@ -1,0 +1,64 @@
+{
+  "alignment_id": "409ee787ba30886d",
+  "artifacts": [
+    {
+      "bytes": 545991,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings.txt",
+      "sha256": "22223c0940ebb51e4c2eaf634efbaa4dc10bb6ccdcaea249c9c99c06305457b6"
+    },
+    {
+      "bytes": 94631,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmap-initial-alignment/ncit-doid-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "b7b6c997808d1ebd89874b81c1b2aa8ba03a9dfacca30108bd01a647aec14e53"
+    },
+    {
+      "bytes": 510216,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmap-refined-alignment/ncit-doid-logmap_mappings.tsv",
+      "sha256": "6cd11c5cea6ff956a9d948e60452b952409eb1977c9ed45585324044ebef9e60"
+    },
+    {
+      "bytes": 870,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "b34e1940c83c7ba7a711e0b3047ad7d38b33f7a269ddde61274be5e4b031305d"
+    },
+    {
+      "bytes": 1384065,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "sha256": "8426c70ebfe1657b678cc837b5303260760b868441b9be8f46f63e0f8963f79b"
+    },
+    {
+      "bytes": 398556,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "aaf08ac37634e738625512b11ccf9b7be260b5c658f3108615eb8806f807104b"
+    },
+    {
+      "bytes": 149480,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/ncit-doid-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "c2a9ae7b69b434e729aaae41637e3cd3dd719155f0a6c50747a7fcb5e9fadccd"
+    },
+    {
+      "bytes": 4130415,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "1132a7cb861a81eddd37c4ab8606c7ac5afee8384121f31c9e4d25cfbdd7541b"
+    },
+    {
+      "bytes": 4659,
+      "path": "jobs/ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "47ee8b1648d55bf5e1066987e32bd71128c8f4f9512b74579412095b13d5b9de"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "ca-k4",
+  "condition_id": "0abdf135cccf45f020006b49029194e9c165109ac3ff94675976e1eaf48db389",
+  "config_sha256": "3646891a23ab32f67cc7c7439522ff57b40057ed812ef849ccc458ab6c54e7d6",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "92553c48758a53ee0034d300af7e55d9f9475d678e9a5f0567280547bb099f04",
+  "finished_at": "2026-07-27T23:18:34+00:00",
+  "id": "ncit-doid-gemini-2-5-flash-off-ca-k4-r0-92553c48",
+  "kind": "job",
+  "model": "gemini-2-5-flash-off",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "ncit-doid"
+}

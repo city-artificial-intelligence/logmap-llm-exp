@@ -1,0 +1,171 @@
+[INFO] Summary of Experiment Parameters:
+
+alignmentTask.task_name: ce-ce
+alignmentTask.onto_source_filepath: /home/jon/data/oaei-2025-ce-v2/ce-ce/CEON.rdf
+alignmentTask.onto_target_filepath: /home/jon/data/oaei-2025-ce-v2/ce-ce/BiOnto.rdf
+alignmentTask.generate_extended_mappings_to_ask_oracle: False
+alignmentTask.stub_import_iris: ['http://w3id.org/CEON/ontology/actor/0.4/', 'http://w3id.org/CEON/ontology/actorODP/0.4/', 'http://w3id.org/CEON/ontology/cvn/0.3/', 'http://w3id.org/CEON/ontology/energy/0.2/', 'http://w3id.org/CEON/ontology/location/0.2/', 'http://w3id.org/CEON/ontology/material/0.4/', 'http://w3id.org/CEON/ontology/process/0.5/', 'http://w3id.org/CEON/ontology/product/0.5/', 'http://w3id.org/CEON/ontology/quantity/0.2/', 'http://w3id.org/CEON/ontology/statement/0.2/', 'http://w3id.org/CEON/ontology/value/0.3/']
+alignmentTask.logmap_parameters_dirpath: /home/jon/tools/logmap/paired-control/src/target
+alignmentTask.logmap_jvm_memory: 12g
+alignmentTask.ontology_domain: circular economy
+alignmentTask.ontology_vocabulary: default
+oracle.model_name: google/gemini-2.5-flash
+oracle.api_key: ENV: ... _KEY
+oracle.base_url: https://openrouter.ai/api/v1
+oracle.supports_chat_template_kwargs: <unset>
+oracle.failure_tolerance: <unset>
+oracle.max_workers: 8
+oracle.enable_thinking: False
+oracle.max_completion_tokens: 64
+oracle.request_timeout_seconds: 300.0
+oracle.connect_timeout_seconds: 15.0
+oracle.transient_retries: 2
+oracle.seed: 0
+oracle.request_logprobs: False
+oracle.openrouter_provider: google-vertex/eu
+oracle.openrouter_allow_fallbacks: False
+oracle.openrouter_require_parameters: True
+oracle.temperature: 0.0
+oracle.top_p: 1.0
+oracle.reasoning_effort: none
+oracle.local_oracle_predictions_dirpath: 
+oracle.interaction_style: InteractionStyle.OPEN_ROUTER
+oracle.answer_format: AnswerFormat.TRUE_FALSE
+oracle.response_mode: ResponseModes.STRUCTURED
+prompts.cls_dev_prompt_template_name: class_equivalence
+prompts.cls_usr_prompt_template_name: one_level_of_parents_and_synonyms
+prompts.prop_dev_prompt_template_name: property_equivalence
+prompts.prop_usr_prompt_template_name: prop_domain_range
+prompts.dprop_usr_prompt_template_name: prop_domain_range
+prompts.inst_dev_prompt_template_name: instance_equivalence
+prompts.inst_usr_prompt_template_name: inst_full_context_entropy
+prompts.sibling_strategy: <unset>
+prompts.sibling_model: <unset>
+prompts.sibling_max_candidates: <unset>
+few_shot.few_shot_k: 0
+few_shot.few_shot_seed: 0
+few_shot.few_shot_negative_strategy: zero-shot
+few_shot.rag_encoder_kind: sapbert
+few_shot.rag_encoder_model: cambridgeltl/SapBERT-from-PubMedBERT-fulltext
+few_shot.rag_encoder_revision: <unset>
+few_shot.rag_encoder_device: <unset>
+few_shot.rag_failure_policy: error
+few_shot.rag_cache_dir: <unset>
+outputs.logmapllm_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/standalone/logmapllm-outputs
+outputs.logmap_initial_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/standalone/logmap-initial-alignment
+outputs.logmap_refined_alignment_output_dirpath: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/standalone/logmap-refined-alignment
+pipeline.align_ontologies: AlignMode.REUSE
+pipeline.build_oracle_prompts: PromptBuildMode.BUILD
+pipeline.consult_oracle: ConsultMode.CONSULT
+pipeline.refine_alignment: RefineMode.REFINE
+pipeline.refinement_strategy: RefinementStrategy.LOGMAP
+evaluation.evaluate: True
+evaluation.reference_alignment_path: /home/jon/canonical_projects_folder/logmap-llm-exp/campaign/references/circular-economy/ce-ce/reference.tsv
+evaluation.train_alignment_path: <unset>
+evaluation.test_cands_path: <unset>
+evaluation.metrics: ['global', 'oracle']
+evaluation.force_custom_eval: True
+evaluation.partial_reference: False
+evaluation.stratified_by_entity_type: False
+evaluation.stratified_class_property: True
+evaluation.jvm_memory: 8g
+
+[INFO] Summary of File Paths:
+
+  Task                : ce-ce
+  Prompt template     : one_level_of_parents_and_synonyms
+  Run root            : /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root
+  Output directory    : /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs
+  Initial align dir   : /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmap-initial-alignment
+  Refined align dir   : /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmap-refined-alignment
+  Prompts JSON        : ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json
+  Predictions CSV     : ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+  Few-shot JSON       : ce-ce-one_level_of_parents_and_synonyms-few_shot_examples.json
+
+
+[INFO] Ontology domain: circular economy
+
+[INFO] LogMap-LLM pipeline starting.
+[Step 1] Align ontologies and obtain mappings to ask an Oracle
+[Step 1] Loading mappings from file: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmap-initial-alignment/ce-ce-logmap_mappings_to_ask_oracle_user_llm.txt
+[SUCCESS] Number of mappings within the initial alignment: 37
+[SUCCESS] Number of mappings within M_ask: 10
+
+[Step 2] Build user prompts for oracle consultation
+[Step 2] Building fresh oracle user prompts via subprocess
+[SUCCESS] Number of LLM oracle user prompts: 10
+
+[Step 3] Consult Oracle for mappings to ask
+[Step 3] Consulting LLM oracle with model: google/gemini-2.5-flash
+[DEBUG] Effective failure tolerance is set to: 5.
+[DEBUG] Initialising OracleConsultationManager ... with args:
+[DEBUG] model=google/gemini-2.5-flash
+[DEBUG] base_url=https://openrouter.ai/api/v1
+[DEBUG] temp=0.0
+[DEBUG] reasoning=False
+[DEBUG] response_format=BinaryOutputFormat
+[DEBUG] (resolved argument) interaction_style=InteractionStyle.OPEN_ROUTER
+
+[DEBUG] Conversation History:
+[DEBUG] Message 0: {'role': 'developer', 'content': 'You are assisting in an OWL ontology alignment exercise. You will be presented with a pair of class entities, one from each of two different ontologies. Additional ontological context such as parent categories and synonyms may be provided. You will be asked to decide whether the two classes are semantically equivalent. Respond with a JSON object containing a single boolean field "answer": {"answer": true} or {"answer": false}.'}
+
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[DEBUG] (calculate_logprobs_confidence) invalid argument, returning NaN (cast to float).
+[SUCCESS] Mappings to ask an Oracle  : 10
+[SUCCESS] Predicted True             :  5
+[SUCCESS] Predicted False            :  5
+[SUCCESS] Consultation failures      :  0
+[SUCCESS] LLM Oracle consultations   : 10 (unidirectional consultations)
+[SUCCESS] Oracle predictions saved to: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/ce-ce-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv
+
+[Step 4] Refine alignment using oracle mapping predictions
+[Step 4] Refining initial LogMap alignment with LLM Oracle predictions
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 0; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 3; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 5; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 7; using fallback.
+[DEBUG] (_coerce_confidence_for_java) NaN/inf confidence at row 9; using fallback.
+[Step 4] Number of mappings predicted True by Oracle given to LogMap: 5
+[Step 4] Number of mappings in LogMap refined alignment: 39
+[SUCCESS] Refinement stage ending.
+
+[Step 5] Evaluation
+[Step 5] Running evaluation subprocess
+[SUCCESS] Evaluation results loaded from: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+[SUCCESS] Evaluation stage ending.
+[Step 6] Timing Summary
+
+  Alignment          : 0.0s
+  Prompt building    : 0.4s
+  Oracle consultation: 1.6s
+    Per consultation : 0.2s
+  Refinement         : 10.4s
+  Evaluation         : 0.3s
+  Total              : 12.7s
+
+[Step 7] Experimental Parameters
+
+  Task name           : ce-ce
+  Model               : google/gemini-2.5-flash
+  Endpoint            : OpenRouter
+  Prompt template     : one_level_of_parents_and_synonyms
+  Developer prompt    : class_equivalence
+  N prompts           : 10
+  Interaction style   : InteractionStyle.OPEN_ROUTER
+  Temperature         : 0.0
+  Top-p               : 1.0
+  Max workers         : 8
+  GPU                 : NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 97887
+NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition, 97887
+
+[SUCCESS] Total refined mappings: 39
+[Step 8] Results written to: /t705data/logmap_llm_sweep/shards/final-core/sweep-one-circular-economy-8b4926f9aba1/jobs/ce-ce-gemini-2-5-flash-zero-shot-r0-a31fd741/attempts/0001/run-root/logmapllm-outputs/run_result.json
+[SUCCESS] LogMap-LLM session ending

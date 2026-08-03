@@ -1,0 +1,193 @@
+{
+  "artifacts": [
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "d71976defee37725363a66a706aa8d119780001c01c22f329103964c2661ccc0"
+    },
+    {
+      "bytes": 399879,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "8c70968cef4d9d61ff8399d5df2e1c7ce5ea0db9e4cf7eb8e4b1e9824b1d1c9b"
+    },
+    {
+      "bytes": 15124,
+      "path": "logmap-initial-alignment/marvelcinematicuniverse-marvel-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "d6ba4c60ba45a637580466cf7158e0b045e66f0c8e74159f2e3bb6b53df210a6"
+    },
+    {
+      "bytes": 68872,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "63e97286398199fdda6b9218fda1db674033807049d0cf83d0803ea10ff48621"
+    },
+    {
+      "bytes": 250025,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "007b2462e51318adb51b2f51bf89be98ffe47cff4da6d4685f12036b7fe7f989"
+    },
+    {
+      "bytes": 20559,
+      "path": "logmapllm-outputs/marvelcinematicuniverse-marvel-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "656c2375c0c5484d296601094c855eb37a4884eee534bbf57af27d8861cd0b9c"
+    },
+    {
+      "bytes": 403654,
+      "path": "logmap-refined-alignment/marvelcinematicuniverse-marvel-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "8ad70cc57b1774b6b8c2917f02885eb9f58087da4958d2fda455eb57ead4631a"
+    },
+    {
+      "bytes": 1979,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "7fc8d1d1f24114a615e1452209f331bdd5a0e2a86640997f1095f8595677ca4e"
+    },
+    {
+      "bytes": 403242,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "2757fde4775a67ceae0d0ac6d22236e2a89b70137018b71388eeb0abcf5369f6"
+    }
+  ],
+  "counts": {
+    "candidates": 82,
+    "error": 0,
+    "false": 60,
+    "prompts": 82,
+    "skipped": 0,
+    "true": 22
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "partial_reference",
+    "global": {
+      "evaluated_size": 928,
+      "f1": 0.5983037779491133,
+      "false_negatives": 890,
+      "false_positives": 152,
+      "ignored": 1368,
+      "metric_notes": {},
+      "precision": 0.8362068965517241,
+      "recall": 0.4657863145258103,
+      "reference_size": 1666,
+      "source": "kg_partial",
+      "system_size": 2296,
+      "true_positives": 776
+    },
+    "global_class": {
+      "evaluated_size": 2,
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "ignored": 7,
+      "metric_notes": {},
+      "precision": 1.0,
+      "recall": 1.0,
+      "reference_size": 2,
+      "source": "partial_reference_stratified_class",
+      "system_size": 9,
+      "true_positives": 2
+    },
+    "global_instance": {
+      "evaluated_size": 913,
+      "f1": 0.5962587685113016,
+      "false_negatives": 888,
+      "false_positives": 148,
+      "ignored": 1351,
+      "metric_notes": {},
+      "precision": 0.8378970427163198,
+      "recall": 0.4627949183303085,
+      "reference_size": 1653,
+      "source": "partial_reference_stratified_instance",
+      "system_size": 2264,
+      "true_positives": 765
+    },
+    "global_property": {
+      "evaluated_size": 13,
+      "f1": 0.7500000000000001,
+      "false_negatives": 2,
+      "false_positives": 4,
+      "ignored": 10,
+      "metric_notes": {},
+      "precision": 0.6923076923076923,
+      "recall": 0.8181818181818182,
+      "reference_size": 11,
+      "source": "partial_reference_stratified_property",
+      "system_size": 23,
+      "true_positives": 9
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 0,
+      "fp": 2,
+      "metric_notes": {},
+      "oracle_excluded": 75,
+      "oracle_f1": 0.6666666666666666,
+      "oracle_precision": 0.5,
+      "oracle_recall": 1.0,
+      "partial_scope_excluded": 75,
+      "sensitivity": 1.0,
+      "specificity": 0.6,
+      "tn": 3,
+      "total_candidates": 82,
+      "tp": 2,
+      "youdens_j": 0.6000000000000001
+    },
+    "schema_version": 1,
+    "task_name": "marvelcinematicuniverse-marvel"
+  },
+  "model_name": "Gemma-3-27B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "Gemma-3-27B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "reasoning_token_budget": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "plain",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 4,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "one_level_of_parents_and_synonyms",
+    "rag_encoder_kind": "sbert",
+    "rag_encoder_max_length": 128,
+    "rag_encoder_revision": "a50ef00143b4d5391434df20ae11632588ac25be"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "marvelcinematicuniverse-marvel",
+  "timing": {
+    "align_seconds": 0.00796961784362793,
+    "consult_seconds": 57.76041293144226,
+    "evaluate_seconds": 0.5999341011047363,
+    "prompt_build_seconds": 476.07109689712524,
+    "refine_seconds": 0.1572422981262207,
+    "total_seconds": 534.5966558456421
+  }
+}

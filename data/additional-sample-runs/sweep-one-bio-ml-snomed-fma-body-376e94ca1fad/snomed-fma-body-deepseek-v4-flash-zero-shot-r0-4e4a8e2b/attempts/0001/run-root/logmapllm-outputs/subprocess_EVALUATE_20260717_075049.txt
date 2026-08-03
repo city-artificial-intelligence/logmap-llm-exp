@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_075049.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.7610
+[METRIC]    Recall           :  0.5642
+[METRIC]    F1               :  0.6480
+[METRIC]    True Positives   :  4094
+[METRIC]    False Positives  :  1286
+[METRIC]    False Negatives  :  3162
+[METRIC]    System Size      :  5380
+[METRIC]    Reference Size   :  7256
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.6942
+[METRIC]    Oracle Recall           :  0.9566
+[METRIC]    Oracle Precision        :  0.5448
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.4816
+[METRIC]    Specificity             :  0.5250
+[METRIC]    Sensitivity             :  0.9566
+[METRIC]    Total Candidates        :  990
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  16
+[METRIC]    Tn                      :  326
+[METRIC]    Fp                      :  295
+[METRIC]    Tp                      :  353
+
+False mappings (311 FP+FN) saved to: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "snomed-fma-body",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.7609665427509293,
+    "recall": 0.5642227122381478,
+    "f1": 0.6479898702120924,
+    "true_positives": 4094,
+    "false_positives": 1286,
+    "false_negatives": 3162,
+    "system_size": 5380,
+    "reference_size": 7256,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

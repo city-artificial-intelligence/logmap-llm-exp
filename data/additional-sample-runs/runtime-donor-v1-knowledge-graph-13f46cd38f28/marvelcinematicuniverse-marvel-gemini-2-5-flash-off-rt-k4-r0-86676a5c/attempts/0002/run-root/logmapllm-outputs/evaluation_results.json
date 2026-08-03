@@ -1,0 +1,82 @@
+{
+  "engine": "partial_reference",
+  "global": {
+    "evaluated_size": 927,
+    "f1": 0.5985345160046278,
+    "false_negatives": 890,
+    "false_positives": 151,
+    "ignored": 1363,
+    "metric_notes": {},
+    "precision": 0.837108953613808,
+    "recall": 0.4657863145258103,
+    "reference_size": 1666,
+    "source": "kg_partial",
+    "system_size": 2290,
+    "true_positives": 776
+  },
+  "global_class": {
+    "evaluated_size": 2,
+    "f1": 1.0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "ignored": 7,
+    "metric_notes": {},
+    "precision": 1.0,
+    "recall": 1.0,
+    "reference_size": 2,
+    "source": "partial_reference_stratified_class",
+    "system_size": 9,
+    "true_positives": 2
+  },
+  "global_instance": {
+    "evaluated_size": 912,
+    "f1": 0.5964912280701754,
+    "false_negatives": 888,
+    "false_positives": 147,
+    "ignored": 1346,
+    "metric_notes": {},
+    "precision": 0.8388157894736842,
+    "recall": 0.4627949183303085,
+    "reference_size": 1653,
+    "source": "partial_reference_stratified_instance",
+    "system_size": 2258,
+    "true_positives": 765
+  },
+  "global_property": {
+    "evaluated_size": 13,
+    "f1": 0.7500000000000001,
+    "false_negatives": 2,
+    "false_positives": 4,
+    "ignored": 10,
+    "metric_notes": {},
+    "precision": 0.6923076923076923,
+    "recall": 0.8181818181818182,
+    "reference_size": 11,
+    "source": "partial_reference_stratified_property",
+    "system_size": 23,
+    "true_positives": 9
+  },
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "oracle": {
+    "errors": 0,
+    "fn": 0,
+    "fp": 1,
+    "metric_notes": {},
+    "oracle_excluded": 75,
+    "oracle_f1": 0.8,
+    "oracle_precision": 0.6666666666666666,
+    "oracle_recall": 1.0,
+    "partial_scope_excluded": 75,
+    "sensitivity": 1.0,
+    "specificity": 0.8,
+    "tn": 4,
+    "total_candidates": 82,
+    "tp": 2,
+    "youdens_j": 0.8
+  },
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel"
+}

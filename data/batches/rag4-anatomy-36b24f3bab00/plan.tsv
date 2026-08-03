@@ -1,0 +1,9 @@
+id	task	model	condition	repeat	alignment_id	config_path
+anatomy-deepseek-v4-flash-query-rag-k4-r0-01dc40c1	anatomy	deepseek-v4-flash	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-deepseek-v4-flash-query-rag-k4-r0-01dc40c1.toml
+anatomy-gemini-2-5-flash-query-rag-k4-r0-bae17f0f	anatomy	gemini-2-5-flash	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-gemini-2-5-flash-query-rag-k4-r0-bae17f0f.toml
+anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf	anatomy	gemma-3-27b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-gemma-3-27b-query-rag-k4-r0-0e88d6bf.toml
+anatomy-llama-3-1-70b-query-rag-k4-r0-838d2fdd	anatomy	llama-3-1-70b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-llama-3-1-70b-query-rag-k4-r0-838d2fdd.toml
+anatomy-mistral-small-3-2-24b-query-rag-k4-r0-df67e80f	anatomy	mistral-small-3-2-24b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-mistral-small-3-2-24b-query-rag-k4-r0-df67e80f.toml
+anatomy-qwen3-235b-query-rag-k4-r0-e2b19550	anatomy	qwen3-235b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-qwen3-235b-query-rag-k4-r0-e2b19550.toml
+anatomy-qwen3-5-122b-query-rag-k4-r0-cd874517	anatomy	qwen3-5-122b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-qwen3-5-122b-query-rag-k4-r0-cd874517.toml
+anatomy-qwen3-8b-query-rag-k4-r0-ac865f12	anatomy	qwen3-8b	query-rag-k4	0	1dcb647e95318dc9	configs/anatomy-qwen3-8b-query-rag-k4-r0-ac865f12.toml

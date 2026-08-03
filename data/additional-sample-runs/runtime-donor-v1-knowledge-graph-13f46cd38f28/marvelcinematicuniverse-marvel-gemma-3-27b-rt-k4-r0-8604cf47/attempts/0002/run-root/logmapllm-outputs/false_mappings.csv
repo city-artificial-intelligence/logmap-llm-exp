@@ -1,0 +1,3 @@
+source_entity_uri,target_entity_uri,oracle_prediction,oracle_confidence,in_reference,error_type
+http://dbkwik.webdatacommons.org/marvelcinematicuniverse.wikia.com/resource/BOOM,http://dbkwik.webdatacommons.org/marvel.wikia.com/resource/Tabitha_Smith,True,0.4999999990476728,False,FP
+http://dbkwik.webdatacommons.org/marvelcinematicuniverse.wikia.com/property/next,http://dbkwik.webdatacommons.org/marvel.wikia.com/property/nextvol,True,1.0,False,FP

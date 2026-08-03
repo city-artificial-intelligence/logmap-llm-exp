@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    {
+      "bytes": 155591,
+      "path": "logmap-initial-alignment/omim-ordo-logmap_mappings.txt",
+      "role": "initial_alignment",
+      "sha256": "862b0d5834f73232f0036f494a62f3d5adc54b7d0e749f0af8ace438c00686fd"
+    },
+    {
+      "bytes": 155591,
+      "path": "logmap-initial-alignment/omim-ordo-logmap_mappings.tsv",
+      "role": "initial_alignment_tsv",
+      "sha256": "ab4bae2200931c7dc1841a7e25b09175528d9745e965323406532d29a24981ac"
+    },
+    {
+      "bytes": 32870,
+      "path": "logmap-initial-alignment/omim-ordo-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "role": "m_ask",
+      "sha256": "b26604864e301e7d32f8d1b2737fea87d2c642cf3fafd013c9ee43f8c631ed3f"
+    },
+    {
+      "bytes": 469453,
+      "path": "logmapllm-outputs/omim-ordo-sub_parents_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "role": "prompts",
+      "sha256": "0c9b18623ef011275c7ee2d3b9fe4280a5cd8cac1314df12bbb84902dcb78b00"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/omim-ordo-sub_parents_synonyms-few_shot_examples.json",
+      "role": "few_shot",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "bytes": 64606,
+      "path": "logmapllm-outputs/omim-ordo-sub_parents_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "role": "predictions",
+      "sha256": "eee2110e677fc114245adb93c98d7a48f4f4e4c69cc0d04e44aa3a2435e78f8a"
+    },
+    {
+      "bytes": 157671,
+      "path": "logmap-refined-alignment/omim-ordo-logmap_mappings.tsv",
+      "role": "refined_alignment",
+      "sha256": "531702179d64d531860ab62d3111188446d83cb05b1addebf1b2f3cfd643bcfa"
+    },
+    {
+      "bytes": 871,
+      "path": "logmapllm-outputs/evaluation_results.json",
+      "role": "evaluation",
+      "sha256": "bba25b1920fbcb355a249c53eeb81701873a723e4be4cb7f79c3fe5778d0ed47"
+    },
+    {
+      "bytes": 3,
+      "path": "logmapllm-outputs/rag_traces.json",
+      "role": "rag_traces",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    }
+  ],
+  "counts": {
+    "candidates": 399,
+    "error": 0,
+    "false": 221,
+    "prompts": 798,
+    "skipped": 0,
+    "true": 178
+  },
+  "degradation": null,
+  "evaluation": {
+    "engine": "custom",
+    "global": {
+      "f1": 0.6254648485921729,
+      "false_negatives": 1955,
+      "false_positives": 160,
+      "metric_notes": {},
+      "precision": 0.9169262720664589,
+      "recall": 0.47460360118247785,
+      "reference_size": 3721,
+      "source": "custom",
+      "system_size": 1926,
+      "true_positives": 1766
+    },
+    "metrics": [
+      "global",
+      "oracle"
+    ],
+    "oracle": {
+      "errors": 0,
+      "fn": 15,
+      "fp": 21,
+      "metric_notes": {},
+      "oracle_excluded": 0,
+      "oracle_f1": 0.8971428571428571,
+      "oracle_precision": 0.8820224719101124,
+      "oracle_recall": 0.9127906976744186,
+      "partial_scope_excluded": 0,
+      "sensitivity": 0.9127906976744186,
+      "specificity": 0.9074889867841409,
+      "tn": 206,
+      "total_candidates": 399,
+      "tp": 157,
+      "youdens_j": 0.8202796844585594
+    },
+    "schema_version": 1,
+    "task_name": "omim-ordo"
+  },
+  "model_name": "Qwen3.5-122B-A10B",
+  "oracle": {
+    "answer_format": "true_false",
+    "capability_downgrades": [],
+    "connect_timeout_seconds": 15.0,
+    "enable_thinking": false,
+    "interaction_style": "vllm",
+    "logprobs_effective": true,
+    "logprobs_requested": true,
+    "max_completion_tokens": 2056,
+    "max_workers": 8,
+    "model_name": "Qwen3.5-122B-A10B",
+    "openrouter_allow_fallbacks": false,
+    "openrouter_provider": null,
+    "openrouter_require_parameters": true,
+    "reasoning_effort": null,
+    "reasoning_token_budget": null,
+    "request_logprobs": true,
+    "request_timeout_seconds": 300.0,
+    "response_mode": "plain",
+    "seed": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "transient_retries": 2
+  },
+  "requested": {
+    "few_shot_k": 0,
+    "few_shot_strategy": "query-rag",
+    "prompt_template": "sub_parents_synonyms",
+    "rag_encoder_kind": "sapbert",
+    "rag_encoder_max_length": 64,
+    "rag_encoder_revision": "090663c3ae57bf35ffe4d0d468a2a88d03051a4d"
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "task_name": "omim-ordo",
+  "timing": {
+    "align_seconds": 0.00642704963684082,
+    "consult_seconds": 27.29733109474182,
+    "evaluate_seconds": 0.4258265495300293,
+    "prompt_build_seconds": 2.998619318008423,
+    "refine_seconds": 14.047674894332886,
+    "total_seconds": 44.77587890625
+  }
+}

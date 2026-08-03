@@ -1,0 +1,51 @@
+[INFO] (PROMPT_BUILD_STAGE_TWO) Pipeline log file: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmapllm-outputs/subprocess_PROMPT_BUILD_STAGE_TWO_20260717_054421.txt
+[STEP 2] Configuration loaded from: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/config.toml
+[STEP 2] Reading initial alignment mappings from file: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmap-initial-alignment/snomed-fma-body-logmap_mappings.txt
+[STEP 2] Number of mappings in initial alignment: 5616
+[STEP 2] Loading mappings to ask an Oracle from: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmap-initial-alignment/snomed-fma-body-logmap_mappings_to_ask_oracle_user_llm.txt
+[STEP 2] Response config set to: answer_format=AnswerFormat.TRUE_FALSE.
+[STEP 2] Response config set to: response_mode=ResponseModes.STRUCTURED
+[STEP 2] MODIFYING GLOBAL RESPONSE CONFIG STATE FOR TEMPLATES!
+[STEP 2] Specifying 'ontology_domain' as 'biomedical' ... 
+[STEP 2] Using prompt template: one_level_of_parents_and_synonyms (bidirectional=False).
+[STEP 2] Using PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using DATA-PROPERTY PROMPT TEMPLATE: prop_domain_range
+[STEP 2] Using INSTANCE PROMPT TEMPLATE: inst_full_context_entropy
+
+[STEP 2] STARTING: Building oracle user prompts ... 
+[STEP 2] Loading ontologies ... (CHECKING IF OWLREADY2 CACHE EXISTS) 
+
+[STEP 2] Loading the first ontology from /home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl
+[INFO] Acquiring cache lock for snomed.body.owl ...
+[SUCCESS] Using cached quadstore for snomed.body.owl (built by another process, age: 0s)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-rg_5binb/snomed_body_owl_ce46a27d2c17.sqlite3
+[INFO] There are 437244 triples in the ontology
+[INFO] Indexed 34418 classes.
+[INFO] Indexed 141 properties.
+[INFO] Indexed 0 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/snomed.body.owl
+
+[STEP 2] Loading the second ontology from /home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl
+[INFO] Acquiring cache lock for fma.body.owl ...
+[SUCCESS] Using cached quadstore for fma.body.owl (built by another process, age: 0s)
+[INFO] Working copy: /tmp/logmap-llm-owlcache-l9zpywoi/fma_body_owl_4ba9433e6bd5.sqlite3
+[INFO] There are 2529571 triples in the ontology
+[INFO] Indexed 88955 classes.
+[INFO] Indexed 219 properties.
+[INFO] Indexed 2 individuals.
+[SUCCESS] Loaded ontology: /home/jon/data/oaei-2025-bio-ml/snomed-fma.body/snomed-fma.body/fma.body.owl
+
+[SUCCESS] LOADED ONTOLOGIES!
+
+[STEP 2] CONSTRUCTING TEMPLATES.
+[INFO] Prompt template function obtained: one_level_of_parents_and_synonyms
+[DEBUG] CLS PROMPT FN: <function oupt_one_level_of_parents_and_synonyms at 0x733748ff4f40>
+[INFO] Property prompt template: prop_domain_range
+[DEBUG] PROP PROMPT FN: <function oupt_prop_domain_range at 0x733748ff5a80>
+[INFO] Instance prompt template: inst_full_context_entropy
+[DEBUG] INSTANCE PROMPT FN: <function oupt_inst_full_context_entropy at 0x733748ff6340>
+[INFO] Prompts built: 986 cls, 4 prop, 0 inst (990 total)
+[STEP 2] Number of LLM Oracle user prompts obtained: 990
+[STEP 2] PromptBuildMode is set to: PromptBuildMode.BUILD.
+[STEP 2] Saving prompts to disk ... 
+[STEP 2] LLM Oracle user prompts saved to file: /t705data/logmap_llm_sweep/shards/bio-body/sweep-one-bio-ml-snomed-fma-body-376e94ca1fad/jobs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19/attempts/0001/run-root/logmapllm-outputs/snomed-fma-body-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json

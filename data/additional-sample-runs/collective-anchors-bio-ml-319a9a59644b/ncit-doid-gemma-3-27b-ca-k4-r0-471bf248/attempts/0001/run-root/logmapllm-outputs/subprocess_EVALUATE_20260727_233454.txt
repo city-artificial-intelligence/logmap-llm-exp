@@ -1,0 +1,61 @@
+[INFO] (EVALUATE) Pipeline log file: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-bio-ml-319a9a59644b/jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260727_233454.txt
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: custom)
+[METRIC]   
+[METRIC]    Precision        :  0.8772
+[METRIC]    Recall           :  0.8899
+[METRIC]    F1               :  0.8835
+[METRIC]    True Positives   :  4170
+[METRIC]    False Positives  :  584
+[METRIC]    False Negatives  :  516
+[METRIC]    System Size      :  4754
+[METRIC]    Reference Size   :  4686
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  custom
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.6686
+[METRIC]    Oracle Recall           :  0.9313
+[METRIC]    Oracle Precision        :  0.5215
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.2992
+[METRIC]    Specificity             :  0.3679
+[METRIC]    Sensitivity             :  0.9313
+[METRIC]    Total Candidates        :  856
+[METRIC]    Oracle Excluded         :  0
+[METRIC]    Partial Scope Excluded  :  0
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  25
+[METRIC]    Tn                      :  181
+[METRIC]    Fp                      :  311
+[METRIC]    Tp                      :  339
+
+False mappings (336 FP+FN) saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-bio-ml-319a9a59644b/jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /home/jon/canonical_projects_folder/logmap-llm-exp/batches/collective-anchors-bio-ml-319a9a59644b/jobs/ncit-doid-gemma-3-27b-ca-k4-r0-471bf248/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "ncit-doid",
+  "engine": "custom",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.8771560790912916,
+    "recall": 0.8898847631241997,
+    "f1": 0.8834745762711865,
+    "true_positives": 4170,
+    "false_positives": 584,
+    "false_negatives": 516,
+    "system_size": 4754,
+    "reference_size": 4686,
+    "metric_notes": {},
+    "source": "custom"
+  }
+}

@@ -1,0 +1,75 @@
+2026-07-17 06:55:28 INFO  [main                          ] 486  in Parameters           - Reading LogMap parameters from file.
+2026-07-17 06:55:28 INFO  [main                          ] 396  in LogMap2Core          - LogMap: ontology loading and overlapping extraction
+2026-07-17 06:55:29 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:29 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/actor/0.4/
+2026-07-17 06:55:30 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:30 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/actorODP/0.4/
+2026-07-17 06:55:30 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:30 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:30 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:30 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:31 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:31 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/cvn/0.3/
+2026-07-17 06:55:31 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:31 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:31 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:31 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/energy/0.2/
+2026-07-17 06:55:32 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:32 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/resourceODP/0.5/
+2026-07-17 06:55:32 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:32 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:32 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:32 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:32 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:32 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/location/0.2/
+2026-07-17 06:55:32 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:32 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:33 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:33 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/material/0.4/
+2026-07-17 06:55:33 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:33 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:33 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:33 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/process/0.5/
+2026-07-17 06:55:34 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:34 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/processODP/0.5/
+2026-07-17 06:55:34 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:34 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:34 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:34 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:34 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:34 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/product/0.5/
+2026-07-17 06:55:34 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:34 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:35 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:35 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/quantity/0.2/
+2026-07-17 06:55:35 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:35 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/qudtunit/2.1/
+2026-07-17 06:55:36 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:36 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/qudt/2.1/
+2026-07-17 06:55:36 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:36 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:36 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:36 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:36 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:36 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:37 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:37 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/statement/0.2/
+2026-07-17 06:55:37 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:37 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/actorODP/0.3/
+2026-07-17 06:55:37 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:37 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:37 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:37 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 173  in AbstractOWLParser    - URL connection input stream is compressed using gzip
+2026-07-17 06:55:38 INFO  [main                          ] 203  in AbstractState        - Notice: root element does not have an xml:base. Relative IRIs will be resolved against http://w3id.org/CEON/ontology/value/0.3/
+2026-07-17 06:55:38 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 1307 in OWLRDFConsumer       - dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 1341 in OWLRDFConsumer       - done dumping remaining triples
+2026-07-17 06:55:38 INFO  [main                          ] 405  in LogMap2Core          - LogMap indexation
+2026-07-17 06:55:38 INFO  [main                          ] 424  in LogMap2Core          - LogMap anchor extraction
+2026-07-17 06:55:38 INFO  [main                          ] 429  in LogMap2Core          - LogMap class mapping extraction
+2026-07-17 06:55:38 INFO  [main                          ] 472  in LogMap2Core          - LogMap property mapping extraction
+2026-07-17 06:55:38 INFO  [main                          ] 480  in LogMap2Core          - LogMap instance mapping extraction

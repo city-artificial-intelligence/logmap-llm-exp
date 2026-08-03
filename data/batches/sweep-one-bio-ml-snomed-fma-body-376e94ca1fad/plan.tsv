@@ -1,0 +1,10 @@
+id	task	model	condition	repeat	alignment_id	config_path
+snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b	snomed-fma-body	deepseek-v4-flash	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-deepseek-v4-flash-zero-shot-r0-4e4a8e2b.toml
+snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19	snomed-fma-body	gemini-2-5-flash	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-gemini-2-5-flash-zero-shot-r0-94220a19.toml
+snomed-fma-body-gemma-3-27b-zero-shot-r0-21a240dc	snomed-fma-body	gemma-3-27b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-gemma-3-27b-zero-shot-r0-21a240dc.toml
+snomed-fma-body-llama-3-1-70b-zero-shot-r0-83a11862	snomed-fma-body	llama-3-1-70b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-llama-3-1-70b-zero-shot-r0-83a11862.toml
+snomed-fma-body-mistral-small-3-2-24b-zero-shot-r0-9d54b08b	snomed-fma-body	mistral-small-3-2-24b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-mistral-small-3-2-24b-zero-shot-r0-9d54b08b.toml
+snomed-fma-body-plain-logmap-zero-shot-r0-6e8e19ac	snomed-fma-body	plain-logmap	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-plain-logmap-zero-shot-r0-6e8e19ac.toml
+snomed-fma-body-qwen3-235b-zero-shot-r0-ba119299	snomed-fma-body	qwen3-235b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-qwen3-235b-zero-shot-r0-ba119299.toml
+snomed-fma-body-qwen3-5-122b-zero-shot-r0-ffa5f616	snomed-fma-body	qwen3-5-122b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-qwen3-5-122b-zero-shot-r0-ffa5f616.toml
+snomed-fma-body-qwen3-8b-zero-shot-r0-36a98040	snomed-fma-body	qwen3-8b	zero-shot	0	f83b0715074ab6a5	configs/snomed-fma-body-qwen3-8b-zero-shot-r0-36a98040.toml

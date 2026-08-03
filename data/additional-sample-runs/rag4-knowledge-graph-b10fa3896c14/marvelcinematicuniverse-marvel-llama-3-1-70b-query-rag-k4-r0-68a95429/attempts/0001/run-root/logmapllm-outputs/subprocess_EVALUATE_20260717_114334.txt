@@ -1,0 +1,113 @@
+[INFO] (EVALUATE) Pipeline log file: /t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-knowledge-graph-b10fa3896c14/jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/subprocess_EVALUATE_20260717_114334.txt
+NOTE: Partial reference alignment (PARTIAL_SOURCE_COMPLETE_TARGET_COMPLETE semantics)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Global Alignment Metrics:
+[METRIC]   running metrics evaluation backend: kg_partial)
+[METRIC]   
+[METRIC]    Precision        :  0.8371
+[METRIC]    Recall           :  0.4658
+[METRIC]    F1               :  0.5985
+[METRIC]    True Positives   :  776
+[METRIC]    False Positives  :  151
+[METRIC]    False Negatives  :  890
+[METRIC]    Ignored          :  1358
+[METRIC]    System Size      :  2285
+[METRIC]    Evaluated Size   :  927
+[METRIC]    Reference Size   :  1666
+[METRIC]    Metric Notes     :  {}
+[METRIC]    Source           :  kg_partial
+
+Stratified evaluation (explicit refs, partial GS):
+[METRIC]             class:  P=1.0000  R=1.0000  F1=1.0000  (TP=2, FP=0, FN=0, Ign=6)
+[METRIC]          property:  P=0.6923  R=0.8182  F1=0.7500  (TP=9, FP=4, FN=2, Ign=10)
+[METRIC]          instance:  P=0.8388  R=0.4628  F1=0.5965  (TP=765, FP=147, FN=888, Ign=1342)
+
+- - - - - - - - - - - - - - - - - - - - - - - -
+[METRIC] Oracle Discrimination Metrics
+[METRIC]   running metrics evaluation backend: unknown)
+[METRIC]   
+[METRIC]    Oracle F1               :  0.8000
+[METRIC]    Oracle Recall           :  1.0000
+[METRIC]    Oracle Precision        :  0.6667
+[METRIC]    Metric Notes            :  {}
+[METRIC]    Youdens J               :  0.8000
+[METRIC]    Specificity             :  0.8000
+[METRIC]    Sensitivity             :  1.0000
+[METRIC]    Total Candidates        :  82
+[METRIC]    Oracle Excluded         :  75
+[METRIC]    Partial Scope Excluded  :  75
+[METRIC]    Errors                  :  0
+[METRIC]    Fn                      :  0
+[METRIC]    Tn                      :  4
+[METRIC]    Fp                      :  1
+[METRIC]    Tp                      :  2
+
+False mappings (1 FP+FN) saved to: /t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-knowledge-graph-b10fa3896c14/jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/false_mappings.csv
+
+Evaluation results saved to: /t705data/logmap_llm_sweep/canonical/batches/rag4-shards/xgpu-local/rag4-knowledge-graph-b10fa3896c14/jobs/marvelcinematicuniverse-marvel-llama-3-1-70b-query-rag-k4-r0-68a95429/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json
+{
+  "schema_version": 1,
+  "task_name": "marvelcinematicuniverse-marvel",
+  "engine": "partial_reference",
+  "metrics": [
+    "global",
+    "oracle"
+  ],
+  "global": {
+    "precision": 0.837108953613808,
+    "recall": 0.4657863145258103,
+    "f1": 0.5985345160046278,
+    "true_positives": 776,
+    "false_positives": 151,
+    "false_negatives": 890,
+    "ignored": 1358,
+    "system_size": 2285,
+    "evaluated_size": 927,
+    "reference_size": 1666,
+    "metric_notes": {},
+    "source": "kg_partial"
+  },
+  "global_class": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "true_positives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "ignored": 6,
+    "system_size": 8,
+    "evaluated_size": 2,
+    "reference_size": 2,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_class"
+  },
+  "global_property": {
+    "precision": 0.6923076923076923,
+    "recall": 0.8181818181818182,
+    "f1": 0.7500000000000001,
+    "true_positives": 9,
+    "false_positives": 4,
+    "false_negatives": 2,
+    "ignored": 10,
+    "system_size": 23,
+    "evaluated_size": 13,
+    "reference_size": 11,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_property"
+  },
+  "global_instance": {
+    "precision": 0.8388157894736842,
+    "recall": 0.4627949183303085,
+    "f1": 0.5964912280701754,
+    "true_positives": 765,
+    "false_positives": 147,
+    "false_negatives": 888,
+    "ignored": 1342,
+    "system_size": 2254,
+    "evaluated_size": 912,
+    "reference_size": 1653,
+    "metric_notes": {},
+    "source": "partial_reference_stratified_instance"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alignment_id": "0410e29bcdddd096",
+  "artifacts": [
+    {
+      "bytes": 93567,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings.txt",
+      "sha256": "0f662ee7b9964bd2bf08b4d4bef5f3b1cc641c5a7c52168c51f04a6952602df8"
+    },
+    {
+      "bytes": 17337,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmap-initial-alignment/anatomy-logmap_mappings_to_ask_oracle_user_llm.txt",
+      "sha256": "a4886567a28781f337032ed208f2488b9c2976ba935c7077bd2ada3b43f9055a"
+    },
+    {
+      "bytes": 90354,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmap-refined-alignment/anatomy-logmap_mappings.tsv",
+      "sha256": "8420605b7459d5561bdbd8e8a2bbbe03ec6a02f7d1949073972ff6a526d0f053"
+    },
+    {
+      "bytes": 468099,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-few_shot_examples.json",
+      "sha256": "131836df0ca22496ce5100f24015f955b144ef13d178774f4e4885126cb539bc"
+    },
+    {
+      "bytes": 125475,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_oracle_user_prompts.json",
+      "sha256": "2d3959d9aa6fa3b427a8c052ffc7663d804a7def6003b98781c5c9acf336ae4d"
+    },
+    {
+      "bytes": 31056,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/anatomy-one_level_of_parents_and_synonyms-mappings_to_ask_with_oracle_predictions.csv",
+      "sha256": "c8536c060a2405a37abbad1168f5e6a037a5fe844595fb82722579ec7516403b"
+    },
+    {
+      "bytes": 864,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/evaluation_results.json",
+      "sha256": "4bd0e4260b4f142e82830b8a5826d1c52f2f9f8b75323113c354ffa182c7db76"
+    },
+    {
+      "bytes": 1235115,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/rag_traces.json",
+      "sha256": "46728e45743082ad0a39333fa55f63a03434f2baa0e97295b1bd683696e633ed"
+    },
+    {
+      "bytes": 4585,
+      "path": "jobs/anatomy-gemma-3-27b-ca-k4-r0-49c4007c/attempts/0001/run-root/logmapllm-outputs/run_result.json",
+      "sha256": "538d08d477a78a5b234b47f6910fafee2a312a44ab1b677ab48d1dd9f0caac92"
+    }
+  ],
+  "attempt": "0001",
+  "condition": "ca-k4",
+  "condition_id": "23d15543d4dad80b8174439a6df0b5849755b842cd32050c6bd6a29121ab28f8",
+  "config_sha256": "673248e327f96f528fe00be72f65acac882a2a3b868d03eebc88258e9cfecbd0",
+  "core_sha256": "a3eeba8406ee373d6664fa5f6166e97b23408438fddad9e9231ca259ab240da3",
+  "execution_hash": "49c4007cfb535b54f982d1053a8004d82300cf0175e68bc9cc6363582936cd9c",
+  "finished_at": "2026-07-27T23:24:46+00:00",
+  "id": "anatomy-gemma-3-27b-ca-k4-r0-49c4007c",
+  "kind": "job",
+  "model": "gemma-3-27b",
+  "repeat": 0,
+  "schema": 1,
+  "status": "success",
+  "task": "anatomy"
+}
