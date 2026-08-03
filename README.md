@@ -12,7 +12,7 @@ A classical LogMap run (Java, driven from Python via JPype) produces (i) an init
 
 The verdicts are then folded back into the alignment: 
 
-$refined_{pre-repair} = (initial − M_{ask}) \cup \{ m \in M_{ask} : oracle(m) = True \},$
+$refined_{pre-repair} = (initial − M_{ask}) \cup \left\lbrace\ m \in M_{ask} : oracle(m) = True\ \right\rbrace,$
 
 either through LogMap's own Java refinement (which also resolves logical conflicts). The refined alignment can finally be scored against a reference, including OAEI Knowledge Graph track semantics for partial gold standards, and every successful run publishes a machine-readable `run_result.json` recording parameters, counts, timings and sha256 artifact hashes.
 
