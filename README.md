@@ -52,7 +52,7 @@ The CLI flags:
 - `--no-cache` — disable owlready2 quadstore caching and parse the ontologies from scratch.
 - `--run-root DIR` — root all outputs under `DIR`, creating `logmapllm-outputs`, `logmap-initial-alignment` and `logmap-refined-alignment` subdirectories.
 
-The run executes five phases in order: (1) align, (2) prompt build, (3) oracle consultation, (4) refinement, and (5) evaluation; followed by reporting. Prompt building and evaluation each run in their own subprocess, since owlready2 and JPype contained to a single process has be known to cause problems; we also separate the [DeepOnto](#) evaluator into its own JVM spawned by a subprocess when used.
+The run executes five phases in order: (1) align, (2) prompt build, (3) oracle consultation, (4) refinement, and (5) evaluation; followed by reporting. Prompt building and evaluation each run in their own subprocess, since owlready2 and JPype contained to a single process has be known to cause problems; we also separate the [DeepOnto](https://github.com/KRR-Oxford/DeepOnto) evaluator into its own JVM spawned by a subprocess when used.
 
 ## Project Structure
 
