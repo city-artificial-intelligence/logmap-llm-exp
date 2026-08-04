@@ -1,20 +1,17 @@
-# logmap-llm-exp
+# LogMapLLM Experimental
 
-LogMapLLM experimental.
+This repository contains experiment data and on-going work related to [LogMapLLM](https://github.com/city-artificial-intelligence/logmap-llm), a project that extends the [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher) ontology matching system with an LLM oracle.
 
 ## LogMapLLM
 
-LogMapLLM is a research codebase that extends the [LogMap](https://github.com/ernestojimenezruiz/logmap-matcher) ontology-matching system with an LLM oracle. LogMap can ask a human oracle about the mappings it is unsure of; here that role is played by a language model reached over any OpenAI-compatible API (OpenRouter, vLLM, SGLang, OpenAI), with everything around it — prompt construction, few-shot retrieval, refinement, evaluation, batch experiments.
+Expert knowledge is often required for effective ontology matching. LogMap has an interactive matching mode for this purpose, where **uncertain mappings**, denoted $M_{ask}$, are escalated for review by a human oracle. It is plausible, however, to replace the human expert by a large language model (LLM); a paradigm known as _LLMs-as-Oracles_. By **assembling prompts** for each correspondence in $M_{ask}$ and **consulting** an LLM via an OpenAI-compatible API (e.g., via OpenRouter, to vLLM, etc.), we fold the response back into the proposed alignment before **refinement** (i.e., the repair step).
 
-## The idea
+Experimental features _(this repository)_:
 
-A classical LogMap run (Java, driven from Python via JPype) produces (i) an initial alignment between the source and target ontologies, and (ii) a subset of candidate mappings it considers uncertain (the "mappings to ask" the oracle), written here as $M_{ask}$. For each candidate in $M_{ask}$ the pipeline renders a natural-language question grounded in ontology context (labels, synonyms, parents, siblings, domain and range, instance attributes), optionally prepends retrieved few-shot demonstrations, and asks the LLM for a True/False (or Yes/No; structured/unstructured) verdict on whether the two entities match.
-
-The verdicts are then folded back into the alignment: 
-
-$refined_{pre-repair} = (initial − M_{ask}) \cup \left\lbrace\ m \in M_{ask} : oracle(m) = True\ \right\rbrace,$
-
-either through LogMap's own Java refinement (which also resolves logical conflicts). The refined alignment can finally be scored against a reference, including OAEI Knowledge Graph track semantics for partial gold standards, and every successful run publishes a machine-readable `run_result.json` recording parameters, counts, timings and sha256 artifact hashes.
+* extended prompt construction (class, property, instance prompt templates),
+* few-shot ontology-driven prompting with RAG-based features,
+* collective anchor-based few-shot ontology-driven prompting,
+* and self-hosted, open-weight-based evaluation.
 
 ## Usage
 
@@ -45,7 +42,7 @@ evaluate = true
 reference_alignment_path = "data/reference.rdf"
 ```
 
-The config is a TOML file validated by a strict Pydantic schema; at minimum it needs `[alignmentTask]` (task name and the two ontology paths), `[oracle]` (model name), and `[outputs]` (three output directories). You also need a LogMap bundle on disk (`logmap-matcher-4.0.jar`, `java-dependencies/`, `parameters.txt`), found under `./logmap` by default or wherever `alignmentTask.logmap_parameters_dirpath` points. 
+The config is a TOML file validated by a Pydantic schema; at minimum it needs `[alignmentTask]` (task name and the two ontology paths), `[oracle]` (model name), and `[outputs]` (three output directories). You also need a LogMap bundle on disk (`logmap-matcher-4.0.jar`, `java-dependencies/`, `parameters.txt`), found under `./logmap` by default or wherever `alignmentTask.logmap_parameters_dirpath` points. 
 
 The CLI flags:
 
@@ -55,7 +52,33 @@ The CLI flags:
 - `--no-cache` — disable owlready2 quadstore caching and parse the ontologies from scratch.
 - `--run-root DIR` — root all outputs under `DIR`, creating `logmapllm-outputs`, `logmap-initial-alignment` and `logmap-refined-alignment` subdirectories.
 
-The run executes five phases in order — align, prompt build, oracle consultation, refinement, evaluation — followed by reporting. Prompt building and evaluation each run in their own subprocess: owlready2 cannot coexist with JPype in one process, and the DeepOnto evaluator needs its own JVM.
+The run executes five phases in order: (1) align, (2) prompt build, (3) oracle consultation, (4) refinement, and (5) evaluation; followed by reporting. Prompt building and evaluation each run in their own subprocess, since owlready2 and JPype contained to a single process has be known to cause problems; we also separate the [DeepOnto](#) evaluator into its own JVM spawned by a subprocess when used.
+
+## Project Structure
+
+```
+logmap_llm/
+├── __main__.py       python -m logmap_llm -> calls -> pipeline.runner.main()
+├── config/           contains the TOML schema (Pydantic) and loader
+├── pipeline/         the five-phase driver: runner, orchestration, paths, reporting
+├── oracle/           LLM client (manager.py) and threaded consultation campaign
+│   ├── prompts/      user/developer prompt templates per entity lane (class/property/instance)
+│   └── rag/          query-specific few-shot retrieval from LogMap anchors
+├── evaluation/       alignment and oracle scoring, run as a subprocess harness
+├── experiments/      experimental batch harness: batch.toml -> sealed batch directory
+├── ontology/         owlready2 access layer, annotation indices, sibling retrieval
+├── bridging.py       LogMap's Java MappingObjectStr <-> pandas DataFrames
+├── interface.py      JPype wrapper around LogMap's LogMapLLM_Interface
+├── constants.py      shared enums, column names, separators, defaults
+└── utils/            logging, atomic writes, subprocess bootstrap
+```
+
+## Roadmap
+
+* Refined implementation (beyond experimental, on-going work).
+* Remove owlready2; opt to use LogMap itself for ontology access.
+* Easily sharable embedding stores for community reuse.
+* Improved documentation.
 
 ## License
 
