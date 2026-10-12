@@ -1,0 +1,301 @@
+src	tgt	label	kind	entity_lines
+http://mouse.owl#MA_0000271	http://human.owl#NCI_C52803	0	granularity_parent	"The first one is ""eye muscle"".
+The second one is ""eyelid_muscle"", also known as ""eyelid muscle"", which falls under the category ""Head_and_Neck_Muscle""."
+http://mouse.owl#MA_0000149	http://human.owl#NCI_C33519	0	granularity_child	"The first one is ""skin sebaceous gland"", which falls under the category ""skin gland"".
+The second one is ""sebaceous_gland"", also known as ""sebaceous gland"", which falls under the category ""Exocrine_Gland""."
+http://mouse.owl#MA_0000048	http://human.owl#NCI_C52839	0	granularity_parent	"The first one is ""foot digit"", which falls under the category ""limb digit"".
+The second one is ""foot_digit_1"", also known as ""foot digit 1"", which falls under the category ""Toe""."
+http://mouse.owl#MA_0000006	http://human.owl#NCI_C12418	1	anchor_masked	"The first one is ""head/neck"", which falls under the category ""anatomic region"".
+The second one is ""head_and_neck"", also known as ""h and n"", ""h and n - head and neck"", ""head and neck"", which falls under the category ""Body_Region""."
+http://mouse.owl#MA_0002369	http://human.owl#NCI_C52985	1	anchor_masked	"The first one is ""scalenus posterior"", which falls under the category ""skeletal muscle"".
+The second one is ""scalenus_dorsalis"", which falls under the category ""Muscle""."
+http://mouse.owl#MA_0001823	http://human.owl#NCI_C12779	0	granularity_child	"The first one is ""respiratory system epithelium"", also known as ""respiratory system mucosa"".
+The second one is ""respiratory_system"", also known as ""body system, pulmonary"", ""organ system, pulmonary"", ""pulmonary body system"", ""pulmonary organ system"", ""respiratory system"", ""respiratory system (all sites)"", ""respiratory tract"", which falls under the category ""Organ_System""."
+http://mouse.owl#MA_0001264	http://human.owl#NCI_C49597	1	anchor_masked	"The first one is ""lateral canthus"".
+The second one is ""outer_canthus"", which falls under the category ""Head_and_Neck_Part""."
+http://mouse.owl#MA_0001262	http://human.owl#NCI_C49564	1	anchor_masked	"The first one is ""medial canthus"".
+The second one is ""inner_canthus"", which falls under the category ""Head_and_Neck_Part""."
+http://mouse.owl#MA_0002546	http://human.owl#NCI_C13161	0	granularity_child	"The first one is ""juxtaglomerular complex"", also known as ""juxtaglomerular apparatus"".
+The second one is ""juxtaglomerular_cell"", also known as ""juxtaglomerular cell"", which falls under the category ""Cell""."
+http://mouse.owl#MA_0002565	http://human.owl#NCI_C33520	0	granularity_child	"The first one is ""sebaceous gland"", which falls under the category ""exocrine gland"".
+The second one is ""sebaceous_gland_duct"", also known as ""sebaceous gland duct"", which falls under the category ""Duct""."
+http://mouse.owl#MA_0000703	http://human.owl#NCI_C49192	0	granularity_parent	"The first one is ""arterial system endothelium"", which falls under the category ""blood vessel endothelium"".
+The second one is ""arteriole_endothelium"", also known as ""arteriole endothelium"", which falls under the category ""Vascular_Endothelium""."
+http://mouse.owl#MA_0002725	http://human.owl#NCI_C49264	0	granularity_parent	"The first one is ""pharynx epithelium"".
+The second one is ""oropharynx_epithelium"", also known as ""oropharynx epithelium"", which falls under the category ""Epithelium""."
+http://mouse.owl#MA_0001060	http://human.owl#NCI_C49332	0	granularity_child	"The first one is ""midbrain dura mater"", which falls under the category ""brain dura mater"".
+The second one is ""cerebral_dura_mater"", also known as ""brain dura mater"", which falls under the category ""Dura_Mater""."
+http://mouse.owl#MA_0002676	http://human.owl#NCI_C12765	0	granularity_parent	"The first one is ""parathyroid gland capsule"".
+The second one is ""parathyroid_gland"", also known as ""head and neck, parathyroid"", ""parathyroid"", ""parathyroid gland"", ""parathyroid glands"", which falls under the category ""Endocrine_Gland""."
+http://mouse.owl#MA_0001660	http://human.owl#NCI_C32225	1	anchor_masked	"The first one is ""glomerular capsule"".
+The second one is ""bowman_s_capsule"", also known as ""malpighian capsule"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0001203	http://human.owl#NCI_C33046	1	anchor_masked	"The first one is ""utricular macula"".
+The second one is ""macula_of_utricle"", which falls under the category ""Ear_Part""."
+http://mouse.owl#MA_0000983	http://human.owl#NCI_C32308	1	anchor_masked	"The first one is ""fourth ventricle choroid plexus"", also known as ""4th ventricle choroid plexus"", which falls under the category ""choroid plexus"".
+The second one is ""choroid_plexus_of_the_fourth_ventricle"", also known as ""choroid plexus of the fourth ventricle"", which falls under the category ""Choroid_Plexus""."
+http://mouse.owl#MA_0000728	http://human.owl#NCI_C33784	0	granularity_parent	"The first one is ""thyroid gland left lobe"", which falls under the category ""thyroid gland lobe"".
+The second one is ""thyroid_gland_lobe"", also known as ""thyroid gland lobe"", which falls under the category ""Endocrine_System_Part""."
+http://mouse.owl#MA_0001657	http://human.owl#NCI_C13250	1	anchor_masked	"The first one is ""glomerular tuft"".
+The second one is ""malpighian tuft"", also known as ""renal glomerulus"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0001457	http://human.owl#NCI_C12852	1	anchor_masked	"The first one is ""vertebral centrum"".
+The second one is ""vertebral_body"", also known as ""body of the vertebra"", ""body of vertebra"", which falls under the category ""Musculoskeletal_System_Part""."
+http://mouse.owl#MA_0000556	http://human.owl#NCI_C12905	0	granularity_child	"The first one is ""thoracic cavity nerve"", which falls under the category ""thorax nerve"".
+The second one is ""thoracic_cavity"", also known as ""thoracic cavity"", which falls under the category ""Cavity""."
+http://mouse.owl#MA_0001428	http://human.owl#NCI_C12744	0	granularity_child	"The first one is ""lumbar vertebra 1"", which falls under the category ""lumbar vertebra"".
+The second one is ""lumbar_vertebra"", also known as ""lumbar vertebra"", ""lumbar vertebrae"", which falls under the category ""Vertebra""."
+http://mouse.owl#MA_0000396	http://human.owl#NCI_C12841	0	granularity_child	"The first one is ""male reproductive system"", also known as ""male reproductive tract"".
+The second one is ""reproductive_system"", also known as ""reproductive system"", which falls under the category ""Organ_System""."
+http://mouse.owl#MA_0002453	http://human.owl#NCI_C12872	0	granularity_child	"The first one is ""coronary artery"", which falls under the category ""artery"".
+The second one is ""left_coronary_artery"", also known as ""left coronary artery"", which falls under the category ""Coronary_Artery""."
+http://mouse.owl#MA_0002304	http://human.owl#NCI_C53172	0	granularity_parent	"The first one is ""plantar foot interosseus muscle"", which falls under the category ""foot interosseus muscle"".
+The second one is ""foot_interosseous_muscle"", also known as ""foot interosseous muscle"", which falls under the category ""Muscle""."
+http://mouse.owl#MA_0002376	http://human.owl#NCI_C53007	1	anchor_masked	"The first one is ""serratus posterior inferior"", which falls under the category ""skeletal muscle"".
+The second one is ""serratus_dorsalis_caudalis"", which falls under the category ""Muscle""."
+http://mouse.owl#MA_0001579	http://human.owl#NCI_C12291	1	anchor_masked	"The first one is ""lip skin"".
+The second one is ""skin_of_the_lip"", also known as ""skin of lip"", ""skin of lip, nos"", ""skin of the lip"", which falls under the category ""Skin""."
+http://mouse.owl#MA_0000366	http://human.owl#NCI_C12588	0	granularity_child	"The first one is ""liver parenchyma"", also known as ""hepatic parenchyma"".
+The second one is ""hepatocyte"", also known as ""hepatic cells"", ""hepatic parenchymal cell"", ""hepatocytes"", ""liver cells"", which falls under the category ""Glandular_Cell""."
+http://mouse.owl#MA_0000122	http://human.owl#NCI_C12269	1	anchor_masked	"The first one is ""pancreas head"".
+The second one is ""head_of_the_pancreas"", also known as ""head of pancreas"", ""head of the pancreas"", which falls under the category ""Gastrointestinal_System_Part""."
+http://mouse.owl#MA_0001791	http://human.owl#NCI_C48944	1	anchor_masked	"The first one is ""right lung lobe"".
+The second one is ""lobe_of_the_right_lung"", also known as ""lobe of the right lung"", which falls under the category ""Lung_Lobe""."
+http://mouse.owl#MA_0001421	http://human.owl#NCI_C12693	0	granularity_child	"The first one is ""cervical vertebra 1"", also known as ""atlas"", which falls under the category ""cervical vertebra"".
+The second one is ""cervical_vertebra"", also known as ""cervical vertebra"", ""cervical vertebrae"", which falls under the category ""Vertebra""."
+http://mouse.owl#MA_0000166	http://human.owl#NCI_C13001	0	granularity_child	"The first one is ""smooth muscle"", which falls under the category ""muscle"".
+The second one is ""smooth_muscle_tissue_cell"", also known as ""leiomyocyte"", ""smooth muscle cell"", ""smooth muscle tissue cell"", which falls under the category ""Muscle_Cell""."
+http://mouse.owl#MA_0001140	http://human.owl#NCI_C52721	0	granularity_parent	"The first one is ""hypogastric nerve plexus"", which falls under the category ""autonomic nerve plexus"".
+The second one is ""inferior_hypogastric_nerve_plexus"", also known as ""inferior hypogastric nerve plexus"", which falls under the category ""Hypogastric_Nerve_Plexus""."
+http://mouse.owl#MA_0002624	http://human.owl#NCI_C33006	0	granularity_child	"The first one is ""loop of henle bend"".
+The second one is ""loop_of_henle"", also known as ""henle's loop"", ""loop of henle"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0002191	http://human.owl#NCI_C53060	0	granularity_child	"The first one is ""inferior pancreatico-duodenal vein"", which falls under the category ""pancreatico-duodenal vein"".
+The second one is ""pancreatico-duodenal_vein"", also known as ""pancreatico-duodenal vein"", which falls under the category ""Vein""."
+http://mouse.owl#MA_0001658	http://human.owl#NCI_C32522	1	anchor_masked	"The first one is ""glomerular capillary endothelium"".
+The second one is ""endothelium_of_the_glomerular_capillary"", also known as ""endothelium of the glomerular capillary"", which falls under the category ""Endothelium""."
+http://mouse.owl#MA_0002309	http://human.owl#NCI_C52560	1	anchor_masked	"The first one is ""gluteus superficialis"", which falls under the category ""skeletal muscle"".
+The second one is ""gluteus_maximus"", which falls under the category ""Muscle""."
+http://mouse.owl#MA_0002438	http://human.owl#NCI_C33637	0	granularity_child	"The first one is ""striated muscle tissue"", which falls under the category ""muscle tissue"".
+The second one is ""striated_muscle_tissue_cell"", also known as ""striated muscle cell"", ""striated muscle tissue cell"", ""striated muscle tissue fiber"", which falls under the category ""Muscle_Cell""."
+http://mouse.owl#MA_0000136	http://human.owl#NCI_C12910	0	granularity_parent	"The first one is ""gut associated lymphoid tissue"", also known as ""galt"".
+The second one is ""mucosa-associated_lymphoid_tissue"", also known as ""lymphoid tissue, mucosa-associated"", ""malt"", ""mucosa-associated lymphoid tissue"", which falls under the category ""Lymphoid_Tissue""."
+http://mouse.owl#MA_0001665	http://human.owl#NCI_C32469	0	granularity_parent	"The first one is ""renal convoluted tubule"", which falls under the category ""renal tubule"".
+The second one is ""distal_convoluted_tubule"", also known as ""distal convoluted tubule"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0000381	http://human.owl#NCI_C12402	1	anchor_masked	"The first one is ""female reproductive tract"".
+The second one is ""female_reproductive_system"", also known as ""body system, gynecologic"", ""body system, reproductive, female"", ""female reproductive body system"", ""female reproductive organ system"", ""genital system, female"", ""gynecologic body system"", ""gynecologic organ system"", ""organ system, female reproductive"", ""organ system, gynecologic"", ""reproductive system, female"", which falls under the category ""Reproductive_System""."
+http://mouse.owl#MA_0000131	http://human.owl#NCI_C32973	0	granularity_parent	"The first one is ""thyroid gland lobe"".
+The second one is ""left_thyroid_gland_lobe"", also known as ""left thyroid gland lobe"", which falls under the category ""Thyroid_Gland_Lobe""."
+http://mouse.owl#MA_0000084	http://human.owl#NCI_C32818	1	anchor_masked	"The first one is ""atrial septum"", which falls under the category ""heart septum"".
+The second one is ""interatrial_septum"", which falls under the category ""Heart_Part""."
+http://mouse.owl#MA_0001926	http://human.owl#NCI_C32956	0	granularity_parent	"The first one is ""common carotid artery"", which falls under the category ""carotid artery"".
+The second one is ""left_common_carotid_artery"", also known as ""left common carotid artery"", which falls under the category ""Aortic_Arch_Branch""."
+http://mouse.owl#MA_0000196	http://human.owl#NCI_C12828	1	anchor_masked	"The first one is ""4th ventricle"", which falls under the category ""brain ventricle"".
+The second one is ""fourth_ventricle_of_the_brain"", also known as ""fourth ventricle of brain"", ""fourth ventricle of the brain"", which falls under the category ""Ventricle_Brain""."
+http://mouse.owl#MA_0002190	http://human.owl#NCI_C52692	0	granularity_child	"The first one is ""pancreatico-duodenal vein"", which falls under the category ""vein"".
+The second one is ""inferior_pancreatico-duodenal_vein"", also known as ""inferior pancreatico-duodenal vein"", which falls under the category ""Pancreatico-Duodenal_Vein""."
+http://mouse.owl#MA_0002215	http://human.owl#NCI_C33004	0	granularity_parent	"The first one is ""saphenous vein"", which falls under the category ""vein"".
+The second one is ""long_saphenous_vein"", also known as ""great saphenous vein"", ""long saphenous vein"", which falls under the category ""Saphenous_Vein""."
+http://mouse.owl#MA_0000404	http://human.owl#NCI_C52726	0	granularity_child	"The first one is ""prostate gland"", which falls under the category ""male reproductive gland"".
+The second one is ""prostate_gland_lobe"", also known as ""prostate gland lobe"", which falls under the category ""Male_Reproductive_System_Part""."
+http://mouse.owl#MA_0000106	http://human.owl#NCI_C49593	0	granularity_parent	"The first one is ""costal cartilage"", which falls under the category ""cartilage"".
+The second one is ""nasal_cartilage"", also known as ""nasal cartilage"", which falls under the category ""Cartilage""."
+http://mouse.owl#MA_0001738	http://human.owl#NCI_C12410	0	granularity_child	"The first one is ""prostate gland lobe"".
+The second one is ""prostate_gland"", also known as ""genital system, male, prostate"", ""human prostate"", ""human prostate gland"", ""prostate"", ""prostate gland"", ""prostatic gland"", which falls under the category ""Exocrine_Gland""."
+http://mouse.owl#MA_0001161	http://human.owl#NCI_C12465	0	granularity_child	"The first one is ""peripheral nervous system ganglion"".
+The second one is ""peripheral_nervous_system"", also known as ""peripheral nervous system"", which falls under the category ""Nervous_System_Part""."
+http://mouse.owl#MA_0002032	http://human.owl#NCI_C12774	0	granularity_parent	"The first one is ""left pulmonary artery"", which falls under the category ""pulmonary artery"".
+The second one is ""pulmonary_artery"", also known as ""pulmonary artery"", ""pulmonary trunk"", which falls under the category ""Artery""."
+http://mouse.owl#MA_0002014	http://human.owl#NCI_C52992	0	granularity_parent	"The first one is ""inferior pancreatico-duodenal artery"", which falls under the category ""pancreatico-duodenal artery"".
+The second one is ""pancreatico-duodenal_artery"", also known as ""pancreatico-duodenal artery"", which falls under the category ""Superior_Mesenteric_Artery_Branch""."
+http://mouse.owl#MA_0000728	http://human.owl#NCI_C32973	1	anchor_masked	"The first one is ""thyroid gland left lobe"", which falls under the category ""thyroid gland lobe"".
+The second one is ""left_thyroid_gland_lobe"", also known as ""left thyroid gland lobe"", which falls under the category ""Thyroid_Gland_Lobe""."
+http://mouse.owl#MA_0000361	http://human.owl#NCI_C32965	1	anchor_masked	"The first one is ""liver left lobe"", which falls under the category ""liver lobe"".
+The second one is ""left_lobe_of_the_liver"", also known as ""left lobe of the liver"", which falls under the category ""Gastrointestinal_System_Part""."
+http://mouse.owl#MA_0000250	http://human.owl#NCI_C33527	0	granularity_child	"The first one is ""osseus semicircular canal"".
+The second one is ""semicircular_canal"", also known as ""semicircular canal"", which falls under the category ""Ear_Part""."
+http://mouse.owl#MA_0000910	http://human.owl#NCI_C33893	1	anchor_masked	"The first one is ""spinal cord white matter"", which falls under the category ""white matter"".
+The second one is ""white_matter_of_the_spinal_cord"", also known as ""white matter of the spinal cord"", which falls under the category ""White_Matter""."
+http://mouse.owl#MA_0001582	http://human.owl#NCI_C12608	0	granularity_child	"The first one is ""endocrine pancreas"", which falls under the category ""endocrine gland"".
+The second one is ""islet_of_langerhans"", also known as ""b9 endocrine pancreas"", ""islands of langerhans"", ""islet cells"", ""islet of langerhans"", ""islets of langerhans"", ""langerhans islets"", ""nesidioblasts"", ""pancreas, endocrine"", ""pancreatic islets"", ""pars endocrina pancreatis"", which falls under the category ""Gastrointestinal_System_Part""."
+http://mouse.owl#MA_0000962	http://human.owl#NCI_C49248	1	anchor_masked	"The first one is ""lateral ventricle choroid plexus epithelium"", which falls under the category ""choroid plexus epithelium"".
+The second one is ""choroid_plexus_epithelium_of_the_lateral_ventricle"", also known as ""choroid plexus epithelium of the lateral ventricle"", which falls under the category ""Choroid_Plexus_Epithelium""."
+http://mouse.owl#MA_0000740	http://human.owl#NCI_C38467	0	granularity_child	"The first one is ""lymph node cortex"".
+The second one is ""interfollicular_area_of_the_lymph_node"", also known as ""interfollicular area of the lymph node"", ""lymph node paracortex"", ""lymph node paracortical region"", which falls under the category ""Lymphoid_Tissue""."
+http://mouse.owl#MA_0000092	http://human.owl#NCI_C12730	0	granularity_child	"The first one is ""heart left ventricle"", which falls under the category ""heart ventricle"".
+The second one is ""cardiac_ventricle"", also known as ""cardiac ventricle"", ""cardiac ventricles"", ""heart ventricle"", ""ventricle"", ""ventricles, heart"", which falls under the category ""Heart_Part""."
+http://mouse.owl#MA_0001883	http://human.owl#NCI_C32391	0	granularity_child	"The first one is ""nasal cartilage"", which falls under the category ""costal cartilage"".
+The second one is ""costal_cartilage"", also known as ""costal cartilage"", which falls under the category ""Cartilage""."
+http://mouse.owl#MA_0002576	http://human.owl#NCI_C32160	1	anchor_masked	"The first one is ""his bundle"".
+The second one is ""atrioventricular_bundle"", also known as ""a-v bundle"", which falls under the category ""Heart_Part""."
+http://mouse.owl#MA_0001200	http://human.owl#NCI_C33083	1	anchor_masked	"The first one is ""reissner's membrane"".
+The second one is ""vestibular_membrane"", also known as ""membrane of reissner"", which falls under the category ""Membrane""."
+http://mouse.owl#MA_0000116	http://human.owl#NCI_C49322	0	granularity_child	"The first one is ""adrenal gland"", also known as ""suprarenal gland"", which falls under the category ""abdomen organ"".
+The second one is ""left_adrenal_gland"", also known as ""left adrenal gland"", which falls under the category ""Adrenal_Gland""."
+http://mouse.owl#MA_0002240	http://human.owl#NCI_C53140	0	granularity_child	"The first one is ""deep temporal vein"", which falls under the category ""temporal vein"".
+The second one is ""temporal_vein"", also known as ""temporal vein"", which falls under the category ""Vein""."
+http://mouse.owl#MA_0000070	http://human.owl#NCI_C12690	0	granularity_child	"The first one is ""venous sinus"", which falls under the category ""venous blood vessel"".
+The second one is ""cavernous_sinus"", also known as ""cavernous sinus"", which falls under the category ""Venous_Sinus""."
+http://mouse.owl#MA_0002439	http://human.owl#NCI_C48687	0	granularity_child	"The first one is ""skeletal muscle tissue"", which falls under the category ""striated muscle tissue"".
+The second one is ""skeletal_muscle_cell"", also known as ""skeletal muscle cell"", ""skeletal muscle tissue cell"", which falls under the category ""Striated_Muscle_Tissue_Cell""."
+http://mouse.owl#MA_0002045	http://human.owl#NCI_C32972	0	granularity_parent	"The first one is ""subclavian artery"", which falls under the category ""artery"".
+The second one is ""left_subclavian_artery"", also known as ""left subclavian artery"", which falls under the category ""Aortic_Arch_Branch""."
+http://mouse.owl#MA_0000438	http://human.owl#NCI_C32968	0	granularity_parent	"The first one is ""main bronchus"", which falls under the category ""bronchus"".
+The second one is ""left_main_bronchus"", also known as ""left main bronchus"", which falls under the category ""Main_Bronchus""."
+http://mouse.owl#MA_0002491	http://human.owl#NCI_C12414	0	granularity_child	"The first one is ""urinary bladder neck"".
+The second one is ""bladder"", also known as ""urinary bladder"", ""urinary system, bladder"", which falls under the category ""Organ""."
+http://mouse.owl#MA_0000182	http://human.owl#NCI_C12827	1	anchor_masked	"The first one is ""3rd ventricle"", which falls under the category ""brain ventricle"".
+The second one is ""third_ventricle_of_brain"", also known as ""third cerebral ventricle"", ""third ventricle of brain"", ""ventricle, third"", which falls under the category ""Ventricle_Brain""."
+http://mouse.owl#MA_0000961	http://human.owl#NCI_C32309	1	anchor_masked	"The first one is ""lateral ventricle choroid plexus"", which falls under the category ""choroid plexus"".
+The second one is ""choroid_plexus_of_the_lateral_ventricle"", also known as ""choroid plexus of the lateral ventricle"", which falls under the category ""Choroid_Plexus""."
+http://mouse.owl#MA_0002741	http://human.owl#NCI_C49334	0	granularity_child	"The first one is ""brainstem white matter"", which falls under the category ""brain white matter"".
+The second one is ""brain_white_matter"", also known as ""brain white matter"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000718	http://human.owl#NCI_C12666	0	granularity_child	"The first one is ""left adrenal gland"", which falls under the category ""adrenal gland"".
+The second one is ""adrenal_gland"", also known as ""adrenal gland"", ""adrenal glands"", ""adrenals"", which falls under the category ""Endocrine_Gland""."
+http://mouse.owl#MA_0001148	http://human.owl#NCI_C52748	1	anchor_masked	"The first one is ""auerbach's plexus"", which falls under the category ""intrinsic nerve plexus"".
+The second one is ""myenteric_nerve_plexus"", which falls under the category ""Nerve_Plexus""."
+http://mouse.owl#MA_0002046	http://human.owl#NCI_C33643	0	granularity_parent	"The first one is ""left subclavian artery"", which falls under the category ""subclavian artery"".
+The second one is ""subclavian_artery"", also known as ""subclavian artery"", which falls under the category ""Artery""."
+http://mouse.owl#MA_0001686	http://human.owl#NCI_C49310	0	granularity_parent	"The first one is ""urethra epithelium"", also known as ""urethral epithelium"".
+The second one is ""urethra_transitional_cell_epithelium"", also known as ""urethra transitional cell epithelium"", ""urethra transitional epithelium"", ""urethra urothelium"", which falls under the category ""Urothelium""."
+http://mouse.owl#MA_0002206	http://human.owl#NCI_C48946	0	granularity_child	"The first one is ""pulmonary vein"", which falls under the category ""vein"".
+The second one is ""left_pulmonary_vein"", also known as ""left pulmonary vein"", which falls under the category ""Pulmonary_Vein""."
+http://mouse.owl#MA_0002546	http://human.owl#NCI_C32891	1	anchor_masked	"The first one is ""juxtaglomerular complex"".
+The second one is ""juxtaglomerular_apparatus"", which falls under the category ""Renal_Tissue""."
+http://mouse.owl#MA_0002302	http://human.owl#NCI_C52702	0	granularity_parent	"The first one is ""foot interosseus muscle"", which falls under the category ""skeletal muscle"".
+The second one is ""plantar_foot_interosseus_muscle"", also known as ""plantar foot interosseus muscle"", which falls under the category ""Foot_Interosseous_Muscle""."
+http://mouse.owl#MA_0000002	http://human.owl#NCI_C32696	1	anchor_masked	"The first one is ""spinal cord grey matter"", which falls under the category ""grey matter"".
+The second one is ""gray_matter_of_the_spinal_cord"", also known as ""gray matter of the spinal cord"", which falls under the category ""Gray_Matter""."
+http://mouse.owl#MA_0000461	http://human.owl#NCI_C33894	0	granularity_child	"The first one is ""radio-carpal joint"", which falls under the category ""wrist joint"".
+The second one is ""wrist_joint"", also known as ""radiocarpal joint"", ""wrist joint"", which falls under the category ""Joint_By_Site""."
+http://mouse.owl#MA_0002013	http://human.owl#NCI_C32786	0	granularity_parent	"The first one is ""pancreatico-duodenal artery"", which falls under the category ""artery"".
+The second one is ""inferior_pancreatico-duodenal_artery"", also known as ""inferior pancreatico-duodenal artery"", which falls under the category ""Superior_Mesenteric_Artery_Branch""."
+http://mouse.owl#MA_0002229	http://human.owl#NCI_C53138	0	granularity_child	"The first one is ""suprarenal vein"", which falls under the category ""vein"".
+The second one is ""left_suprarenal_vein"", also known as ""left suprarenal vein"", which falls under the category ""Suprarenal_Vein""."
+http://mouse.owl#MA_0000488	http://human.owl#NCI_C32126	1	anchor_masked	"The first one is ""heart apex"".
+The second one is ""apex_of_the_heart"", also known as ""apex of the heart"", which falls under the category ""Heart_Part""."
+http://mouse.owl#MA_0000736	http://human.owl#NCI_C32431	0	granularity_child	"The first one is ""cervical lymph node"", which falls under the category ""lymph node"".
+The second one is ""deep_cervical_lymph_node"", also known as ""deep cervical lymph node"", which falls under the category ""Cervical_Lymph_Node""."
+http://mouse.owl#MA_0000041	http://human.owl#NCI_C52834	0	granularity_parent	"The first one is ""hand digit"", which falls under the category ""limb digit"".
+The second one is ""hand_digit_1"", also known as ""hand digit 1"", which falls under the category ""Finger""."
+http://mouse.owl#MA_0002459	http://human.owl#NCI_C32301	1	anchor_masked	"The first one is ""eye chamber"".
+The second one is ""chamber_of_the_eye"", also known as ""chamber of the eye"", which falls under the category ""Eye_Part""."
+http://mouse.owl#MA_0002377	http://human.owl#NCI_C53012	1	anchor_masked	"The first one is ""serratus posterior superior"", which falls under the category ""skeletal muscle"".
+The second one is ""serratus_dorsalis_cranialis"", which falls under the category ""Muscle""."
+http://mouse.owl#MA_0002031	http://human.owl#NCI_C32971	0	granularity_parent	"The first one is ""pulmonary artery"", which falls under the category ""artery"".
+The second one is ""left_pulmonary_artery"", also known as ""left pulmonary artery"", which falls under the category ""Pulmonary_Artery""."
+http://mouse.owl#MA_0002040	http://human.owl#NCI_C52739	0	granularity_parent	"The first one is ""spermatic artery"", which falls under the category ""artery"".
+The second one is ""left_spermatic_artery"", also known as ""left internal spermatic artery"", ""left spermatic artery"", ""left testicular artery"", which falls under the category ""Spermatic_Artery""."
+http://mouse.owl#MA_0000088	http://human.owl#NCI_C12753	1	anchor_masked	"The first one is ""bicuspid valve"", which falls under the category ""heart valve"".
+The second one is ""mitral_valve"", which falls under the category ""Cardiac_Valve""."
+http://mouse.owl#MA_0000313	http://human.owl#NCI_C12853	1	anchor_masked	"The first one is ""sacrum"", which falls under the category ""vertebra"".
+The second one is ""sacral_vertebra"", also known as ""sacral vertebrae"", which falls under the category ""Vertebra""."
+http://mouse.owl#MA_0001048	http://human.owl#NCI_C12821	0	granularity_parent	"The first one is ""medial vestibular nucleus"", which falls under the category ""brainstem nucleus"".
+The second one is ""vestibular_nucleus"", also known as ""vestibular nuclei"", ""vestibular nucleus"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000484	http://human.owl#NCI_C13005	0	granularity_child	"The first one is ""visceral serous pericardium"", also known as ""epicardium"".
+The second one is ""pericardium"", which falls under the category ""Membrane""."
+http://mouse.owl#MA_0000877	http://human.owl#NCI_C52725	0	granularity_child	"The first one is ""subthalamic nucleus"".
+The second one is ""oval_subthalamic_nucleus"", also known as ""oval nucleus"", ""oval subthalamic nucleus"", which falls under the category ""Subthalamic_Nucleus""."
+http://mouse.owl#MA_0001201	http://human.owl#NCI_C33045	1	anchor_masked	"The first one is ""saccular maculs"".
+The second one is ""macula_of_saccule"", which falls under the category ""Ear_Part""."
+http://mouse.owl#MA_0002641	http://human.owl#NCI_C33091	0	granularity_child	"The first one is ""male membranous urethra"".
+The second one is ""membranous_urethra"", also known as ""membranous urethra"", which falls under the category ""Urinary_System_Part""."
+http://mouse.owl#MA_0001495	http://human.owl#NCI_C33248	0	granularity_parent	"The first one is ""palatine bone"", which falls under the category ""viscerocranium bone"".
+The second one is ""palate_bone"", also known as ""palate bone"", which falls under the category ""Bone""."
+http://mouse.owl#MA_0000138	http://human.owl#NCI_C32439	0	granularity_child	"The first one is ""lymphatic vessel"".
+The second one is ""deep_lymphatic_vessel"", also known as ""deep lymphatic vessel"", which falls under the category ""Lymphatic_Vessel""."
+http://mouse.owl#MA_0001784	http://human.owl#NCI_C49277	0	granularity_parent	"The first one is ""right lung alveolar system"".
+The second one is ""right_lung_alveolar_duct"", also known as ""right lung alveolar duct"", which falls under the category ""Alveolar_Duct""."
+http://mouse.owl#MA_0001972	http://human.owl#NCI_C32957	0	granularity_child	"The first one is ""common iliac artery"", which falls under the category ""iliac artery"".
+The second one is ""left_common_iliac_artery"", also known as ""left common iliac artery"", which falls under the category ""Common_Iliac_Artery""."
+http://mouse.owl#MA_0002400	http://human.owl#NCI_C53181	1	anchor_masked	"The first one is ""sural triceps"", which falls under the category ""skeletal muscle"".
+The second one is ""triceps_surae"", which falls under the category ""Triceps""."
+http://mouse.owl#MA_0000377	http://human.owl#NCI_C13048	0	granularity_child	"The first one is ""renal tubule"", also known as ""uriniferous tubule"".
+The second one is ""nephron"", also known as ""uriniferous tube"", which falls under the category ""Renal_Tissue""."
+http://mouse.owl#MA_0002207	http://human.owl#NCI_C12776	0	granularity_child	"The first one is ""left pulmonary vein"", which falls under the category ""pulmonary vein"".
+The second one is ""pulmonary_vein"", also known as ""pulmonary vein"", which falls under the category ""Vein""."
+http://mouse.owl#MA_0001141	http://human.owl#NCI_C52831	0	granularity_parent	"The first one is ""inferior hypogastric nerve plexus"".
+The second one is ""hypogastric_nerve_plexus"", also known as ""hypogastric nerve plexus"", which falls under the category ""Nerve_Plexus""."
+http://mouse.owl#MA_0000010	http://human.owl#NCI_C33854	0	granularity_child	"The first one is ""cardiovascular system"", also known as ""circulatory system"", which falls under the category ""organ system"".
+The second one is ""vascular_system"", also known as ""vascular system"", which falls under the category ""Cardiovascular_System_Part""."
+http://mouse.owl#MA_0001061	http://human.owl#NCI_C49335	0	granularity_child	"The first one is ""midbrain pia mater"", which falls under the category ""brain pia mater"".
+The second one is ""brain_pia_mater"", also known as ""brain pia mater"", which falls under the category ""Pia_Mater""."
+http://mouse.owl#MA_0000327	http://human.owl#NCI_C12468	0	granularity_parent	"The first one is ""respiratory system"", which falls under the category ""visceral organ system"".
+The second one is ""lung"", also known as ""lungs"", ""respiratory system, lung"", which falls under the category ""Organ""."
+http://mouse.owl#MA_0002218	http://human.owl#NCI_C52696	0	granularity_child	"The first one is ""spermatic vein"", which falls under the category ""vein"".
+The second one is ""left_spermatic_vein"", also known as ""left internal spermatic vein"", ""left spermatic vein"", ""lefttesticular vein"", which falls under the category ""Spermatic_Vein""."
+http://mouse.owl#MA_0000821	http://human.owl#NCI_C49346	0	granularity_child	"The first one is ""brainstem nucleus"", which falls under the category ""brain nucleus"".
+The second one is ""brain_nucleus"", also known as ""brain nucleus"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000892	http://human.owl#NCI_C52733	1	anchor_masked	"The first one is ""nucleus accumbens"".
+The second one is ""accumbens_nucleus"", which falls under the category ""Brain_Nucleus""."
+http://mouse.owl#MA_0000181	http://human.owl#NCI_C52731	1	anchor_masked	"The first one is ""subthalamus"".
+The second one is ""ventral_thalamus"", which falls under the category ""Thalamus""."
+http://mouse.owl#MA_0000133	http://human.owl#NCI_C32955	0	granularity_child	"The first one is ""cerebral hemisphere"", also known as ""cerebrum"".
+The second one is ""left_cerebral_hemisphere"", also known as ""left brain hemisphere"", ""left cerebral hemisphere"", which falls under the category ""Cerebral_Hemisphere""."
+http://mouse.owl#MA_0001843	http://human.owl#NCI_C12284	0	granularity_parent	"The first one is ""left main bronchus"", which falls under the category ""main bronchus"".
+The second one is ""main_bronchus"", also known as ""main bronchus"", which falls under the category ""Bronchus""."
+http://mouse.owl#MA_0002041	http://human.owl#NCI_C33581	0	granularity_parent	"The first one is ""left spermatic artery"", which falls under the category ""spermatic artery"".
+The second one is ""spermatic_artery"", also known as ""internal spermatic artery"", ""spermatic artery"", ""testicular artery"", which falls under the category ""Abdominal_Aorta_Branch""."
+http://mouse.owl#MA_0000720	http://human.owl#NCI_C12704	0	granularity_child	"The first one is ""neuroendocrine gland"", which falls under the category ""endocrine gland"".
+The second one is ""endocrine_gland"", also known as ""endocrine gland"", ""endocrine organs"", which falls under the category ""Gland""."
+http://mouse.owl#MA_0001324	http://human.owl#NCI_C49261	1	anchor_masked	"The first one is ""nasal mucosa"", which falls under the category ""upper respiratory tract epithelium"".
+The second one is ""nasal_cavity_epithelium"", which falls under the category ""Epithelium""."
+http://mouse.owl#MA_0002454	http://human.owl#NCI_C12843	0	granularity_child	"The first one is ""left coronary artery"", which falls under the category ""coronary artery"".
+The second one is ""coronary_artery"", also known as ""coronary artery"", which falls under the category ""Ascending_Aorta_Branch""."
+http://mouse.owl#MA_0002695	http://human.owl#NCI_C12382	0	granularity_child	"The first one is ""large intestine wall"".
+The second one is ""colon"", also known as ""large intestine"", which falls under the category ""Gastrointestinal_System_Part""."
+http://mouse.owl#MA_0002219	http://human.owl#NCI_C53050	0	granularity_child	"The first one is ""left spermatic vein"", which falls under the category ""spermatic vein"".
+The second one is ""spermatic_vein"", also known as ""internal spermatic vein"", ""spermatic vein"", ""testicular vein"", which falls under the category ""Vein""."
+http://mouse.owl#MA_0000377	http://human.owl#NCI_C49274	1	anchor_masked	"The first one is ""uriniferous tubule"".
+The second one is ""renal_tubule"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0000179	http://human.owl#NCI_C12457	0	granularity_child	"The first one is ""thalamus"".
+The second one is ""epithalamus"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000705	http://human.owl#NCI_C49329	0	granularity_child	"The first one is ""arteriole endothelium"", which falls under the category ""arterial system endothelium"".
+The second one is ""arterial_system_endothelium"", also known as ""arterial system endothelium"", which falls under the category ""Vascular_Endothelium""."
+http://mouse.owl#MA_0001434	http://human.owl#NCI_C12853	0	granularity_child	"The first one is ""sacral vertebra 1"", which falls under the category ""sacral vertebra"".
+The second one is ""sacral_vertebra"", also known as ""sacral vertebra"", ""sacral vertebrae"", which falls under the category ""Vertebra""."
+http://mouse.owl#MA_0000194	http://human.owl#NCI_C28401	1	anchor_masked	"The first one is ""main olfactory bulb"".
+The second one is ""olfactory_bulb"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000074	http://human.owl#NCI_C12869	1	anchor_masked	"The first one is ""heart left atrium"", which falls under the category ""heart atrium"".
+The second one is ""left_atrium"", also known as ""left atrium"", ""left atrium of heart"", which falls under the category ""Cardiac_Atrium""."
+http://mouse.owl#MA_0000689	http://human.owl#NCI_C12374	0	granularity_child	"The first one is ""limb connective tissue"", which falls under the category ""connective tissue"".
+The second one is ""connective_tissue"", also known as ""connective tissue"", which falls under the category ""Connective_and_Soft_Tissue""."
+http://mouse.owl#MA_0000374	http://human.owl#NCI_C12887	1	anchor_masked	"The first one is ""kidney pelvis"".
+The second one is ""renal_pelvis"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0002313	http://human.owl#NCI_C52703	0	granularity_child	"The first one is ""hand interosseous muscle"", which falls under the category ""skeletal muscle"".
+The second one is ""dorsal_hand_interosseous_muscle"", also known as ""dorsal hand interosseous muscle"", which falls under the category ""Hand_Interosseous_Muscle""."
+http://mouse.owl#MA_0001948	http://human.owl#NCI_C32433	0	granularity_child	"The first one is ""epigastric artery"", which falls under the category ""artery"".
+The second one is ""deep_epigastric_artery"", also known as ""deep epigastric artery"", which falls under the category ""External_Iliac_Artery_Branch""."
+http://mouse.owl#MA_0001927	http://human.owl#NCI_C32352	0	granularity_parent	"The first one is ""left common carotid artery"", which falls under the category ""common carotid artery"".
+The second one is ""common_carotid_artery"", also known as ""common carotid artery"", which falls under the category ""Carotid_Artery""."
+http://mouse.owl#MA_0000997	http://human.owl#NCI_C49140	1	anchor_masked	"The first one is ""cerebellum purkinje cell layer"", which falls under the category ""cerebellar layer"".
+The second one is ""purkinje_cell_layer_of_the_cerebellum"", also known as ""purkinje cell layer of the cerebellum"", ""purkinje's cell layer of the cerebellum"", which falls under the category ""Cortical_Cell_Layer_of_the_Cerebellum""."
+http://mouse.owl#MA_0001593	http://human.owl#NCI_C33258	1	anchor_masked	"The first one is ""tongue papilla"".
+The second one is ""papilla_of_the_tongue"", also known as ""papilla of the tongue"", which falls under the category ""Organ_of_Special_Sense_Part""."
+http://mouse.owl#MA_0000016	http://human.owl#NCI_C12438	0	granularity_parent	"The first one is ""nervous system"", which falls under the category ""organ system"".
+The second one is ""central_nervous_system"", also known as ""central nervous system"", ""cns"", ""nervous system, cns"", which falls under the category ""Nervous_System_Part""."
+http://mouse.owl#MA_0000181	http://human.owl#NCI_C12459	0	granularity_child	"The first one is ""ventral thalamus"", also known as ""subthalamus"".
+The second one is ""thalamus"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0001666	http://human.owl#NCI_C32469	1	anchor_masked	"The first one is ""second convoluted tubule"", which falls under the category ""renal convoluted tubule"".
+The second one is ""distal_convoluted_tubule"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0000726	http://human.owl#NCI_C33783	0	granularity_child	"The first one is ""thyroid gland follicle"".
+The second one is ""thyroid_gland_follicular_cell"", also known as ""thyroid follicular cell"", ""thyroid gland follicular cell"", which falls under the category ""Endocrine_Cell_and_Neuroendocrine_Cell""."
+http://mouse.owl#MA_0002239	http://human.owl#NCI_C52699	0	granularity_child	"The first one is ""temporal vein"", which falls under the category ""vein"".
+The second one is ""deep_temporal_vein"", also known as ""deep temporal vein"", which falls under the category ""Temporal_Vein""."
+http://mouse.owl#MA_0000159	http://human.owl#NCI_C33543	1	anchor_masked	"The first one is ""hair shaft"".
+The second one is ""shaft_of_the_hair"", also known as ""shaft of the hair"", which falls under the category ""Hair_Part""."
+http://mouse.owl#MA_0002278	http://human.owl#NCI_C32401	0	granularity_parent	"The first one is ""constrictor muscle of pharynx"", which falls under the category ""skeletal muscle"".
+The second one is ""cricopharyngeus_muscle"", also known as ""cricopharyngeus muscle"", ""inferior constrictor muscle of pharynx"", ""inferior constrictor muscle of the pharynx"", which falls under the category ""Pharyngeal_Muscle""."
+http://mouse.owl#MA_0000245	http://human.owl#NCI_C33871	1	anchor_masked	"The first one is ""vestibular apparatus"".
+The second one is ""vestibular_labyrinth"", which falls under the category ""Ear_Part""."
+http://mouse.owl#MA_0002222	http://human.owl#NCI_C53125	0	granularity_child	"The first one is ""subcostal vein"", which falls under the category ""vein"".
+The second one is ""left_subcostal_vein"", also known as ""left subcostal vein"", which falls under the category ""Subcostal_Vein""."
+http://mouse.owl#MA_0002413	http://human.owl#NCI_C28401	0	granularity_parent	"The first one is ""olfactory lobe"".
+The second one is ""olfactory_bulb"", also known as ""olfactory bulb"", which falls under the category ""Brain_Part""."
+http://mouse.owl#MA_0000326	http://human.owl#NCI_C12722	0	granularity_child	"The first one is ""reproductive system"", which falls under the category ""visceral organ system"".
+The second one is ""male_reproductive_system"", also known as ""body system, reproductive, male"", ""genital system, male"", ""male genital"", ""male reproductive body system"", ""male reproductive organ system"", ""male reproductive system"", ""organ system, male reproductive"", ""penis and other genital"", ""reproductive system, male"", which falls under the category ""Reproductive_System""."
+http://mouse.owl#MA_0000984	http://human.owl#NCI_C49230	1	anchor_masked	"The first one is ""fourth ventricle choroid plexus epithelium"", which falls under the category ""choroid plexus epithelium"".
+The second one is ""choroid_plexus_epithelium_of_the_fourth_ventricle"", also known as ""choroid plexus epithelium of the fourth ventricle"", which falls under the category ""Choroid_Plexus_Epithelium""."
+http://mouse.owl#MA_0000140	http://human.owl#NCI_C12936	0	granularity_child	"The first one is ""mucosa associated lymphoid tissue"", also known as ""malt"".
+The second one is ""gut_associated_lymphoid_tissue"", also known as ""galt"", ""gut associated lymphoid tissue"", ""gut-associated lymphoid tissue"", which falls under the category ""Mucosa-Associated_Lymphoid_Tissue""."
+http://mouse.owl#MA_0000370	http://human.owl#NCI_C12885	1	anchor_masked	"The first one is ""kidney capsule"".
+The second one is ""renal_capsule"", which falls under the category ""Kidney_Part""."
+http://mouse.owl#MA_0002314	http://human.owl#NCI_C53173	0	granularity_child	"The first one is ""dorsal hand interosseus muscle"", which falls under the category ""hand interosseous muscle"".
+The second one is ""hand_interosseous_muscle"", also known as ""hand interosseous muscle"", which falls under the category ""Muscle""."

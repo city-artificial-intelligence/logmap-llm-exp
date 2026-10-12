@@ -1,0 +1,301 @@
+src	tgt	label	kind	entity_lines
+http://omim.org/entry/613855	http://www.orpha.net/ORDO/Orphanet_211067	0	hard_discarded	"The first one is ""episodic ataxia,  iia 5"", also known as ""ea5"", which falls under the category ""Episodic ataxia"".
+The second one is ""episodic ataxia type 5"", which falls under the category ""disease""."
+http://omim.org/entry/118700	http://www.orpha.net/ORDO/Orphanet_1429	1	anchor_masked	"The first one is ""chorea, benign hereditary"".
+The second one is ""benign hereditary chorea"", also known as ""benign familial chorea"", which falls under the category ""disease""."
+http://omim.org/entry/254400	http://www.orpha.net/ORDO/Orphanet_178566	1	anchor_masked	"The first one is ""mycosis fungoides"", also known as ""254400"".
+The second one is ""mycosis fungoides and variants"", which falls under the category ""Indolent primary cutaneous T-cell lymphoma""."
+http://omim.org/entry/120000	http://www.orpha.net/ORDO/Orphanet_1457	1	anchor_masked	"The first one is ""coarctation of aorta"", also known as ""120000"".
+The second one is ""aorta coarctation"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/613720	http://www.orpha.net/ORDO/Orphanet_544254	0	hard_discarded	"The first one is ""developmental and epileptic encephalopathy 7"", also known as ""dee7"", which falls under the category ""Developmental and epileptic encephalopathy"".
+The second one is ""syngap1-related developmental and epileptic encephalopathy"", also known as ""syngap1-related dee"", which falls under the category ""disease""."
+http://omim.org/entry/254200	http://www.orpha.net/ORDO/Orphanet_391504	0	granularity_child	"The first one is ""myasthenia gravis"", also known as ""mg"".
+The second one is ""transient neonatal myasthenia gravis"", also known as ""neonatal myasthenia gravis"", ""nmg"", ""transient neonatal acquired myasthenia"", ""transient neonatal autoimmune myasthenia gravis"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/617086	http://www.orpha.net/ORDO/Orphanet_330050	0	hard_discarded	"The first one is ""encephalopathy due to defective mitochondrial and peroxisomal fission 2"", also known as ""empf2"", which falls under the category ""Encephalopathy due to defective mitochondrial and peroxisomal fission"".
+The second one is ""dnm1l-related encephalopathy due to mitochondrial and peroxisomal fission defect"", which falls under the category ""etiological subtype""."
+http://omim.org/entry/612016	http://www.orpha.net/ORDO/Orphanet_35656	0	hard_discarded	"The first one is ""coenzyme q10 deficiency, primary, 4"", also known as ""coq10d4"", which falls under the category ""Spinocerebellar ataxia, autosomal recessive"".
+The second one is ""coenzyme q10 deficiency"", also known as ""coq10 deficiency"", which falls under the category ""Mitochondrial disease with epilepsy""."
+http://omim.org/entry/254600	http://www.orpha.net/ORDO/Orphanet_2587	1	anchor_masked	"The first one is ""mpod"".
+The second one is ""mpo deficiency"", which falls under the category ""disease""."
+http://omim.org/entry/604454	http://www.orpha.net/ORDO/Orphanet_603	1	anchor_masked	"The first one is ""welander distal myopathy"".
+The second one is ""distal myopathy, welander type"", which falls under the category ""disease""."
+http://omim.org/entry/310370	http://www.orpha.net/ORDO/Orphanet_98261	1	anchor_masked	"The first one is ""myoclonic epilepsy, progressive"", also known as ""310370"".
+The second one is ""progressive myoclonic epilepsy"", also known as ""pme"", ""progressive myoclonus epilepsy"", which falls under the category ""Epilepsy and/or ataxia with myoclonus as a major feature""."
+http://omim.org/entry/615970	http://www.orpha.net/ORDO/Orphanet_168615	1	anchor_masked	"The first one is ""alpha-fetoprotein, hereditary persistence of"", also known as ""hpafp"".
+The second one is ""hereditary persistence of alpha-fetoprotein"", which falls under the category ""biological anomaly""."
+http://omim.org/entry/226730	http://www.orpha.net/ORDO/Orphanet_158684	0	hard_discarded	"The first one is ""epidermolysis bullosa junctionalis with pyloric atresia"", also known as ""226730"".
+The second one is ""epidermolysis bullosa simplex with pyloric atresia"", also known as ""ebs with pyloric atresia"", ""ebs-pa"", which falls under the category ""disease""."
+http://omim.org/entry/601200	http://www.orpha.net/ORDO/Orphanet_99933	0	granularity_child	"The first one is ""pleuropulmonary blastoma"", also known as ""ppb"".
+The second one is ""pleuropulmonary blastoma type 1"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/618840	http://www.orpha.net/ORDO/Orphanet_1188	0	hard_discarded	"The first one is ""alopecia-intellectual disability syndrome 4"", also known as ""apmr4"", which falls under the category ""Alopecia-intellectual disability syndrome"".
+The second one is ""ataxia-deafness-intellectual disability syndrome"", also known as ""ataxia-hearing loss-intellectual disability syndrome"", ""reardon-baraitser syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/300009	http://www.orpha.net/ORDO/Orphanet_93623	0	hard_discarded	"The first one is ""dent disease 1"", also known as ""dent1"", which falls under the category ""Dent disease"".
+The second one is ""dent disease type 2"", also known as ""nephrolithiasis type 2"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/231100	http://www.orpha.net/ORDO/Orphanet_446	1	anchor_masked	"The first one is ""hemochromatosis, neonatal"", also known as ""231100"".
+The second one is ""neonatal hemochromatosis"", which falls under the category ""disease""."
+http://omim.org/entry/616342	http://www.orpha.net/ORDO/Orphanet_100011	0	hard_discarded	"The first one is ""lissencephaly 7 with cerebellar hypoplasia"", also known as ""lis7"", which falls under the category ""Lissencephaly"".
+The second one is ""lissencephaly with cerebellar hypoplasia type a"", which falls under the category ""malformation syndrome""."
+http://www.omim.org/phenotypicSeries/PS179800	http://www.orpha.net/ORDO/Orphanet_314822	0	hard_discarded	"The first one is ""distal renal tubular acidosis"", also known as ""ps179800"".
+The second one is ""primary renal tubular acidosis"", which falls under the category ""Genetic renal tubular disease""."
+http://omim.org/entry/300869	http://www.orpha.net/ORDO/Orphanet_261483	0	hard_discarded	"The first one is ""chromosome xq27.3-q28 duplication syndrome"", also known as ""300869"".
+The second one is ""xq27.3q28 duplication syndrome"", also known as ""dup(x)(q27.3q28)"", ""trisomy xq27.3-q28"", ""trisomy xq27.3q28"", ""xq27.3-q28 microduplication syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/277700	http://www.orpha.net/ORDO/Orphanet_902	1	anchor_masked	"The first one is ""wrn"".
+The second one is ""adult progeria"", also known as ""ws"", which falls under the category ""disease""."
+http://omim.org/entry/618840	http://www.orpha.net/ORDO/Orphanet_1068	0	hard_discarded	"The first one is ""alopecia-intellectual disability syndrome 4"", also known as ""apmr4"", which falls under the category ""Alopecia-intellectual disability syndrome"".
+The second one is ""aniridia-intellectual disability syndrome"", also known as ""walker-dyson syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/269920	http://www.orpha.net/ORDO/Orphanet_834	0	granularity_parent	"The first one is ""infantile sialic acid storage disease"", also known as ""issd"".
+The second one is ""free sialic acid storage disease"", which falls under the category ""disease""."
+http://omim.org/entry/254400	http://www.orpha.net/ORDO/Orphanet_2584	0	granularity_child	"The first one is ""mycosis fungoides"", also known as ""254400"".
+The second one is ""classic mycosis fungoides"", also known as ""mycosis fungoides, alibert-bazin type"", which falls under the category ""disease""."
+http://www.omim.org/phenotypicSeries/PS300751	http://www.orpha.net/ORDO/Orphanet_1047	1	anchor_masked	"The first one is ""anemia, sideroblastic"", also known as ""ps300751"".
+The second one is ""sideroblastic anemia"", which falls under the category ""Rare anemia""."
+http://omim.org/entry/301830	http://www.orpha.net/ORDO/Orphanet_1145	1	anchor_masked	"The first one is ""spinal muscular atrophy, x-linked 2"".
+The second one is ""infantile-onset x-linked spinal muscular atrophy"", also known as ""spinal muscular atrophy with arthrogryposis"", ""x-linked distal arthrogryposis multiplex congenita"", ""x-linked spinal muscular atrophy type 2"", which falls under the category ""disease""."
+http://omim.org/entry/614128	http://www.orpha.net/ORDO/Orphanet_2364	0	granularity_parent	"The first one is ""lactate dehydrogenase b deficiency"", also known as ""ldhbd"".
+The second one is ""glycogen storage disease due to lactate dehydrogenase deficiency"", also known as ""glycogenosis due to lactate dehydrogenase deficiency"", ""gsd due to lactate dehydrogenase deficiency"", ""ldh deficiency"", which falls under the category ""disease""."
+http://www.omim.org/phenotypicSeries/PS603041	http://www.orpha.net/ORDO/Orphanet_254875	0	granularity_child	"The first one is ""mitochondrial dna depletion syndrome"", also known as ""ps603041"".
+The second one is ""mitochondrial dna depletion syndrome, myopathic form"", also known as ""mtdna depletion syndrome, myopathic form"", which falls under the category ""disease""."
+http://omim.org/entry/104510	http://www.orpha.net/ORDO/Orphanet_100031	0	hard_discarded	"The first one is ""amelogenesis imperfecta,  iia 4"", also known as ""ai4"", which falls under the category ""Amelogenesis imperfecta"".
+The second one is ""hypoplastic amelogenesis imperfecta"", also known as ""amelogenesis imperfecta type 1"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/266150	http://www.orpha.net/ORDO/Orphanet_353308	0	granularity_child	"The first one is ""pyruvate carboxylase deficiency"", also known as ""266150"".
+The second one is ""pyruvate carboxylase deficiency, infantile type"", also known as ""pyruvate carboxylase deficiency type a"", which falls under the category ""clinical subtype""."
+http://www.omim.org/phenotypicSeries/PS273750	http://www.orpha.net/ORDO/Orphanet_1406	0	hard_discarded	"The first one is ""three m syndrome"", also known as ""ps273750"".
+The second one is ""charlie m syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/236750	http://www.orpha.net/ORDO/Orphanet_363999	1	anchor_masked	"The first one is ""hydrops fetalis, nonimmune"".
+The second one is ""non-immune hydrops fetalis"", also known as ""non-immune fetal edema"", ""non-immune fetal hydrops"", ""non-immune hf"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/132400	http://www.orpha.net/ORDO/Orphanet_251	0	granularity_child	"The first one is ""epiphyseal dysplasia, multiple, 1"", also known as ""edm1"", which falls under the category ""Epiphyseal dysplasia, multiple"".
+The second one is ""multiple epiphyseal dysplasia"", also known as ""edm"", ""med"", ""polyepiphyseal dysplasia"", which falls under the category ""group of disorders""."
+http://omim.org/entry/119570	http://www.orpha.net/ORDO/Orphanet_2014	0	granularity_parent	"The first one is ""cleft soft palate"", also known as ""119570"".
+The second one is ""cleft palate"", which falls under the category ""Rare head and neck malformation""."
+http://omim.org/entry/614399	http://www.orpha.net/ORDO/Orphanet_439212	1	anchor_masked	"The first one is ""myopathy, areflexia, respiratory distress, and dysphagia, early-onset"".
+The second one is ""early-onset myopathy-areflexia-respiratory distress-dysphagia syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/600204	http://www.orpha.net/ORDO/Orphanet_251	0	hard_discarded	"The first one is ""epiphyseal dysplasia, multiple, 2"", also known as ""edm2"", which falls under the category ""Epiphyseal dysplasia, multiple"".
+The second one is ""multiple epiphyseal dysplasia"", also known as ""edm"", ""med"", ""polyepiphyseal dysplasia"", which falls under the category ""group of disorders""."
+http://omim.org/entry/265430	http://www.orpha.net/ORDO/Orphanet_2257	1	anchor_masked	"The first one is ""pulmonary hypoplasia, primary"", also known as ""265430"".
+The second one is ""primary pulmonary hypoplasia"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/614420	http://www.orpha.net/ORDO/Orphanet_93552	0	hard_discarded	"The first one is ""systemic lupus erythematosus 16"", also known as ""sleb16"".
+The second one is ""pediatric systemic lupus erythematosus"", also known as ""sle, pediatric onset"", which falls under the category ""disease""."
+http://omim.org/entry/265000	http://www.orpha.net/ORDO/Orphanet_2990	1	anchor_masked	"The first one is ""multiple pterygium syndrome, escobar variant"".
+The second one is ""autosomal recessive multiple pterygium syndrome"", also known as ""autosomal recessive non-lethal multiple pterygium syndrome"", ""escobar syndrome"", ""escobar variant multiple pterygium syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/300815	http://www.orpha.net/ORDO/Orphanet_1762	0	hard_discarded	"The first one is ""chromosome xq28 duplication syndrome"", also known as ""300815"".
+The second one is ""proximal xq28 duplication syndrome"", also known as ""mecp2 duplication syndrome"", ""x-linked intellectual disability syndrome, lubs type"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/153100	http://www.orpha.net/ORDO/Orphanet_141209	0	hard_discarded	"The first one is ""lymphatic malformation 1"", also known as ""lmphm1"", which falls under the category ""Lymphatic malformation"".
+The second one is ""diffuse lymphatic malformation"", also known as ""diffuse lymphangioma"", ""diffuse lymphangiomatosis"", ""disseminated lymphangioma"", ""disseminated lymphangiomatosis"", ""disseminated lymphatic malformation"", ""generalized lymphatic anomaly"", ""gla"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/125350	http://www.orpha.net/ORDO/Orphanet_412206	1	anchor_masked	"The first one is ""failure of tooth eruption, primary"".
+The second one is ""primary failure of tooth eruption"", also known as ""primary retention of teeth"", which falls under the category ""disease""."
+http://omim.org/entry/614429	http://www.orpha.net/ORDO/Orphanet_98722	0	hard_discarded	"The first one is ""ventricular septal defect 1"", also known as ""vsd1"", which falls under the category ""Ventricular septal defect"".
+The second one is ""atrioventricular septal defect"", also known as ""atrioventricular canal defect"", ""avsd"", which falls under the category ""Genetic cardiac anomaly""."
+http://omim.org/entry/215100	http://www.orpha.net/ORDO/Orphanet_309803	0	hard_discarded	"The first one is ""rhizomelic chondrodysplasia punctata,  iia 1"", also known as ""rcdp1"", which falls under the category ""Peroxisome biogenesis disorder"".
+The second one is ""rhizomelic chondrodysplasia punctata type 3"", which falls under the category ""etiological subtype""."
+http://omim.org/entry/178500	http://www.orpha.net/ORDO/Orphanet_182095	0	granularity_child	"The first one is ""interstitial lung disease 2"", also known as ""ild2"", which falls under the category ""Interstitial lung disease"".
+The second one is ""interstitial lung disease"", also known as ""ild"", which falls under the category ""Rare pulmonary disease""."
+http://omim.org/entry/190340	http://www.orpha.net/ORDO/Orphanet_538756	1	anchor_masked	"The first one is ""discoid fibromas, familial multiple"", also known as ""fmdf"".
+The second one is ""familial multiple discoid fibromas"", also known as ""familial multiple trichodiscomas"", which falls under the category ""disease""."
+http://omim.org/entry/119500	http://www.orpha.net/ORDO/Orphanet_294060	0	hard_discarded	"The first one is ""popliteal pterygium syndrome"", also known as ""pps"".
+The second one is ""multiple pterygium syndrome"", which falls under the category ""Arthrogryposis syndrome""."
+http://omim.org/entry/617166	http://www.orpha.net/ORDO/Orphanet_163681	0	hard_discarded	"The first one is ""developmental and epileptic encephalopathy 47"", also known as ""dee47"", which falls under the category ""Developmental and epileptic encephalopathy"".
+The second one is ""cntnap2-related developmental and epileptic encephalopathy"", also known as ""cdfe syndrome"", ""cdfes"", ""cntnap2-related dee"", ""cortical dysplasia-focal epilepsy syndrome"", which falls under the category ""disease""."
+http://www.omim.org/phenotypicSeries/PS604348	http://www.orpha.net/ORDO/Orphanet_164736	0	hard_discarded	"The first one is ""advanced sleep phase syndrome"", also known as ""ps604348"".
+The second one is ""familial advanced sleep-phase syndrome"", also known as ""fasps"", which falls under the category ""disease""."
+http://omim.org/entry/300661	http://www.orpha.net/ORDO/Orphanet_411536	0	granularity_child	"The first one is ""phosphoribosylpyrophosphate synthetase superactivity"", also known as ""300661"".
+The second one is ""mild phosphoribosylpyrophosphate synthetase superactivity"", also known as ""mild prpp synthetase superactivity"", ""mild prps1 superactivity"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/222765	http://www.orpha.net/ORDO/Orphanet_468717	0	hard_discarded	"The first one is ""rhizomelic chondrodysplasia punctata,  iia 2"", also known as ""rcdp2"", which falls under the category ""Rhizomelic chondrodysplasia punctata"".
+The second one is ""rhizomelic chondrodysplasia punctata type 5"", which falls under the category ""etiological subtype""."
+http://omim.org/entry/606407	http://www.orpha.net/ORDO/Orphanet_238517	0	granularity_parent	"The first one is ""hypotonia-cystinuria syndrome"", also known as ""606407"".
+The second one is ""hypotonia-cystinuria type 1 syndrome"", which falls under the category ""Genetic renal tubular disease""."
+http://omim.org/entry/155140	http://www.orpha.net/ORDO/Orphanet_99077	0	hard_discarded	"The first one is ""meckel diverticulum"", also known as ""155140"".
+The second one is ""kommerell diverticulum"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/236792	http://www.orpha.net/ORDO/Orphanet_19	0	granularity_parent	"The first one is ""l-2-hydroxyglutaric aciduria"", also known as ""l2hga"".
+The second one is ""2-hydroxyglutaric aciduria"", also known as ""2-hydroxyglutaric acidemia"", which falls under the category ""Amino acid or protein metabolism disease with epilepsy""."
+http://omim.org/entry/269920	http://www.orpha.net/ORDO/Orphanet_309324	1	anchor_masked	"The first one is ""infantile sialic acid storage disease"".
+The second one is ""free sialic acid storage disease, infantile form"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/300818	http://www.orpha.net/ORDO/Orphanet_90035	0	hard_discarded	"The first one is ""paroxysmal nocturnal hemoglobinuria 1"", also known as ""pnh1"", which falls under the category ""Paroxysmal nocturnal hemoglobinuria"".
+The second one is ""paroxysmal cold hemoglobinuria"", also known as ""donath-landsteiner hemolytic anemia"", ""donath-landsteiner syndrome"", ""pch"", which falls under the category ""disease""."
+http://omim.org/entry/616606	http://www.orpha.net/ORDO/Orphanet_96175	0	hard_discarded	"The first one is ""ring chromosome 14 syndrome"", also known as ""616606"".
+The second one is ""ring chromosome 11 syndrome"", also known as ""r(11) syndrome"", ""rc11"", ""ring 11"", ""ring chromosome 11"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/100800	http://www.orpha.net/ORDO/Orphanet_750	0	hard_discarded	"The first one is ""achondroplasia"", also known as ""ach"".
+The second one is ""pseudoachondroplasia"", also known as ""pseudoachondroplastic dysplasia"", ""pseudoachondroplastic spondyloepiphyseal dysplasia"", which falls under the category ""disease""."
+http://omim.org/entry/606854	http://www.orpha.net/ORDO/Orphanet_101070	1	anchor_masked	"The first one is ""polymicrogyria, bilateral frontoparietal"", also known as ""bfpp"".
+The second one is ""bilateral frontoparietal polymicrogyria"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/182410	http://www.orpha.net/ORDO/Orphanet_820	1	anchor_masked	"The first one is ""sndns"".
+The second one is ""ehrmann-sneddon syndrome"", also known as ""livedo racemosa-cerebrovascular accident syndrome"", ""livedo reticularis-cerebrovascular accident syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/613985	http://www.orpha.net/ORDO/Orphanet_231214	0	granularity_child	"The first one is ""beta-thalassemia"", also known as ""613985"".
+The second one is ""beta-thalassemia major"", also known as ""cooley anemia"", ""mediterranean anemia"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/177820	http://www.orpha.net/ORDO/Orphanet_99147	0	hard_discarded	"The first one is ""pseudo-von willebrand disease"", also known as ""vwdp"", which falls under the category ""Bleeding disorder, platelet-type"".
+The second one is ""acquired von willebrand syndrome"", also known as ""acquired von willebrand disease"", which falls under the category ""disease""."
+http://omim.org/entry/119900	http://www.orpha.net/ORDO/Orphanet_217059	1	anchor_masked	"The first one is ""digital clubbing, isolated congenital"", also known as ""digc"".
+The second one is ""isolated congenital digital clubbing"", also known as ""isolated congenital acropachy"", ""isolated congenital nail clubbing"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/618396	http://www.orpha.net/ORDO/Orphanet_544254	0	hard_discarded	"The first one is ""developmental and epileptic encephalopathy 74"", also known as ""dee74"", which falls under the category ""Developmental and epileptic encephalopathy"".
+The second one is ""syngap1-related developmental and epileptic encephalopathy"", also known as ""syngap1-related dee"", which falls under the category ""disease""."
+http://omim.org/entry/243200	http://www.orpha.net/ORDO/Orphanet_238624	1	anchor_masked	"The first one is ""intracranial hypertension, idiopathic"", also known as ""243200"".
+The second one is ""idiopathic intracranial hypertension"", also known as ""benign intracranial hypertension"", ""iih"", ""pseudotumor cerebri"", which falls under the category ""disease""."
+http://www.omim.org/phenotypicSeries/PS308240	http://www.orpha.net/ORDO/Orphanet_3261	0	granularity_child	"The first one is ""lymphoproliferative syndrome"", also known as ""ps308240"".
+The second one is ""autoimmune lymphoproliferative syndrome"", also known as ""alps"", ""canale-smith syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/604320	http://www.orpha.net/ORDO/Orphanet_139557	0	hard_discarded	"The first one is ""spinal muscular atrophy, distal, autosomal recessive, 1"", also known as ""dsma1"".
+The second one is ""x-linked distal spinal muscular atrophy type 3"", also known as ""atp7a-related distal motor neuropathy"", ""dsmax"", ""smax3"", ""x-linked dhmn3"", ""x-linked distal hereditary motor neuropathy type 3"", ""x-linked dsma3"", which falls under the category ""disease""."
+http://omim.org/entry/132700	http://www.orpha.net/ORDO/Orphanet_211	1	anchor_masked	"The first one is ""cylindromatosis, familial"", also known as ""132700"".
+The second one is ""familial cylindromatosis"", also known as ""turban tumor syndrome"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/314050	http://www.orpha.net/ORDO/Orphanet_231393	1	anchor_masked	"The first one is ""thrombocytopenia with beta-thalassemia, x-linked"".
+The second one is ""beta-thalassemia-x-linked thrombocytopenia syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/179840	http://www.orpha.net/ORDO/Orphanet_63454	0	granularity_parent	"The first one is ""reticular dystrophy of retinal pigment epithelium"", also known as ""179840"".
+The second one is ""pattern dystrophy"", also known as ""patterned dystrophy of the retinal pigment epithelium"", which falls under the category ""group of disorders""."
+http://omim.org/entry/201050	http://www.orpha.net/ORDO/Orphanet_364574	0	granularity_parent	"The first one is ""acrocraniofacial dysostosis"", also known as ""201050"".
+The second one is ""acrofacial dysostosis"", which falls under the category ""Dysostosis with limb and face anomalies as a major feature""."
+http://omim.org/entry/257320	http://www.orpha.net/ORDO/Orphanet_48471	0	granularity_child	"The first one is ""lissencephaly 2"", also known as ""lis2"", which falls under the category ""Lissencephaly"".
+The second one is ""lissencephaly"", which falls under the category ""Rare syndromic intellectual disability""."
+http://omim.org/entry/152700	http://www.orpha.net/ORDO/Orphanet_90281	0	hard_discarded	"The first one is ""systemic lupus erythematosus"", also known as ""sle"".
+The second one is ""discoid lupus erythematosus"", which falls under the category ""disease""."
+http://omim.org/entry/619178	http://www.orpha.net/ORDO/Orphanet_593	0	granularity_child	"The first one is ""myofibrillar myopathy 11"", also known as ""mfm11"", which falls under the category ""Myopathy, myofibrillar"".
+The second one is ""myofibrillar myopathy"", which falls under the category ""Non-dystrophic myopathy""."
+http://omim.org/entry/618386	http://www.orpha.net/ORDO/Orphanet_100031	0	hard_discarded	"The first one is ""amelogenesis imperfecta,  iia 3c"", also known as ""ai3c"", which falls under the category ""Amelogenesis imperfecta"".
+The second one is ""hypoplastic amelogenesis imperfecta"", also known as ""amelogenesis imperfecta type 1"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/130900	http://www.orpha.net/ORDO/Orphanet_100033	0	hard_discarded	"The first one is ""amelogenesis imperfecta,  iia 3a"", also known as ""ai3a"", which falls under the category ""Amelogenesis imperfecta"".
+The second one is ""hypomaturation amelogenesis imperfecta"", also known as ""amelogenesis imperfecta type 2"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/613628	http://www.orpha.net/ORDO/Orphanet_95720	0	hard_discarded	"The first one is ""odontoid hypoplasia"", also known as ""613628"".
+The second one is ""thyroid hypoplasia"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/200150	http://www.orpha.net/ORDO/Orphanet_263440	0	granularity_parent	"The first one is ""choreoacanthocytosis"", also known as ""chac"".
+The second one is ""neuroacanthocytosis"", which falls under the category ""Huntington disease-like syndrome""."
+http://omim.org/entry/185700	http://www.orpha.net/ORDO/Orphanet_3248	1	anchor_masked	"The first one is ""symphalangism, distal"", also known as ""185700"".
+The second one is ""distal symphalangism"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/520100	http://www.orpha.net/ORDO/Orphanet_1670	1	anchor_masked	"The first one is ""diarrhea, chronic, with villous atrophy"", also known as ""520100"".
+The second one is ""chronic diarrhea with villous atrophy"", which falls under the category ""disease""."
+http://omim.org/entry/119500	http://www.orpha.net/ORDO/Orphanet_1234	0	granularity_child	"The first one is ""popliteal pterygium syndrome"", also known as ""pps"".
+The second one is ""bartsocas-papas syndrome"", also known as ""autosomal recessive popliteal pterygium syndrome"", ""lethal popliteal pterygium syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/618920	http://www.orpha.net/ORDO/Orphanet_247	0	hard_discarded	"The first one is ""arrhythmogenic right ventricular dysplasia, familial, 14"", also known as ""arvd14"", which falls under the category ""Arrhythmogenic right ventricular dysplasia"".
+The second one is ""arrhythmogenic right ventricular cardiomyopathy"", also known as ""arrhythmogenic right ventricular dysplasia"", ""arvc"", ""arvd"", which falls under the category ""Rare cardiomyopathy""."
+http://omim.org/entry/606835	http://www.orpha.net/ORDO/Orphanet_85169	1	anchor_masked	"The first one is ""digital arthropathy-brachydactyly, familial"", also known as ""fdab"".
+The second one is ""familial digital arthropathy-brachydactyly"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/615471	http://www.orpha.net/ORDO/Orphanet_254875	0	hard_discarded	"The first one is ""mitochondrial dna depletion syndrome 13 (encephalomyopathic type)"", also known as ""mtdps13"", which falls under the category ""Mitochondrial DNA depletion syndrome"".
+The second one is ""mitochondrial dna depletion syndrome, myopathic form"", also known as ""mtdna depletion syndrome, myopathic form"", which falls under the category ""disease""."
+http://omim.org/entry/610717	http://www.orpha.net/ORDO/Orphanet_165	0	granularity_parent	"The first one is ""neutral lipid storage disease with myopathy"", also known as ""nlsdm"".
+The second one is ""neutral lipid storage disease"", also known as ""lipidosis with triglyceride storage disease"", which falls under the category ""Muscular lipidosis""."
+http://omim.org/entry/619028	http://www.orpha.net/ORDO/Orphanet_35656	0	hard_discarded	"The first one is ""coenzyme q10 deficiency, primary, 9"", also known as ""coq10d9"", which falls under the category ""Coenzyme Q10 deficiency, primary"".
+The second one is ""coenzyme q10 deficiency"", also known as ""coq10 deficiency"", which falls under the category ""Mitochondrial disease with epilepsy""."
+http://omim.org/entry/206550	http://www.orpha.net/ORDO/Orphanet_199279	1	anchor_masked	"The first one is ""angiolipomatosis, familial"", also known as ""206550"".
+The second one is ""familial angiolipomatosis"", which falls under the category ""disease""."
+http://omim.org/entry/253290	http://www.orpha.net/ORDO/Orphanet_294060	0	granularity_parent	"The first one is ""multiple pterygium syndrome, lethal  iia"", also known as ""lmps"".
+The second one is ""multiple pterygium syndrome"", which falls under the category ""Arthrogryposis syndrome""."
+http://omim.org/entry/179830	http://www.orpha.net/ORDO/Orphanet_47159	1	anchor_masked	"The first one is ""renal tubular acidosis, proximal"", also known as ""179830"".
+The second one is ""proximal renal tubular acidosis"", also known as ""prta"", ""renal tubular acidosis type 2"", which falls under the category ""disease""."
+http://omim.org/entry/300511	http://www.orpha.net/ORDO/Orphanet_95709	0	hard_discarded	"The first one is ""premature ovarian failure 2a"", also known as ""pof2a"", which falls under the category ""Premature ovarian failure"".
+The second one is ""acquired premature ovarian failure"", which falls under the category ""Genetic endocrine growth disease""."
+http://omim.org/entry/613011	http://www.orpha.net/ORDO/Orphanet_238510	0	granularity_child	"The first one is ""lymphoproliferative syndrome 1"", also known as ""lpfs1"", which falls under the category ""Lymphoproliferative syndrome"".
+The second one is ""lymphoproliferative syndrome"", which falls under the category ""Inherited cancer-predisposing syndrome""."
+http://omim.org/entry/242900	http://www.orpha.net/ORDO/Orphanet_169349	0	granularity_parent	"The first one is ""schimke immunoosseous dysplasia"", also known as ""siod"".
+The second one is ""immuno-osseous dysplasia"", which falls under the category ""Syndrome with combined immunodeficiency""."
+http://omim.org/entry/603523	http://www.orpha.net/ORDO/Orphanet_264688	1	anchor_masked	"The first one is ""chylothorax, congenital"", also known as ""603523"".
+The second one is ""congenital chylothorax"", which falls under the category ""disease""."
+http://omim.org/entry/618369	http://www.orpha.net/ORDO/Orphanet_284324	0	hard_discarded	"The first one is ""spinocerebellar ataxia, autosomal recessive 27"", also known as ""scar27"", which falls under the category ""Spinocerebellar ataxia, autosomal recessive"".
+The second one is ""childhood-onset autosomal recessive slowly progressive spinocerebellar ataxia"", also known as ""autosomal recessive spinocerebellar ataxia type 7"", ""scar7"", which falls under the category ""disease""."
+http://omim.org/entry/154700	http://www.orpha.net/ORDO/Orphanet_284963	0	granularity_child	"The first one is ""marfan syndrome"", also known as ""mfs"".
+The second one is ""marfan syndrome type 1"", also known as ""mfs1"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/605967	http://www.orpha.net/ORDO/Orphanet_85203	1	anchor_masked	"The first one is ""acrps"".
+The second one is ""acrp syndrome"", also known as ""syndactyly-preaxial polydactyly-sternal deformity syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/122580	http://www.orpha.net/ORDO/Orphanet_2391	1	anchor_masked	"The first one is ""costocoracoid ligament, congenitally short"", also known as ""122580"".
+The second one is ""congenitally short costocoracoid ligament"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/608390	http://www.orpha.net/ORDO/Orphanet_612	1	anchor_masked	"The first one is ""myotonia, potassium-aggravated"", also known as ""608390"".
+The second one is ""potassium-aggravated myotonia"", also known as ""k+-aggravated myotonia"", ""k-aggravated myotonia"", ""pam"", which falls under the category ""Myotonic syndrome""."
+http://omim.org/entry/616592	http://www.orpha.net/ORDO/Orphanet_420179	0	hard_discarded	"The first one is ""kosaki overgrowth syndrome"", also known as ""kogs"".
+The second one is ""malan overgrowth syndrome"", also known as ""sotos syndrome 2"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/608980	http://www.orpha.net/ORDO/Orphanet_217266	1	anchor_masked	"The first one is ""bnar"".
+The second one is ""bnar syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/229700	http://www.orpha.net/ORDO/Orphanet_348	1	anchor_masked	"The first one is ""fbp1d"".
+The second one is ""fbpase deficiency"", also known as ""fructose-1,6-diphosphatase deficiency"", which falls under the category ""disease""."
+http://omim.org/entry/615084	http://www.orpha.net/ORDO/Orphanet_35698	0	granularity_child	"The first one is ""mitochondrial dna depletion syndrome 11"", also known as ""mtdps11"", which falls under the category ""Mitochondrial DNA depletion syndrome"".
+The second one is ""mitochondrial dna depletion syndrome"", also known as ""mtdna depletion syndrome"", which falls under the category ""Metabolic disease with intestinal involvement""."
+http://omim.org/entry/609057	http://www.orpha.net/ORDO/Orphanet_304	0	granularity_child	"The first one is ""epidermolysis bullosa simplex 7, with nephropathy and deafness"", also known as ""ebs7"", which falls under the category ""Epidermolysis Bullosa Simplex"".
+The second one is ""epidermolysis bullosa simplex"", also known as ""ebs"", which falls under the category ""group of disorders""."
+http://omim.org/entry/277000	http://www.orpha.net/ORDO/Orphanet_247775	0	granularity_child	"The first one is ""mayer-rokitansky-kuster-hauser syndrome"", also known as ""mrkh"".
+The second one is ""mayer-rokitansky-küster-hauser syndrome type 1"", also known as ""congenital absence of uterus and vagina"", ""mrkh syndrome type 1"", ""rokitansky sequence"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/115250	http://www.orpha.net/ORDO/Orphanet_53296	1	anchor_masked	"The first one is ""collagenoma, familial cutaneous"", also known as ""115250"".
+The second one is ""familial cutaneous collagenoma"", which falls under the category ""disease""."
+http://omim.org/entry/176100	http://www.orpha.net/ORDO/Orphanet_443057	0	granularity_child	"The first one is ""porphyria cutanea tarda"", also known as ""176100"".
+The second one is ""sporadic porphyria cutanea tarda"", also known as ""porphyria cutanea tarda type i"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/120000	http://www.orpha.net/ORDO/Orphanet_1456	0	granularity_child	"The first one is ""coarctation of aorta"", also known as ""120000"".
+The second one is ""atypical coarctation of aorta"", also known as ""coarctation of the abdominal aorta"", ""mid-aortic dysplastic syndrome"", ""mid-aortic syndrome"", ""midaortic syndrome"", ""middle aortic syndrome"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/223900	http://www.orpha.net/ORDO/Orphanet_140471	0	granularity_child	"The first one is ""neuropathy, hereditary sensory and autonomic,  iia 3"", also known as ""hsan3"", which falls under the category ""Hereditary sensory and autonomic neuropathy"".
+The second one is ""hereditary sensory and autonomic neuropathy"", also known as ""hsan"", which falls under the category ""group of disorders""."
+http://omim.org/entry/500013	http://www.orpha.net/ORDO/Orphanet_65753	0	hard_discarded	"The first one is ""charcot-marie-tooth disease, axonal, mitochondrial form, 1"", also known as ""cmtma1"".
+The second one is ""charcot-marie-tooth disease type 1"", also known as ""autosomal dominant demyelinating charcot-marie-tooth disease"", ""charcot-marie-tooth neuropathy type 1"", ""cmt1"", ""hereditary motor and sensory neuropathy type 1"", which falls under the category ""Autosomal dominant hereditary demyelinating motor and sensory neuropathy""."
+http://omim.org/entry/307030	http://www.orpha.net/ORDO/Orphanet_261476	0	granularity_child	"The first one is ""glycerol kinase deficiency"", also known as ""gkd"".
+The second one is ""xp21 deletion syndrome"", also known as ""complex gkd"", ""complex glycerol kinase deficiency"", ""del(x)(p21)"", ""xp21 contiguous gene deletion syndrome"", ""xp21 microdeletion syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/145250	http://www.orpha.net/ORDO/Orphanet_280628	1	anchor_masked	"The first one is ""hyperpigmentation with or without hypopigmentation, familial progressive"".
+The second one is ""familial progressive hyper- and hypopigmentation"", which falls under the category ""disease""."
+http://omim.org/entry/604131	http://www.orpha.net/ORDO/Orphanet_163596	0	granularity_child	"The first one is ""alpha-thalassemia"", also known as ""604131"".
+The second one is ""hb bart's hydrops fetalis"", also known as ""alpha-thalassemia hydrops fetalis"", ""alpha-thalassemia major"", ""hemoglobin bart's hydrops fetalis"", ""homozygous alpha0-thalassemia"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/229400	http://www.orpha.net/ORDO/Orphanet_250	0	granularity_parent	"The first one is ""frontofacionasal dysplasia"", also known as ""229400"".
+The second one is ""frontonasal dysplasia"", also known as ""median cleft face syndrome"", which falls under the category ""group of disorders""."
+http://omim.org/entry/604802	http://www.orpha.net/ORDO/Orphanet_158266	0	granularity_parent	"The first one is ""huntington disease-like 3"", also known as ""hdl3"".
+The second one is ""huntington disease-like syndrome"", also known as ""huntington disease phenocopy syndrome"", which falls under the category ""Genetic neurodegenerative disease""."
+http://www.omim.org/phenotypicSeries/PS607432	http://www.orpha.net/ORDO/Orphanet_1083	0	granularity_child	"The first one is ""lissencephaly"", also known as ""ps607432"".
+The second one is ""microlissencephaly"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/217800	http://www.orpha.net/ORDO/Orphanet_98969	1	anchor_masked	"The first one is ""macular dystrophy, corneal"".
+The second one is ""macular corneal dystrophy"", also known as ""corneal dystrophy groenouw type ii"", ""fehr corneal dystrophy"", which falls under the category ""disease""."
+http://omim.org/entry/102370	http://www.orpha.net/ORDO/Orphanet_93436	0	granularity_parent	"The first one is ""acromicric dysplasia"", also known as ""acmicd"".
+The second one is ""acromelic dysplasia"", which falls under the category ""Primary bone dysplasia""."
+http://www.omim.org/phenotypicSeries/PS162400	http://www.orpha.net/ORDO/Orphanet_140474	0	granularity_child	"The first one is ""hereditary sensory and autonomic neuropathy"", also known as ""ps162400"".
+The second one is ""autosomal dominant hereditary sensory and autonomic neuropathy"", which falls under the category ""Hereditary sensory and autonomic neuropathy""."
+http://omim.org/entry/112500	http://www.orpha.net/ORDO/Orphanet_93388	0	hard_discarded	"The first one is ""brachydactyly,  iia a1"", also known as ""bda1"".
+The second one is ""brachydactyly type a1"", also known as ""brachydactyly, farabee type"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/170500	http://www.orpha.net/ORDO/Orphanet_371433	0	granularity_parent	"The first one is ""hyperkalemic periodic paralysis"", also known as ""hypp"".
+The second one is ""genetic periodic paralysis"", which falls under the category ""Genetic skeletal muscle disease""."
+http://omim.org/entry/614261	http://www.orpha.net/ORDO/Orphanet_294016	1	anchor_masked	"The first one is ""miccap"".
+The second one is ""mic-cap syndrome"", also known as ""mic-cm syndrome"", ""microcephaly-cutaneous capillary malformation syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/120430	http://www.orpha.net/ORDO/Orphanet_98947	0	hard_discarded	"The first one is ""coloboma of optic nerve"", also known as ""120430"".
+The second one is ""coloboma of optic disc"", also known as ""coloboma of optic papilla"", which falls under the category ""morphological anomaly""."
+http://omim.org/entry/261670	http://www.orpha.net/ORDO/Orphanet_364	0	granularity_child	"The first one is ""glycogen storage disease 10"", also known as ""gsd10"".
+The second one is ""glycogen storage disease due to glucose-6-phosphatase deficiency"", also known as ""g6p deficiency"", ""glycogen storage disease due to g6p deficiency"", ""glycogen storage disease type 1"", ""glycogen storage disease type i"", ""glycogenosis type 1"", ""glycogenosis type i"", ""gsd due to g6p deficiency"", ""gsd type 1"", ""gsd type i"", ""hepatorenal glycogenosis"", ""von gierke disease"", which falls under the category ""disease""."
+http://omim.org/entry/302800	http://www.orpha.net/ORDO/Orphanet_65753	0	hard_discarded	"The first one is ""charcot-marie-tooth disease, x-linked dominant, 1"", also known as ""cmtx1"", which falls under the category ""Charcot-Marie-Tooth disease"".
+The second one is ""charcot-marie-tooth disease type 1"", also known as ""autosomal dominant demyelinating charcot-marie-tooth disease"", ""charcot-marie-tooth neuropathy type 1"", ""cmt1"", ""hereditary motor and sensory neuropathy type 1"", which falls under the category ""Autosomal dominant hereditary demyelinating motor and sensory neuropathy""."
+http://omim.org/entry/221790	http://www.orpha.net/ORDO/Orphanet_68356	0	granularity_parent	"The first one is ""dermatoleukodystrophy"", also known as ""221790"".
+The second one is ""leukodystrophy"", which falls under the category ""group of disorders""."
+http://www.omim.org/phenotypicSeries/PS115200	http://www.orpha.net/ORDO/Orphanet_217607	0	granularity_child	"The first one is ""dilated cardiomyopathy"", also known as ""ps115200"".
+The second one is ""familial dilated cardiomyopathy"", which falls under the category ""Dilated cardiomyopathy""."
+http://omim.org/entry/608236	http://www.orpha.net/ORDO/Orphanet_140481	1	anchor_masked	"The first one is ""slowed nerve conduction velocity, autosomal dominant"", also known as ""sncv"".
+The second one is ""autosomal dominant slowed nerve conduction velocity"", which falls under the category ""disease""."
+http://omim.org/entry/182280	http://www.orpha.net/ORDO/Orphanet_70573	1	anchor_masked	"The first one is ""small cell cancer of the lung"", also known as ""182280"".
+The second one is ""small cell lung cancer"", also known as ""sclc"", which falls under the category ""disease""."
+http://omim.org/entry/169500	http://www.orpha.net/ORDO/Orphanet_99027	1	anchor_masked	"The first one is ""leukodystrophy, demyelinating, adult-onset, autosomal dominant"".
+The second one is ""adult-onset autosomal dominant leukodystrophy"", also known as ""adult-onset autosomal dominant demyelinating leukodystrophy"", which falls under the category ""disease""."
+http://omim.org/entry/108120	http://www.orpha.net/ORDO/Orphanet_1146	0	hard_discarded	"The first one is ""arthrogryposis, distal,  iia 1a"", also known as ""da1a"", which falls under the category ""Arthrogryposis, distal"".
+The second one is ""distal arthrogryposis type 1"", also known as ""da1"", ""digitotalar dysmorphism"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/300778	http://www.orpha.net/ORDO/Orphanet_98955	1	anchor_masked	"The first one is ""corneal dystrophy, lisch epithelial"".
+The second one is ""lisch epithelial corneal dystrophy"", also known as ""band-shaped and whorled microcystic dystrophy of the corneal epithelium"", which falls under the category ""disease""."
+http://omim.org/entry/143000	http://www.orpha.net/ORDO/Orphanet_91413	1	anchor_masked	"The first one is ""horner syndrome, congenital"", also known as ""143000"".
+The second one is ""congenital horner syndrome"", also known as ""congenital claude-bernard-horner syndrome"", which falls under the category ""disease""."
+http://omim.org/entry/606438	http://www.orpha.net/ORDO/Orphanet_157946	0	hard_discarded	"The first one is ""huntington disease-like 2"", also known as ""hdl2"".
+The second one is ""huntington disease-like 3"", also known as ""hdl3"", which falls under the category ""disease""."
+http://omim.org/entry/614128	http://www.orpha.net/ORDO/Orphanet_284435	1	anchor_masked	"The first one is ""ldhbd"".
+The second one is ""glycogen storage disease due to lactate dehydrogenase h-subunit deficiency"", also known as ""glycogenosis due to lactate dehydrogenase h-subunit deficiency"", ""gsd due to lactate dehydrogenase h-subunit deficiency"", ""ldh-h subunit deficiency"", which falls under the category ""clinical subtype""."
+http://omim.org/entry/609924	http://www.orpha.net/ORDO/Orphanet_308448	0	granularity_parent	"The first one is ""aminoacylase 1 deficiency"", also known as ""acy1d"".
+The second one is ""aminoacylase deficiency"", which falls under the category ""group of disorders""."
+http://omim.org/entry/614702	http://www.orpha.net/ORDO/Orphanet_314637	0	granularity_child	"The first one is ""combined oxidative phosphorylation deficiency 10"", which falls under the category ""Combined oxidative phosphorylation deficiency"".
+The second one is ""mitochondrial hypertrophic cardiomyopathy with lactic acidosis due to mto1 deficiency"", also known as ""combined oxidative phosphorylation defect type 10"", which falls under the category ""disease""."
+http://omim.org/entry/143400	http://www.orpha.net/ORDO/Orphanet_93545	0	granularity_child	"The first one is ""congenital anomalies of kidney and urinary tract 2"", also known as ""cakut2"", which falls under the category ""Congenital anomalies of kidney and urinary tract"".
+The second one is ""renal or urinary tract malformation"", also known as ""cakut"", ""congenital anomalies of kidney and urinary tract"", which falls under the category ""group of disorders""."
+http://omim.org/entry/310440	http://www.orpha.net/ORDO/Orphanet_25980	1	anchor_masked	"The first one is ""myopathy, x-linked, with excessive autophagy"", also known as ""meax"".
+The second one is ""x-linked myopathy with excessive autophagy"", also known as ""xmea"", which falls under the category ""disease""."
+http://omim.org/entry/151630	http://www.orpha.net/ORDO/Orphanet_2699	1	anchor_masked	"The first one is ""lip, median nodule of upper"", also known as ""151630"".
+The second one is ""median nodule of the upper lip"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/226350	http://www.orpha.net/ORDO/Orphanet_402035	0	hard_discarded	"The first one is ""eosinophilic fasciitis"", also known as ""226350"".
+The second one is ""eosinophilic colitis"", which falls under the category ""disease""."
+http://omim.org/entry/123100	http://www.orpha.net/ORDO/Orphanet_1531	0	granularity_child	"The first one is ""craniosynostosis 1"", also known as ""crs1"", which falls under the category ""Craniosynostosis"".
+The second one is ""craniosynostosis"", which falls under the category ""Genetic cranial malformation""."
+http://omim.org/entry/182212	http://www.orpha.net/ORDO/Orphanet_2462	1	anchor_masked	"The first one is ""shprintzen-goldberg craniosynostosis syndrome"".
+The second one is ""shprintzen-goldberg syndrome"", also known as ""marfanoid craniosynostosis syndrome"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/616716	http://www.orpha.net/ORDO/Orphanet_309789	0	hard_discarded	"The first one is ""rhizomelic chondrodysplasia punctata,  iia 5"", also known as ""rcdp5"", which falls under the category ""Rhizomelic chondrodysplasia punctata"".
+The second one is ""rhizomelic chondrodysplasia punctata type 1"", which falls under the category ""etiological subtype""."
+http://omim.org/entry/614558	http://www.orpha.net/ORDO/Orphanet_544254	0	hard_discarded	"The first one is ""developmental and epileptic encephalopathy 13"", also known as ""dee13"", which falls under the category ""Developmental and epileptic encephalopathy"".
+The second one is ""syngap1-related developmental and epileptic encephalopathy"", also known as ""syngap1-related dee"", which falls under the category ""disease""."
+http://omim.org/entry/191000	http://www.orpha.net/ORDO/Orphanet_3383	1	anchor_masked	"The first one is ""trochlea of the humerus, aplasia of"", also known as ""191000"".
+The second one is ""humerus trochlea aplasia"", which falls under the category ""malformation syndrome""."
+http://omim.org/entry/108600	http://www.orpha.net/ORDO/Orphanet_316226	0	granularity_child	"The first one is ""spastic ataxia 1, autosomal dominant"", also known as ""spax1"", which falls under the category ""Spastic ataxia"".
+The second one is ""spastic ataxia"", also known as ""spax"", which falls under the category ""Rare hereditary ataxia""."
+http://omim.org/entry/614723	http://www.orpha.net/ORDO/Orphanet_976	1	anchor_masked	"The first one is ""aprtd"".
+The second one is ""2,8-dihydroxyadenine urolithiasis"", also known as ""aprt deficiency"", which falls under the category ""disease""."
+http://omim.org/entry/300200	http://www.orpha.net/ORDO/Orphanet_95702	0	granularity_child	"The first one is ""adrenal hypoplasia, congenital"", also known as ""ahc"".
+The second one is ""x-linked adrenal hypoplasia congenita"", also known as ""x-linked ahc"", ""x-linked congenital adrenal hypoplasia"", which falls under the category ""disease""."
+http://omim.org/entry/615871	http://www.orpha.net/ORDO/Orphanet_163681	0	hard_discarded	"The first one is ""developmental and epileptic encephalopathy 24"", also known as ""dee24"", which falls under the category ""Developmental and epileptic encephalopathy"".
+The second one is ""cntnap2-related developmental and epileptic encephalopathy"", also known as ""cdfe syndrome"", ""cdfes"", ""cntnap2-related dee"", ""cortical dysplasia-focal epilepsy syndrome"", which falls under the category ""disease""."
+http://www.omim.org/phenotypicSeries/PS115210	http://www.orpha.net/ORDO/Orphanet_75249	0	granularity_child	"The first one is ""familial restrictive cardiomyopathy"", also known as ""ps115210"".
+The second one is ""familial isolated restrictive cardiomyopathy"", also known as ""familial or idiopathic restrictive cardiomyopathy"", which falls under the category ""disease""."
