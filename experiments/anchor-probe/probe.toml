@@ -6,6 +6,9 @@ output_root = "runs"
 
 # Optional prefix rewrites applied to every path inside the job configs (use when running off the original machine).
 [path_map]
+# Not needed on the machine the job configs came from. Elsewhere, uncomment and point at local copies, e.g.:
+# "/home/jon/data/oaei-2025-anatomy" = "/data/anatomy/human-mouse"
+# "/home/jon/data/oaei-2025-bio-ml/omim-ordo/omim-ordo" = "/data/bio-ml/omim-ordo"
 
 [tasks.anatomy]
 probe_sets = [

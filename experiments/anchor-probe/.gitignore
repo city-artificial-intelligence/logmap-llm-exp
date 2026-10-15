@@ -1,0 +1,10 @@
+# Pilot runs on OpenRouter copies of the local models (fp8 on DeepInfra, not the 4-bit vLLM stack of the paper).
+# Kept on disk, not committed. gemini-2.5-flash (google__gemini*) is NOT ignored.
+runs/*/*/google__gemma-3-27b-it.*
+runs/*/*/qwen__qwen3-235b-a22b-2507.*
+runs/*/*/meta-llama__llama-3.1-70b-instruct.*
+probe-twins.toml
+jobs/*/*-or-zero-shot-current-r0.toml
+# machine-specific copies and regenerable output
+*.local.toml
+runs/figures/

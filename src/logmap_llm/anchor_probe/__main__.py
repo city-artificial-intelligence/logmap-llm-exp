@@ -5,6 +5,7 @@
   consult  run each job's oracle on each probe set of a task (resumable; --dry-run makes no calls)
   report   compare probe ranking with real M_ask ranking (no calls)
   negtypes type M_ask's false candidates by hierarchy relation to the true match; same for probe negatives (no calls)
+  models   list each oracle once: model_name, interaction style, base_url after [path_map] (used by the run scripts)
 """
 from __future__ import annotations
 
@@ -18,7 +19,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(prog="python -m logmap_llm.anchor_probe", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("check", "build", "consult", "report", "negtypes"):
+    for name in ("check", "build", "consult", "report", "negtypes", "models"):
         p = sub.add_parser(name)
         p.add_argument("experiment", help="probe.toml")
         p.add_argument("--task", action="append", help="restrict to these task names (repeatable)")
@@ -60,6 +61,16 @@ def main() -> None:
                       f"M_ask predictions {'ok' if pc.exists() else 'MISSING'}: {pc}")
             for ps in t.probe_sets:
                 print(f"  probe set {ps.name}: {'ok' if ps.exists() else 'MISSING'}")
+        return
+
+    if a.cmd == "models":
+        seen = {}
+        for t in tasks:
+            for j in t.jobs:
+                seen.setdefault(j.label, (getattr(j.cfg.oracle.interaction_style, "value", j.cfg.oracle.interaction_style),
+                                          j.cfg.oracle.base_url))
+        for label, (style, url) in seen.items():
+            print(f"{label}\t{style}\t{url}")
         return
 
     if a.cmd == "build":

@@ -18,6 +18,8 @@ Everything is in `src/logmap_llm/anchor_probe/` (new module, no existing file ch
 | `pairs/<task>/v5-mix-150.tsv` | **new** v5 set: 50 masked anchors + 50 granularity + 50 v4-style negatives |
 | `reference-results/` | earlier v4 runs made over OpenRouter (for comparison only, not read by the code) |
 | `runs/` | created by `consult`: one CSV per model per probe set; please commit it back |
+| `run_local.sh`, `run_openrouter.sh` | run every local (vLLM) or OpenRouter model on every probe set, both tasks |
+| `plot_results.py` | figures from `runs/` into `runs/figures/` |
 
 ## Setup
 
@@ -35,6 +37,29 @@ The module only adds files, so the rebase has no conflicts. It relies on these e
 `oracle.consultation._build_oracle_manager`, `_run_consultations` and `_resolve_failure_tolerance`,
 `oracle.prompts.context.PromptContext.from_config`, `oracle.prompts.developer.get_developer_prompt`,
 `evaluation.io.load_mapping_pairs`, `load_oracle_predictions` and `ontology.access.load_ontologies`.
+
+## Short version
+
+One command per step: `experiments/anchor-probe/run_all.sh` runs the local vLLM models that are up (serve one on the port
+of its job config, run, swap, rerun; it resumes), then `run_all.sh openrouter` runs the OpenRouter models (needs
+`OPENROUTER_API_KEY`; deepseek and mistral are already in `runs/`, so only gemini-2.5-flash is asked). Each ends with
+`report` and the plots. `runs/` already holds deepseek-v4-flash and mistral-small-3.2 on both tasks; commit `runs/` back
+when done.
+
+```
+python -m logmap_llm.anchor_probe check experiments/anchor-probe/probe.toml   # every job: M_ask predictions ok
+experiments/anchor-probe/run_local.sh            # every local model whose vLLM server is up; others are skipped
+experiments/anchor-probe/run_openrouter.sh       # the 3 OpenRouter models; needs OPENROUTER_API_KEY
+python -m logmap_llm.anchor_probe report experiments/anchor-probe/probe.toml
+python experiments/anchor-probe/plot_results.py
+```
+
+Both run scripts read the models and endpoints from `probe.toml` (after `[path_map]`), take model names as
+arguments to run only those, and are resumable. `PROBE_SETS="v5-g-150 v5-mix-150"` restricts the probe sets (the
+default is all four) and `LIMIT=6` makes a smoke test. For local models, serve one model on the port of its job
+config, run `run_local.sh <model>`, then swap. `plot_results.py` writes `probe_accuracy.png` from the probe answers
+alone, and `probe_vs_real.png`, `regret.png` and `summary.csv` once `report` has run. The steps below are the same
+thing one command at a time.
 
 ## Steps
 

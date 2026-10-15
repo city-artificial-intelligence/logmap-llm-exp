@@ -1,0 +1,13 @@
+{
+  "job_config": "/home/sshyku/WinterRAI/KG-LLM-Matching/repos/logmap-llm-exp/experiments/anchor-probe/jobs/anatomy/anatomy-deepseek-v4-flash-parasail-off-zero-shot-current-r0-6a92a599.toml",
+  "model_name": "deepseek/deepseek-v4-flash",
+  "probe_set": "/home/sshyku/WinterRAI/KG-LLM-Matching/repos/logmap-llm-exp/experiments/anchor-probe/pairs/anatomy/v5-mix-150.tsv",
+  "interaction_style": "InteractionStyle.OPEN_ROUTER",
+  "base_url": "https://openrouter.ai/api/v1",
+  "dev_template": "class_equivalence",
+  "user_template": "one_level_of_parents_and_synonyms",
+  "response_mode": "ResponseModes.STRUCTURED",
+  "n_pairs": 149,
+  "n_failed": 0,
+  "updated": "2026-10-14T12:37:39"
+}
