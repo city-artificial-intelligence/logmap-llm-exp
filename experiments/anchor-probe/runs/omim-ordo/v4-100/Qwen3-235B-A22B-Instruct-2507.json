@@ -1,0 +1,13 @@
+{
+  "job_config": "/home/jon/logmap-llm-exp/experiments/anchor-probe/jobs/omim-ordo/omim-ordo-qwen3-235b-zero-shot-current-r0-7ce115e1.toml",
+  "model_name": "Qwen3-235B-A22B-Instruct-2507",
+  "probe_set": "/home/jon/logmap-llm-exp/experiments/anchor-probe/pairs/omim-ordo/v4-100.tsv",
+  "interaction_style": "InteractionStyle.LOCAL_VLLM",
+  "base_url": "http://127.0.0.1:18012/v1",
+  "dev_template": "class_equivalence",
+  "user_template": "one_level_of_parents_and_synonyms",
+  "response_mode": "ResponseModes.STRUCTURED",
+  "n_pairs": 100,
+  "n_failed": 0,
+  "updated": "2026-10-17T21:31:35"
+}

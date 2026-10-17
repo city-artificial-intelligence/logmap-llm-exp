@@ -1,0 +1,13 @@
+{
+  "job_config": "/home/jon/logmap-llm-exp/experiments/anchor-probe/jobs/anatomy/anatomy-gemma-3-27b-zero-shot-current-r0-71e506d0.toml",
+  "model_name": "Gemma-3-27B",
+  "probe_set": "/home/jon/logmap-llm-exp/experiments/anchor-probe/pairs/anatomy/v5-mix-150.tsv",
+  "interaction_style": "InteractionStyle.LOCAL_VLLM",
+  "base_url": "http://127.0.0.1:18004/v1",
+  "dev_template": "class_equivalence",
+  "user_template": "one_level_of_parents_and_synonyms",
+  "response_mode": "ResponseModes.STRUCTURED",
+  "n_pairs": 149,
+  "n_failed": 0,
+  "updated": "2026-10-17T21:31:18"
+}

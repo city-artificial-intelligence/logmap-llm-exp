@@ -1,0 +1,25 @@
+{
+  "task": "anatomy",
+  "probe_set": "v5-g-150",
+  "n_models": 7,
+  "n_probe": 150,
+  "n_probe_pos": 50,
+  "n_m_ask": 259,
+  "m_ask_prevalence": 0.637065637065637,
+  "spearman": 0.8829187134416479,
+  "kendall": 0.7807200583588266,
+  "top1": true,
+  "regret": 0.012927143778207695,
+  "boot_mean_regret": 0.026518864173651402,
+  "boot_p_regret_le_0.02": 0.5135,
+  "boot_spearman_ci": [
+    0.39285714285714296,
+    0.9642857142857145
+  ],
+  "noise_ceiling_top_stays": 0.6695,
+  "random_regret": 0.10399742101869773,
+  "labelled_regret_30": 0.02790797979797991,
+  "labelled_regret_50": 0.02224483988824425,
+  "dawid_skene_spearman": 0.8214285714285715,
+  "dawid_skene_regret": 0.0
+}

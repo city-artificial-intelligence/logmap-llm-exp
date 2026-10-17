@@ -1,0 +1,13 @@
+{
+  "job_config": "/home/jon/logmap-llm-exp/experiments/anchor-probe/jobs/omim-ordo/omim-ordo-llama-3-1-70b-zero-shot-current-r0-8b6a5e7d.toml",
+  "model_name": "Llama-3.1-70B-Instruct",
+  "probe_set": "/home/jon/logmap-llm-exp/experiments/anchor-probe/pairs/omim-ordo/v4-200.tsv",
+  "interaction_style": "InteractionStyle.LOCAL_VLLM",
+  "base_url": "http://127.0.0.1:18010/v1",
+  "dev_template": "class_equivalence",
+  "user_template": "one_level_of_parents_and_synonyms",
+  "response_mode": "ResponseModes.STRUCTURED",
+  "n_pairs": 200,
+  "n_failed": 0,
+  "updated": "2026-10-17T21:28:03"
+}

@@ -1,0 +1,25 @@
+{
+  "task": "omim-ordo",
+  "probe_set": "v5-mix-150",
+  "n_models": 7,
+  "n_probe": 150,
+  "n_probe_pos": 50,
+  "n_m_ask": 399,
+  "m_ask_prevalence": 0.43107769423558895,
+  "spearman": 0.25226248955475655,
+  "kendall": 0.19518001458970666,
+  "top1": false,
+  "regret": 0.052863436123348206,
+  "boot_mean_regret": 0.05048803806816241,
+  "boot_p_regret_le_0.02": 0.102,
+  "boot_spearman_ci": [
+    0.0,
+    0.8288624656799143
+  ],
+  "noise_ceiling_top_stays": 0.9225,
+  "random_regret": 0.10283270156746248,
+  "labelled_regret_30": 0.02892758170269448,
+  "labelled_regret_50": 0.022017613888604376,
+  "dawid_skene_spearman": 0.8928571428571429,
+  "dawid_skene_regret": 0.0
+}
