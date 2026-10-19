@@ -3,23 +3,24 @@
   check    load every job config, list the LogMap files, reference and M_ask prediction files each task will use
   build    build a probe set (v4 or v5) for one task from LogMap's anchors / hard-discarded output
   consult  run each job's oracle on each probe set of a task (resumable; --dry-run makes no calls)
-  report   compare probe ranking with real M_ask ranking (no calls)
+  report   compare probe ranking with real M_ask ranking (no calls); also writes runs/<task>/m_ask_verdicts.csv
   negtypes type M_ask's false candidates by hierarchy relation to the true match; same for probe negatives (no calls)
   models   list each oracle once: model_name, interaction style, base_url after [path_map] (used by the run scripts)
+  budget   regret / rank agreement at n pairs per model: probe subsets, Dawid-Skene and labelled M_ask pairs (no calls)
 """
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
 
-from .inputs import load_experiment, logmap_file
+from .inputs import export_m_ask_verdicts, load_experiment, logmap_file, m_ask_verdicts_path
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(prog="python -m logmap_llm.anchor_probe", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("check", "build", "consult", "report", "negtypes", "models"):
+    for name in ("check", "build", "consult", "report", "negtypes", "models", "budget"):
         p = sub.add_parser(name)
         p.add_argument("experiment", help="probe.toml")
         p.add_argument("--task", action="append", help="restrict to these task names (repeatable)")
@@ -42,6 +43,10 @@ def main() -> None:
             p.add_argument("--dry-run", action="store_true")
         if name == "report":
             p.add_argument("--probe-set", action="append")
+        if name == "budget":
+            p.add_argument("--draws", type=int, default=1000, help="random subsamples per budget below the full size")
+            p.add_argument("--step", type=int, default=50, help="budgets step, n = step, 2*step, ... , full size")
+            p.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
     tasks = load_experiment(a.experiment, a.task)
 
@@ -61,6 +66,9 @@ def main() -> None:
                       f"M_ask predictions {'ok' if pc.exists() else 'MISSING'}: {pc}")
             for ps in t.probe_sets:
                 print(f"  probe set {ps.name}: {'ok' if ps.exists() else 'MISSING'}")
+            mv = m_ask_verdicts_path(t)
+            print(f"  M_ask verdicts export (used if prediction files are missing): "
+                  f"{'ok' if mv.exists() else 'none'} {mv}")
         return
 
     if a.cmd == "models":
@@ -106,6 +114,7 @@ def main() -> None:
     if a.cmd == "report":
         from .report import analyse, write
         for t in tasks:
+            export_m_ask_verdicts(t)
             for ps in t.probe_sets:
                 if a.probe_set and ps.stem not in a.probe_set:
                     continue
@@ -115,6 +124,13 @@ def main() -> None:
                 res = analyse(t, ps)
                 if res is not None:
                     write(t, ps, *res)
+        return
+
+    if a.cmd == "budget":
+        from .budget import budget
+        for t in tasks:
+            export_m_ask_verdicts(t)
+            budget(t, draws=a.draws, step=a.step, seed=a.seed)
 
 
 if __name__ == "__main__":

@@ -159,3 +159,30 @@ def m_ask_predictions(job: Job) -> pd.DataFrame:
     """The job's own verdicts on M_ask: columns src, tgt, pred (True/False/None = failed)."""
     rows = load_oracle_predictions(job.paths.predictions_csv())
     return pd.DataFrame([(r["source"], r["target"], r["prediction"]) for r in rows], columns=["src", "tgt", "pred"])
+
+
+def m_ask_verdicts_path(task: Task) -> Path:
+    """runs/<task>/m_ask_verdicts.csv: the real side in one small file (pair, reference label, each model's verdict),
+    so report / budget can run where the jobs' own prediction files are not available."""
+    return task.output_root / task.name / "m_ask_verdicts.csv"
+
+
+def export_m_ask_verdicts(task: Task) -> Path | None:
+    """Write m_ask_verdicts.csv from the jobs' prediction files. Only when every job's file is here, so a partial
+    machine never overwrites a complete export; returns None when nothing was written."""
+    jobs = task.jobs
+    if not all(Path(j.paths.predictions_csv()).exists() for j in jobs):
+        return None
+    frames = {j.label: m_ask_predictions(j) for j in jobs}
+    keys = sorted(set.intersection(*[set(zip(f.src, f.tgt)) for f in frames.values()]))
+    ref = reference(task)
+    df = pd.DataFrame(keys, columns=["src", "tgt"])
+    df["label"] = [int(frozenset(k) in ref) for k in keys]
+    for label, f in frames.items():
+        d = {(s, t): p for s, t, p in zip(f.src, f.tgt, f.pred)}
+        df[label] = [d[k] for k in keys]  # True / False / None (failed consultation: empty cell)
+    out = m_ask_verdicts_path(task)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out, index=False)
+    print(f"[{task.name}] M_ask verdicts of {len(jobs)} jobs on {len(keys)} pairs -> {out}")
+    return out

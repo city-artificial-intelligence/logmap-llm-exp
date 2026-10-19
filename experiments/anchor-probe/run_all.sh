@@ -20,5 +20,6 @@ rc_local=0; rc_or=0
 case $mode in local|all) experiments/anchor-probe/run_local.sh; rc_local=$? ;; esac
 case $mode in openrouter|all) experiments/anchor-probe/run_openrouter.sh; rc_or=$? ;; esac
 python -m logmap_llm.anchor_probe report "$EXP"
+python -m logmap_llm.anchor_probe budget "$EXP"
 python experiments/anchor-probe/plot_results.py
 exit $((rc_local || rc_or))

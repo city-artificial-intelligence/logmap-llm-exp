@@ -51,6 +51,7 @@ python -m logmap_llm.anchor_probe check experiments/anchor-probe/probe.toml   # 
 experiments/anchor-probe/run_local.sh            # every local model whose vLLM server is up; others are skipped
 experiments/anchor-probe/run_openrouter.sh       # the 3 OpenRouter models; needs OPENROUTER_API_KEY
 python -m logmap_llm.anchor_probe report experiments/anchor-probe/probe.toml
+python -m logmap_llm.anchor_probe budget experiments/anchor-probe/probe.toml
 python experiments/anchor-probe/plot_results.py
 ```
 
@@ -58,8 +59,8 @@ Both run scripts read the models and endpoints from `probe.toml` (after `[path_m
 arguments to run only those, and are resumable. `PROBE_SETS="v5-g-150 v5-mix-150"` restricts the probe sets (the
 default is all four) and `LIMIT=6` makes a smoke test. For local models, serve one model on the port of its job
 config, run `run_local.sh <model>`, then swap. `plot_results.py` writes `probe_accuracy.png` from the probe answers
-alone, and `probe_vs_real.png`, `regret.png` and `summary.csv` once `report` has run. The steps below are the same
-thing one command at a time.
+alone, `probe_vs_real.png`, `regret.png` and `summary.csv` once `report` has run, and `budget.png` once `budget`
+has. The steps below are the same thing one command at a time.
 
 ## Steps
 
@@ -115,12 +116,18 @@ Restrict with `--probe-set v5-g-150` and similar, and `--task`.
 ```
 python -m logmap_llm.anchor_probe report experiments/anchor-probe/probe.toml
 python -m logmap_llm.anchor_probe negtypes experiments/anchor-probe/probe.toml
+python -m logmap_llm.anchor_probe budget experiments/anchor-probe/probe.toml
 ```
 
 `report` writes `runs/<task>/<probe set>/report.md`. It shows per-model real J on M_ask against probe J, the rank
 agreement, the regret of the probe's pick, and references: random pick, 30 or 50 labelled M_ask pairs, Dawid–Skene
 and the noise ceiling. `negtypes` types M_ask's false candidates by hierarchy relation to the true match and does
-the same for each probe set's negatives.
+the same for each probe set's negatives. `budget` scores each way of picking the oracle at the same cost, n pairs
+answered by every model: n pairs of each probe set (stratified by kind), n unlabelled M_ask pairs ranked by
+Dawid–Skene, and n labelled M_ask pairs, for n = 50, 100, ... up to the full size, averaged over 1000 random
+subsets. It writes `runs/<task>/budget.csv` (about 1–2 minutes per task).
+Both also write `runs/<task>/m_ask_verdicts.csv`: each M_ask pair, its reference label and every model's verdict.
+Commit it: on a machine without the jobs' prediction files, `report` and `budget` read the real side from it.
 
 ## Not supported
 

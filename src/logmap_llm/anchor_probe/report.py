@@ -1,7 +1,8 @@
 """Does the probe rank the oracles the way M_ask does?
 
 Real side : each job's own M_ask predictions file, scored against the reference alignment. Failed consultations
-            count as wrong. The J computed here is checked against the job's evaluation_results.json.
+            count as wrong. The J computed here is checked against the job's evaluation_results.json. Where the
+            prediction files are not available, runs/<task>/m_ask_verdicts.csv (exported by report / budget) is used.
 Probe side: the probe set's free labels; a failed or missing answer counts as wrong.
 
 Reported per task and probe set:
@@ -19,7 +20,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .inputs import Task, m_ask_predictions, reference
+from .inputs import Task, m_ask_predictions, m_ask_verdicts_path, reference
 
 N_BOOT = 2000
 
@@ -79,7 +80,26 @@ def _strat(gt: np.ndarray, rng) -> np.ndarray:
     return np.concatenate([rng.choice(pos, len(pos)), rng.choice(neg, len(neg))])
 
 
+def real_side_from_export(task: Task, jobs) -> tuple[np.ndarray, np.ndarray, list[str]]:
+    """The real side read from runs/<task>/m_ask_verdicts.csv (written by report / budget where the prediction
+    files are)."""
+    f = m_ask_verdicts_path(task)
+    if not f.exists():
+        raise FileNotFoundError(f"[{task.name}] M_ask prediction files not found and no {f}; run report or budget "
+                                "once where the prediction files are, and commit runs/")
+    df = pd.read_csv(f, dtype=str, keep_default_na=False)
+    missing = [j.label for j in jobs if j.label not in df]
+    if missing:
+        raise KeyError(f"[{task.name}] {f.name} has no verdicts for {missing}")
+    gt = df.label.astype(int).to_numpy().astype(bool)
+    P = np.column_stack([np.where(df[j.label].isin(["True", "False"]), df[j.label].eq("True"), ~gt) for j in jobs])
+    print(f"  [{task.name}] real side from {f.name} ({len(df)} pairs)")
+    return gt, P, [f"{s}|{t}" for s, t in zip(df.src, df.tgt)]
+
+
 def real_side(task: Task, jobs) -> tuple[np.ndarray, np.ndarray, list[str]]:
+    if not all(Path(j.paths.predictions_csv()).exists() for j in jobs):
+        return real_side_from_export(task, jobs)
     ref = reference(task)
     frames = [m_ask_predictions(j) for j in jobs]
     keys = set.intersection(*[set(zip(f.src, f.tgt)) for f in frames])
